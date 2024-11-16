@@ -11,8 +11,8 @@ public class Store extends Property{
     }
 
 
-    public Store(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice, Boolean rented, Boolean sold, Integer bathRooms, Orientation orientation, Integer floorsQuantity) {
-        super(owner, adress, area, salesPrice, rentalPrice, rented, sold);
+    public Store(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice, StateOfProperty state, Integer bathRooms, Orientation orientation, Integer floorsQuantity) {
+        super(owner, adress, area, salesPrice, rentalPrice, state);
         this.bathRooms = bathRooms;
         this.orientation = orientation;
         this.floorsQuantity = floorsQuantity;

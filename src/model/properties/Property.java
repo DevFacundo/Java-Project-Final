@@ -1,8 +1,26 @@
 package model.properties;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import model.clients.Owner;
+import model.interfaces.Identifiable;
 
-public class Property {
+
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "propertyType"
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = House.class, name = "house"),
+        @JsonSubTypes.Type(value = Apartment.class, name = "apartment"),
+        @JsonSubTypes.Type(value = Lot.class, name = "lot"),
+        @JsonSubTypes.Type(value = WareHouse.class, name = "warehouse"),
+        @JsonSubTypes.Type(value = Store.class, name = "store")
+
+})
+
+public abstract class Property implements Identifiable {
     private Integer id;
     private static Integer nextId=1;
     private Owner owner;
@@ -10,21 +28,19 @@ public class Property {
     private Double area;
     private Double SalesPrice;
     private Double RentalPrice;
-    private Boolean rented;
-    private Boolean sold;
+    private StateOfProperty state;
 
     public Property() {
     }
 
-    public Property(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice, Boolean rented, Boolean sold) {
-        id=nextId++;
+    public Property(Owner owner, String adress, Double salesPrice, Double area, Double rentalPrice, StateOfProperty state) {
         this.owner = owner;
         this.adress = adress;
-        this.area = area;
         SalesPrice = salesPrice;
+        this.area = area;
         RentalPrice = rentalPrice;
-        this.rented = rented;
-        this.sold = sold;
+        this.state = state;
+        this.id=nextId++;
     }
 
     public Integer getId() {
@@ -75,20 +91,12 @@ public class Property {
         RentalPrice = rentalPrice;
     }
 
-    public Boolean getRented() {
-        return rented;
+    public StateOfProperty getState() {
+        return state;
     }
 
-    public void setRented(Boolean rented) {
-        this.rented = rented;
-    }
-
-    public Boolean getSold() {
-        return sold;
-    }
-
-    public void setSold(Boolean sold) {
-        this.sold = sold;
+    public void setState(StateOfProperty state) {
+        this.state = state;
     }
 
     @Override
@@ -100,7 +108,6 @@ public class Property {
                 "\narea=" + area +
                 "\nSalesPrice=" + SalesPrice +
                 "\nRentalPrice=" + RentalPrice +
-                "\nrented=" + rented +
-                "\nsold=" + sold;
+                "\nStateOfProperty=" + state;
     }
 }

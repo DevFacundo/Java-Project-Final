@@ -2,6 +2,10 @@ package service;
 
 import model.exceptions.InvalidInputException;
 import model.login.Login;
+import model.menus.clientsmenu.ClientsMenu;
+import model.menus.propertymenu.PropertyMenu;
+import model.menus.rentsmenu.RentsMenu;
+import model.menus.salesmenu.SalesMenu;
 
 import java.util.Scanner;
 
@@ -22,36 +26,42 @@ public class PropertyManagementService {
         if (login.authenticate()) { /// Si el login esta correcto...
             int option = -1;
             do {
-                clearConsole();
+//                clearConsole();
                 printMenu(); /// Imprime un menu modularizado
-                clearConsole();
+
                 try {
                     option = getValidatedOption(); /// Excepcion que valida que sea un numero
-                    clearConsole();
+//                    clearConsole();
 
                     switch (option) {
                         case 1:
                             System.out.println("Opcion 1");
+                            RentsMenu rentsMenu = new RentsMenu();
+                            rentsMenu.menu();
                             break;
                         case 2:
                             System.out.println("Opcion 2");
+                            SalesMenu salesMenu = new SalesMenu();
+                            salesMenu.menu();
                             break;
                         case 3:
                             System.out.println("Opcion 3");
+                            PropertyMenu propertyMenu = new PropertyMenu();
+                            propertyMenu.menu();
+
                             break;
                         case 4:
                             System.out.println("Opcion 4");
+                            ClientsMenu clientsMenu = new ClientsMenu();
+                            clientsMenu.menu();
                             break;
                         case 0:
-                            System.out.println("Exiting...");
+                            System.out.println("Leaving the program....");
                             break;
                         default:
                             System.out.println("Invalid option. Please try again.");
                     }
-                    if (option != 0) {
-                        System.out.println("\nPress Enter to return to the menu...");
-                        scanner.nextLine();
-                    }
+
                 } catch (InvalidInputException e) {
                     System.out.println(e.getMessage());
                     System.out.println("Press Enter to try again...");
@@ -65,21 +75,15 @@ public class PropertyManagementService {
 
 
     private void printMenu() {
-        System.out.println("┌────────────────────────────────┐");
-        System.out.println("│               MENU             │");
-        System.out.println("├────────────────────────────────┤");
-        System.out.println("│                                │");
-        System.out.println("│ 1. RENTS MANAGEMENT            │");
-        System.out.println("│                                │");
-        System.out.println("│ 2. SALES MANAGEMENT            │");
-        System.out.println("│                                │");
-        System.out.println("│ 3. PROPERTIES MANAGEMENT       │");
-        System.out.println("│                                │");
-        System.out.println("│ 4. CLIENTS MANAGEMENT          │");
-        System.out.println("│                                │");
-        System.out.println("├────────────────────────────────┤");
-        System.out.println("│ 0. EXIT                        │");
-        System.out.println("└────────────────────────────────┘");
+        System.out.println("┌───────────────────────────────┐");
+        System.out.println("│               MENU            │");
+        System.out.println("├───────────────────────────────┤");
+        System.out.println("│ 1. RENTS MANAGEMENT           │");
+        System.out.println("│ 2. SALES MANAGEMENT           │");
+        System.out.println("│ 3. PROPERTIES MANAGEMENT      │");
+        System.out.println("│ 4. CLIENTS MANAGEMENT         │");
+        System.out.println("│ 0. EXIT                       │");
+        System.out.println("└───────────────────────────────┘");
         System.out.print("Choose an option: ");
     }
 

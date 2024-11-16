@@ -8,6 +8,7 @@ import model.genericManagement.JsonClass;
 import model.properties.House;
 import model.properties.StateOfProperty;
 import model.sales.Sale;
+import service.PropertyManagementService;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +31,7 @@ public class Main {
         //Owner owner1 = new Owner("Facundo Aguilera", "2235829879", "facuaguilera32@gmail.com", "Mascias 2069");
         //Buyer buyer = new Buyer("María López", "3456789012", "mlopez@example.com", "Av. del Libertador 1234");
         //Buyer buyer2 = new Buyer("Carlos Pérez", "9876543210", "cperez@example.com", "Calle Ficticia 5678");
-        Buyer buyer3 = new Buyer("Ana Gómez", "1122334455", "agomez@example.com", "Calle Mayor 4321");
+       // Buyer buyer3 = new Buyer("Ana Gómez", "1122334455", "agomez@example.com", "Calle Mayor 4321");
         //House house1 = new House(owner1, "Ayolas 4542", 25D, 120D, 60D, StateOfProperty.AVAILABLE, 2, 5, 3, 3, true);
         //Sale sale1 = new Sale(buyer, house1, LocalDate.of(2021, 5, 20));
 
@@ -39,7 +40,7 @@ public class Main {
         //buyer1.addElement(buyer2);
         //JsonClass.saveList(buyer1.returnList(), "buyers.json");
         //buyer1.showElements();
-
+/*
         GenericClass<Buyer> buyerList = new GenericClass<>(JsonClass.loadList("buyers.json", Buyer.class));
         Buyer b = buyerList.getLastObject();
         Integer lastId = b.getId() + 1;
@@ -53,5 +54,9 @@ public class Main {
         buyerList.showElements();
 
 
+ */
+
+        PropertyManagementService sm = new PropertyManagementService();
+        sm.menu();
     }
 }

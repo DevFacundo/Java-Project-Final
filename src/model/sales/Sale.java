@@ -2,11 +2,12 @@ package model.sales;
 
 import model.clients.Buyer;
 import model.clients.Owner;
+import model.interfaces.Identifiable;
 import model.properties.Property;
 
 import java.time.LocalDate;
 
-public class Sale {
+public class Sale implements Identifiable {
     private Integer id;
     private static  Integer nextId=1;
     private Buyer buyer;

@@ -1,6 +1,21 @@
 package model.clients;
 
-public class Client {
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import model.interfaces.Identifiable;
+
+
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "clientType"
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Buyer.class, name = "buyer"),
+        @JsonSubTypes.Type(value = Owner.class, name = "owner"),
+        @JsonSubTypes.Type(value = Tenant.class, name = "tenant")
+})
+public abstract class Client implements Identifiable {
     private Integer id;
     private static Integer nextId=1;
     private String name;

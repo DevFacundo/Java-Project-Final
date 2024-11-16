@@ -12,8 +12,8 @@ public class Apartment extends Property{
 
     public Apartment(){}
 
-    public Apartment(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice, Boolean rented, Boolean sold, Integer rooms, Integer bathRooms, Integer bedRooms, Boolean furnished, Orientation orientation, Double maintenanceFees) {
-        super(owner, adress, area, salesPrice, rentalPrice, rented, sold);
+    public Apartment(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice,StateOfProperty state, Integer rooms, Integer bathRooms, Integer bedRooms, Boolean furnished, Orientation orientation, Double maintenanceFees) {
+        super(owner, adress, area, salesPrice, rentalPrice, state);
         this.rooms = rooms;
         this.bathRooms = bathRooms;
         this.bedRooms = bedRooms;

@@ -1,1 +1,31 @@
-{"id":1,"buyer":{"id":2,"name":"María López","contactNumber":"3456789012","email":"mlopez@example.com","adress":"Av. del Libertador 1234"},"property":{"id":1,"owner":{"id":1,"name":"Facundo Aguilera","contactNumber":"2235829879","email":"facuaguilera32@gmail.com","adress":"Mascias 2069"},"adress":"Ayolas 4542","area":25.0,"rented":false,"sold":false,"rentalPrice":60.0,"salesPrice":120.0},"dateOfSale":[2021,5,20]}
+{
+  "id": 1,
+  "buyer": {
+    "id": 2,
+    "name": "María López",
+    "contactNumber": "3456789012",
+    "email": "mlopez@example.com",
+    "adress": "Av. del Libertador 1234"
+  },
+  "property": {
+    "propertyType": "house",
+    "id": 1,
+    "owner": {
+      "id": 1,
+      "name": "Facundo Aguilera",
+      "contactNumber": "2235829879",
+      "email": "facuaguilera32@gmail.com",
+      "adress": "Mascias 2069"
+    },
+    "adress": "Ayolas 4542",
+    "area": 120.0,
+    "state": "AVAILABLE",
+    "salesPrice": 25.0,
+    "rentalPrice": 60.0
+  },
+  "dateOfSale": [
+    2021,
+    5,
+    20
+  ]
+}

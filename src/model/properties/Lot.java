@@ -12,8 +12,8 @@ public class Lot extends Property{
     public Lot() {
     }
 
-    public Lot(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice, Boolean rented, Boolean sold, Boolean electricity, Boolean water, Boolean sewer, Boolean asphalt, Boolean gas) {
-        super(owner, adress, area, salesPrice, rentalPrice, rented, sold);
+    public Lot(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice, StateOfProperty state, Boolean electricity, Boolean water, Boolean sewer, Boolean asphalt, Boolean gas) {
+        super(owner, adress, area, salesPrice, rentalPrice, state);
         this.electricity = electricity;
         this.water = water;
         this.sewer = sewer;

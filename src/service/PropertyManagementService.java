@@ -10,24 +10,24 @@ public class PropertyManagementService {
     Login login = new Login();
     Scanner scanner = new Scanner(System.in);
 
-//    /// Simula limpiar la consola
-//    private void clearConsole() {
-//        for (int i = 0; i < 50; i++) {
-//            System.out.println();
-//        }
-//    }
+    /// Simula limpiar la consola
+    private void clearConsole() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println();
+        }
+    }
 
     /// Metodo del menu
     public void menu() {
         if (login.authenticate()) { /// Si el login esta correcto...
             int option = -1;
             do {
-//                clearConsole();
+                clearConsole();
                 printMenu(); /// Imprime un menu modularizado
-
+                clearConsole();
                 try {
                     option = getValidatedOption(); /// Excepcion que valida que sea un numero
-//                    clearConsole();
+                    clearConsole();
 
                     switch (option) {
                         case 1:
@@ -65,15 +65,21 @@ public class PropertyManagementService {
 
 
     private void printMenu() {
-        System.out.println("┌───────────────────────────────┐");
-        System.out.println("│               MENU            │");
-        System.out.println("├───────────────────────────────┤");
-        System.out.println("│ 1. RENTS MANAGEMENT           │");
-        System.out.println("│ 2. SALES MANAGEMENT           │");
-        System.out.println("│ 3. PROPERTIES MANAGEMENT      │");
-        System.out.println("│ 4. CLIENTS MANAGEMENT         │");
-        System.out.println("│ 0. EXIT                       │");
-        System.out.println("└───────────────────────────────┘");
+        System.out.println("┌────────────────────────────────┐");
+        System.out.println("│               MENU             │");
+        System.out.println("├────────────────────────────────┤");
+        System.out.println("│                                │");
+        System.out.println("│ 1. RENTS MANAGEMENT            │");
+        System.out.println("│                                │");
+        System.out.println("│ 2. SALES MANAGEMENT            │");
+        System.out.println("│                                │");
+        System.out.println("│ 3. PROPERTIES MANAGEMENT       │");
+        System.out.println("│                                │");
+        System.out.println("│ 4. CLIENTS MANAGEMENT          │");
+        System.out.println("│                                │");
+        System.out.println("├────────────────────────────────┤");
+        System.out.println("│ 0. EXIT                        │");
+        System.out.println("└────────────────────────────────┘");
         System.out.print("Choose an option: ");
     }
 

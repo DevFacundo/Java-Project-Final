@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "María López",
+    "contactNumber": "3456789012",
+    "email": "mlopez@example.com",
+    "adress": "Av. del Libertador 1234"
+  },
+  {
+    "id": 2,
+    "name": "Carlos Pérez",
+    "contactNumber": "9876543210",
+    "email": "cperez@example.com",
+    "adress": "Calle Ficticia 5678"
+  },
+  {
+    "id": 3,
+    "name": "Ana Gómez",
+    "contactNumber": "1122334455",
+    "email": "agomez@example.com",
+    "adress": "Calle Mayor 4321"
+  }
+]

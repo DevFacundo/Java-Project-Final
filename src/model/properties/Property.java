@@ -3,7 +3,6 @@ package model.properties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import model.clients.Owner;
-import model.interfaces.Identifiable;
 
 
 @JsonTypeInfo(
@@ -17,10 +16,9 @@ import model.interfaces.Identifiable;
         @JsonSubTypes.Type(value = Lot.class, name = "lot"),
         @JsonSubTypes.Type(value = WareHouse.class, name = "warehouse"),
         @JsonSubTypes.Type(value = Store.class, name = "store")
-
 })
 
-public abstract class Property implements Identifiable {
+public abstract class Property {
     private Integer id;
     private static Integer nextId=1;
     private Owner owner;
@@ -102,7 +100,7 @@ public abstract class Property implements Identifiable {
     @Override
     public String toString() {
         return "Property: " +
-                "\nid=" + id +
+                "\nid prop=" + id +
                 "\nowner=" + owner.getName() +
                 "\nadress='" + adress + '\'' +
                 "\narea=" + area +

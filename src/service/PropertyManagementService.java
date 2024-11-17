@@ -2,6 +2,10 @@ package service;
 
 import model.exceptions.InvalidInputException;
 import model.login.Login;
+import model.menus.clientsmenu.ClientsMenu;
+import model.menus.propertymenu.PropertyMenu;
+import model.menus.rentsmenu.RentsMenu;
+import model.menus.salesmenu.SalesMenu;
 
 import java.util.Scanner;
 
@@ -10,12 +14,12 @@ public class PropertyManagementService {
     Login login = new Login();
     Scanner scanner = new Scanner(System.in);
 
-//    /// Simula limpiar la consola
-//    private void clearConsole() {
-//        for (int i = 0; i < 50; i++) {
-//            System.out.println();
-//        }
-//    }
+    /// Simula limpiar la consola
+    private void clearConsole() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println();
+        }
+    }
 
     /// Metodo del menu
     public void menu() {
@@ -32,26 +36,32 @@ public class PropertyManagementService {
                     switch (option) {
                         case 1:
                             System.out.println("Opcion 1");
+                            RentsMenu rentsMenu = new RentsMenu();
+                            rentsMenu.menu();
                             break;
                         case 2:
                             System.out.println("Opcion 2");
+                            SalesMenu salesMenu = new SalesMenu();
+                            salesMenu.menu();
                             break;
                         case 3:
                             System.out.println("Opcion 3");
+                            PropertyMenu propertyMenu = new PropertyMenu();
+                            propertyMenu.menu();
+
                             break;
                         case 4:
                             System.out.println("Opcion 4");
+                            ClientsMenu clientsMenu = new ClientsMenu();
+                            clientsMenu.menu();
                             break;
                         case 0:
-                            System.out.println("Exiting...");
+                            System.out.println("Leaving the program....");
                             break;
                         default:
                             System.out.println("Invalid option. Please try again.");
                     }
-                    if (option != 0) {
-                        System.out.println("\nPress Enter to return to the menu...");
-                        scanner.nextLine();
-                    }
+
                 } catch (InvalidInputException e) {
                     System.out.println(e.getMessage());
                     System.out.println("Press Enter to try again...");

@@ -3,13 +3,12 @@ package model.rents;
 
 import model.clients.Owner;
 import model.clients.Tenant;
-import model.interfaces.Identifiable;
 import model.properties.Property;
 
 import java.time.LocalDate;
 
 
-public class Rent implements Identifiable {
+public class Rent {
     private Integer id;
     private static Integer nextId=1;
     private Tenant tenant;

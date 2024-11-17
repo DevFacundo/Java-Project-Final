@@ -1,4 +1,4 @@
-package model.menus.propertymenu;
+package ui.menus.propertymenu;
 
 import model.exceptions.InvalidInputException;
 
@@ -6,10 +6,9 @@ import java.util.Scanner;
 
 import static model.utils.Utils.getValidatedOption;
 
-public class LotsMenu {
+public class StoresMenu {
     Scanner scanner = new Scanner(System.in);
 
-    /// Método del menú
     public void menu() {
         int option = -1;
         do {
@@ -20,16 +19,16 @@ public class LotsMenu {
 
                 switch (option) {
                     case 1:
-                        System.out.println("Adding a lot...");
+                        System.out.println("Adding a store...");
                         break;
                     case 2:
-                        System.out.println("Modifying a lot...");
+                        System.out.println("Modifying a store...");
                         break;
                     case 3:
-                        System.out.println("Cancelling a lot...");
+                        System.out.println("Cancelling a store...");
                         break;
                     case 4:
-                        System.out.println("Viewing all lots...");
+                        System.out.println("Viewing all stores...");
                         break;
                     case 0:
                         System.out.println("Returning to the previous menu...");
@@ -47,18 +46,18 @@ public class LotsMenu {
 
     private void printMenu() {
         System.out.println("┌───────────────────────────────┐");
-        System.out.println("│           LOTS MENU           │");
+        System.out.println("│          STORES MENU          │");
         System.out.println("├───────────────────────────────┤");
-        System.out.println("│ 1. ADD LOT                    │");
-        System.out.println("│ 2. MODIFY LOT                 │");
-        System.out.println("│ 3. CANCEL LOT                 │");
-        System.out.println("│ 4. VIEW LOTS                  │");
+        System.out.println("│ 1. ADD STORE                  │");
+        System.out.println("│ 2. MODIFY STORE               │");
+        System.out.println("│ 3. CANCEL STORE               │");
+        System.out.println("│ 4. VIEW STORES                │");
         System.out.println("│ 0. GO BACK                    │");
         System.out.println("└───────────────────────────────┘");
         System.out.print("Choose an option: ");
     }
 
-  /*  private int getValidatedOption() throws InvalidInputException {
+ /*   private int getValidatedOption() throws InvalidInputException {
         try {
             return Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {

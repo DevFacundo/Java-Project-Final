@@ -1,32 +1,44 @@
-package model.menus.propertymenu;
+package ui.menus.rentsmenu;
 
 import model.exceptions.InvalidInputException;
 import java.util.Scanner;
+
 import static model.utils.Utils.getValidatedOption;
 
-public class ApartmentsMenu {
+public class RentsMenu {
+
     Scanner scanner = new Scanner(System.in);
 
+//    /// Simula limpiar la consola
+//    private void clearConsole() {
+//        for (int i = 0; i < 50; i++) {
+//            System.out.println();
+//        }
+//    }
+
+    /// Metodo del menu
     public void menu() {
         int option = -1;
         do {
-            printMenu(); /// Imprime un menú modularizado
+//                clearConsole();
+            printMenu(); /// Imprime un menu modularizado
 
             try {
-                option = getValidatedOption(); /// Excepción que valida que sea un número
+                option = getValidatedOption(); /// Excepcion que valida que sea un numero
+//                    clearConsole();
 
                 switch (option) {
                     case 1:
-                        System.out.println("Adding an apartment...");
+                        System.out.println("Opcion 1");
                         break;
                     case 2:
-                        System.out.println("Modifying an apartment...");
+                        System.out.println("Opcion 2");
                         break;
                     case 3:
-                        System.out.println("Cancelling an apartment...");
+                        System.out.println("Opcion 3");
                         break;
                     case 4:
-                        System.out.println("Viewing all apartments...");
+                        System.out.println("Opcion 4");
                         break;
                     case 0:
                         System.out.println("Returning to the previous menu...");
@@ -42,14 +54,15 @@ public class ApartmentsMenu {
         } while (option != 0);
     }
 
+
     private void printMenu() {
         System.out.println("┌───────────────────────────────┐");
-        System.out.println("│       APARTMENTS MENU         │");
+        System.out.println("│         RENTS MENU            │");
         System.out.println("├───────────────────────────────┤");
-        System.out.println("│ 1. ADD APARTMENT              │");
-        System.out.println("│ 2. MODIFY APARTMENT           │");
-        System.out.println("│ 3. CANCEL APARTMENT           │");
-        System.out.println("│ 4. VIEW APARTMENTS            │");
+        System.out.println("│ 1. ADD RENT                   │");
+        System.out.println("│ 2. MODIFY A RENT              │");
+        System.out.println("│ 3. CANCEL A RENT              │");
+        System.out.println("│ 4. VIEW ALL RENTS             │");
         System.out.println("│ 0. GO BACK                    │");
         System.out.println("└───────────────────────────────┘");
         System.out.print("Choose an option: ");
@@ -62,5 +75,4 @@ public class ApartmentsMenu {
             throw new InvalidInputException("Input must be a number. Please try again.");
         }
     }*/
-
 }

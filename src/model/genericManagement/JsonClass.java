@@ -14,8 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JsonClass {
-    private static final ObjectMapper mapper = new ObjectMapper();
-
+    private static final ObjectMapper mapper = new ObjectMapper()
+            .registerModule(new JavaTimeModule())
+            .enable(SerializationFeature.INDENT_OUTPUT)
+            .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+            .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .setSerializationInclusion(JsonInclude.Include.ALWAYS)
+            .enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT)  // Para permitir vacíos como null
+            .configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, false)
+            .setSerializationInclusion(JsonInclude.Include.NON_NULL);
 /*
     static {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -34,10 +41,13 @@ public class JsonClass {
 
 
     // SAVE LIST IN A JSON FILE
-    public static <T> void saveList(List<T> lista, String fileString) {
+    public static <T> void saveList(List<T> list, String fileString,Class<T> type) {
         try {
-            mapper.registerModule(new JavaTimeModule());
-            mapper.writeValue(new File(fileString), lista);
+            mapper.writerFor(mapper.getTypeFactory()
+                            .constructCollectionType(List.class, type))
+                    .writeValue(new File(fileString), list);
+           // mapper.registerModule(new JavaTimeModule());
+           // mapper.writeValue(new File(fileString), lista);
             System.out.println("List saved in the file " + fileString);
         } catch (IOException e) {
             System.out.println("Error to save the file: " + e.getMessage());
@@ -47,10 +57,13 @@ public class JsonClass {
     // LOAD LIST TO THE JSON FILE
     public static <T> List<T> loadList(String fileString, Class<T> type) {
         try {
-            List<T> lista = mapper.readValue(new File(fileString),
-                    mapper.getTypeFactory().constructCollectionType(List.class, type));
-            System.out.println("Lista loaded by the file: " + fileString);
-            return lista;
+            JavaType listType = mapper.getTypeFactory().constructCollectionType(List.class, type);
+
+            return mapper.readValue(new File(fileString), listType);
+           // List<T> lista = mapper.readValue(new File(fileString),
+             //       mapper.getTypeFactory().constructCollectionType(List.class, type));
+           // System.out.println("Lista loaded by the file: " + fileString);
+
         } catch (IOException e) {
             System.out.println("Error to load the file: " + e.getMessage());
             return null;

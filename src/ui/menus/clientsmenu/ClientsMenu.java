@@ -1,31 +1,24 @@
-package model.menus.rentsmenu;
+package ui.menus.clientsmenu;
+
 
 import model.exceptions.InvalidInputException;
+
 import java.util.Scanner;
 
 import static model.utils.Utils.getValidatedOption;
 
-public class RentsMenu {
+public class ClientsMenu {
 
     Scanner scanner = new Scanner(System.in);
 
-//    /// Simula limpiar la consola
-//    private void clearConsole() {
-//        for (int i = 0; i < 50; i++) {
-//            System.out.println();
-//        }
-//    }
-
-    /// Metodo del menu
+    /// Método del menú
     public void menu() {
         int option = -1;
         do {
-//                clearConsole();
-            printMenu(); /// Imprime un menu modularizado
+            printMenu(); /// Imprime un menú modularizado
 
             try {
-                option = getValidatedOption(); /// Excepcion que valida que sea un numero
-//                    clearConsole();
+                option = getValidatedOption(); /// Excepción que valida que sea un número
 
                 switch (option) {
                     case 1:
@@ -54,21 +47,21 @@ public class RentsMenu {
         } while (option != 0);
     }
 
-
     private void printMenu() {
         System.out.println("┌───────────────────────────────┐");
-        System.out.println("│         RENTS MENU            │");
+        System.out.println("│         CLIENTS MENU          │");
         System.out.println("├───────────────────────────────┤");
-        System.out.println("│ 1. ADD RENT                   │");
-        System.out.println("│ 2. MODIFY A RENT              │");
-        System.out.println("│ 3. CANCEL A RENT              │");
-        System.out.println("│ 4. VIEW ALL RENTS             │");
+        System.out.println("│ 1. ADD CLIENT                 │");
+        System.out.println("│ 2. MODIFY A CLIENT            │");
+        System.out.println("│ 3. REMOVE A CLIENT            │");
+        System.out.println("│ 4. VIEW ALL CLIENTS           │");
         System.out.println("│ 0. GO BACK                    │");
+        System.out.println("│                               │");
         System.out.println("└───────────────────────────────┘");
         System.out.print("Choose an option: ");
     }
 
-   /* private int getValidatedOption() throws InvalidInputException {
+  /*  private int getValidatedOption() throws InvalidInputException {
         try {
             return Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {

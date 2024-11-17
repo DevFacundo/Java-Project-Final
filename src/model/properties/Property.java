@@ -1,5 +1,6 @@
 package model.properties;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -11,8 +12,8 @@ import model.exceptions.InvalidPriceException;
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
-        property = "propertyType",
-        visible = true)
+        property = "propertyType")
+
 @JsonSubTypes({
         @JsonSubTypes.Type(value = House.class, name = "house"),
         @JsonSubTypes.Type(value = Apartment.class, name = "apartment"),
@@ -20,6 +21,7 @@ import model.exceptions.InvalidPriceException;
         @JsonSubTypes.Type(value = WareHouse.class, name = "warehouse"),
         @JsonSubTypes.Type(value = Store.class, name = "store")
 })
+@JsonInclude(JsonInclude.Include.NON_NULL)
 
 public abstract class Property {
     private Integer id;

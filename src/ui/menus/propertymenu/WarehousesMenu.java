@@ -1,5 +1,4 @@
-package model.menus.clientsmenu;
-
+package ui.menus.propertymenu;
 
 import model.exceptions.InvalidInputException;
 
@@ -7,11 +6,9 @@ import java.util.Scanner;
 
 import static model.utils.Utils.getValidatedOption;
 
-public class ClientsMenu {
-
+public class WarehousesMenu {
     Scanner scanner = new Scanner(System.in);
 
-    /// Método del menú
     public void menu() {
         int option = -1;
         do {
@@ -22,16 +19,16 @@ public class ClientsMenu {
 
                 switch (option) {
                     case 1:
-                        System.out.println("Opcion 1");
+                        System.out.println("Adding a warehouse...");
                         break;
                     case 2:
-                        System.out.println("Opcion 2");
+                        System.out.println("Modifying a warehouse...");
                         break;
                     case 3:
-                        System.out.println("Opcion 3");
+                        System.out.println("Cancelling a warehouse...");
                         break;
                     case 4:
-                        System.out.println("Opcion 4");
+                        System.out.println("Viewing all warehouses...");
                         break;
                     case 0:
                         System.out.println("Returning to the previous menu...");
@@ -49,14 +46,13 @@ public class ClientsMenu {
 
     private void printMenu() {
         System.out.println("┌───────────────────────────────┐");
-        System.out.println("│         CLIENTS MENU          │");
+        System.out.println("│       WAREHOUSES MENU         │");
         System.out.println("├───────────────────────────────┤");
-        System.out.println("│ 1. ADD CLIENT                 │");
-        System.out.println("│ 2. MODIFY A CLIENT            │");
-        System.out.println("│ 3. REMOVE A CLIENT            │");
-        System.out.println("│ 4. VIEW ALL CLIENTS           │");
+        System.out.println("│ 1. ADD WAREHOUSE              │");
+        System.out.println("│ 2. MODIFY WAREHOUSE           │");
+        System.out.println("│ 3. CANCEL WAREHOUSE           │");
+        System.out.println("│ 4. VIEW WAREHOUSES            │");
         System.out.println("│ 0. GO BACK                    │");
-        System.out.println("│                               │");
         System.out.println("└───────────────────────────────┘");
         System.out.print("Choose an option: ");
     }

@@ -1,4 +1,4 @@
-package model.menus.propertymenu;
+package ui.menus.propertymenu;
 
 import model.exceptions.InvalidInputException;
 
@@ -6,44 +6,30 @@ import java.util.Scanner;
 
 import static model.utils.Utils.getValidatedOption;
 
-public class PropertyMenu {
-
+public class HousesMenu {
     Scanner scanner = new Scanner(System.in);
 
-    /// Método del menú
+
     public void menu() {
         int option = -1;
         do {
-            printMenu(); /// Imprime un menú modularizado
+            printMenu();
 
             try {
-                option = getValidatedOption(); /// Excepción que valida que sea un número
+                option = getValidatedOption();
 
                 switch (option) {
                     case 1:
-                        System.out.println("You selected: Houses");
-                        HousesMenu housesMenu = new HousesMenu();
-                        housesMenu.menu();
+                        System.out.println("Adding a house...");
                         break;
                     case 2:
-                        System.out.println("You selected: Apartments");
-                        ApartmentsMenu apartmentsMenu = new ApartmentsMenu();
-                        apartmentsMenu.menu();
+                        System.out.println("Modifying a house...");
                         break;
                     case 3:
-                        System.out.println("You selected: Stores");
-                        StoresMenu storesMenu = new StoresMenu();
-                        storesMenu.menu();
+                        System.out.println("Cancelling a house...");
                         break;
                     case 4:
-                        System.out.println("You selected: Lots");
-                        LotsMenu lotsMenu = new LotsMenu();
-                        lotsMenu.menu();
-                        break;
-                    case 5:
-                        System.out.println("You selected: Warehouses");
-                        WarehousesMenu warehousesMenu = new WarehousesMenu();
-                        warehousesMenu.menu();
+                        System.out.println("Viewing all houses...");
                         break;
                     case 0:
                         System.out.println("Returning to the previous menu...");
@@ -61,19 +47,18 @@ public class PropertyMenu {
 
     private void printMenu() {
         System.out.println("┌───────────────────────────────┐");
-        System.out.println("│         PROPERTY MENU         │");
+        System.out.println("│          HOUSES MENU          │");
         System.out.println("├───────────────────────────────┤");
-        System.out.println("│ 1. HOUSES                     │");
-        System.out.println("│ 2. APARTMENTS                 │");
-        System.out.println("│ 3. STORES                     │");
-        System.out.println("│ 4. LOTS                       │");
-        System.out.println("│ 5. WAREHOUSES                 │");
+        System.out.println("│ 1. ADD HOUSE                  │");
+        System.out.println("│ 2. MODIFY HOUSE               │");
+        System.out.println("│ 3. CANCEL HOUSE               │");
+        System.out.println("│ 4. VIEW HOUSES                │");
         System.out.println("│ 0. GO BACK                    │");
         System.out.println("└───────────────────────────────┘");
         System.out.print("Choose an option: ");
     }
 
-  /*  private int getValidatedOption() throws InvalidInputException {
+   /* private int getValidatedOption() throws InvalidInputException {
         try {
             return Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {

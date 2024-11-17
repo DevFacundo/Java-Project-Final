@@ -1,1 +1,40 @@
-[{"id":1,"tenant":{"id":25,"name":"Susana Giménez","contactNumber":"01112345678","email":"susana.gimenez@telefe.com.ar","adress":"Av. Libertador 5000, Buenos Aires"},"property":{"propertyType":"house","id":1,"owner":{"id":1,"name":"Walter White","contactNumber":"5051234567","email":"walter.white@breakingbad.com","adress":"Albuquerque, NM"},"adress":"Ayolas 4542","area":145000.0,"state":"AVAILABLE","floorsQuantity":2,"rooms":5,"bedRooms":3,"bathRooms":3,"park":true,"rentalPrice":600.0,"salesPrice":25.0},"owner":{"id":1,"name":"Walter White","contactNumber":"5051234567","email":"walter.white@breakingbad.com","adress":"Albuquerque, NM"},"startRent":[2023,1,15],"endRent":[2024,1,15]},{"id":2,"tenant":{"id":26,"name":"Ricardo Darín","contactNumber":"01187654321","email":"ricardo.darin@cine.com.ar","adress":"Av. Corrientes 1500, Buenos Aires"},"property":{"propertyType":"apartment","id":8,"owner":{"id":1,"name":"Walter White","contactNumber":"5051234567","email":"walter.white@breakingbad.com","adress":"Albuquerque, NM"},"adress":"Av. Libertador 1000","area":150000.0,"state":"AVAILABLE","rooms":3,"bathRooms":2,"bedRooms":2,"furnished":true,"orientation":"FRONT","maintenanceFees":30.0,"rentalPrice":700.0,"salesPrice":70.0},"owner":{"id":2,"name":"Homer Simpson","contactNumber":"5551234567","email":"homer.simpson@simpsons.com","adress":"742 Evergreen Terrace"},"startRent":[2023,3,1],"endRent":[2024,3,1]},{"id":3,"tenant":{"id":27,"name":"Mirtha Legrand","contactNumber":"01123456789","email":"mirtha.legrand@eltrece.com.ar","adress":"Calle Florida 500, Buenos Aires"},"property":{"propertyType":"store","id":20,"owner":{"id":1,"name":"Walter White","contactNumber":"5051234567","email":"walter.white@breakingbad.com","adress":"Albuquerque, NM"},"adress":"Calle Florida 500","area":250000.0,"state":"AVAILABLE","bathRooms":2,"orientation":"FRONT","floorsQuantity":1,"rentalPrice":1050.0,"salesPrice":120.0},"owner":{"id":3,"name":"Jon Snow","contactNumber":"5559876543","email":"jon.snow@got.com","adress":"Winterfell"},"startRent":[2023,6,1],"endRent":[2024,6,1]}]
+[ {
+  "id" : 1,
+  "tenant" : {
+    "id" : 25,
+    "name" : "Susana Giménez",
+    "contactNumber" : "01112345678",
+    "email" : "susana.gimenez@telefe.com.ar",
+    "adress" : "Av. Libertador 5000, Buenos Aires"
+  },
+  "property" : {
+    "propertyType" : "house",
+    "id" : 1,
+    "owner" : {
+      "id" : 1,
+      "name" : "Walter White",
+      "contactNumber" : "5051234567",
+      "email" : "walter.white@breakingbad.com",
+      "adress" : "Albuquerque, NM"
+    },
+    "adress" : "Ayolas 4542",
+    "area" : 145000.0,
+    "state" : "AVAILABLE",
+    "floorsQuantity" : 2,
+    "rooms" : 5,
+    "bedRooms" : 3,
+    "bathRooms" : 3,
+    "park" : true,
+    "rentalPrice" : 600.0,
+    "salesPrice" : 25.0
+  },
+  "owner" : {
+    "id" : 1,
+    "name" : "Walter White",
+    "contactNumber" : "5051234567",
+    "email" : "walter.white@breakingbad.com",
+    "adress" : "Albuquerque, NM"
+  },
+  "startRent" : [ 2023, 1, 15 ],
+  "endRent" : [ 2024, 1, 15 ]
+} ]

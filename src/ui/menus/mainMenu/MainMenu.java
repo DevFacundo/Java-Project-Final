@@ -1,11 +1,11 @@
-package model.menus.mainMenu;
+package ui.menus.mainMenu;
 
 import model.exceptions.InvalidInputException;
 import model.login.Login;
-import model.menus.clientsmenu.ClientsMenu;
-import model.menus.propertymenu.PropertyMenu;
-import model.menus.rentsmenu.RentsMenu;
-import model.menus.salesmenu.SalesMenu;
+import ui.menus.clientsmenu.ClientsMenu;
+import ui.menus.propertymenu.PropertyMenu;
+import ui.menus.rentsmenu.RentsMenu;
+import ui.menus.salesmenu.SalesMenu;
 
 import java.util.Scanner;
 

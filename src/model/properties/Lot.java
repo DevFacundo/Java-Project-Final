@@ -1,7 +1,10 @@
 package model.properties;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import model.clients.Owner;
-
+@JsonTypeName("lot")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Lot extends Property{
     private Boolean electricity;
     private Boolean water;

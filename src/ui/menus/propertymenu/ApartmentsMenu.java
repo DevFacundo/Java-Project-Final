@@ -1,12 +1,10 @@
-package model.menus.propertymenu;
+package ui.menus.propertymenu;
 
 import model.exceptions.InvalidInputException;
-
 import java.util.Scanner;
-
 import static model.utils.Utils.getValidatedOption;
 
-public class WarehousesMenu {
+public class ApartmentsMenu {
     Scanner scanner = new Scanner(System.in);
 
     public void menu() {
@@ -19,16 +17,16 @@ public class WarehousesMenu {
 
                 switch (option) {
                     case 1:
-                        System.out.println("Adding a warehouse...");
+                        System.out.println("Adding an apartment...");
                         break;
                     case 2:
-                        System.out.println("Modifying a warehouse...");
+                        System.out.println("Modifying an apartment...");
                         break;
                     case 3:
-                        System.out.println("Cancelling a warehouse...");
+                        System.out.println("Cancelling an apartment...");
                         break;
                     case 4:
-                        System.out.println("Viewing all warehouses...");
+                        System.out.println("Viewing all apartments...");
                         break;
                     case 0:
                         System.out.println("Returning to the previous menu...");
@@ -46,22 +44,23 @@ public class WarehousesMenu {
 
     private void printMenu() {
         System.out.println("┌───────────────────────────────┐");
-        System.out.println("│       WAREHOUSES MENU         │");
+        System.out.println("│       APARTMENTS MENU         │");
         System.out.println("├───────────────────────────────┤");
-        System.out.println("│ 1. ADD WAREHOUSE              │");
-        System.out.println("│ 2. MODIFY WAREHOUSE           │");
-        System.out.println("│ 3. CANCEL WAREHOUSE           │");
-        System.out.println("│ 4. VIEW WAREHOUSES            │");
+        System.out.println("│ 1. ADD APARTMENT              │");
+        System.out.println("│ 2. MODIFY APARTMENT           │");
+        System.out.println("│ 3. CANCEL APARTMENT           │");
+        System.out.println("│ 4. VIEW APARTMENTS            │");
         System.out.println("│ 0. GO BACK                    │");
         System.out.println("└───────────────────────────────┘");
         System.out.print("Choose an option: ");
     }
 
-  /*  private int getValidatedOption() throws InvalidInputException {
+   /* private int getValidatedOption() throws InvalidInputException {
         try {
             return Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {
             throw new InvalidInputException("Input must be a number. Please try again.");
         }
     }*/
+
 }

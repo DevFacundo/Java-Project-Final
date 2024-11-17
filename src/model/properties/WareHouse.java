@@ -1,7 +1,9 @@
 package model.properties;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import model.clients.Owner;
 
+@JsonTypeName("warehouse")
 public class WareHouse extends Property{
     private TypeOfUse typeOfUse;
     private Integer bathRooms;

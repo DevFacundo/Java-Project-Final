@@ -1,0 +1,117 @@
+[ {
+  "propertyType" : "house",
+  "id" : 1,
+  "owner" : {
+    "id" : 1,
+    "name" : "Walter White",
+    "contactNumber" : "5051234567",
+    "email" : "walter.white@breakingbad.com",
+    "adress" : "Albuquerque, NM"
+  },
+  "adress" : "Ayolas 4542",
+  "area" : 145000.0,
+  "state" : "AVAILABLE",
+  "floorsQuantity" : 2,
+  "rooms" : 5,
+  "bedRooms" : 3,
+  "bathRooms" : 3,
+  "park" : true,
+  "rentalPrice" : 600.0,
+  "salesPrice" : 25.0
+}, {
+  "propertyType" : "house",
+  "id" : 2,
+  "owner" : {
+    "id" : 2,
+    "name" : "Homer Simpson",
+    "contactNumber" : "5551234567",
+    "email" : "homer.simpson@simpsons.com",
+    "adress" : "742 Evergreen Terrace"
+  },
+  "adress" : "Pueyrredón 1023",
+  "area" : 200000.0,
+  "state" : "AVAILABLE",
+  "floorsQuantity" : 3,
+  "rooms" : 4,
+  "bedRooms" : 2,
+  "bathRooms" : 2,
+  "park" : false,
+  "rentalPrice" : 800.0,
+  "salesPrice" : 30.0
+}, {
+  "propertyType" : "apartment",
+  "id" : 10,
+  "owner" : {
+    "id" : 3,
+    "name" : "Jon Snow",
+    "contactNumber" : "5559876543",
+    "email" : "jon.snow@got.com",
+    "adress" : "Winterfell"
+  },
+  "adress" : "Av. Santa Fe 2000",
+  "area" : 130000.0,
+  "state" : "AVAILABLE",
+  "rooms" : 2,
+  "bathRooms" : 1,
+  "bedRooms" : 1,
+  "furnished" : true,
+  "orientation" : "BACK",
+  "maintenanceFees" : 25.0,
+  "rentalPrice" : 350.0,
+  "salesPrice" : 55.0
+}, {
+  "propertyType" : "lot",
+  "id" : 15,
+  "owner" : {
+    "id" : 8,
+    "name" : "Eleven",
+    "contactNumber" : "5553344556",
+    "email" : "eleven@strangerthings.com",
+    "adress" : "Hawkins, Indiana"
+  },
+  "adress" : "Calle Falsa 123",
+  "area" : 75000.0,
+  "state" : "AVAILABLE",
+  "electricity" : true,
+  "water" : true,
+  "sewer" : false,
+  "asphalt" : true,
+  "gas" : true,
+  "salesPrice" : 1500.0
+}, {
+  "propertyType" : "warehouse",
+  "id" : 27,
+  "owner" : {
+    "id" : 3,
+    "name" : "Jon Snow",
+    "contactNumber" : "5559876543",
+    "email" : "jon.snow@got.com",
+    "adress" : "Winterfell"
+  },
+  "adress" : "Calle Lavalle 1200",
+  "area" : 1000.0,
+  "state" : "AVAILABLE",
+  "typeOfUse" : "STORAGE",
+  "bathRooms" : 2,
+  "floorsQuantity" : 1,
+  "rentalPrice" : 2000.0,
+  "salesPrice" : 200000.0
+}, {
+  "propertyType" : "store",
+  "id" : 22,
+  "owner" : {
+    "id" : 3,
+    "name" : "Jon Snow",
+    "contactNumber" : "5559876543",
+    "email" : "jon.snow@got.com",
+    "adress" : "Winterfell"
+  },
+  "adress" : "Calle Viamonte 800",
+  "area" : 200000.0,
+  "state" : "AVAILABLE",
+  "bathRooms" : 1,
+  "orientation" : "FRONT",
+  "floorsQuantity" : 1,
+  "rentalPrice" : 1300.0,
+  "salesPrice" : 100.0
+} ]

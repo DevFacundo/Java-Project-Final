@@ -1,5 +1,6 @@
 package model.sales;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import model.clients.Buyer;
 import model.properties.Property;
 
@@ -9,6 +10,11 @@ public class Sale{
     private Integer id;
     private static  Integer nextId=1;
     private Buyer buyer;
+    @JsonTypeInfo(
+            use = JsonTypeInfo.Id.NAME,
+            include = JsonTypeInfo.As.PROPERTY,
+            property = "propertyType"
+    )
     private Property property;
     private LocalDate dateOfSale;
 

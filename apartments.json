@@ -1,1 +1,107 @@
-[{"id":8,"owner":{"id":1,"name":"Walter White","contactNumber":"5051234567","email":"walter.white@breakingbad.com","adress":"Albuquerque, NM"},"adress":"Av. Libertador 1000","area":150000.0,"state":"AVAILABLE","rooms":3,"bathRooms":2,"bedRooms":2,"furnished":true,"orientation":"FRONT","maintenanceFees":30.0,"rentalPrice":700.0,"salesPrice":70.0},{"id":9,"owner":{"id":2,"name":"Homer Simpson","contactNumber":"5551234567","email":"homer.simpson@simpsons.com","adress":"742 Evergreen Terrace"},"adress":"Calle Florida 700","area":200000.0,"state":"AVAILABLE","rooms":4,"bathRooms":3,"bedRooms":3,"furnished":false,"orientation":"BACK","maintenanceFees":40.0,"rentalPrice":650.0,"salesPrice":90.0},{"id":10,"owner":{"id":3,"name":"Jon Snow","contactNumber":"5559876543","email":"jon.snow@got.com","adress":"Winterfell"},"adress":"Av. Santa Fe 2000","area":130000.0,"state":"AVAILABLE","rooms":2,"bathRooms":1,"bedRooms":1,"furnished":true,"orientation":"BACK","maintenanceFees":25.0,"rentalPrice":350.0,"salesPrice":55.0},{"id":11,"owner":{"id":4,"name":"Daenerys Targaryen","contactNumber":"5557654321","email":"daenerys.targaryen@got.com","adress":"Dragonstone"},"adress":"Calle Viamonte 500","area":180000.0,"state":"AVAILABLE","rooms":3,"bathRooms":2,"bedRooms":2,"furnished":true,"orientation":"FRONT","maintenanceFees":35.0,"rentalPrice":900.0,"salesPrice":80.0},{"id":12,"owner":{"id":5,"name":"Rick Sanchez","contactNumber":"5552345678","email":"rick.sanchez@rickandmorty.com","adress":"The Citadel"},"adress":"Calle 9 de Julio 1200","area":170000.0,"state":"AVAILABLE","rooms":3,"bathRooms":2,"bedRooms":2,"furnished":false,"orientation":"FRONT","maintenanceFees":32.0,"rentalPrice":720.0,"salesPrice":75.0}]
+[
+  {
+    "id": 8,
+    "owner": {
+      "id": 1,
+      "name": "Walter White",
+      "contactNumber": "5051234567",
+      "email": "walter.white@breakingbad.com",
+      "adress": "Albuquerque, NM"
+    },
+    "adress": "Av. Libertador 1000",
+    "area": 150000.0,
+    "state": "AVAILABLE",
+    "rooms": 3,
+    "bathRooms": 2,
+    "bedRooms": 2,
+    "furnished": true,
+    "orientation": "FRONT",
+    "maintenanceFees": 30.0,
+    "salesPrice": 70.0,
+    "rentalPrice": 700.0
+  },
+  {
+    "id": 9,
+    "owner": {
+      "id": 2,
+      "name": "Homer Simpson",
+      "contactNumber": "5551234567",
+      "email": "homer.simpson@simpsons.com",
+      "adress": "742 Evergreen Terrace"
+    },
+    "adress": "Calle Florida 700",
+    "area": 200000.0,
+    "state": "AVAILABLE",
+    "rooms": 4,
+    "bathRooms": 3,
+    "bedRooms": 3,
+    "furnished": false,
+    "orientation": "BACK",
+    "maintenanceFees": 40.0,
+    "salesPrice": 90.0,
+    "rentalPrice": 650.0
+  },
+  {
+    "id": 10,
+    "owner": {
+      "id": 3,
+      "name": "Jon Snow",
+      "contactNumber": "5559876543",
+      "email": "jon.snow@got.com",
+      "adress": "Winterfell"
+    },
+    "adress": "Av. Santa Fe 2000",
+    "area": 130000.0,
+    "state": "AVAILABLE",
+    "rooms": 2,
+    "bathRooms": 1,
+    "bedRooms": 1,
+    "furnished": true,
+    "orientation": "BACK",
+    "maintenanceFees": 25.0,
+    "salesPrice": 55.0,
+    "rentalPrice": 350.0
+  },
+  {
+    "id": 11,
+    "owner": {
+      "id": 4,
+      "name": "Daenerys Targaryen",
+      "contactNumber": "5557654321",
+      "email": "daenerys.targaryen@got.com",
+      "adress": "Dragonstone"
+    },
+    "adress": "Calle Viamonte 500",
+    "area": 180000.0,
+    "state": "AVAILABLE",
+    "rooms": 3,
+    "bathRooms": 2,
+    "bedRooms": 2,
+    "furnished": true,
+    "orientation": "FRONT",
+    "maintenanceFees": 35.0,
+    "salesPrice": 80.0,
+    "rentalPrice": 900.0
+  },
+  {
+    "id": 12,
+    "owner": {
+      "id": 5,
+      "name": "Rick Sanchez",
+      "contactNumber": "5552345678",
+      "email": "rick.sanchez@rickandmorty.com",
+      "adress": "The Citadel"
+    },
+    "adress": "Calle 9 de Julio 1200",
+    "area": 170000.0,
+    "state": "AVAILABLE",
+    "rooms": 3,
+    "bathRooms": 2,
+    "bedRooms": 2,
+    "furnished": false,
+    "orientation": "FRONT",
+    "maintenanceFees": 32.0,
+    "salesPrice": 75.0,
+    "rentalPrice": 720.0
+  }
+]

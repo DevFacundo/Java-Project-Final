@@ -1,16 +1,12 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
 import model.clients.Buyer;
-import model.clients.Client;
 import model.clients.Owner;
 
 import model.clients.Tenant;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonClass;
-import model.menus.mainMenu.MainMenu;
 import model.properties.*;
 import model.rents.Rent;
 import model.sales.Sale;
-import service.PropertyManagementService;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,6 +25,8 @@ public class Main {
         File storeFile = new File ("stores.json");
         File wareHouseFile = new File ("warehouses.json");
 
+        File propertyFile = new File ("properties.json");
+
         //CLIENTS FILES
         File ownerFile = new File("owners.json");
         File buyerFile = new File("buyers.json");
@@ -40,6 +38,9 @@ public class Main {
         // RENTS FILES
         File rentFile = new File ("rents.json");
 
+
+        //MainMenu mm = new MainMenu();
+        //mm.menu();
         //INSTANCIAS PARA PERSISTIR
 
         Owner owner1 = new Owner("Walter White", "5051234567", "walter.white@breakingbad.com", "Albuquerque, NM");
@@ -124,6 +125,34 @@ public class Main {
         Sale sale5 = new Sale(buyer5, house2, LocalDate.of(2023, 1, 5));
         Sale sale6 = new Sale(buyer6, store1, LocalDate.of(2023, 9, 1));
 
+        // PRUEBAS
+
+        GenericClass<Property> properties = new GenericClass<>();
+        properties.addElement(house1);
+        properties.addElement(house2);
+        properties.addElement(apartment3);
+        properties.addElement(lot2);
+        properties.addElement(warehouse3);
+        properties.addElement(store3);
+        JsonClass.saveList(properties.returnList(),"properties.json", Property.class);
+
+
+        //GenericClass<Property> houses= new GenericClass<>();
+        //houses.addElement(house1);
+       // houses.addElement(house2);
+       // houses.addElement(house3);
+       // houses.addElement(house4);
+       // houses.addElement(house5);
+        //JsonClass.saveList(houses.returnList(), "houses.json");
+        GenericClass<Rent> rents  = new GenericClass<>();
+        rents.addElement(rent1);
+        //rents.addElement(rent2);
+        //rents.addElement(rent3);
+        JsonClass.saveList(rents.returnList(), "rents.json", Rent.class);
+
+
+        /*
+
         GenericClass<Owner> owners = new GenericClass<>();
             owners.addElement(owner1);
             owners.addElement(owner2);
@@ -153,6 +182,7 @@ public class Main {
             houses.addElement(house4);
             houses.addElement(house5);
         JsonClass.saveList(houses.returnList(), "houses.json");
+
 
         GenericClass<Apartment> apartments= new GenericClass<>();
             apartments.addElement(apartment1);
@@ -194,28 +224,63 @@ public class Main {
         JsonClass.saveList(rents.returnList(), "rents.json");
 
 
+*/
 
 
 
-
-
+/*
         //LISTAS PARA PROBAR DESSEREALIZACION
 
         List <Owner> ownerList = new LinkedList<>();
+        ownerList = JsonClass.loadList("owners.json", Owner.class);
+        System.out.println(ownerList);
+        System.out.println();
+        System.out.println();
         List <Buyer> buyerList = new LinkedList<>();
+        buyerList = JsonClass.loadList("buyers.json", Buyer.class);
+        System.out.println(buyerList);
+        System.out.println();
+        System.out.println();
         List <Tenant> tenantList = new LinkedList<>();
+        tenantList = JsonClass.loadList("tenants.json", Tenant.class);
+        System.out.println(tenantList);
+        System.out.println();
+        System.out.println();
+        System.out.println("---------------------------------------");
 
         List <House> houseList = new LinkedList<>();
+        houseList = JsonClass.loadList("houses.json", House.class);
+        System.out.println(houseList);
         List <Apartment> apartmentList = new LinkedList<>();
+        apartmentList = JsonClass.loadList("apartments.json", Apartment.class);
+        System.out.println(apartmentList);
         List <Lot> lotList = new LinkedList<>();
         List <Store> storeList = new LinkedList<>();
         List <WareHouse> warehouseList = new LinkedList<>();
+*/
+/*
+        List <Property> jeje = new LinkedList<>();
+        jeje.add(house1);
+        jeje.add(apartment1);
+        jeje.add(lot1);
+        jeje.add(store1);
+        jeje.add(warehouse1);
+        JsonClass.saveList(jeje, "houses.json", Property.class);
+
+ */
+        List <Property> jejeprint = new LinkedList<>();
+        jejeprint = JsonClass.loadList("properties.json", Property.class);
+        System.out.println(jejeprint);
+        //List <House> houseList = new LinkedList<>();
+       // houseList = JsonClass.loadList("houses.json", House.class);
+        //System.out.println(houseList);
 
         List <Sale> saleList = new LinkedList<>();
         List <Rent> rentList = new LinkedList<>();
-
-
-        //JsonClass.saveList(properties.returnList(), "properties.json");
+        System.out.println("=================");
+       rentList = JsonClass.loadList("rents.json", Rent.class);
+       System.out.println(rentList);
+       //JsonClass.saveList(properties.returnList(), "properties.json");
 
         //GenericClass<Property> propertyList = new GenericClass<>(JsonClass.loadList("properties.json", Property.class));
         //System.out.println(propertyList.returnList());

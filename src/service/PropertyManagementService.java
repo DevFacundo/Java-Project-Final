@@ -2,10 +2,10 @@ package service;
 
 import model.exceptions.InvalidInputException;
 import model.login.Login;
-import model.menus.clientsmenu.ClientsMenu;
-import model.menus.propertymenu.PropertyMenu;
-import model.menus.rentsmenu.RentsMenu;
-import model.menus.salesmenu.SalesMenu;
+import ui.menus.clientsmenu.ClientsMenu;
+import ui.menus.propertymenu.PropertyMenu;
+import ui.menus.rentsmenu.RentsMenu;
+import ui.menus.salesmenu.SalesMenu;
 
 import java.util.Scanner;
 
@@ -51,7 +51,6 @@ public class PropertyManagementService {
                         case 3:
                             System.out.println("Opcion 3");
                             propertyMenu.menu();
-
                             break;
                         case 4:
                             System.out.println("Opcion 4");

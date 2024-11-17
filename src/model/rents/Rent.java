@@ -1,6 +1,7 @@
 package model.rents;
 
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import model.clients.Owner;
 import model.clients.Tenant;
 import model.properties.Property;
@@ -12,6 +13,11 @@ public class Rent {
     private Integer id;
     private static Integer nextId=1;
     private Tenant tenant;
+    @JsonTypeInfo(
+            use = JsonTypeInfo.Id.NAME,
+            include = JsonTypeInfo.As.PROPERTY,
+            property = "propertyType"
+    )
     private Property property;
     private Owner owner;
     private LocalDate startRent;

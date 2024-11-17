@@ -5,6 +5,8 @@ import model.exceptions.InvalidInputException;
 
 import java.util.Scanner;
 
+import static model.utils.Utils.getValidatedOption;
+
 public class ClientsMenu {
 
     Scanner scanner = new Scanner(System.in);
@@ -59,11 +61,11 @@ public class ClientsMenu {
         System.out.print("Choose an option: ");
     }
 
-    private int getValidatedOption() throws InvalidInputException {
+  /*  private int getValidatedOption() throws InvalidInputException {
         try {
             return Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {
             throw new InvalidInputException("Input must be a number. Please try again.");
         }
-    }
+    }*/
 }

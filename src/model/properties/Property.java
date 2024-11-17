@@ -3,6 +3,8 @@ package model.properties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import model.clients.Owner;
+import model.exceptions.InvalidAreaException;
+import model.exceptions.InvalidPriceException;
 
 
 @JsonTypeInfo(
@@ -70,6 +72,7 @@ public abstract class Property {
     }
 
     public void setSalesPrice(Double salesPrice) {
+        if (salesPrice <= 0){throw new InvalidPriceException("the price must be greater than 0");}
         SalesPrice = salesPrice;
     }
 
@@ -78,6 +81,7 @@ public abstract class Property {
     }
 
     public void setArea(Double area) {
+        if(area<= 0){throw new InvalidAreaException("the area must be greater than 0");}
         this.area = area;
     }
 
@@ -86,6 +90,7 @@ public abstract class Property {
     }
 
     public void setRentalPrice(Double rentalPrice) {
+        if(rentalPrice <= 0){throw new InvalidPriceException("the price must be greater than 0");}
         RentalPrice = rentalPrice;
     }
 

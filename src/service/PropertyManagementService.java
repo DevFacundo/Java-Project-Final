@@ -10,6 +10,10 @@ import model.menus.salesmenu.SalesMenu;
 import java.util.Scanner;
 
 public class PropertyManagementService {
+    RentsMenu rentsMenu = new RentsMenu();
+    SalesMenu salesMenu = new SalesMenu();
+    PropertyMenu propertyMenu = new PropertyMenu();
+    ClientsMenu clientsMenu = new ClientsMenu();
 
     Login login = new Login();
     Scanner scanner = new Scanner(System.in);
@@ -36,23 +40,19 @@ public class PropertyManagementService {
                     switch (option) {
                         case 1:
                             System.out.println("Opcion 1");
-                            RentsMenu rentsMenu = new RentsMenu();
                             rentsMenu.menu();
                             break;
                         case 2:
                             System.out.println("Opcion 2");
-                            SalesMenu salesMenu = new SalesMenu();
                             salesMenu.menu();
                             break;
                         case 3:
                             System.out.println("Opcion 3");
-                            PropertyMenu propertyMenu = new PropertyMenu();
                             propertyMenu.menu();
 
                             break;
                         case 4:
                             System.out.println("Opcion 4");
-                            ClientsMenu clientsMenu = new ClientsMenu();
                             clientsMenu.menu();
                             break;
                         case 0:

@@ -1,15 +1,16 @@
 package model.properties;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import model.clients.Owner;
 
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
-        property = "propertyType"
-)
+        property = "propertyType",
+        visible = true)
 @JsonSubTypes({
         @JsonSubTypes.Type(value = House.class, name = "house"),
         @JsonSubTypes.Type(value = Apartment.class, name = "apartment"),

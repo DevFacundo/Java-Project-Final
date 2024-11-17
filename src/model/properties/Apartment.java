@@ -1,7 +1,11 @@
 package model.properties;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import model.clients.Owner;
 
+@JsonTypeName("apartment")
 public class Apartment extends Property{
     private Integer rooms;   // has it a rooms ? how many? or null
     private Integer bathRooms;   // has it a bathrooms ? how many? or null

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "owner": {
+      "id": 1,
+      "name": "Yago Sosa",
+      "contactNumber": "312547698",
+      "email": "yagososa@example.com",
+      "adress": "Av. Libertador 1234"
+    },
+    "adress": "Bigotes 123",
+    "area": 125000.0,
+    "state": "AVAILABLE",
+    "rooms": 3,
+    "bathRooms": 2,
+    "bedRooms": 2,
+    "furnished": true,
+    "orientation": "FRONT",
+    "maintenanceFees": 20.0,
+    "rentalPrice": 500.0,
+    "salesPrice": 20.0
+  },
+  {
+    "id": 2,
+    "owner": {
+      "id": 2,
+      "name": "Facundo Aguilera",
+      "contactNumber": "2235829879",
+      "email": "facuaguilera32@gmail.com",
+      "adress": "Mascias 2069"
+    },
+    "adress": "Ayolas 4542",
+    "area": 145000.0,
+    "state": "AVAILABLE",
+    "rentalPrice": 600.0,
+    "salesPrice": 25.0
+  }
+]

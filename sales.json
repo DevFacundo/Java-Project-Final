@@ -8,7 +8,10 @@
     "adress": "Av. del Libertador 1234"
   },
   "property": {
+<<<<<<< Updated upstream
     "propertyType": "house",
+=======
+>>>>>>> Stashed changes
     "id": 1,
     "owner": {
       "id": 1,
@@ -18,10 +21,18 @@
       "adress": "Mascias 2069"
     },
     "adress": "Ayolas 4542",
+<<<<<<< Updated upstream
     "area": 120.0,
     "state": "AVAILABLE",
     "salesPrice": 25.0,
     "rentalPrice": 60.0
+=======
+    "area": 25.0,
+    "rented": false,
+    "sold": false,
+    "rentalPrice": 60.0,
+    "salesPrice": 120.0
+>>>>>>> Stashed changes
   },
   "dateOfSale": [
     2021,

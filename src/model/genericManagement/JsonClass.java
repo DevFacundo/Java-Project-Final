@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
 import com.fasterxml.jackson.databind.jsontype.impl.TypeNameIdResolver;
 
@@ -14,6 +15,7 @@ import java.util.List;
 
 public class JsonClass {
     private static final ObjectMapper mapper = new ObjectMapper();
+
 /*
     static {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -34,6 +36,7 @@ public class JsonClass {
     // SAVE LIST IN A JSON FILE
     public static <T> void saveList(List<T> lista, String fileString) {
         try {
+            mapper.registerModule(new JavaTimeModule());
             mapper.writeValue(new File(fileString), lista);
             System.out.println("List saved in the file " + fileString);
         } catch (IOException e) {
@@ -71,7 +74,7 @@ public static void saveList(List<?> lista, String fileString) {
     }
 }
 
-    // Método para cargar lista de propiedades
+
     public static <T> List<T> loadList(String fileString, Class<T> type) {
         try {
             JavaType listType = mapper.getTypeFactory().constructCollectionType(List.class, type);

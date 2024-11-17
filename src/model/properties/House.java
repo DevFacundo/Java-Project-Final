@@ -24,6 +24,46 @@ public class House extends Property{
         this.park = park;
     }
 
+    public Integer getFloorsQuantity() {
+        return floorsQuantity;
+    }
+
+    public void setFloorsQuantity(Integer floorsQuantity) {
+        this.floorsQuantity = floorsQuantity;
+    }
+
+    public Integer getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Integer rooms) {
+        this.rooms = rooms;
+    }
+
+    public Integer getBedRooms() {
+        return bedRooms;
+    }
+
+    public void setBedRooms(Integer bedRooms) {
+        this.bedRooms = bedRooms;
+    }
+
+    public Integer getBathRooms() {
+        return bathRooms;
+    }
+
+    public void setBathRooms(Integer bathRooms) {
+        this.bathRooms = bathRooms;
+    }
+
+    public Boolean getPark() {
+        return park;
+    }
+
+    public void setPark(Boolean park) {
+        this.park = park;
+    }
+
     @Override
     public String toString() {
         return super.toString()+

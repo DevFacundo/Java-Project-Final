@@ -1,42 +1,111 @@
-{
-  "id": 1,
-  "buyer": {
-    "id": 2,
-    "name": "María López",
-    "contactNumber": "3456789012",
-    "email": "mlopez@example.com",
-    "adress": "Av. del Libertador 1234"
-  },
-  "property": {
-<<<<<<< Updated upstream
-    "propertyType": "house",
-=======
->>>>>>> Stashed changes
+[
+  {
     "id": 1,
-    "owner": {
+    "buyer": {
+      "id": 13,
+      "name": "Yago Sosa",
+      "contactNumber": "312547698",
+      "email": "yagososa@example.com",
+      "adress": "Av. Libertador 1234"
+    },
+    "property": {
+      "propertyType": "house",
       "id": 1,
+      "owner": {
+        "id": 1,
+        "name": "Walter White",
+        "contactNumber": "5051234567",
+        "email": "walter.white@breakingbad.com",
+        "adress": "Albuquerque, NM"
+      },
+      "adress": "Ayolas 4542",
+      "area": 145000.0,
+      "state": "AVAILABLE",
+      "floorsQuantity": 2,
+      "rooms": 5,
+      "bedRooms": 3,
+      "bathRooms": 3,
+      "park": true,
+      "rentalPrice": 600.0,
+      "salesPrice": 25.0
+    },
+    "dateOfSale": [
+      2021,
+      5,
+      20
+    ]
+  },
+  {
+    "id": 2,
+    "buyer": {
+      "id": 14,
       "name": "Facundo Aguilera",
       "contactNumber": "2235829879",
       "email": "facuaguilera32@gmail.com",
       "adress": "Mascias 2069"
     },
-    "adress": "Ayolas 4542",
-<<<<<<< Updated upstream
-    "area": 120.0,
-    "state": "AVAILABLE",
-    "salesPrice": 25.0,
-    "rentalPrice": 60.0
-=======
-    "area": 25.0,
-    "rented": false,
-    "sold": false,
-    "rentalPrice": 60.0,
-    "salesPrice": 120.0
->>>>>>> Stashed changes
+    "property": {
+      "propertyType": "apartment",
+      "id": 8,
+      "owner": {
+        "id": 1,
+        "name": "Walter White",
+        "contactNumber": "5051234567",
+        "email": "walter.white@breakingbad.com",
+        "adress": "Albuquerque, NM"
+      },
+      "adress": "Av. Libertador 1000",
+      "area": 150000.0,
+      "state": "AVAILABLE",
+      "rooms": 3,
+      "bathRooms": 2,
+      "bedRooms": 2,
+      "furnished": true,
+      "orientation": "FRONT",
+      "maintenanceFees": 30.0,
+      "rentalPrice": 700.0,
+      "salesPrice": 70.0
+    },
+    "dateOfSale": [
+      2022,
+      3,
+      15
+    ]
   },
-  "dateOfSale": [
-    2021,
-    5,
-    20
-  ]
-}
+  {
+    "id": 3,
+    "buyer": {
+      "id": 15,
+      "name": "María López",
+      "contactNumber": "3456789012",
+      "email": "mlopez@example.com",
+      "adress": "Av. del Libertador 8594"
+    },
+    "property": {
+      "propertyType": "lot",
+      "id": 14,
+      "owner": {
+        "id": 7,
+        "name": "Sherlock Holmes",
+        "contactNumber": "5551122334",
+        "email": "sherlock.holmes@sherlockbbc.com",
+        "adress": "Baker Street 221B"
+      },
+      "adress": "Ruta 8 Km 32",
+      "area": 50000.0,
+      "state": "AVAILABLE",
+      "electricity": true,
+      "water": true,
+      "sewer": true,
+      "asphalt": true,
+      "gas": true,
+      "rentalPrice": null,
+      "salesPrice": 1000.0
+    },
+    "dateOfSale": [
+      2023,
+      7,
+      10
+    ]
+  }
+]

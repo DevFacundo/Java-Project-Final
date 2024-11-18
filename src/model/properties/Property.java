@@ -1,9 +1,7 @@
 package model.properties;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import model.clients.Owner;
 import model.exceptions.InvalidAreaException;
 import model.exceptions.InvalidPriceException;
@@ -12,8 +10,8 @@ import model.exceptions.InvalidPriceException;
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
-        property = "propertyType")
-
+        property = "propertyType",
+        visible = true)
 @JsonSubTypes({
         @JsonSubTypes.Type(value = House.class, name = "house"),
         @JsonSubTypes.Type(value = Apartment.class, name = "apartment"),
@@ -21,7 +19,6 @@ import model.exceptions.InvalidPriceException;
         @JsonSubTypes.Type(value = WareHouse.class, name = "warehouse"),
         @JsonSubTypes.Type(value = Store.class, name = "store")
 })
-@JsonInclude(JsonInclude.Include.NON_NULL)
 
 public abstract class Property {
     private Integer id;
@@ -107,13 +104,18 @@ public abstract class Property {
 
     @Override
     public String toString() {
-        return "Property: " +
-                "\nid prop=" + id +
-                "\nowner=" + owner.getName() +
-                "\nadress='" + adress + '\'' +
-                "\narea=" + area +
-                "\nSalesPrice=" + SalesPrice +
-                "\nRentalPrice=" + RentalPrice +
-                "\nStateOfProperty=" + state;
+        return String.format(
+                "Property Information:\n" +
+                        "─────────────────────────────────\n" +
+                        "ID Property        : %d\n" +
+                        "Owner              : %s\n" +
+                        "Address            : %s\n" +
+                        "Area               : %.2f\n" +
+                        "Sales Price        : %.2f\n" +
+                        "Rental Price       : %.2f\n" +
+                        "State of Property  : %s\n" +
+                        "─────────────────────────────────",
+                id, owner.getName(), adress, area, SalesPrice, RentalPrice, state
+        );
     }
 }

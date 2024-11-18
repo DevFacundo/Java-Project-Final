@@ -66,12 +66,18 @@ public class House extends Property{
 
     @Override
     public String toString() {
-        return super.toString()+
-                "\nfloorsQuantity=" + floorsQuantity +
-                "\nrooms=" + rooms +
-                "\nbedRooms=" + bedRooms +
-                "\nbathRooms=" + bathRooms +
-                "\npark=" + park +
-                '}';
+        return String.format(
+                "%s\n" +
+                        "House Information:\n" +
+                        "─────────────────────────────────\n" +
+                        "Floors Quantity    : %d\n" +
+                        "Rooms              : %d\n" +
+                        "Bedrooms           : %d\n" +
+                        "Bathrooms          : %d\n" +
+                        "Park               : %b\n" +
+                        "─────────────────────────────────",
+                super.toString(), floorsQuantity, rooms, bedRooms, bathRooms, park
+        );
     }
+
 }

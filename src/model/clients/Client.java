@@ -31,29 +31,13 @@ public abstract class Client  {
     }
 
     public Client(String name, String surname, String dni, String contactNumber, String email, String adress) {
-        this.id=nextId++;
+        this.id = nextId++;
         this.name = name;
         this.surname = surname;
         this.dni = dni;
         this.contactNumber = contactNumber;
         this.email = email;
         this.adress = adress;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
     }
 
     public Integer getId() {
@@ -70,6 +54,22 @@ public abstract class Client  {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getContactNumber() {
@@ -95,6 +95,7 @@ public abstract class Client  {
     public void setAdress(String adress) {
         this.adress = adress;
     }
+
 
     @Override
     public String toString() {

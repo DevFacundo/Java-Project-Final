@@ -1,10 +1,7 @@
 package model.properties;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import model.clients.Owner;
-@JsonTypeName("lot")
-@JsonInclude(JsonInclude.Include.NON_NULL)
+
 public class Lot extends Property{
     private Boolean electricity;
     private Boolean water;
@@ -66,12 +63,17 @@ public class Lot extends Property{
 
     @Override
     public String toString() {
-        return  super.toString()+" Lot{" +
-                "electricity=" + electricity +
-                ", water=" + water +
-                ", sewer=" + sewer +
-                ", asphalt=" + asphalt +
-                ", gas=" + gas +
-                '}';
+        return String.format(
+                "%s\n" +
+                        "Lot Information:\n" +
+                        "─────────────────────────────────\n" +
+                        "Electricity        : %b\n" +
+                        "Water              : %b\n" +
+                        "Sewer              : %b\n" +
+                        "Asphalt            : %b\n" +
+                        "Gas                : %b\n" +
+                        "─────────────────────────────────",
+                super.toString(), electricity, water, sewer, asphalt, gas
+        );
     }
 }

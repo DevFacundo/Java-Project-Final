@@ -141,7 +141,7 @@ public abstract class Property {
                         "Rental Price       : $%.2f\n" +
                         "State of Property  : %s\n" +
                         "─────────────────────────────────",
-                id, owner.getName(),owner.getSurname(), adress, area, SalesPrice, RentalPrice, propertyState
+                id, owner.getName(),owner.getSurname(), adress, area, SalesPrice, RentalPrice != null ? RentalPrice : 0.0, propertyState
         );
     }
 }

@@ -29,7 +29,7 @@ public class LotsMenu {
                         lotsService.addLot();
                         break;
                     case 2:
-                        System.out.println("Modifying a lot...");
+                        lotsService.modifyLot();
                         break;
                     case 3:
                         System.out.println("Cancelling a lot...");

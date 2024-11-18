@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JsonUtils {
@@ -52,13 +53,19 @@ public class JsonUtils {
     // LOAD LIST TO THE JSON FILE
     public static <T> List<T> loadList(String fileString, Class<T> type) {
         try {
-            JavaType listType = mapper.getTypeFactory().constructCollectionType(List.class, type);
+            // Inicializamos una lista vacía para evitar retornos de null
+            List<T> list = new ArrayList<>();
 
-            return mapper.readValue(new File(fileString), listType);
-           // List<T> lista = mapper.readValue(new File(fileString),
-             //       mapper.getTypeFactory().constructCollectionType(List.class, type));
-           // System.out.println("Lista loaded by the file: " + fileString);
+            // Intentamos cargar los datos desde el archivo
+            File file = new File(fileString);
+            if (file.exists() && file.length() > 0) {
+                // Si el archivo tiene datos, los cargamos
+                JavaType listType = mapper.getTypeFactory().constructCollectionType(List.class, type);
+                list = mapper.readValue(file, listType);
+            }
 
+            // Si el archivo está vacío o no existe, la lista se queda vacía
+    return list;
         } catch (IOException e) {
             System.out.println("Error to load the file: " + e.getMessage());
             return null;

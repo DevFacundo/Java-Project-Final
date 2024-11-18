@@ -1,6 +1,7 @@
 package ui.menus.rentsmenu;
 
 import model.exceptions.InvalidInputException;
+
 import java.util.Scanner;
 
 import static model.utils.Utils.getValidatedOption;
@@ -9,23 +10,14 @@ public class RentsMenu {
 
     Scanner scanner = new Scanner(System.in);
 
-//    /// Simula limpiar la consola
-//    private void clearConsole() {
-//        for (int i = 0; i < 50; i++) {
-//            System.out.println();
-//        }
-//    }
-
     /// Metodo del menu
     public void menu() {
         int option = -1;
         do {
-//                clearConsole();
             printMenu(); /// Imprime un menu modularizado
 
             try {
                 option = getValidatedOption(); /// Excepcion que valida que sea un numero
-//                    clearConsole();
 
                 switch (option) {
                     case 1:

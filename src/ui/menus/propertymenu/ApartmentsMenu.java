@@ -1,7 +1,9 @@
 package ui.menus.propertymenu;
 
 import model.exceptions.InvalidInputException;
+
 import java.util.Scanner;
+
 import static model.utils.Utils.getValidatedOption;
 
 public class ApartmentsMenu {
@@ -54,13 +56,5 @@ public class ApartmentsMenu {
         System.out.println("└───────────────────────────────┘");
         System.out.print("Choose an option: ");
     }
-
-   /* private int getValidatedOption() throws InvalidInputException {
-        try {
-            return Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            throw new InvalidInputException("Input must be a number. Please try again.");
-        }
-    }*/
 
 }

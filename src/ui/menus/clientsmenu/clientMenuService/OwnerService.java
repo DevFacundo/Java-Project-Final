@@ -1,4 +1,4 @@
-package model.menus.clientsmenu.clientMenuService;
+package ui.menus.clientsmenu.clientMenuService;
 
 import model.clients.Owner;
 import model.exceptions.InvalidInputException;

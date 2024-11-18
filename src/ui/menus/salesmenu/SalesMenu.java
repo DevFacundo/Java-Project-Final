@@ -58,12 +58,4 @@ public class SalesMenu {
         System.out.println("└───────────────────────────────┘");
         System.out.print("Choose an option: ");
     }
-
-  /*  private int getValidatedOption() throws InvalidInputException {
-        try {
-            return Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            throw new InvalidInputException("Input must be a number. Please try again.");
-        }
-    }*/
 }

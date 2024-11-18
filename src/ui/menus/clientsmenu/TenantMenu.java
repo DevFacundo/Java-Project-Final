@@ -1,11 +1,9 @@
-package model.menus.clientsmenu;
+package ui.menus.clientsmenu;
 
-import model.clients.Buyer;
-import model.exceptions.DuplicateElementException;
+import model.clients.Tenant;
 import model.exceptions.InvalidInputException;
-import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
-import model.menus.clientsmenu.clientMenuService.BuyerService;
+import ui.menus.clientsmenu.clientMenuService.TenantService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +11,7 @@ import java.util.Scanner;
 
 import static model.utils.Utils.getValidatedOption;
 
-public class BuyerMenu {
+public class TenantMenu {
     Scanner scanner = new Scanner(System.in);
 
     public void menu() {
@@ -26,7 +24,7 @@ public class BuyerMenu {
 
                 switch (option) {
                     case 1:
-                        addBuyer();
+                        addTenant();
                         break;
                     case 2:
                         System.out.println("Opcion 2");
@@ -53,46 +51,43 @@ public class BuyerMenu {
 
     private void printMenu() {
         System.out.println("┌───────────────────────────────┐");
-        System.out.println("│         BUYER MENU            │");
+        System.out.println("│        TENANT MENU            │");
         System.out.println("├───────────────────────────────┤");
-        System.out.println("│ 1. ADD BUYER                  │");
-        System.out.println("│ 2. MODIFY A BUYER             │");
-        System.out.println("│ 3. REMOVE A BUYER             │");
-        System.out.println("│ 4. VIEW ALL BUYERS            │");
+        System.out.println("│ 1. ADD TENANT                 │");
+        System.out.println("│ 2. MODIFY A TENANT            │");
+        System.out.println("│ 3. REMOVE A TENANT            │");
+        System.out.println("│ 4. VIEW ALL TENANTS           │");
         System.out.println("│ 0. GO BACK                    │");
         System.out.println("└───────────────────────────────┘");
         System.out.print("Choose an option: ");
     }
 
-    private void addBuyer() {
+    private void addTenant() {
         Boolean continueAdding = true;
         do {
             try {
-                GenericClass<Buyer> buyers = new GenericClass<>(JsonUtils.loadList("buyers.json", Buyer.class));
-
-                Buyer newBuyer = BuyerService.createBuyer(scanner);
-
-                System.out.println("Buyer added successfully:");
-                System.out.println(newBuyer);
-                if (!buyers.isEmpty()) {
-                    Buyer b = buyers.getLastObject();
-                    Integer lastId = b.getId() + 1;
-                    newBuyer.setId(lastId);
+                List<Tenant> tenants = new ArrayList<>();
+                tenants = JsonUtils.loadList("tenants.json", Tenant.class);
+                Tenant newTenant = TenantService.createTenant(scanner);
+                System.out.println("Tenant added successfully:");
+                System.out.println(newTenant);
+                if (!tenants.isEmpty()) {
+                    Tenant t = tenants.get(tenants.size() - 1);
+                    Integer lastId = t.getId() + 1;
+                    newTenant.setId(lastId);
                 }
-                buyers.addElement(newBuyer);
-                JsonUtils.saveList(buyers.returnList(), "buyers.json", Buyer.class);
+                tenants.add(newTenant);
+                JsonUtils.saveList(tenants, "tenants.json", Tenant.class);
             } catch (InvalidInputException e) {
-                System.out.println("Error adding buyer: " + e.getMessage());
-            } catch (DuplicateElementException e)
-            {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println("Error adding tenant: " + e.getMessage());
             }
+
             continueAdding = askToContinue();
         } while (continueAdding);
     }
 
     private Boolean askToContinue() {
-        System.out.print("Do you want to add another buyer? (yes/no): ");
+        System.out.print("Do you want to add another tenant? (yes/no): ");
         String response = scanner.nextLine().trim().toLowerCase();
         return response.equals("yes") || response.equals("y");
     }

@@ -2,11 +2,12 @@ package model.sales;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import model.clients.Buyer;
+import model.interfaces.EarningCalculator;
 import model.properties.Property;
 
 import java.time.LocalDate;
 
-public class Sale{
+public class Sale implements EarningCalculator {
     private Integer id;
     private static  Integer nextId=1;
     private Buyer buyer;
@@ -17,6 +18,8 @@ public class Sale{
     )
     private Property property;
     private LocalDate dateOfSale;
+    private static final double SALE_COMISSION = 0.05;
+
 
     public Sale() {
     }
@@ -66,5 +69,15 @@ public class Sale{
                 "\nbuyer=" + buyer.getName() +
                 "\nproperty adress=" + property.getAdress()+
                 "\ndateOfSale=" + dateOfSale;
+    }
+
+    @Override
+    public double calculateTotal(Property property) {
+        return property.getSalesPrice();
+    }
+
+    @Override
+    public double calculateEarnings(Property property) {
+        return property.getSalesPrice()* SALE_COMISSION;
     }
 }

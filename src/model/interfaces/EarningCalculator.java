@@ -1,5 +1,8 @@
 package model.interfaces;
 
-public interface EarningCalculator {
+import model.properties.Property;
 
+public interface EarningCalculator {
+    double calculateTotal(Property p);
+    double calculateEarnings(Property p);
 }

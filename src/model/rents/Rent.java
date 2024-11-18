@@ -3,11 +3,13 @@ package model.rents;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import model.clients.Owner;
 import model.clients.Tenant;
+import model.interfaces.EarningCalculator;
 import model.properties.Property;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
-public class Rent {
+public class Rent implements EarningCalculator {
     private Integer id;
     private static Integer nextId=1;
     private Tenant tenant;
@@ -19,6 +21,7 @@ public class Rent {
     private Property property;
     private LocalDate startRent;
     private LocalDate endRent;
+    private static final double RENT_COMISSION = 0.05;
 
     public Rent() {
     }
@@ -81,5 +84,20 @@ public class Rent {
                 "\nowner=" + property.getOwner().getName()+" "+property.getOwner().getSurname()+
                 "\nstartRent=" + startRent +
                 "\nendRent=" + endRent;
+    }
+
+    private long calculateMonths()
+    {
+        return ChronoUnit.MONTHS.between(startRent,endRent);
+    }
+
+    @Override
+    public double calculateTotal(Property property) {
+        return property.getRentalPrice()* calculateMonths();
+    }
+
+    @Override
+    public double calculateEarnings(Property property) {
+        return calculateTotal(property)* RENT_COMISSION;
     }
 }

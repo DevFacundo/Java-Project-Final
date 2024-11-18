@@ -32,7 +32,7 @@ public class Utils {
         }
 
         if (dni.isEmpty() || !dni.matches("\\d{7,8}")) {
-            throw new InvalidInputException("DNI must be between 8 and 9 digits.");
+            throw new InvalidInputException("DNI must be between 7 and 8 digits.");
         }
 
         if (!contactNumber.matches("\\d+")) {

@@ -1,9 +1,9 @@
-package model.menus.clientsmenu;
+package ui.menus.clientsmenu;
 
-import model.clients.Owner;
+import model.clients.Buyer;
 import model.exceptions.InvalidInputException;
 import model.genericManagement.JsonUtils;
-import model.menus.clientsmenu.clientMenuService.OwnerService;
+import ui.menus.clientsmenu.clientMenuService.BuyerService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 import static model.utils.Utils.getValidatedOption;
 
-public class OwnerMenu {
+public class BuyerMenu {
     Scanner scanner = new Scanner(System.in);
 
     public void menu() {
@@ -24,7 +24,7 @@ public class OwnerMenu {
 
                 switch (option) {
                     case 1:
-                        addOwner();
+                        addBuyer();
                         break;
                     case 2:
                         System.out.println("Opcion 2");
@@ -51,35 +51,35 @@ public class OwnerMenu {
 
     private void printMenu() {
         System.out.println("┌───────────────────────────────┐");
-        System.out.println("│         OWNER MENU            │");
+        System.out.println("│         BUYER MENU            │");
         System.out.println("├───────────────────────────────┤");
-        System.out.println("│ 1. ADD OWNER                  │");
-        System.out.println("│ 2. MODIFY AN OWNER            │");
-        System.out.println("│ 3. REMOVE AN OWNER            │");
-        System.out.println("│ 4. VIEW ALL OWNERS            │");
+        System.out.println("│ 1. ADD BUYER                  │");
+        System.out.println("│ 2. MODIFY A BUYER             │");
+        System.out.println("│ 3. REMOVE A BUYER             │");
+        System.out.println("│ 4. VIEW ALL BUYERS            │");
         System.out.println("│ 0. GO BACK                    │");
         System.out.println("└───────────────────────────────┘");
         System.out.print("Choose an option: ");
     }
 
-    private void addOwner() {
+    private void addBuyer() {
         Boolean continueAdding = true;
         do {
             try {
-                List<Owner> owners = new ArrayList<>();
-                owners = JsonUtils.loadList("owners.json", Owner.class);
-                Owner newOwner = OwnerService.createOwner(scanner);
-                System.out.println("Owner added successfully:");
-                System.out.println(newOwner);
-                if (!owners.isEmpty()) {
-                    Owner o = owners.getLast();
-                    Integer lastId = o.getId() + 1;
-                    newOwner.setId(lastId);
+                List<Buyer> buyers = new ArrayList<>();
+                buyers = JsonUtils.loadList("buyers.json", Buyer.class);
+                Buyer newBuyer = BuyerService.createBuyer(scanner);
+                System.out.println("Buyer added successfully:");
+                System.out.println(newBuyer);
+                if (!buyers.isEmpty()) {
+                    Buyer b = buyers.get(buyers.size() - 1);
+                    Integer lastId = b.getId() + 1;
+                    newBuyer.setId(lastId);
                 }
-                owners.add(newOwner);
-                JsonUtils.saveList(owners,"owners.json", Owner.class);
+                buyers.add(newBuyer);
+                JsonUtils.saveList(buyers, "buyers.json", Buyer.class);
             } catch (InvalidInputException e) {
-                System.out.println("Error adding owner: " + e.getMessage());
+                System.out.println("Error adding buyer: " + e.getMessage());
             }
 
             continueAdding = askToContinue();
@@ -87,7 +87,7 @@ public class OwnerMenu {
     }
 
     private Boolean askToContinue() {
-        System.out.print("Do you want to add another owner? (yes/no): ");
+        System.out.print("Do you want to add another buyer? (yes/no): ");
         String response = scanner.nextLine().trim().toLowerCase();
         return response.equals("yes") || response.equals("y");
     }

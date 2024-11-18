@@ -1,4 +1,4 @@
-package model.menus.clientsmenu;
+package ui.menus.clientsmenu;
 
 import model.exceptions.InvalidInputException;
 

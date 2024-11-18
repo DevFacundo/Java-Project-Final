@@ -1,15 +1,15 @@
-package model.menus.clientsmenu.clientMenuService;
+package ui.menus.clientsmenu.clientMenuService;
 
-import model.clients.Tenant;
+import model.clients.Buyer;
 import model.exceptions.InvalidInputException;
 
 import java.util.Scanner;
 
 import static model.utils.Utils.validateInputs;
 
-public class TenantService {
+public class BuyerService {
 
-    public static Tenant createTenant(Scanner scanner) throws InvalidInputException {
+    public static Buyer createBuyer(Scanner scanner) throws InvalidInputException {
         System.out.print("Enter name: ");
         String name = scanner.nextLine().trim();
 
@@ -30,6 +30,7 @@ public class TenantService {
 
         validateInputs(name, surname, contactNumber, email, address, dni);
 
-        return new Tenant(name, surname, dni, contactNumber, email, address);
+        return new Buyer(name, surname, dni, contactNumber, email, address);
     }
+
 }

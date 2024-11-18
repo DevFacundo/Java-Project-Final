@@ -1,9 +1,9 @@
-package model.menus.clientsmenu;
+package ui.menus.clientsmenu;
 
 import model.clients.Tenant;
 import model.exceptions.InvalidInputException;
 import model.genericManagement.JsonUtils;
-import model.menus.clientsmenu.clientMenuService.TenantService;
+import ui.menus.clientsmenu.clientMenuService.TenantService;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,7 +2,7 @@ package ui.menus.mainMenu;
 
 import model.exceptions.InvalidInputException;
 import model.login.Login;
-import ui.menus.clientsmenu.ClientsMenu;
+import ui.menus.clientsmenu.TypeOfClientMenu;
 import ui.menus.propertymenu.PropertyMenu;
 import ui.menus.rentsmenu.RentsMenu;
 import ui.menus.salesmenu.SalesMenu;
@@ -14,29 +14,21 @@ public class MainMenu {
     RentsMenu rentsMenu = new RentsMenu();
     SalesMenu salesMenu = new SalesMenu();
     PropertyMenu propertyMenu = new PropertyMenu();
-    ClientsMenu clientsMenu = new ClientsMenu();
+    TypeOfClientMenu typeOfClientMenu = new TypeOfClientMenu();
 
     Login login = new Login();
     Scanner scanner = new Scanner(System.in);
 
-    /// Simula limpiar la consola
-    private void clearConsole() {
-        for (int i = 0; i < 10; i++) {
-            System.out.println();
-        }
-    }
 
     /// Metodo del menu
     public void menu() {
         if (login.authenticate()) { /// Si el login esta correcto...
             int option = -1;
             do {
-//                clearConsole();
                 printMenu(); /// Imprime un menu modularizado
 
                 try {
                     option = getValidatedOption(); /// Excepcion que valida que sea un numero
-//                    clearConsole();
 
                     switch (option) {
                         case 1:
@@ -54,7 +46,7 @@ public class MainMenu {
                             break;
                         case 4:
                             System.out.println("Opcion 4");
-                            clientsMenu.menu();
+                            typeOfClientMenu.menu();
                             break;
                         case 0:
                             System.out.println("Leaving the program....");
@@ -87,12 +79,4 @@ public class MainMenu {
         System.out.println("└───────────────────────────────┘");
         System.out.print("Choose an option: ");
     }
-
-    /*private int getValidatedOption() throws InvalidInputException {
-        try {
-            return Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            throw new InvalidInputException("Input must be a number. Please try again.");
-        }
-    }*/
 }

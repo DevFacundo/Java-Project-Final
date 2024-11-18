@@ -288,7 +288,6 @@ public class ApartmentsService {
                         int bathroomsQuantity = Integer.parseInt(newBathroomsQuantity);
                         validateQuantity(bathroomsQuantity);
                         apartment.setBathRooms(bathroomsQuantity);
-
                     }
                     break;
 

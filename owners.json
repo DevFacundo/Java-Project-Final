@@ -7,4 +7,13 @@
   "email" : "asdas@asd",
   "adress" : "asdasd",
   "clientState" : "RENTED"
+}, {
+  "id" : 2,
+  "name" : "Facundo",
+  "surname" : "Aguilera",
+  "dni" : "12345678",
+  "contactNumber" : "454545",
+  "email" : "asdasd@asd",
+  "adress" : "asdasd",
+  "clientState" : "AVAILABLE"
 } ]

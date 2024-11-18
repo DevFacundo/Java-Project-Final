@@ -1,5 +1,6 @@
 package ui.menus.rentsmenu;
 
+import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
 import ui.menus.rentsmenu.rentMenuService.RentService;
 
@@ -31,13 +32,13 @@ public class RentsMenu {
                         rs.addRent();
                         break;
                     case 2:
-                        System.out.println("Opcion 2");
+                        rs.modifyRent();
                         break;
                     case 3:
                         System.out.println("Opcion 3");
                         break;
                     case 4:
-                        System.out.println("Opcion 4");
+                        rs.seeAllRents();
                         break;
                     case 0:
                         System.out.println("Returning to the previous menu...");
@@ -49,6 +50,8 @@ public class RentsMenu {
                 System.out.println(e.getMessage());
                 System.out.println("Press Enter to try again...");
                 scanner.nextLine();
+            } catch (ElementNotFoundException e) {
+                System.out.println(e.getMessage());
             }
         } while (option != 0);
     }

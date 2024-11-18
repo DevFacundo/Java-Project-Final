@@ -3,8 +3,7 @@ package ui.menus.rentsmenu.rentMenuService;
 import model.State;
 import model.clients.Owner;
 import model.clients.Tenant;
-import model.exceptions.DuplicateElementException;
-import model.exceptions.InvalidInputException;
+import model.exceptions.*;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.properties.Apartment;
@@ -240,6 +239,7 @@ public class RentService {
                     String startDate = scanner.nextLine();
                     LocalDate rentalStartDate = LocalDate.parse(startDate);
                     dateValidation(rentalStartDate, rent.getEndRent());
+                    rent.setStartRent(rentalStartDate);
                     break;
 
                 case 4:
@@ -247,6 +247,7 @@ public class RentService {
                     String endDate = scanner.nextLine();
                     LocalDate rentalEndDate = LocalDate.parse(endDate);
                     dateValidation(rent.getStartRent(), rentalEndDate);
+                    rent.setEndRent(rentalEndDate);
                     break;
 
                 case 0:
@@ -275,5 +276,60 @@ public class RentService {
         }
     }
 
+    public void seeAllRents() throws ElementNotFoundException {
+        if (rents.isEmpty()) {
+            throw new ElementNotFoundException("No rents found.");
+        }
+        System.out.println(rents.returnList());
+    }
+
+   /* public void deleteOwner() {
+        try {
+
+            owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
+            if (owners.isEmpty()) {
+                System.out.println("No Owners available to delete.");
+                return;
+            }
+
+            System.out.print("Enter the DNI of the owner you want to delete: ");
+            String dni = scanner.nextLine().trim();
+
+            Owner ownerToDelete = null;
+            for (Owner o : owners.returnList()) {
+                if (o.getDni().equals(dni)) {
+                    ownerToDelete = o;
+                    break;
+                }
+            }
+
+            if (ownerToDelete == null) {
+                throw new InvalidInputException("Owner with DNI " + dni + " not found.");
+            }
+            if (ownerToDelete.getClientState()==State.RENTED)
+            {
+                throw new RentedException("You can't delete "+ownerToDelete.getName()+" "+
+                        ownerToDelete.getSurname()+" because they have already rented a propierty");
+            }
+
+            if (ownerToDelete.getClientState()== State.SOLD)
+            {
+                throw new SoldException("You can't delete "+ownerToDelete.getName()+" "+
+                        ownerToDelete.getSurname()+" because they have already sold a propierty");
+            }
+
+            System.out.println("Selected Owner: " + ownerToDelete);
+
+            owners.deleteElement(ownerToDelete);
+
+            JsonUtils.saveList(owners.returnList(), "owners.json", Owner.class);
+            System.out.println("Owner deleted successfully!");
+        } catch (InvalidInputException | SoldException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (RentedException e) {
+            System.out.println("Error: "+ e.getMessage());;
+        }
+    }
+*/
 
 }

@@ -36,4 +36,43 @@
   },
   "startRent" : [ 2024, 11, 18 ],
   "endRent" : [ 2025, 11, 18 ]
+}, {
+  "id" : 2,
+  "tenant" : {
+    "id" : 4,
+    "name" : "emmanuel",
+    "surname" : "galarce",
+    "dni" : "38831786",
+    "contactNumber" : "2234444445",
+    "email" : "emma@mail",
+    "adress" : "calle 3340",
+    "clientState" : "RENTED"
+  },
+  "property" : {
+    "propertyType" : "apartment",
+    "id" : 2,
+    "owner" : {
+      "id" : 2,
+      "name" : "Facundo",
+      "surname" : "Aguilera",
+      "dni" : "12345678",
+      "contactNumber" : "454545",
+      "email" : "asdasd@asd",
+      "adress" : "asdasd",
+      "clientState" : "RENTED"
+    },
+    "adress" : "carlos casares 45",
+    "area" : 20.0,
+    "rooms" : 1,
+    "bathRooms" : 1,
+    "bedRooms" : 1,
+    "furnished" : true,
+    "orientation" : "FRONT",
+    "maintenanceFees" : 23.0,
+    "state" : "RENTED",
+    "salesPrice" : 2500.0,
+    "rentalPrice" : 212.0
+  },
+  "startRent" : [ 2024, 11, 19 ],
+  "endRent" : [ 2024, 12, 11 ]
 } ]

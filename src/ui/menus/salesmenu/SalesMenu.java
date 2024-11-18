@@ -1,6 +1,9 @@
 package ui.menus.salesmenu;
 
 import model.exceptions.InvalidInputException;
+import model.genericManagement.GenericClass;
+import model.genericManagement.JsonUtils;
+import model.sales.Sale;
 
 import java.util.Scanner;
 
@@ -58,4 +61,22 @@ public class SalesMenu {
         System.out.println("└───────────────────────────────┘");
         System.out.print("Choose an option: ");
     }
+
+   /* private void addSale(){
+
+        do{
+            try{
+                GenericClass<Sale> sales = new GenericClass<>();
+                sales = JsonUtils.loadList("sales.json",Sale.class);
+                Sale newSale =
+
+
+            }
+
+
+        }
+
+    }*/
 }
+
+

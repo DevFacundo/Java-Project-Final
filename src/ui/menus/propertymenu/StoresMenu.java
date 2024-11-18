@@ -21,12 +21,12 @@ public class StoresMenu {
 
                 switch (option) {
                     case 1:
-<<<<<<< HEAD
+
                         StoresService ss = new StoresService();
                         ss.addStore();
-=======
+
                         storesService.addStore();
->>>>>>> d7ba2119c65bdc474eff631e005100a861f71766
+
                         break;
                     case 2:
                         System.out.println("Modifying a store...");

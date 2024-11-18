@@ -23,11 +23,9 @@ public class WarehousesServices {
         owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
     }
 
-<<<<<<< HEAD
-   public void addWarehouse() {
-=======
+
     public void addWarehouse() {
->>>>>>> d7ba2119c65bdc474eff631e005100a861f71766
+
         Boolean continueAdding = true;
         do {
             try {

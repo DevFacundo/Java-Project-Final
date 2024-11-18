@@ -21,12 +21,12 @@ public class LotsMenu {
 
                 switch (option) {
                     case 1:
-<<<<<<< HEAD
+
                         LotsService ls = new LotsService();
                         ls.addLot();
-=======
+
                         lotsService.addLot();
->>>>>>> d7ba2119c65bdc474eff631e005100a861f71766
+
                         break;
                     case 2:
                         System.out.println("Modifying a lot...");

@@ -17,14 +17,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-<<<<<<< HEAD
 
-     MainMenu mm = new MainMenu();
-     mm.menu();
-=======
+
         MainMenu mm = new MainMenu();
         mm.menu();
->>>>>>> d7ba2119c65bdc474eff631e005100a861f71766
+
 
     }
 }

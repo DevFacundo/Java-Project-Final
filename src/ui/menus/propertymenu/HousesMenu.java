@@ -1,10 +1,9 @@
 package ui.menus.propertymenu;
 
 import model.exceptions.InvalidInputException;
-<<<<<<< HEAD
+
 import ui.menus.propertymenu.propertyMenuService.ApartmentsService;
-=======
->>>>>>> d7ba2119c65bdc474eff631e005100a861f71766
+
 import ui.menus.propertymenu.propertyMenuService.HousesService;
 
 import java.util.Scanner;
@@ -25,12 +24,12 @@ public class HousesMenu {
 
                 switch (option) {
                     case 1:
-<<<<<<< HEAD
+
                         HousesService  hs= new HousesService();
                         hs.addHouse();
-=======
+
                         housesService.addHouse();
->>>>>>> d7ba2119c65bdc474eff631e005100a861f71766
+
                         break;
                     case 2:
                         System.out.println("Modifying a house...");

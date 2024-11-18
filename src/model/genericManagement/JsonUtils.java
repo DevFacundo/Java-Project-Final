@@ -53,18 +53,13 @@ public class JsonUtils {
     // LOAD LIST TO THE JSON FILE
     public static <T> List<T> loadList(String fileString, Class<T> type) {
         try {
-            // Inicializamos una lista vacía para evitar retornos de null
             List<T> list = new ArrayList<>();
 
-            // Intentamos cargar los datos desde el archivo
             File file = new File(fileString);
             if (file.exists() && file.length() > 0) {
-                // Si el archivo tiene datos, los cargamos
                 JavaType listType = mapper.getTypeFactory().constructCollectionType(List.class, type);
                 list = mapper.readValue(file, listType);
             }
-
-            // Si el archivo está vacío o no existe, la lista se queda vacía
     return list;
         } catch (IOException e) {
             System.out.println("Error to load the file: " + e.getMessage());

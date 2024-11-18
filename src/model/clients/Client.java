@@ -1,5 +1,7 @@
 package model.clients;
 
+import java.util.Objects;
+
 /*
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -96,6 +98,18 @@ public abstract class Client  {
         this.adress = adress;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return Objects.equals(id, client.id) && Objects.equals(dni, client.dni);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, dni);
+    }
 
     @Override
     public String toString() {

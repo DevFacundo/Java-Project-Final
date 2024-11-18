@@ -11,7 +11,7 @@ import java.time.temporal.ChronoUnit;
 
 public class Rent implements EarningCalculator {
     private Integer id;
-    private static Integer nextId=1;
+    private static Integer nextId = 1;
     private Tenant tenant;
     @JsonTypeInfo(
             use = JsonTypeInfo.Id.NAME,
@@ -27,7 +27,7 @@ public class Rent implements EarningCalculator {
     }
 
     public Rent(Tenant tenant, Property property, LocalDate startRent, LocalDate endRent) {
-        id=nextId++;
+        id = nextId++;
         this.tenant = tenant;
         this.property = property;
         this.startRent = startRent;
@@ -77,13 +77,18 @@ public class Rent implements EarningCalculator {
 
     @Override
     public String toString() {
-        return
-                "id rent=" + id +
-                "\ntenant=" + tenant.getName()+
-                "\nproperty adress=" + property.getAdress() +
-                "\nowner=" + property.getOwner().getName()+" "+property.getOwner().getSurname()+
-                "\nstartRent=" + startRent +
-                "\nendRent=" + endRent;
+        return String.format(
+                "\n" +
+                        "Rent Information:\n" +
+                        "─────────────────────────────────\n" +
+                        "ID Rent            : %d\n" +
+                        "Tenant             : %s " + "%s\n" +
+                        "Start Rental Date  : %s\n" +
+                        "End Rental Date    : %s\n" +
+                        "─────────────────────────────────\n" +
+                        "%s\n",
+                 id, tenant.getName(), tenant.getSurname(), startRent, endRent, property
+        );
     }
 
     private long calculateMonths()

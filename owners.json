@@ -15,5 +15,14 @@
   "contactNumber" : "454545",
   "email" : "asdasd@asd",
   "adress" : "asdasd",
-  "clientState" : "AVAILABLE"
+  "clientState" : "RENTED"
+}, {
+  "id" : 3,
+  "name" : "franco",
+  "surname" : "soria",
+  "dni" : "38123234",
+  "contactNumber" : "2234567654",
+  "email" : "franco@mail",
+  "adress" : "calle 2343",
+  "clientState" : "RENTED"
 } ]

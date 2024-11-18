@@ -3,8 +3,7 @@ package ui.menus.rentsmenu.rentMenuService;
 import model.State;
 import model.clients.Owner;
 import model.clients.Tenant;
-import model.exceptions.DuplicateElementException;
-import model.exceptions.InvalidInputException;
+import model.exceptions.*;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.properties.Apartment;
@@ -220,19 +219,20 @@ public class RentService {
 
             switch (option) {
                 case 1:
-                    System.out.print("Actual Tenant Dni: (" +rent.getTenant().getDni() + ")\nNew Tenant Dni: ");
+                    System.out.print("Actual Tenant Dni: (" + rent.getTenant().getDni() + ")\nNew Tenant Dni: ");
                     String tenantDni = scanner.nextLine().trim();
                     rent.setTenant(validateTenant(tenantDni));
                     break;
 
                 case 2:
-                    System.out.print("Actual Property ID: (" +rent.getProperty().getId() + ")\nNew Property ID: ");
+                    System.out.print("Actual Property ID: (" + rent.getProperty().getId() + ")\nNew Property ID: ");
                     Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
                     Property property = (findPropertyById(propertyId));
                     if (property == null || property.getState() != State.AVAILABLE) {
                         throw new InvalidInputException("Property is not available for rent.");
+                    } else {
+                        rent.setProperty(property);
                     }
-                    else {rent.setProperty(property);}
                     break;
 
                 case 3:
@@ -240,6 +240,7 @@ public class RentService {
                     String startDate = scanner.nextLine();
                     LocalDate rentalStartDate = LocalDate.parse(startDate);
                     dateValidation(rentalStartDate, rent.getEndRent());
+                    rent.setStartRent(rentalStartDate);
                     break;
 
                 case 4:
@@ -247,6 +248,7 @@ public class RentService {
                     String endDate = scanner.nextLine();
                     LocalDate rentalEndDate = LocalDate.parse(endDate);
                     dateValidation(rent.getStartRent(), rentalEndDate);
+                    rent.setEndRent(rentalEndDate);
                     break;
 
                 case 0:
@@ -275,5 +277,48 @@ public class RentService {
         }
     }
 
+    public void seeAllRents() throws ElementNotFoundException {
+        if (rents.isEmpty()) {
+            throw new ElementNotFoundException("No rents found.");
+        }
+        System.out.println(rents.returnList());
+    }
 
+    public void deleteRent() {
+        try {
+
+            rents = new GenericClass<>(JsonUtils.loadList("rents.json", Rent.class));
+            if (rents.isEmpty()) {
+                System.out.println("No rents available to delete.");
+                return;
+            }
+
+            System.out.print("Enter the ID of the rent you want to delete: ");
+            Integer rentID = Integer.parseInt(scanner.nextLine().trim());
+
+            Rent rentToDelete = null;
+            for (Rent o : rents.returnList()) {
+                if (o.getId().equals(rentID)) {
+                    rentToDelete = o;
+                    break;
+                }
+            }
+
+            if (rentToDelete == null) {
+                throw new InvalidInputException("rent with ID " + rentID + " not found.");
+            }
+
+
+            System.out.println("Selected rent: " + rentToDelete);
+
+            rents.deleteElement(rentToDelete);
+
+            JsonUtils.saveList(rents.returnList(), "rents.json", Rent.class);
+            System.out.println("Rent deleted successfully!");
+        } catch (InvalidInputException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+
+    }
 }

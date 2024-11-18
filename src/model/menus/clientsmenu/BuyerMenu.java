@@ -1,7 +1,9 @@
 package model.menus.clientsmenu;
 
 import model.clients.Buyer;
+import model.exceptions.DuplicateElementException;
 import model.exceptions.InvalidInputException;
+import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.menus.clientsmenu.clientMenuService.BuyerService;
 
@@ -66,22 +68,25 @@ public class BuyerMenu {
         Boolean continueAdding = true;
         do {
             try {
-                List<Buyer> buyers = new ArrayList<>();
-                buyers = JsonUtils.loadList("buyers.json", Buyer.class);
+                GenericClass<Buyer> buyers = new GenericClass<>(JsonUtils.loadList("buyers.json", Buyer.class));
+
                 Buyer newBuyer = BuyerService.createBuyer(scanner);
+
                 System.out.println("Buyer added successfully:");
                 System.out.println(newBuyer);
                 if (!buyers.isEmpty()) {
-                    Buyer b = buyers.get(buyers.size() - 1);
+                    Buyer b = buyers.getLastObject();
                     Integer lastId = b.getId() + 1;
                     newBuyer.setId(lastId);
                 }
-                buyers.add(newBuyer);
-                JsonUtils.saveList(buyers, "buyers.json", Buyer.class);
+                buyers.addElement(newBuyer);
+                JsonUtils.saveList(buyers.returnList(), "buyers.json", Buyer.class);
             } catch (InvalidInputException e) {
                 System.out.println("Error adding buyer: " + e.getMessage());
+            } catch (DuplicateElementException e)
+            {
+                System.out.println("Error: " + e.getMessage());
             }
-
             continueAdding = askToContinue();
         } while (continueAdding);
     }

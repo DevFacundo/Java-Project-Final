@@ -27,7 +27,6 @@ public class LotsMenu {
                 switch (option) {
                     case 1:
                         lotsService.addLot();
-
                         break;
                     case 2:
                         System.out.println("Modifying a lot...");

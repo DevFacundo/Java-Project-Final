@@ -29,6 +29,8 @@ public class WarehousesServices {
         Boolean continueAdding = true;
         do {
             try {
+                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+                owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
                 WareHouse newWareHouse = createWareHouse(scanner, owners);
 
                 System.out.println("WareHouse added successfully:");

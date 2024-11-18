@@ -100,6 +100,7 @@ public class OwnerService {
                 }
             }
 
+
             if (ownerToModify == null) {
                 throw new InvalidInputException("Owner with DNI " + dni + " not found.");
             }
@@ -215,6 +216,11 @@ public class OwnerService {
             if (ownerToDelete == null) {
                 throw new InvalidInputException("Owner with DNI " + dni + " not found.");
             }
+            if (ownerToDelete.getClientState()==State.RENTED)
+            {
+                throw new RentedException("You can't delete "+ownerToDelete.getName()+" "+
+                        ownerToDelete.getSurname()+" because they have already rented a propierty");
+            }
 
             if (ownerToDelete.getClientState()== State.SOLD)
             {
@@ -230,6 +236,8 @@ public class OwnerService {
             System.out.println("Owner deleted successfully!");
         } catch (InvalidInputException | SoldException e) {
             System.out.println("Error: " + e.getMessage());
+        } catch (RentedException e) {
+            System.out.println("Error: "+ e.getMessage());;
         }
     }
 

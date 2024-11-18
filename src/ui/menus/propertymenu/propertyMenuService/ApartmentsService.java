@@ -28,6 +28,8 @@ public class ApartmentsService {
         Boolean continueAdding = true;
         do {
             try {
+                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+                owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
                 Apartment newApartment = createApartment(scanner, owners);
 
                 System.out.println("Apartment added successfully:");
@@ -162,6 +164,8 @@ public class ApartmentsService {
         Boolean continueModifying = true;
         do {
             try {
+                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+                owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
                 System.out.print("Enter the ID of the apartment to modify: ");
                 Integer apartmentId = Integer.parseInt(scanner.nextLine().trim());
 

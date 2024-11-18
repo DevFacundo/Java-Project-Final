@@ -26,6 +26,8 @@ public class LotsService {
         Boolean continueAdding = true;
         do {
             try {
+                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+                owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
                 Lot newLot = createLot(scanner, owners);
 
                 System.out.println("Lot added successfully:");

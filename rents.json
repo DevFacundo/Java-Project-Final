@@ -1,0 +1,39 @@
+[ {
+  "id" : 1,
+  "tenant" : {
+    "id" : 3,
+    "name" : "Yago",
+    "surname" : "Sosa",
+    "dni" : "37867022",
+    "contactNumber" : "22355656",
+    "email" : "fadasd@asdasd",
+    "adress" : "asdasd",
+    "clientState" : "RENTED"
+  },
+  "property" : {
+    "propertyType" : "house",
+    "id" : 2,
+    "owner" : {
+      "id" : 1,
+      "name" : "Facundo",
+      "surname" : "Aguilera",
+      "dni" : "37867025",
+      "contactNumber" : "232323",
+      "email" : "adads@asd",
+      "adress" : "asdasd",
+      "clientState" : "RENTED"
+    },
+    "adress" : "Ayolas 4545",
+    "area" : 20.0,
+    "floorsQuantity" : 0,
+    "rooms" : 1,
+    "bedRooms" : 2,
+    "bathRooms" : 1,
+    "park" : false,
+    "state" : "RENTED",
+    "salesPrice" : 2000.0,
+    "rentalPrice" : 20000.0
+  },
+  "startRent" : [ 2024, 11, 18 ],
+  "endRent" : [ 2025, 11, 18 ]
+} ]

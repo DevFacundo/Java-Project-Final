@@ -36,6 +36,10 @@ public class SaleService {
         Boolean continueAdding = true;
         do {
             try {
+                sales = new GenericClass<>(JsonUtils.loadList("sales.json", Sale.class));
+                buyers = new GenericClass<>(JsonUtils.loadList("buyers.json", Buyer.class));
+                properties =  new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+                owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
                 Sale newSale = createSale();
 
                 System.out.println("Sale created successfully!");

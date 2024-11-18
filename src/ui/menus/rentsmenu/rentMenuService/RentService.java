@@ -34,6 +34,12 @@ public class RentService {
         Boolean continueAdding = true;
         do {
             try {
+                rents = new GenericClass<>(JsonUtils.loadList("rents.json", Rent.class));
+                tenants = new GenericClass<>(JsonUtils.loadList("tenants.json", Tenant.class));
+                properties =  new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+                owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
+
+
                 Rent newRent = createRent();
 
                 System.out.println("Rent created successfully!");

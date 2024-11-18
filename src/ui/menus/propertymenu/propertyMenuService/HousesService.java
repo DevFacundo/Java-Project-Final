@@ -25,6 +25,8 @@ public class HousesService {
         Boolean continueAdding = true;
         do {
             try {
+                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+                owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
                 House newHouse = createHouse(scanner, owners);
 
                 System.out.println("House added successfully:");

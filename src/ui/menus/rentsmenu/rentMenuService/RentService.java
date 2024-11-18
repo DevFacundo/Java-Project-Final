@@ -9,12 +9,13 @@ import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.properties.Property;
 import model.rents.Rent;
+import ui.menus.interfaces.DateValidations;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-public class RentService {
+public class RentService implements DateValidations {
 
     private GenericClass<Property> properties;
     private GenericClass<Rent> rents;
@@ -94,6 +95,8 @@ public class RentService {
         String endDate = scanner.nextLine();
         LocalDate rentalEndDate = LocalDate.parse(endDate);
 
+        dateValidation(rentalStartDate, rentalEndDate);
+
                                  ///SETTING THE CLIENTS STATE
         //SETTING THE TENANT STATE
         tenant.setClientState(State.RENTED);
@@ -136,4 +139,29 @@ public class RentService {
         return response.equals("yes") || response.equals("y");
     }
 
+
+    @Override
+    public Boolean dateValidation(LocalDate fechaInicio, LocalDate fechaFin)throws InvalidInputException {
+        Boolean isValid = true;
+        if (fechaInicio == null || fechaFin == null) {
+            isValid = false;
+            throw new InvalidInputException("Las fechas no pueden ser nulas");
+        }
+
+        if (fechaInicio.isBefore(LocalDate.now())) {
+            isValid = false;
+            throw new InvalidInputException("La fecha de inicio no puede ser anterior a hoy");
+        }
+
+        if (fechaFin.isBefore(fechaInicio)) {
+            isValid = false;
+            throw new InvalidInputException("La fecha de fin no puede ser anterior a la fecha de inicio");
+        }
+
+        if (fechaFin.isEqual(fechaInicio)) {
+            isValid = false;
+            throw new InvalidInputException("Las fechas de inicio y fin no pueden ser iguales");
+        }
+        return isValid;
+    }
 }

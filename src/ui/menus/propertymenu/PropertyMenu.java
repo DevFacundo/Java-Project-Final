@@ -7,6 +7,11 @@ import java.util.Scanner;
 import static model.utils.Utils.getValidatedOption;
 
 public class PropertyMenu {
+    HousesMenu housesMenu = new HousesMenu();
+    ApartmentsMenu apartmentsMenu = new ApartmentsMenu();
+    StoresMenu storesMenu = new StoresMenu();
+    LotsMenu lotsMenu = new LotsMenu();
+    WarehousesMenu warehousesMenu = new WarehousesMenu();
 
     Scanner scanner = new Scanner(System.in);
 
@@ -22,27 +27,27 @@ public class PropertyMenu {
                 switch (option) {
                     case 1:
                         System.out.println("You selected: Houses");
-                        HousesMenu housesMenu = new HousesMenu();
+
                         housesMenu.menu();
                         break;
                     case 2:
                         System.out.println("You selected: Apartments");
-                        ApartmentsMenu apartmentsMenu = new ApartmentsMenu();
+
                         apartmentsMenu.menu();
                         break;
                     case 3:
                         System.out.println("You selected: Stores");
-                        StoresMenu storesMenu = new StoresMenu();
+
                         storesMenu.menu();
                         break;
                     case 4:
                         System.out.println("You selected: Lots");
-                        LotsMenu lotsMenu = new LotsMenu();
+
                         lotsMenu.menu();
                         break;
                     case 5:
                         System.out.println("You selected: Warehouses");
-                        WarehousesMenu warehousesMenu = new WarehousesMenu();
+
                         warehousesMenu.menu();
                         break;
                     case 0:

@@ -125,16 +125,16 @@ public class HousesService {
         if (rp.isNaN()) {
             throw new InvalidInputException("Rental price is not a number.");
         }
-        if (floorsQuantity <= 0) {
+        if (floorsQuantity < 0) {
             throw new InvalidInputException("Floors quantity must be a positive number.");
         }
         if (roomsQuantity <= 0) {
             throw new InvalidInputException("Rooms Quantity must be a positive number.");
         }
-        if (bedroomsQuantity <= 0) {
+        if (bedroomsQuantity < 0) {
             throw new InvalidInputException("Redrooms Quantity must be a positive number.");
         }
-        if (bathroomsQuantity <= 0) {
+        if (bathroomsQuantity < 0) {
             throw new InvalidInputException("Bathrooms Quantity must be a positive number.");
         }
     }

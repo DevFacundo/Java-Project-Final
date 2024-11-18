@@ -12,7 +12,7 @@ import static model.utils.Utils.getValidatedOption;
 
 public class HousesMenu {
     HousesService housesService ;
-    Scanner scanner = new
+    Scanner scanner;
 
     public HousesMenu() {
         scanner = new  Scanner(System.in);

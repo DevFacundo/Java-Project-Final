@@ -120,7 +120,7 @@ public class StoresService {
         if (rp.isNaN() || rp <= 0) {
             throw new InvalidInputException("Rental price is not a number.");
         }
-        if (bathroomsQuantity <= 0) {
+        if (bathroomsQuantity < 0) {
             throw new InvalidInputException("Bathrooms Quantity must be a positive number.");
         }
         if (floors < 0){

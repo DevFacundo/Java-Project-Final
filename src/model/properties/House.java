@@ -12,7 +12,7 @@ public class House extends Property{
     private Integer bathRooms;
     private Boolean park;
 
-    public House(Owner owner, String address, Double area, Double sp, Double rp, Integer floorsQuantity, Integer roomsQuantity, Integer bedroomsQuantity, Integer bathroomsQuantity) {
+    public House() {
     }
 
     public House(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice, Integer floorsQuantity, Integer rooms, Integer bedRooms, Integer bathRooms, Boolean park) {

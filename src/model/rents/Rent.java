@@ -1,13 +1,11 @@
 package model.rents;
 
-
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import model.clients.Owner;
 import model.clients.Tenant;
 import model.properties.Property;
 
 import java.time.LocalDate;
-
 
 public class Rent {
     private Integer id;
@@ -19,18 +17,16 @@ public class Rent {
             property = "propertyType"
     )
     private Property property;
-    private Owner owner;
     private LocalDate startRent;
     private LocalDate endRent;
 
     public Rent() {
     }
 
-    public Rent(Tenant tenant, Property property, Owner owner, LocalDate startRent, LocalDate endRent) {
+    public Rent(Tenant tenant, Property property, LocalDate startRent, LocalDate endRent) {
         id=nextId++;
         this.tenant = tenant;
         this.property = property;
-        this.owner = owner;
         this.startRent = startRent;
         this.endRent = endRent;
     }
@@ -59,13 +55,6 @@ public class Rent {
         this.property = property;
     }
 
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
 
     public LocalDate getStartRent() {
         return startRent;
@@ -89,7 +78,7 @@ public class Rent {
                 "id rent=" + id +
                 "\ntenant=" + tenant.getName()+
                 "\nproperty adress=" + property.getAdress() +
-                "\nowner=" + owner.getName()+
+                "\nowner=" + property.getOwner().getName()+" "+property.getOwner().getSurname()+
                 "\nstartRent=" + startRent +
                 "\nendRent=" + endRent;
     }

@@ -87,7 +87,7 @@ public class HousesService {
 
         validateHouseInputs(address, area, sp, rp, floorsQuantity, roomsQuantity, bedroomsQuantity, bathroomsQuantity);
 
-        return new House(owner, address, area, sp, rp, floorsQuantity, roomsQuantity, bedroomsQuantity, bathroomsQuantity);
+        return new House(owner, address, area, sp, rp, floorsQuantity, roomsQuantity, bedroomsQuantity, bathroomsQuantity, park);
     }
 
     public static Owner validateOwner(String ownerDni, GenericClass<Owner> ownerList) throws InvalidInputException {

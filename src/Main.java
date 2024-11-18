@@ -117,12 +117,12 @@ public class Main {
         WareHouse warehouse5 = new WareHouse(owner5, "Calle de los Árboles 50", 600000D, 3000D, 7000D, TypeOfUse.INDUSTRIAL, 6, 4);
 
 
-        Rent rent1 = new Rent(tenant1, house1, owner1, LocalDate.of(2023,1,15), LocalDate.of(2024,1,15));
-        Rent rent2 = new Rent(tenant2, apartment1, owner2, LocalDate.of(2023, 3, 1), LocalDate.of(2024, 3, 1));
-        Rent rent3 = new Rent(tenant3, store1, owner3, LocalDate.of(2023, 6, 1), LocalDate.of(2024, 6, 1));
-        Rent rent4 = new Rent(tenant4, warehouse1, owner4, LocalDate.of(2023, 5, 10), LocalDate.of(2024, 5, 10));
-        Rent rent5 = new Rent(tenant5, lot1, owner5, LocalDate.of(2023, 7, 20), LocalDate.of(2024, 7, 20));
-        Rent rent6 = new Rent(tenant6, house2, owner6, LocalDate.of(2023, 8, 5), LocalDate.of(2024, 8, 5));
+        Rent rent1 = new Rent(tenant1, house1, LocalDate.of(2023,1,15), LocalDate.of(2024,1,15));
+        Rent rent2 = new Rent(tenant2, apartment1, LocalDate.of(2023, 3, 1), LocalDate.of(2024, 3, 1));
+        Rent rent3 = new Rent(tenant3, store1, LocalDate.of(2023, 6, 1), LocalDate.of(2024, 6, 1));
+        Rent rent4 = new Rent(tenant4, warehouse1, LocalDate.of(2023, 5, 10), LocalDate.of(2024, 5, 10));
+        Rent rent5 = new Rent(tenant5, lot1, LocalDate.of(2023, 7, 20), LocalDate.of(2024, 7, 20));
+        Rent rent6 = new Rent(tenant6, house2, LocalDate.of(2023, 8, 5), LocalDate.of(2024, 8, 5));
 
         Sale sale1 = new Sale(buyer1, house1, LocalDate.of(2021, 5, 20));
         Sale sale2 = new Sale(buyer2, apartment1, LocalDate.of(2022, 3, 15));

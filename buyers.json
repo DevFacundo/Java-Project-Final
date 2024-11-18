@@ -94,4 +94,13 @@
   "contactNumber" : "8899001122",
   "email" : "cecilia.castro@example.com",
   "adress" : "Av. Cabildo 876"
+}, {
+  "id" : 25,
+  "name" : "asd",
+  "surname" : "dsa",
+  "dni" : "12367823",
+  "contactNumber" : "678123",
+  "email" : "e@q",
+  "adress" : "haskjd 123",
+  "clientState" : "AVAILABLE"
 } ]

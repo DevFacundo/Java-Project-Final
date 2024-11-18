@@ -18,7 +18,7 @@ public class StoresService {
     GenericClass<Owner> owners;
 
 
-    private void addStore() {
+    public void addStore() {
         Boolean continueAdding = true;
         do {
             try {

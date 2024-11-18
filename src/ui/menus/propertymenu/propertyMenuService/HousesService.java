@@ -16,7 +16,7 @@ public class HousesService {
     GenericClass<Owner> owners;
 
 
-    private void addHouse() {
+    public void addHouse() {
         Boolean continueAdding = true;
         do {
             try {

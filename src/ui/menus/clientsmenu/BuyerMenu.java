@@ -15,6 +15,7 @@ import static model.utils.Utils.getValidatedOption;
 
 public class BuyerMenu {
     Scanner scanner = new Scanner(System.in);
+    BuyerService buyerService = new BuyerService();
 
     public void menu() {
         Integer option = -1;
@@ -26,7 +27,7 @@ public class BuyerMenu {
 
                 switch (option) {
                     case 1:
-                        addBuyer();
+                        buyerService.addBuyer();
                         break;
                     case 2:
                         System.out.println("Opcion 2");
@@ -64,36 +65,4 @@ public class BuyerMenu {
         System.out.print("Choose an option: ");
     }
 
-    private void addBuyer() {
-        Boolean continueAdding = true;
-        do {
-            try {
-                GenericClass<Buyer> buyers = new GenericClass<>(JsonUtils.loadList("buyers.json", Buyer.class));
-
-                Buyer newBuyer = BuyerService.createBuyer(scanner);
-
-                System.out.println("Buyer added successfully:");
-                System.out.println(newBuyer);
-                if (!buyers.isEmpty()) {
-                    Buyer b = buyers.getLastObject();
-                    Integer lastId = b.getId() + 1;
-                    newBuyer.setId(lastId);
-                }
-                buyers.addElement(newBuyer);
-                JsonUtils.saveList(buyers.returnList(), "buyers.json", Buyer.class);
-            } catch (InvalidInputException e) {
-                System.out.println("Error adding buyer: " + e.getMessage());
-            } catch (DuplicateElementException e)
-            {
-                System.out.println("Error: " + e.getMessage());
-            }
-            continueAdding = askToContinue();
-        } while (continueAdding);
-    }
-
-    private Boolean askToContinue() {
-        System.out.print("Do you want to add another buyer? (yes/no): ");
-        String response = scanner.nextLine().trim().toLowerCase();
-        return response.equals("yes") || response.equals("y");
-    }
 }

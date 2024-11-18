@@ -17,7 +17,7 @@ public class LotsService {
     GenericClass<Owner> owners;
 
 
-    private void addLot() {
+    public void addLot() {
         Boolean continueAdding = true;
         do {
             try {

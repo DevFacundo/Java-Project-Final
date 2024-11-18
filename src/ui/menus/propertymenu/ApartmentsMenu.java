@@ -1,25 +1,27 @@
 package ui.menus.propertymenu;
 
 import model.exceptions.InvalidInputException;
+import ui.menus.propertymenu.propertyMenuService.ApartmentsService;
 
 import java.util.Scanner;
 
 import static model.utils.Utils.getValidatedOption;
 
 public class ApartmentsMenu {
+    ApartmentsService apartmentsService = new ApartmentsService();
     Scanner scanner = new Scanner(System.in);
 
     public void menu() {
         int option = -1;
         do {
-            printMenu(); /// Imprime un menú modularizado
+            printMenu();
 
             try {
-                option = getValidatedOption(); /// Excepción que valida que sea un número
+                option = getValidatedOption();
 
                 switch (option) {
                     case 1:
-                        System.out.println("Adding an apartment...");
+                        apartmentsService.addApartament();
                         break;
                     case 2:
                         System.out.println("Modifying an apartment...");

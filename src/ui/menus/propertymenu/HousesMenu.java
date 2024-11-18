@@ -1,14 +1,15 @@
 package ui.menus.propertymenu;
 
 import model.exceptions.InvalidInputException;
+import ui.menus.propertymenu.propertyMenuService.HousesService;
 
 import java.util.Scanner;
 
 import static model.utils.Utils.getValidatedOption;
 
 public class HousesMenu {
+    HousesService housesService = new HousesService();
     Scanner scanner = new Scanner(System.in);
-
 
     public void menu() {
         int option = -1;
@@ -20,7 +21,7 @@ public class HousesMenu {
 
                 switch (option) {
                     case 1:
-                        System.out.println("Adding a house...");
+                        housesService.addHouse();
                         break;
                     case 2:
                         System.out.println("Modifying a house...");

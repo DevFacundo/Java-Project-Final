@@ -1,5 +1,7 @@
 package model.genericManagement;
 
+import model.exceptions.DuplicateElementException;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,7 +16,11 @@ public class GenericClass<T> {
         this.elements = elements;
     }
 
-    public void addElement(T e) {
+    public void addElement(T e) throws DuplicateElementException {
+        if(elements.contains(e))
+        {
+            throw new DuplicateElementException("The element is alredy exists");
+        }
         elements.add(e);
     }
 
@@ -39,6 +45,10 @@ public class GenericClass<T> {
                 System.out.println(e);
             }
         }
+    }
+    public Boolean isEmpty()
+    {
+        return elements.isEmpty();
     }
 
     public List<T> returnList() {

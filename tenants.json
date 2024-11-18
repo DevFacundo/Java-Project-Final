@@ -7,4 +7,13 @@
   "email" : "asdasd@asdasd",
   "adress" : "asdaaaaa",
   "clientState" : "RENTED"
+}, {
+  "id" : 4,
+  "name" : "emmanuel",
+  "surname" : "galarce",
+  "dni" : "38831786",
+  "contactNumber" : "2234444445",
+  "email" : "emma@mail",
+  "adress" : "calle 3340",
+  "clientState" : "RENTED"
 } ]

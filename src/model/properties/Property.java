@@ -134,14 +134,14 @@ public abstract class Property {
                 "Property Information:\n" +
                         "─────────────────────────────────\n" +
                         "ID Property        : %d\n" +
-                        "Owner              : %s\n" +
+                        "Owner              : %s " + "%s\n"+
                         "Address            : %s\n" +
                         "Area               : %.2f\n" +
-                        "Sales Price        : %.2f\n" +
-                        "Rental Price       : %.2f\n" +
+                        "Sales Price        : $%.2f\n" +
+                        "Rental Price       : $%.2f\n" +
                         "State of Property  : %s\n" +
                         "─────────────────────────────────",
-                id, owner.getName(), adress, area, SalesPrice, RentalPrice, propertyState
+                id, owner.getName(),owner.getSurname(), adress, area, SalesPrice, RentalPrice, propertyState
         );
     }
 }

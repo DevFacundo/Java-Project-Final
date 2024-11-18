@@ -95,7 +95,7 @@ public class Apartment extends Property{
                         "Bedrooms           : %d\n" +
                         "Furnished          : %b\n" +
                         "Orientation        : %s\n" +
-                        "Maintenance Fees   : %.2f\n" +
+                        "Maintenance Fees   : $%.2f\n" +
                         "─────────────────────────────────",
                 super.toString(), rooms, bathRooms, bedRooms, furnished, orientation, maintenanceFees
         );

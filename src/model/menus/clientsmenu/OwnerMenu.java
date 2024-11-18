@@ -2,7 +2,7 @@ package model.menus.clientsmenu;
 
 import model.clients.Owner;
 import model.exceptions.InvalidInputException;
-import model.genericManagement.JsonClass;
+import model.genericManagement.JsonUtils;
 import model.menus.clientsmenu.clientMenuService.OwnerService;
 
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ public class OwnerMenu {
         do {
             try {
                 List<Owner> owners = new ArrayList<>();
-                owners = JsonClass.loadList("owners.json", Owner.class);
+                owners = JsonUtils.loadList("owners.json", Owner.class);
                 Owner newOwner = OwnerService.createOwner(scanner);
                 System.out.println("Owner added successfully:");
                 System.out.println(newOwner);
@@ -77,7 +77,7 @@ public class OwnerMenu {
                     newOwner.setId(lastId);
                 }
                 owners.add(newOwner);
-                JsonClass.saveList(owners,"owners.json");
+                JsonUtils.saveList(owners,"owners.json", Owner.class);
             } catch (InvalidInputException e) {
                 System.out.println("Error adding owner: " + e.getMessage());
             }

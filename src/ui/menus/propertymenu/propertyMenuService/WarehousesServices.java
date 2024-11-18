@@ -5,6 +5,7 @@ import model.exceptions.DuplicateElementException;
 import model.exceptions.InvalidInputException;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
+import model.properties.Property;
 import model.properties.TypeOfUse;
 import model.properties.WareHouse;
 
@@ -13,7 +14,7 @@ import java.util.Scanner;
 public class WarehousesServices {
 
     Scanner scanner = new Scanner(System.in);
-    GenericClass<WareHouse> wareHouses;
+    GenericClass<Property> properties;
     GenericClass<Owner> owners;
 
 
@@ -21,19 +22,19 @@ public class WarehousesServices {
         Boolean continueAdding = true;
         do {
             try {
-                wareHouses = new GenericClass<>(JsonUtils.loadList("warehouses.json", WareHouse.class));
+                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
                 owners = new GenericClass<>(JsonUtils.loadList("owner.json", Owner.class));
                 WareHouse newWareHouse = createWareHouse(scanner, owners);
 
                 System.out.println("WareHouse added successfully:");
                 System.out.println(newWareHouse);
-                if (!wareHouses.isEmpty()) {
-                    WareHouse w = wareHouses.getLastObject();
-                    Integer lastId = w.getId() + 1;
+                if (!properties.isEmpty()) {
+                    Property p = properties.getLastObject();
+                    Integer lastId = p.getId() + 1;
                     newWareHouse.setId(lastId);
                 }
-                wareHouses.addElement(newWareHouse);
-                JsonUtils.saveList(wareHouses.returnList(), "warehouses.json", WareHouse.class);
+                properties.addElement(newWareHouse);
+                JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
             } catch (InvalidInputException e) {
                 System.out.println("Error adding WareHouse: " + e.getMessage());
             } catch (DuplicateElementException e) {

@@ -1,14 +1,16 @@
 package ui.menus.salesmenu.saleMenuService;
 
+import model.State;
 import model.clients.Buyer;
 import model.clients.Owner;
+import model.clients.Tenant;
 import model.exceptions.DuplicateElementException;
 import model.exceptions.InvalidInputException;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.properties.House;
 import model.properties.Property;
-import model.properties.StateOfProperty;
+import model.rents.Rent;
 import model.sales.Sale;
 
 import java.time.LocalDate;
@@ -19,7 +21,16 @@ public class SaleService {
     private GenericClass<Property> properties;
     private GenericClass<Sale> sales;
     private GenericClass<Buyer>buyers;
+    private GenericClass<Owner> owners;
     private Scanner scanner= new Scanner(System.in);
+
+    public SaleService() {
+        sales = new GenericClass<>(JsonUtils.loadList("sales.json", Sale.class));
+        buyers = new GenericClass<>(JsonUtils.loadList("buyers.json", Buyer.class));
+        properties =  new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+        owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
+        scanner = new Scanner(System.in);
+    }
 
     public void addSale() {
         Boolean continueAdding = true;
@@ -27,12 +38,18 @@ public class SaleService {
             try {
                 Sale newSale = createSale();
 
+                System.out.println("Sale created successfully!");
+                System.out.println(newSale);
+
+                if (!sales.isEmpty()) {
+                    Sale s = sales.getLastObject();
+                    Integer lastId = s.getId() + 1;
+                    newSale.setId(lastId);
+                }
+
                 sales.addElement(newSale);
 
                 JsonUtils.saveList(sales.returnList(), "sales.json", Sale.class);
-
-                System.out.println("Sale created successfully!");
-                System.out.println(newSale);
 
             } catch (InvalidInputException e) {
                 System.out.println("Error: " + e.getMessage());
@@ -57,7 +74,7 @@ public class SaleService {
 
         Property property = findPropertyById(propertyId);
 
-        if (property == null || property.getState() != StateOfProperty.AVAILABLE) {
+        if (property == null || property.getState() != State.AVAILABLE) {
             throw new InvalidInputException("Property is not available for sale."); //VER DE MANEJAR OTRA EXCEP
         }
 
@@ -69,9 +86,20 @@ public class SaleService {
         String date = scanner.nextLine();
         LocalDate saleDate = LocalDate.parse(date);
 
-        property.setState(StateOfProperty.SOLD);
+                                    //SETTING THE CLIENTS STATE
+        //SETTING THE BUYER STATE
+        buyer.setClientState(State.SOLD);
+        buyers.modifyElement(buyer, buyer);
+        JsonUtils.saveList(buyers.returnList(), "buyers.json", Buyer.class);
+        //SETTING THE OWNER STATE
+        property.getOwner().setClientState(State.SOLD);
+        owners.modifyElement(property.getOwner(),property.getOwner());
+        JsonUtils.saveList(owners.returnList(),"owners.json",Owner.class);
+
+        //SETTING THE PROPERTY STATE
+        property.setState(State.SOLD);
         properties.modifyElement(property,property);
-        JsonUtils.saveList(properties.returnList(), "houses.json", Property.class);
+        JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
 
         return new Sale(buyer,property, saleDate);
     }
@@ -92,7 +120,7 @@ public class SaleService {
                 return b;
             }
         }
-        throw new InvalidInputException("Owner with DNI " + buyerDni + " not found.");
+        throw new InvalidInputException("Buyer with DNI " + buyerDni + " not found.");
     }
     private Boolean askToContinue() {
         System.out.print("Do you want to add another sale? (yes/no): ");

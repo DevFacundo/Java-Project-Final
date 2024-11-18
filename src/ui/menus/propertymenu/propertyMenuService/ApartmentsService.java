@@ -7,13 +7,14 @@ import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.properties.Apartment;
 import model.properties.Orientation;
+import model.properties.Property;
 
 import java.util.Scanner;
 
 public class ApartmentsService {
 
     Scanner scanner = new Scanner(System.in);
-    GenericClass<Apartment> apartments;
+    GenericClass<Property> properties;
     GenericClass<Owner> owners;
 
 
@@ -21,19 +22,19 @@ public class ApartmentsService {
         Boolean continueAdding = true;
         do {
             try {
-                apartments = new GenericClass<>(JsonUtils.loadList("apartments.json", Apartment.class));
+                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
                 owners = new GenericClass<>(JsonUtils.loadList("owner.json", Owner.class));
                 Apartment newApartment = createApartment(scanner, owners);
 
                 System.out.println("Apartment added successfully:");
                 System.out.println(newApartment);
-                if (!apartments.isEmpty()) {
-                    Apartment a = apartments.getLastObject();
-                    Integer lastId = a.getId() + 1;
+                if (!properties.isEmpty()) {
+                    Property p = properties.getLastObject();
+                    Integer lastId = p.getId() + 1;
                     newApartment.setId(lastId);
                 }
-                apartments.addElement(newApartment);
-                JsonUtils.saveList(apartments.returnList(), "apartments.json", Apartment.class);
+                properties.addElement(newApartment);
+                JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
             } catch (InvalidInputException e) {
                 System.out.println("Error adding apartment: " + e.getMessage());
             } catch (DuplicateElementException e) {

@@ -6,12 +6,13 @@ import model.exceptions.InvalidInputException;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.properties.House;
+import model.properties.Property;
 
 import java.util.Scanner;
 
 public class HousesService {
     Scanner scanner = new Scanner(System.in);
-    GenericClass<House> houses;
+    GenericClass<Property> properties;
     GenericClass<Owner> owners;
 
 
@@ -19,19 +20,22 @@ public class HousesService {
         Boolean continueAdding = true;
         do {
             try {
-                houses = new GenericClass<>(JsonUtils.loadList("houses.json", House.class));
+                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
                 owners = new GenericClass<>(JsonUtils.loadList("owner.json", Owner.class));
                 House newHouse = createHouse(scanner, owners);
 
                 System.out.println("House added successfully:");
                 System.out.println(newHouse);
-                if (!houses.isEmpty()) {
-                    House h = houses.getLastObject();
-                    Integer lastId = h.getId() + 1;
+
+                if (!properties.isEmpty()) {
+                    Property p = properties.getLastObject();
+                    Integer lastId = p.getId() + 1;
                     newHouse.setId(lastId);
                 }
-                houses.addElement(newHouse);
-                JsonUtils.saveList(houses.returnList(), "houses.json", House.class);
+
+                properties.addElement(newHouse);
+                JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
+
             } catch (InvalidInputException e) {
                 System.out.println("Error adding house: " + e.getMessage());
             } catch (DuplicateElementException e) {

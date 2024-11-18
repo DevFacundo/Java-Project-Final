@@ -2,6 +2,7 @@ package model.properties;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import model.State;
 import model.clients.Owner;
 import model.exceptions.InvalidAreaException;
 import model.exceptions.InvalidPriceException;
@@ -30,7 +31,7 @@ public abstract class Property {
     private Double area;
     private Double SalesPrice;
     private Double RentalPrice;
-    private StateOfProperty state;
+    private State propertyState;
 
     public Property() {
     }
@@ -42,7 +43,7 @@ public abstract class Property {
         SalesPrice = salesPrice;
         RentalPrice = rentalPrice;
         this.id=nextId++;
-        this.state = StateOfProperty.AVAILABLE;
+        this.propertyState = State.AVAILABLE;
     }
 /*
     public Property(Owner owner, String adress, Double salesPrice, Double area, Double rentalPrice, StateOfProperty state) {
@@ -106,12 +107,12 @@ public abstract class Property {
         RentalPrice = rentalPrice;
     }
 
-    public StateOfProperty getState() {
-        return state;
+    public State getState() {
+        return propertyState;
     }
 
-    public void setState(StateOfProperty state) {
-        this.state = state;
+    public void setState(State state) {
+        this.propertyState = state;
     }
 
     @Override
@@ -139,7 +140,7 @@ public abstract class Property {
                         "Rental Price       : %.2f\n" +
                         "State of Property  : %s\n" +
                         "─────────────────────────────────",
-                id, owner.getName(), adress, area, SalesPrice, RentalPrice, state
+                id, owner.getName(), adress, area, SalesPrice, RentalPrice, propertyState
         );
     }
 }

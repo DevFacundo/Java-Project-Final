@@ -1,5 +1,7 @@
 package model.clients;
 
+import model.State;
+
 import java.util.Objects;
 
 /*
@@ -28,6 +30,7 @@ public abstract class Client  {
     private String contactNumber;
     private String email;
     private String adress;
+    private State clientState;
 
     public Client() {
     }
@@ -40,6 +43,15 @@ public abstract class Client  {
         this.contactNumber = contactNumber;
         this.email = email;
         this.adress = adress;
+        this.clientState = State.AVAILABLE;
+    }
+
+    public State getClientState() {
+        return clientState;
+    }
+
+    public void setClientState(State clientState) {
+        this.clientState = clientState;
     }
 
     public Integer getId() {
@@ -123,8 +135,9 @@ public abstract class Client  {
                         "Contact Number: %s\n" +
                         "Email         : %s\n" +
                         "Address       : %s\n" +
+                        "Client State  : %s\n" +
                         "─────────────────────────────────",
-                id, name, surname, dni, contactNumber, email, adress
+                id, name, surname, dni, contactNumber, email, adress, clientState
         );
     }
 }

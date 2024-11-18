@@ -6,6 +6,7 @@ import model.exceptions.InvalidInputException;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.properties.Orientation;
+import model.properties.Property;
 import model.properties.Store;
 
 import java.util.Scanner;
@@ -13,7 +14,7 @@ import java.util.Scanner;
 public class StoresService {
 
     Scanner scanner = new Scanner(System.in);
-    GenericClass<Store> stores;
+    GenericClass<Property> properties;
     GenericClass<Owner> owners;
 
 
@@ -21,19 +22,19 @@ public class StoresService {
         Boolean continueAdding = true;
         do {
             try {
-                stores = new GenericClass<>(JsonUtils.loadList("stores.json", Store.class));
+                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
                 owners = new GenericClass<>(JsonUtils.loadList("owner.json", Owner.class));
                 Store newStore = createStore(scanner, owners);
 
                 System.out.println("Store added successfully:");
                 System.out.println(newStore);
-                if (!stores.isEmpty()) {
-                    Store s = stores.getLastObject();
-                    Integer lastId = s.getId() + 1;
+                if (!properties.isEmpty()) {
+                    Property p = properties.getLastObject();
+                    Integer lastId = p.getId() + 1;
                     newStore.setId(lastId);
                 }
-                stores.addElement(newStore);
-                JsonUtils.saveList(stores.returnList(), "stores.json", Store.class);
+                properties.addElement(newStore);
+                JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
             } catch (InvalidInputException e) {
                 System.out.println("Error adding Store: " + e.getMessage());
             } catch (DuplicateElementException e) {

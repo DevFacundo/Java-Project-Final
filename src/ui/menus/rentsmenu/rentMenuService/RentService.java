@@ -1,12 +1,13 @@
 package ui.menus.rentsmenu.rentMenuService;
 
+import model.State;
+import model.clients.Owner;
 import model.clients.Tenant;
 import model.exceptions.DuplicateElementException;
 import model.exceptions.InvalidInputException;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.properties.Property;
-import model.properties.StateOfProperty;
 import model.rents.Rent;
 
 import java.time.LocalDate;
@@ -18,8 +19,16 @@ public class RentService {
     private GenericClass<Property> properties;
     private GenericClass<Rent> rents;
     private GenericClass<Tenant> tenants;
-    private Scanner scanner = new Scanner(System.in);
+    private GenericClass<Owner> owners;
+    private Scanner scanner;
 
+    public RentService() {
+        rents = new GenericClass<>(JsonUtils.loadList("rents.json", Rent.class));
+        tenants = new GenericClass<>(JsonUtils.loadList("tenants.json", Tenant.class));
+        properties =  new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+        owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
+        scanner = new Scanner(System.in);
+    }
 
     public void addRent() {
         Boolean continueAdding = true;
@@ -27,12 +36,18 @@ public class RentService {
             try {
                 Rent newRent = createRent();
 
+                System.out.println("Rent created successfully!");
+                System.out.println(newRent);
+
+                if (!rents.isEmpty()) {
+                    Rent r = rents.getLastObject();
+                    Integer lastId = r.getId() + 1;
+                    newRent.setId(lastId);
+                }
+
                 rents.addElement(newRent);
 
                 JsonUtils.saveList(rents.returnList(), "rents.json", Rent.class);
-
-                System.out.println("Rent created successfully!");
-                System.out.println(newRent);
 
             } catch (InvalidInputException e) {
                 System.out.println("Error: " + e.getMessage());
@@ -56,7 +71,7 @@ public class RentService {
         Property property = findPropertyById(propertyId);
 
 
-        if (property == null || property.getState() != StateOfProperty.AVAILABLE) {
+        if (property == null || property.getState() != State.AVAILABLE) {
             throw new InvalidInputException("Property is not available for rent.");
         }
 
@@ -64,7 +79,7 @@ public class RentService {
         String tenantDni = scanner.nextLine().trim();
         Tenant tenant = validateTenant(tenantDni);
 
-        // Solicitar las fechas de inicio y fin del alquiler
+        //VALIDAR FECHASSSSSSSSSSSSSSSSS
         System.out.print("Enter the rental start date (YYYY-MM-DD): ");
         String startDate = scanner.nextLine();
         LocalDate rentalStartDate = LocalDate.parse(startDate);
@@ -73,9 +88,20 @@ public class RentService {
         String endDate = scanner.nextLine();
         LocalDate rentalEndDate = LocalDate.parse(endDate);
 
-        property.setState(StateOfProperty.RENTED);
+                                 ///SETTING THE CLIENTS STATE
+        //SETTING THE TENANT STATE
+        tenant.setClientState(State.RENTED);
+        tenants.modifyElement(tenant, tenant);
+        JsonUtils.saveList(tenants.returnList(), "tenants.json", Tenant.class);
+        //SETTING THE OWNER STATE
+        property.getOwner().setClientState(State.SOLD);
+        owners.modifyElement(property.getOwner(),property.getOwner());
+        JsonUtils.saveList(owners.returnList(),"owners.json", Owner.class);
+
+        //SETTING THE PROPERTY STATE
+        property.setState(State.RENTED);
         properties.modifyElement(property, property);
-        JsonUtils.saveList(properties.returnList(), "houses.json", Property.class);
+        JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
 
 
         return new Rent(tenant, property, rentalStartDate, rentalEndDate);

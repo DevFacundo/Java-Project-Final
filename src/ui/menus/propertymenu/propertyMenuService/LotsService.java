@@ -6,13 +6,14 @@ import model.exceptions.InvalidInputException;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.properties.Lot;
+import model.properties.Property;
 
 
 import java.util.Scanner;
 
 public class LotsService {
     Scanner scanner = new Scanner(System.in);
-    GenericClass<Lot> lots;
+    GenericClass<Property> properties;
     GenericClass<Owner> owners;
 
 
@@ -20,19 +21,19 @@ public class LotsService {
         Boolean continueAdding = true;
         do {
             try {
-                lots = new GenericClass<>(JsonUtils.loadList("lots.json", Lot.class));
+                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
                 owners = new GenericClass<>(JsonUtils.loadList("owner.json", Owner.class));
                 Lot newLot = createLot(scanner, owners);
 
                 System.out.println("Lot added successfully:");
                 System.out.println(newLot);
-                if (!lots.isEmpty()) {
-                    Lot l = lots.getLastObject();
-                    Integer lastId = l.getId() + 1;
+                if (!properties.isEmpty()) {
+                    Property p = properties.getLastObject();
+                    Integer lastId = p.getId() + 1;
                     newLot.setId(lastId);
                 }
-                lots.addElement(newLot);
-                JsonUtils.saveList(lots.returnList(), "lots.json", Lot.class);
+                properties.addElement(newLot);
+                JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
             } catch (InvalidInputException e) {
                 System.out.println("Error adding Lot: " + e.getMessage());
             } catch (DuplicateElementException e) {

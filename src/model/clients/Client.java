@@ -21,6 +21,8 @@ public abstract class Client  {
     private Integer id;
     private static Integer nextId=1;
     private String name;
+    private String surname;
+    private String dni;
     private String contactNumber;
     private String email;
     private String adress;
@@ -28,14 +30,31 @@ public abstract class Client  {
     public Client() {
     }
 
-    public Client(String name, String contactNumber, String email, String adress) {
+    public Client(String name, String surname, String dni, String contactNumber, String email, String adress) {
         this.id=nextId++;
         this.name = name;
+        this.surname = surname;
+        this.dni = dni;
         this.contactNumber = contactNumber;
         this.email = email;
         this.adress = adress;
     }
 
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
 
     public Integer getId() {
         return id;
@@ -81,6 +100,8 @@ public abstract class Client  {
     public String toString() {
         return  "id client=" + id +
                 "\nname='" + name + '\'' +
+                "\nsurname="+ surname+
+                "\ndni="+dni+
                 "\ncontactNumber=" + contactNumber +
                 "\nemail='" + email + '\'' +
                 "\nadress='" + adress + '\'';

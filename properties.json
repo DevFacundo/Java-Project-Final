@@ -3,7 +3,9 @@
   "id" : 1,
   "owner" : {
     "id" : 1,
-    "name" : "Walter White",
+    "name" : "Walter",
+    "surname" : "White",
+    "dni" : "12345678",
     "contactNumber" : "5051234567",
     "email" : "walter.white@breakingbad.com",
     "adress" : "Albuquerque, NM"
@@ -16,14 +18,16 @@
   "bedRooms" : 3,
   "bathRooms" : 3,
   "park" : true,
-  "rentalPrice" : 600.0,
-  "salesPrice" : 25.0
+  "salesPrice" : 25.0,
+  "rentalPrice" : 600.0
 }, {
   "propertyType" : "house",
   "id" : 2,
   "owner" : {
     "id" : 2,
-    "name" : "Homer Simpson",
+    "name" : "Homer",
+    "surname" : "Simpson",
+    "dni" : "23456789",
     "contactNumber" : "5551234567",
     "email" : "homer.simpson@simpsons.com",
     "adress" : "742 Evergreen Terrace"
@@ -36,14 +40,172 @@
   "bedRooms" : 2,
   "bathRooms" : 2,
   "park" : false,
-  "rentalPrice" : 800.0,
-  "salesPrice" : 30.0
+  "salesPrice" : 30.0,
+  "rentalPrice" : 800.0
+}, {
+  "propertyType" : "house",
+  "id" : 3,
+  "owner" : {
+    "id" : 3,
+    "name" : "Jon",
+    "surname" : "Snow",
+    "dni" : "34567890",
+    "contactNumber" : "5559876543",
+    "email" : "jon.snow@got.com",
+    "adress" : "Winterfell"
+  },
+  "adress" : "Av. Santa Fe 870",
+  "area" : 120000.0,
+  "state" : "AVAILABLE",
+  "floorsQuantity" : 2,
+  "rooms" : 3,
+  "bedRooms" : 1,
+  "bathRooms" : 1,
+  "park" : true,
+  "salesPrice" : 20.0,
+  "rentalPrice" : 550.0
+}, {
+  "propertyType" : "house",
+  "id" : 4,
+  "owner" : {
+    "id" : 4,
+    "name" : "Daenerys",
+    "surname" : "Targaryen",
+    "dni" : "45678901",
+    "contactNumber" : "5557654321",
+    "email" : "daenerys.targaryen@got.com",
+    "adress" : "Dragonstone"
+  },
+  "adress" : "Callejón del Sol 123",
+  "area" : 300000.0,
+  "state" : "AVAILABLE",
+  "floorsQuantity" : 4,
+  "rooms" : 6,
+  "bedRooms" : 4,
+  "bathRooms" : 5,
+  "park" : true,
+  "salesPrice" : 45.0,
+  "rentalPrice" : 1200.0
+}, {
+  "propertyType" : "house",
+  "id" : 5,
+  "owner" : {
+    "id" : 5,
+    "name" : "Rick",
+    "surname" : "Sanchez",
+    "dni" : "56789012",
+    "contactNumber" : "5552345678",
+    "email" : "rick.sanchez@rickandmorty.com",
+    "adress" : "The Citadel"
+  },
+  "adress" : "Calle Viamonte 456",
+  "area" : 250000.0,
+  "state" : "AVAILABLE",
+  "floorsQuantity" : 3,
+  "rooms" : 4,
+  "bedRooms" : 2,
+  "bathRooms" : 3,
+  "park" : false,
+  "salesPrice" : 35.0,
+  "rentalPrice" : 950.0
+}, {
+  "propertyType" : "house",
+  "id" : 6,
+  "owner" : {
+    "id" : 6,
+    "name" : "Jessica",
+    "surname" : "Day",
+    "dni" : "67890123",
+    "contactNumber" : "5558765432",
+    "email" : "jessica.day@newgirl.com",
+    "adress" : "Los Angeles, CA"
+  },
+  "adress" : "Av. 9 de Julio 1750",
+  "area" : 180000.0,
+  "state" : "AVAILABLE",
+  "floorsQuantity" : 3,
+  "rooms" : 5,
+  "bedRooms" : 2,
+  "bathRooms" : 3,
+  "park" : true,
+  "salesPrice" : 28.0,
+  "rentalPrice" : 700.0
+}, {
+  "propertyType" : "house",
+  "id" : 7,
+  "owner" : {
+    "id" : 1,
+    "name" : "Walter",
+    "surname" : "White",
+    "dni" : "12345678",
+    "contactNumber" : "5051234567",
+    "email" : "walter.white@breakingbad.com",
+    "adress" : "Albuquerque, NM"
+  },
+  "adress" : "Calle de los Árboles 789",
+  "area" : 140000.0,
+  "state" : "AVAILABLE",
+  "floorsQuantity" : 2,
+  "rooms" : 4,
+  "bedRooms" : 2,
+  "bathRooms" : 2,
+  "park" : true,
+  "salesPrice" : 25.0,
+  "rentalPrice" : 650.0
+}, {
+  "propertyType" : "apartment",
+  "id" : 8,
+  "owner" : {
+    "id" : 1,
+    "name" : "Walter",
+    "surname" : "White",
+    "dni" : "12345678",
+    "contactNumber" : "5051234567",
+    "email" : "walter.white@breakingbad.com",
+    "adress" : "Albuquerque, NM"
+  },
+  "adress" : "Av. Libertador 1000",
+  "area" : 150000.0,
+  "state" : "AVAILABLE",
+  "rooms" : 3,
+  "bathRooms" : 2,
+  "bedRooms" : 2,
+  "furnished" : true,
+  "orientation" : "FRONT",
+  "maintenanceFees" : 30.0,
+  "salesPrice" : 70.0,
+  "rentalPrice" : 700.0
+}, {
+  "propertyType" : "apartment",
+  "id" : 9,
+  "owner" : {
+    "id" : 2,
+    "name" : "Homer",
+    "surname" : "Simpson",
+    "dni" : "23456789",
+    "contactNumber" : "5551234567",
+    "email" : "homer.simpson@simpsons.com",
+    "adress" : "742 Evergreen Terrace"
+  },
+  "adress" : "Calle Florida 700",
+  "area" : 200000.0,
+  "state" : "AVAILABLE",
+  "rooms" : 4,
+  "bathRooms" : 3,
+  "bedRooms" : 3,
+  "furnished" : false,
+  "orientation" : "BACK",
+  "maintenanceFees" : 40.0,
+  "salesPrice" : 90.0,
+  "rentalPrice" : 650.0
 }, {
   "propertyType" : "apartment",
   "id" : 10,
   "owner" : {
     "id" : 3,
-    "name" : "Jon Snow",
+    "name" : "Jon",
+    "surname" : "Snow",
+    "dni" : "34567890",
     "contactNumber" : "5559876543",
     "email" : "jon.snow@got.com",
     "adress" : "Winterfell"
@@ -57,14 +219,106 @@
   "furnished" : true,
   "orientation" : "BACK",
   "maintenanceFees" : 25.0,
-  "rentalPrice" : 350.0,
-  "salesPrice" : 55.0
+  "salesPrice" : 55.0,
+  "rentalPrice" : 350.0
+}, {
+  "propertyType" : "apartment",
+  "id" : 11,
+  "owner" : {
+    "id" : 4,
+    "name" : "Daenerys",
+    "surname" : "Targaryen",
+    "dni" : "45678901",
+    "contactNumber" : "5557654321",
+    "email" : "daenerys.targaryen@got.com",
+    "adress" : "Dragonstone"
+  },
+  "adress" : "Calle Viamonte 500",
+  "area" : 180000.0,
+  "state" : "AVAILABLE",
+  "rooms" : 3,
+  "bathRooms" : 2,
+  "bedRooms" : 2,
+  "furnished" : true,
+  "orientation" : "FRONT",
+  "maintenanceFees" : 35.0,
+  "salesPrice" : 80.0,
+  "rentalPrice" : 900.0
+}, {
+  "propertyType" : "apartment",
+  "id" : 12,
+  "owner" : {
+    "id" : 5,
+    "name" : "Rick",
+    "surname" : "Sanchez",
+    "dni" : "56789012",
+    "contactNumber" : "5552345678",
+    "email" : "rick.sanchez@rickandmorty.com",
+    "adress" : "The Citadel"
+  },
+  "adress" : "Calle 9 de Julio 1200",
+  "area" : 170000.0,
+  "state" : "AVAILABLE",
+  "rooms" : 3,
+  "bathRooms" : 2,
+  "bedRooms" : 2,
+  "furnished" : false,
+  "orientation" : "FRONT",
+  "maintenanceFees" : 32.0,
+  "salesPrice" : 75.0,
+  "rentalPrice" : 720.0
+}, {
+  "propertyType" : "apartment",
+  "id" : 13,
+  "owner" : {
+    "id" : 6,
+    "name" : "Jessica",
+    "surname" : "Day",
+    "dni" : "67890123",
+    "contactNumber" : "5558765432",
+    "email" : "jessica.day@newgirl.com",
+    "adress" : "Los Angeles, CA"
+  },
+  "adress" : "Av. 9 de Julio 800",
+  "area" : 150000.0,
+  "state" : "AVAILABLE",
+  "rooms" : 2,
+  "bathRooms" : 2,
+  "bedRooms" : 1,
+  "furnished" : true,
+  "orientation" : "FRONT",
+  "maintenanceFees" : 27.0,
+  "salesPrice" : 65.0,
+  "rentalPrice" : 560.0
+}, {
+  "propertyType" : "lot",
+  "id" : 14,
+  "owner" : {
+    "id" : 7,
+    "name" : "Sherlock",
+    "surname" : "Holmes",
+    "dni" : "78901234",
+    "contactNumber" : "5551122334",
+    "email" : "sherlock.holmes@sherlockbbc.com",
+    "adress" : "Baker Street 221B"
+  },
+  "adress" : "Ruta 8 Km 32",
+  "area" : 50000.0,
+  "state" : "AVAILABLE",
+  "electricity" : true,
+  "water" : true,
+  "sewer" : true,
+  "asphalt" : true,
+  "gas" : true,
+  "salesPrice" : 1000.0
 }, {
   "propertyType" : "lot",
   "id" : 15,
   "owner" : {
     "id" : 8,
-    "name" : "Eleven",
+    "name" : "Alfredo",
+    "surname" : "Casero",
+    "dni" : "89012345",
     "contactNumber" : "5553344556",
     "email" : "eleven@strangerthings.com",
     "adress" : "Hawkins, Indiana"
@@ -79,29 +333,137 @@
   "gas" : true,
   "salesPrice" : 1500.0
 }, {
-  "propertyType" : "warehouse",
-  "id" : 27,
+  "propertyType" : "lot",
+  "id" : 16,
   "owner" : {
-    "id" : 3,
-    "name" : "Jon Snow",
-    "contactNumber" : "5559876543",
-    "email" : "jon.snow@got.com",
-    "adress" : "Winterfell"
+    "id" : 9,
+    "name" : "Michael",
+    "surname" : "Scott",
+    "dni" : "90123456",
+    "contactNumber" : "5557788990",
+    "email" : "michael.scott@dundermifflin.com",
+    "adress" : "Scranton, PA"
   },
-  "adress" : "Calle Lavalle 1200",
-  "area" : 1000.0,
+  "adress" : "Av. Rivadavia 3000",
+  "area" : 100000.0,
   "state" : "AVAILABLE",
-  "typeOfUse" : "STORAGE",
+  "electricity" : true,
+  "water" : false,
+  "sewer" : true,
+  "asphalt" : false,
+  "gas" : true,
+  "salesPrice" : 2000.0
+}, {
+  "propertyType" : "lot",
+  "id" : 17,
+  "owner" : {
+    "id" : 10,
+    "name" : "Phoebe",
+    "surname" : "Buffay",
+    "dni" : "01234567",
+    "contactNumber" : "5556667778",
+    "email" : "phoebe.buffay@friends.com",
+    "adress" : "New York, NY"
+  },
+  "adress" : "Calle Belgrano 750",
+  "area" : 60000.0,
+  "state" : "AVAILABLE",
+  "electricity" : false,
+  "water" : true,
+  "sewer" : true,
+  "asphalt" : true,
+  "gas" : false,
+  "salesPrice" : 1200.0
+}, {
+  "propertyType" : "lot",
+  "id" : 18,
+  "owner" : {
+    "id" : 11,
+    "name" : "The",
+    "surname" : "Mandalorian",
+    "dni" : "12345678",
+    "contactNumber" : "5554433221",
+    "email" : "mandalorian@starwars.com",
+    "adress" : "Tatooine"
+  },
+  "adress" : "Calle de los Árboles 210",
+  "area" : 90000.0,
+  "state" : "AVAILABLE",
+  "electricity" : true,
+  "water" : true,
+  "sewer" : true,
+  "asphalt" : false,
+  "gas" : true,
+  "salesPrice" : 1800.0
+}, {
+  "propertyType" : "lot",
+  "id" : 19,
+  "owner" : {
+    "id" : 12,
+    "name" : "Jim",
+    "surname" : "Halpert",
+    "dni" : "23456789",
+    "contactNumber" : "5559871234",
+    "email" : "jim.halpert@dundermifflin.com",
+    "adress" : "Scranton, PA"
+  },
+  "adress" : "Av. 9 de Julio 1800",
+  "area" : 125000.0,
+  "state" : "AVAILABLE",
+  "electricity" : true,
+  "water" : true,
+  "sewer" : true,
+  "asphalt" : true,
+  "gas" : true,
+  "salesPrice" : 2500.0
+}, {
+  "propertyType" : "store",
+  "id" : 20,
+  "owner" : {
+    "id" : 1,
+    "name" : "Walter",
+    "surname" : "White",
+    "dni" : "12345678",
+    "contactNumber" : "5051234567",
+    "email" : "walter.white@breakingbad.com",
+    "adress" : "Albuquerque, NM"
+  },
+  "adress" : "Calle Florida 500",
+  "area" : 250000.0,
+  "state" : "AVAILABLE",
   "bathRooms" : 2,
+  "orientation" : "FRONT",
   "floorsQuantity" : 1,
-  "rentalPrice" : 2000.0,
-  "salesPrice" : 200000.0
+  "salesPrice" : 120.0,
+  "rentalPrice" : 1050.0
+}, {
+  "propertyType" : "store",
+  "id" : 21,
+  "owner" : {
+    "id" : 2,
+    "name" : "Homer",
+    "surname" : "Simpson",
+    "dni" : "23456789",
+    "contactNumber" : "5551234567",
+    "email" : "homer.simpson@simpsons.com",
+    "adress" : "742 Evergreen Terrace"
+  },
+  "adress" : "Av. Corrientes 1500",
+  "area" : 300000.0,
+  "state" : "AVAILABLE",
+  "bathRooms" : 3,
+  "orientation" : "FRONT",
+  "floorsQuantity" : 2,
+  "salesPrice" : 150.0,
+  "rentalPrice" : 1250.0
 }, {
   "propertyType" : "store",
   "id" : 22,
   "owner" : {
     "id" : 3,
-    "name" : "Jon Snow",
+    "name" : "Jon",
+    "surname" : "Snow",
+    "dni" : "34567890",
     "contactNumber" : "5559876543",
     "email" : "jon.snow@got.com",
     "adress" : "Winterfell"
@@ -112,6 +474,146 @@
   "bathRooms" : 1,
   "orientation" : "FRONT",
   "floorsQuantity" : 1,
-  "rentalPrice" : 1300.0,
-  "salesPrice" : 100.0
+  "salesPrice" : 100.0,
+  "rentalPrice" : 1300.0
+}, {
+  "propertyType" : "store",
+  "id" : 23,
+  "owner" : {
+    "id" : 4,
+    "name" : "Daenerys",
+    "surname" : "Targaryen",
+    "dni" : "45678901",
+    "contactNumber" : "5557654321",
+    "email" : "daenerys.targaryen@got.com",
+    "adress" : "Dragonstone"
+  },
+  "adress" : "Av. Santa Fe 1800",
+  "area" : 400000.0,
+  "state" : "AVAILABLE",
+  "bathRooms" : 4,
+  "orientation" : "BACK",
+  "floorsQuantity" : 2,
+  "salesPrice" : 180.0,
+  "rentalPrice" : 980.0
+}, {
+  "propertyType" : "store",
+  "id" : 24,
+  "owner" : {
+    "id" : 5,
+    "name" : "Rick",
+    "surname" : "Sanchez",
+    "dni" : "56789012",
+    "contactNumber" : "5552345678",
+    "email" : "rick.sanchez@rickandmorty.com",
+    "adress" : "The Citadel"
+  },
+  "adress" : "Calle 9 de Julio 1200",
+  "area" : 220000.0,
+  "state" : "AVAILABLE",
+  "bathRooms" : 2,
+  "orientation" : "BACK",
+  "floorsQuantity" : 1,
+  "salesPrice" : 110.0,
+  "rentalPrice" : 1020.0
+}, {
+  "propertyType" : "warehouse",
+  "id" : 25,
+  "owner" : {
+    "id" : 1,
+    "name" : "Walter",
+    "surname" : "White",
+    "dni" : "12345678",
+    "contactNumber" : "5051234567",
+    "email" : "walter.white@breakingbad.com",
+    "adress" : "Albuquerque, NM"
+  },
+  "adress" : "Calle Independencia 800",
+  "area" : 1500.0,
+  "state" : "AVAILABLE",
+  "typeOfUse" : "COMMERCIAL",
+  "bathRooms" : 3,
+  "floorsQuantity" : 2,
+  "salesPrice" : 300000.0,
+  "rentalPrice" : 3000.0
+}, {
+  "propertyType" : "warehouse",
+  "id" : 26,
+  "owner" : {
+    "id" : 2,
+    "name" : "Homer",
+    "surname" : "Simpson",
+    "dni" : "23456789",
+    "contactNumber" : "5551234567",
+    "email" : "homer.simpson@simpsons.com",
+    "adress" : "742 Evergreen Terrace"
+  },
+  "adress" : "Av. Belgrano 1500",
+  "area" : 2500.0,
+  "state" : "AVAILABLE",
+  "typeOfUse" : "INDUSTRIAL",
+  "bathRooms" : 5,
+  "floorsQuantity" : 3,
+  "salesPrice" : 500000.0,
+  "rentalPrice" : 6000.0
+}, {
+  "propertyType" : "warehouse",
+  "id" : 27,
+  "owner" : {
+    "id" : 3,
+    "name" : "Jon",
+    "surname" : "Snow",
+    "dni" : "34567890",
+    "contactNumber" : "5559876543",
+    "email" : "jon.snow@got.com",
+    "adress" : "Winterfell"
+  },
+  "adress" : "Calle Lavalle 1200",
+  "area" : 1000.0,
+  "state" : "AVAILABLE",
+  "typeOfUse" : "STORAGE",
+  "bathRooms" : 2,
+  "floorsQuantity" : 1,
+  "salesPrice" : 200000.0,
+  "rentalPrice" : 2000.0
+}, {
+  "propertyType" : "warehouse",
+  "id" : 28,
+  "owner" : {
+    "id" : 4,
+    "name" : "Daenerys",
+    "surname" : "Targaryen",
+    "dni" : "45678901",
+    "contactNumber" : "5557654321",
+    "email" : "daenerys.targaryen@got.com",
+    "adress" : "Dragonstone"
+  },
+  "adress" : "Av. Corrientes 2000",
+  "area" : 1800.0,
+  "state" : "AVAILABLE",
+  "typeOfUse" : "COMMERCIAL",
+  "bathRooms" : 4,
+  "floorsQuantity" : 2,
+  "salesPrice" : 450000.0,
+  "rentalPrice" : 4500.0
+}, {
+  "propertyType" : "warehouse",
+  "id" : 29,
+  "owner" : {
+    "id" : 5,
+    "name" : "Rick",
+    "surname" : "Sanchez",
+    "dni" : "56789012",
+    "contactNumber" : "5552345678",
+    "email" : "rick.sanchez@rickandmorty.com",
+    "adress" : "The Citadel"
+  },
+  "adress" : "Calle de los Árboles 50",
+  "area" : 3000.0,
+  "state" : "AVAILABLE",
+  "typeOfUse" : "INDUSTRIAL",
+  "bathRooms" : 6,
+  "floorsQuantity" : 4,
+  "salesPrice" : 600000.0,
+  "rentalPrice" : 7000.0
 } ]

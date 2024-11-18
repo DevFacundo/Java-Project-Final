@@ -2,7 +2,9 @@
   "id" : 1,
   "tenant" : {
     "id" : 25,
-    "name" : "Susana Giménez",
+    "name" : "Susana",
+    "surname" : "Giménez",
+    "dni" : "56789012",
     "contactNumber" : "01112345678",
     "email" : "susana.gimenez@telefe.com.ar",
     "adress" : "Av. Libertador 5000, Buenos Aires"
@@ -12,7 +14,9 @@
     "id" : 1,
     "owner" : {
       "id" : 1,
-      "name" : "Walter White",
+      "name" : "Walter",
+      "surname" : "White",
+      "dni" : "12345678",
       "contactNumber" : "5051234567",
       "email" : "walter.white@breakingbad.com",
       "adress" : "Albuquerque, NM"
@@ -30,7 +34,9 @@
   },
   "owner" : {
     "id" : 1,
-    "name" : "Walter White",
+    "name" : "Walter",
+    "surname" : "White",
+    "dni" : "12345678",
     "contactNumber" : "5051234567",
     "email" : "walter.white@breakingbad.com",
     "adress" : "Albuquerque, NM"

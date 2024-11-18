@@ -2,10 +2,10 @@ package model.clients;
 
 public class Tenant extends Client{
     public Tenant(){
-
     }
-    public Tenant(String name, String contactNumber, String email, String adress) {
-        super(name, contactNumber, email, adress);
+
+    public Tenant(String name, String surname, String dni, String contactNumber, String email, String adress) {
+        super(name, surname, dni, contactNumber, email, adress);
     }
 
     @Override

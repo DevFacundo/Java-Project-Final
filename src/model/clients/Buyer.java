@@ -8,8 +8,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 public class Buyer extends Client{
     public Buyer() {}
 
-    public Buyer(String name, String contactNumber, String email, String adress) {
-        super(name, contactNumber, email, adress);
+    public Buyer(String name, String surname, String dni, String contactNumber, String email, String adress) {
+        super(name, surname, dni, contactNumber, email, adress);
     }
 
     @Override

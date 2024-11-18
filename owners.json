@@ -1,5 +1,6 @@
 [ {
   "id" : 1,
+<<<<<<< HEAD
   "name" : "Facundo",
   "surname" : "Aguilera",
   "dni" : "37867025",
@@ -16,4 +17,13 @@
   "email" : "yagoesosa@gmal.com",
   "adress" : "gogogo 123",
   "clientState" : "SOLD"
+=======
+  "name" : "faculito",
+  "surname" : "agui",
+  "dni" : "12345678",
+  "contactNumber" : "123456",
+  "email" : "facu@lito",
+  "adress" : "chau 5432",
+  "clientState" : "AVAILABLE"
+>>>>>>> d7ba2119c65bdc474eff631e005100a861f71766
 } ]

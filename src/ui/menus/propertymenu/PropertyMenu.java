@@ -15,7 +15,10 @@ public class PropertyMenu {
 
     Scanner scanner = new Scanner(System.in);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d7ba2119c65bdc474eff631e005100a861f71766
     public void menu() {
         int option = -1;
         do {

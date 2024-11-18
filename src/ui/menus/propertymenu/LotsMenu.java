@@ -8,21 +8,25 @@ import java.util.Scanner;
 import static model.utils.Utils.getValidatedOption;
 
 public class LotsMenu {
+    LotsService lotsService = new LotsService();
     Scanner scanner = new Scanner(System.in);
 
-    /// Método del menú
     public void menu() {
         int option = -1;
         do {
-            printMenu(); /// Imprime un menú modularizado
+            printMenu();
 
             try {
-                option = getValidatedOption(); /// Excepción que valida que sea un número
+                option = getValidatedOption();
 
                 switch (option) {
                     case 1:
+<<<<<<< HEAD
                         LotsService ls = new LotsService();
                         ls.addLot();
+=======
+                        lotsService.addLot();
+>>>>>>> d7ba2119c65bdc474eff631e005100a861f71766
                         break;
                     case 2:
                         System.out.println("Modifying a lot...");

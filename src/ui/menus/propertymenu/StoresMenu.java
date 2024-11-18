@@ -8,20 +8,25 @@ import java.util.Scanner;
 import static model.utils.Utils.getValidatedOption;
 
 public class StoresMenu {
+    StoresService storesService = new StoresService();
     Scanner scanner = new Scanner(System.in);
 
     public void menu() {
         int option = -1;
         do {
-            printMenu(); /// Imprime un menú modularizado
+            printMenu();
 
             try {
-                option = getValidatedOption(); /// Excepción que valida que sea un número
+                option = getValidatedOption();
 
                 switch (option) {
                     case 1:
+<<<<<<< HEAD
                         StoresService ss = new StoresService();
                         ss.addStore();
+=======
+                        storesService.addStore();
+>>>>>>> d7ba2119c65bdc474eff631e005100a861f71766
                         break;
                     case 2:
                         System.out.println("Modifying a store...");

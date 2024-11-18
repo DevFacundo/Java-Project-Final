@@ -52,4 +52,39 @@ public class Utils {
         }
     }
 
+    public static void validateName(String name) throws InvalidInputException {
+        if (name.isEmpty()) {
+            throw new InvalidInputException("Name cannot be empty.");
+        }
+    }
+
+    public static void validateSurname(String surname) throws InvalidInputException {
+        if (surname.isEmpty()) {
+            throw new InvalidInputException("Surname cannot be empty.");
+        }
+    }
+
+    public static void validateDNI(String dni) throws InvalidInputException {
+        if (dni.isEmpty() || !dni.matches("\\d{7,8}")) {
+            throw new InvalidInputException("DNI must be between 7 and 8 digits.");
+        }
+    }
+
+    public static void validateContactNumber(String contactNumber) throws InvalidInputException {
+        if (!contactNumber.matches("\\d+")) {
+            throw new InvalidInputException("Contact number must contain only digits.");
+        }
+    }
+
+    public static void validateEmail(String email) throws InvalidInputException {
+        if (!email.contains("@")) {
+            throw new InvalidInputException("Invalid email format.");
+        }
+    }
+
+    public static void validateAddress(String address) throws InvalidInputException {
+        if (address.isEmpty()) {
+            throw new InvalidInputException("Address cannot be empty.");
+        }
+    }
 }

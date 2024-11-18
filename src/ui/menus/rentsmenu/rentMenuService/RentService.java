@@ -7,8 +7,11 @@ import model.exceptions.DuplicateElementException;
 import model.exceptions.InvalidInputException;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
+import model.properties.Apartment;
+import model.properties.Orientation;
 import model.properties.Property;
 import model.rents.Rent;
+import model.utils.Utils;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -75,7 +78,6 @@ public class RentService {
         Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
 
         Property property = findPropertyById(propertyId);
-
 
         if (property == null || property.getState() != State.AVAILABLE) {
             throw new InvalidInputException("Property is not available for rent.");
@@ -155,4 +157,123 @@ public class RentService {
             throw new InvalidInputException("Las fechas de inicio y fin no pueden ser iguales");
         }
     }
+
+    public void modifyRent() {
+        Boolean continueModifying = true;
+        do {
+            try {
+                rents = new GenericClass<>(JsonUtils.loadList("rents.json", Rent.class));
+                System.out.print("Enter the ID of the rent to modify: ");
+                Integer rentId = Integer.parseInt(scanner.nextLine().trim());
+
+                Rent rentToModify = findRentById(rentId);
+
+                if (rentToModify == null) {
+                    throw new InvalidInputException("Rent with ID " + rentId + " not found.");
+                }
+
+                System.out.println(rentToModify);
+
+                modifyRentDetails(rentToModify);
+
+                JsonUtils.saveList(rents.returnList(), "rents.json", Rent.class);
+
+                System.out.println("Rent modified successfully: " + rentToModify);
+
+            } catch (InvalidInputException | NumberFormatException e) {
+                System.out.println("Error modifying rent: " + e.getMessage());
+            }
+
+            continueModifying = askToContinue();
+        } while (continueModifying);
+    }
+
+    public Rent findRentById(Integer rentId) {
+        for (Rent rent : rents.returnList()) {
+            if (rent instanceof Rent) {
+                Rent rent1 = (Rent) rent;
+                if (rent1.getId().equals(rentId)) {
+                    return rent1;
+                }
+            }
+        }
+        return null;
+    }
+
+    public void modifyRentDetails(Rent rent) throws InvalidInputException {
+        Boolean continueModifying = true;
+        Integer option;
+
+        do {
+            System.out.println("\n----------------------------------------------------");
+            System.out.println("     Modify Rent Details");
+            System.out.println("----------------------------------------------------");
+            System.out.println("1. Tenants");
+            System.out.println("2. Property");
+            System.out.println("3. Start Rental Date ");
+            System.out.println("4. End Rental Date");
+            System.out.println("0. Go back");
+            System.out.println("----------------------------------------------------");
+            System.out.println("Please select the detail you would like to modify: ");
+
+            option = Utils.getValidatedOption();
+
+            switch (option) {
+                case 1:
+                    System.out.print("Actual Tenant Dni: (" +rent.getTenant().getDni() + ")\nNew Tenant Dni: ");
+                    String tenantDni = scanner.nextLine().trim();
+                    rent.setTenant(validateTenant(tenantDni));
+                    break;
+
+                case 2:
+                    System.out.print("Actual Property ID: (" +rent.getProperty().getId() + ")\nNew Property ID: ");
+                    Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
+                    Property property = (findPropertyById(propertyId));
+                    if (property == null || property.getState() != State.AVAILABLE) {
+                        throw new InvalidInputException("Property is not available for rent.");
+                    }
+                    else {rent.setProperty(property);}
+                    break;
+
+                case 3:
+                    System.out.print("Enter the rental start date (YYYY-MM-DD): ");
+                    String startDate = scanner.nextLine();
+                    LocalDate rentalStartDate = LocalDate.parse(startDate);
+                    dateValidation(rentalStartDate, rent.getEndRent());
+                    break;
+
+                case 4:
+                    System.out.print("Enter the rental end date (YYYY-MM-DD): ");
+                    String endDate = scanner.nextLine();
+                    LocalDate rentalEndDate = LocalDate.parse(endDate);
+                    dateValidation(rent.getStartRent(), rentalEndDate);
+                    break;
+
+                case 0:
+                    System.out.println("Returning to the previous menu...");
+                    break;
+
+                default:
+                    System.out.println("Invalid option. Please choose a valid number.");
+                    break;
+            }
+
+            if (option != 0) {
+                System.out.print("Do you want to modify another detail? (Y/N): ");
+                String continueResponse = scanner.nextLine().trim();
+                continueModifying = continueResponse.equalsIgnoreCase("Y");
+            } else {
+                continueModifying = false;
+            }
+
+        } while (continueModifying);
+    }
+
+    public void validateArea(Double area) throws InvalidInputException {
+        if (area <= 0) {
+            throw new InvalidInputException("Area must be greater than zero.");
+        }
+    }
+
+
 }

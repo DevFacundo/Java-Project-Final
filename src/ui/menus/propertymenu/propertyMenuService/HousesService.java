@@ -82,18 +82,17 @@ public class HousesService {
         Integer bathroomsQuantity = Integer.parseInt(scanner.nextLine().trim());
 
         Boolean park = null;
-        do{
-        System.out.println("The house have park? (Y/N)");
-        String flag = scanner.nextLine().trim();
+        do {
+            System.out.println("The house have park? (Y/N)");
+            String flag = scanner.nextLine().trim();
 
-        if (flag.equalsIgnoreCase("Y")) {
-            park = true;
+            if (flag.equalsIgnoreCase("Y")) {
+                park = true;
+            } else if (flag.equalsIgnoreCase("N")) {
+                park = false;
+            }
         }
-        else if (flag.equalsIgnoreCase("N")) {
-            park = false;
-        }
-        }
-        while(park==null);
+        while (park == null);
 
         validateHouseInputs(address, area, sp, rp, floorsQuantity, roomsQuantity, bedroomsQuantity, bathroomsQuantity);
 
@@ -339,6 +338,4 @@ public class HousesService {
             throw new InvalidInputException("Quantity must be greater than zero.");
         }
     }
-
-
 }

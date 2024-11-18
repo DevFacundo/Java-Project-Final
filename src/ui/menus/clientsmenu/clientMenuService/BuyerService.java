@@ -14,11 +14,11 @@ import static model.utils.Utils.*;
 public class BuyerService {
 
     Scanner scanner;
-    GenericClass <Buyer> buyers;
+    GenericClass<Buyer> buyers;
 
     public BuyerService() {
         scanner = new Scanner(System.in);
-        buyers = new GenericClass<>(JsonUtils.loadList("buyers.json",Buyer.class));
+        buyers = new GenericClass<>(JsonUtils.loadList("buyers.json", Buyer.class));
     }
 
     public static Buyer createBuyer(Scanner scanner) throws InvalidInputException {
@@ -180,6 +180,4 @@ public class BuyerService {
             }
         }
     }
-
-
 }

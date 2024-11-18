@@ -19,8 +19,6 @@ public class MainMenu {
     Login login = new Login();
     Scanner scanner = new Scanner(System.in);
 
-
-    /// Metodo del menu
     public void menu() {
         if (login.authenticate()) { /// Si el login esta correcto...
             int option = -1;

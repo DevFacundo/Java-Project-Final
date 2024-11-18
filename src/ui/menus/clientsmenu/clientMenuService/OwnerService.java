@@ -61,7 +61,7 @@ public class OwnerService {
                     newOwner.setId(lastId);
                 }
                 owners.add(newOwner);
-                JsonUtils.saveList(owners,"owners.json", Owner.class);
+                JsonUtils.saveList(owners, "owners.json", Owner.class);
             } catch (InvalidInputException e) {
                 System.out.println("Error adding owner: " + e.getMessage());
             }
@@ -180,7 +180,6 @@ public class OwnerService {
             }
         }
     }
-
 
 
 }

@@ -8,8 +8,13 @@ import java.util.Scanner;
 import static model.utils.Utils.getValidatedOption;
 
 public class LotsMenu {
-    LotsService lotsService = new LotsService();
-    Scanner scanner = new Scanner(System.in);
+    LotsService lotsService;
+    Scanner scanner;
+
+    public LotsMenu() {
+       lotsService = new LotsService();
+       scanner = new Scanner(System.in);
+    }
 
     public void menu() {
         int option = -1;
@@ -21,10 +26,6 @@ public class LotsMenu {
 
                 switch (option) {
                     case 1:
-
-                        LotsService ls = new LotsService();
-                        ls.addLot();
-
                         lotsService.addLot();
 
                         break;

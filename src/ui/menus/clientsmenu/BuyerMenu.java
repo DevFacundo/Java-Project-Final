@@ -14,8 +14,13 @@ import java.util.Scanner;
 import static model.utils.Utils.getValidatedOption;
 
 public class BuyerMenu {
-    Scanner scanner = new Scanner(System.in);
-    BuyerService buyerService = new BuyerService();
+    Scanner scanner;
+    BuyerService buyerService;
+
+    public BuyerMenu() {
+        scanner = new Scanner(System.in);
+        buyerService = new BuyerService();
+    }
 
     public void menu() {
         Integer option = -1;

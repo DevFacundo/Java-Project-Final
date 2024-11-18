@@ -12,8 +12,13 @@ import java.util.Scanner;
 import static model.utils.Utils.getValidatedOption;
 
 public class TenantMenu {
-    TenantService tenantService = new TenantService();
-    Scanner scanner = new Scanner(System.in);
+    TenantService tenantService;
+    Scanner scanner;
+
+    public TenantMenu() {
+        tenantService = new TenantService();
+        scanner = new Scanner(System.in);
+    }
 
     public void menu() {
         Integer option = -1;

@@ -12,19 +12,24 @@ import static model.utils.Utils.getValidatedOption;
 
 public class SalesMenu {
 
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner;
+    SaleService sl;
+
+    public SalesMenu() {
+        scanner = new Scanner(System.in);
+        sl = new SaleService();
+    }
 
     public void menu() {
         int option = -1;
         do {
-            printMenu(); /// Imprime un menú modularizado
+            printMenu();
 
             try {
-                option = getValidatedOption(); /// Excepción que valida que sea un número
+                option = getValidatedOption();
 
                 switch (option) {
                     case 1:
-                        SaleService sl = new SaleService();
                         sl.addSale();
                         break;
                     case 2:

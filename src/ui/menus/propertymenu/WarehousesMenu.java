@@ -8,8 +8,13 @@ import java.util.Scanner;
 import static model.utils.Utils.getValidatedOption;
 
 public class WarehousesMenu {
-    WarehousesServices wservice = new WarehousesServices();
-    Scanner scanner = new Scanner(System.in);
+    WarehousesServices wservice;
+    Scanner scanner ;
+
+    public WarehousesMenu() {
+        wservice = new WarehousesServices();
+        scanner = new Scanner(System.in);
+    }
 
     public void menu() {
         int option = -1;
@@ -21,12 +26,7 @@ public class WarehousesMenu {
 
                 switch (option) {
                     case 1:
-
-                        WarehousesServices ws = new WarehousesServices();
-                        ws.addWarehouse();
-
                         wservice.addWarehouse();
-
                         break;
                     case 2:
                         System.out.println("Modifying a warehouse...");

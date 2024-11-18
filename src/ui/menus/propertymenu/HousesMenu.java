@@ -11,8 +11,14 @@ import java.util.Scanner;
 import static model.utils.Utils.getValidatedOption;
 
 public class HousesMenu {
-    HousesService housesService = new HousesService();
-    Scanner scanner = new Scanner(System.in);
+    HousesService housesService ;
+    Scanner scanner = new
+
+    public HousesMenu() {
+        scanner = new  Scanner(System.in);
+        housesService = new HousesService();
+
+    }
 
     public void menu() {
         int option = -1;
@@ -24,12 +30,7 @@ public class HousesMenu {
 
                 switch (option) {
                     case 1:
-
-                        HousesService  hs= new HousesService();
-                        hs.addHouse();
-
                         housesService.addHouse();
-
                         break;
                     case 2:
                         System.out.println("Modifying a house...");

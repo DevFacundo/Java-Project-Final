@@ -9,20 +9,25 @@ import static model.utils.Utils.getValidatedOption;
 
 public class RentsMenu {
 
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner;
+    RentService rs;
 
-    /// Metodo del menu
+    public RentsMenu() {
+        scanner = new Scanner(System.in);
+        rs = new RentService();
+    }
+
+
     public void menu() {
         int option = -1;
         do {
-            printMenu(); /// Imprime un menu modularizado
+            printMenu();
 
             try {
-                option = getValidatedOption(); /// Excepcion que valida que sea un numero
+                option = getValidatedOption();
 
                 switch (option) {
                     case 1:
-                        RentService rs = new RentService();
                         rs.addRent();
                         break;
                     case 2:

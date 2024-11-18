@@ -12,8 +12,13 @@ import java.util.Scanner;
 import static model.utils.Utils.getValidatedOption;
 
 public class OwnerMenu {
-    OwnerService ownerService = new OwnerService();
-    Scanner scanner = new Scanner(System.in);
+    OwnerService ownerService ;
+    Scanner scanner;
+
+    public OwnerMenu() {
+        ownerService = new OwnerService();
+        scanner = new Scanner(System.in);
+    }
 
     public void menu() {
         Integer option = -1;

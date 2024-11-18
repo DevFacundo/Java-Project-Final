@@ -28,7 +28,7 @@ public class OwnerMenu {
                         ownerService.addOwner();
                         break;
                     case 2:
-                        System.out.println("Opcion 2");
+                        ownerService.modifyOwner();
                         break;
                     case 3:
                         System.out.println("Opcion 3");

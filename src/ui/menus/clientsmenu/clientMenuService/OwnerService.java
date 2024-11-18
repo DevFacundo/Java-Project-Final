@@ -2,16 +2,25 @@ package ui.menus.clientsmenu.clientMenuService;
 
 import model.clients.Owner;
 import model.exceptions.InvalidInputException;
+import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
+import model.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static model.utils.Utils.validateInputs;
+import static model.utils.Utils.*;
 
 public class OwnerService {
-    Scanner scanner = new Scanner(System.in);
+
+    Scanner scanner;
+    GenericClass<Owner> owners;
+
+    public OwnerService() {
+        scanner = new Scanner(System.in);
+        owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
+    }
 
     public static Owner createOwner(Scanner scanner) throws InvalidInputException {
         System.out.print("Enter name: ");
@@ -66,5 +75,112 @@ public class OwnerService {
         String response = scanner.nextLine().trim().toLowerCase();
         return response.equals("yes") || response.equals("y");
     }
+
+    public void modifyOwner() {
+        try {
+
+            if (owners.isEmpty()) {
+                System.out.println("No owners available to modify.");
+                return;
+            }
+
+            System.out.print("Enter the DNI of the owner you want to modify: ");
+            String dni = scanner.nextLine().trim();
+
+            Owner ownerToModify = null;
+            for (Owner owner : owners.returnList()) {
+                if (owner.getDni().equals(dni)) {
+                    ownerToModify = owner;
+                    break;
+                }
+            }
+
+            if (ownerToModify == null) {
+                throw new InvalidInputException("Owner with DNI " + dni + " not found.");
+            }
+
+            System.out.println("Selected Owner: " + ownerToModify);
+
+            modifyOwnerAttributes(ownerToModify);
+
+            JsonUtils.saveList(owners.returnList(), "owners.json", Owner.class);
+            System.out.println("Owner modified successfully!");
+        } catch (InvalidInputException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    private void modifyOwnerAttributes(Owner owner) throws InvalidInputException {
+        boolean continueModifying = true;
+        while (continueModifying) {
+            System.out.println("\n----------------------------------------------------");
+            System.out.println("     Modify Tenant Attributes");
+            System.out.println("----------------------------------------------------");
+            System.out.println("1. Name");
+            System.out.println("2. Surname");
+            System.out.println("3. Contact Number");
+            System.out.println("4. Email");
+            System.out.println("5. Address");
+            System.out.println("0. Go back");
+            System.out.println("----------------------------------------------------");
+            System.out.println("Please select the attribute you would like to modify:");
+
+            Integer choice;
+            try {
+                choice = Utils.getValidatedOption();
+            } catch (InvalidInputException e) {
+                System.out.println(e.getMessage());
+                continue;
+            }
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter new name: ");
+                    String name = scanner.nextLine().trim();
+                    validateName(name);
+                    owner.setName(name);
+                    break;
+
+                case 2:
+                    System.out.print("Enter new surname: ");
+                    String surname = scanner.nextLine().trim();
+                    validateSurname(surname);
+                    owner.setSurname(surname);
+                    break;
+
+                case 3:
+                    System.out.print("Enter new contact number: ");
+                    String contactNumber = scanner.nextLine().trim();
+                    validateContactNumber(contactNumber);
+                    owner.setContactNumber(contactNumber);
+                    break;
+
+                case 4:
+                    System.out.print("Enter new email: ");
+                    String email = scanner.nextLine().trim();
+                    validateEmail(email);
+                    owner.setEmail(email);
+                    break;
+
+                case 5:
+                    System.out.print("Enter new address: ");
+                    String address = scanner.nextLine().trim();
+                    validateAddress(address);
+                    owner.setAdress(address);
+                    break;
+
+                case 0:
+                    continueModifying = false;
+                    System.out.println("Modification process finished.");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+                    break;
+            }
+        }
+    }
+
+
 
 }

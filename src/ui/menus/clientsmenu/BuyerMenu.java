@@ -30,7 +30,7 @@ public class BuyerMenu {
                         buyerService.addBuyer();
                         break;
                     case 2:
-                        System.out.println("Opcion 2");
+                        buyerService.modifyBuyer();
                         break;
                     case 3:
                         System.out.println("Opcion 3");

@@ -28,7 +28,7 @@ public class TenantMenu {
                         tenantService.addTenant();
                         break;
                     case 2:
-                        System.out.println("Opcion 2");
+                        tenantService.modifyTenant();
                         break;
                     case 3:
                         System.out.println("Opcion 3");

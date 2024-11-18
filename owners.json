@@ -1,97 +1,10 @@
 [ {
   "id" : 1,
-  "name" : "Walter",
-  "surname" : "White",
+  "name" : "faculito",
+  "surname" : "agui",
   "dni" : "12345678",
-  "contactNumber" : "5051234567",
-  "email" : "walter.white@breakingbad.com",
-  "adress" : "Albuquerque, NM"
-}, {
-  "id" : 2,
-  "name" : "Homer",
-  "surname" : "Simpson",
-  "dni" : "23456789",
-  "contactNumber" : "5551234567",
-  "email" : "homer.simpson@simpsons.com",
-  "adress" : "742 Evergreen Terrace"
-}, {
-  "id" : 3,
-  "name" : "Jon",
-  "surname" : "Snow",
-  "dni" : "34567890",
-  "contactNumber" : "5559876543",
-  "email" : "jon.snow@got.com",
-  "adress" : "Winterfell"
-}, {
-  "id" : 4,
-  "name" : "Daenerys",
-  "surname" : "Targaryen",
-  "dni" : "45678901",
-  "contactNumber" : "5557654321",
-  "email" : "daenerys.targaryen@got.com",
-  "adress" : "Dragonstone"
-}, {
-  "id" : 5,
-  "name" : "Rick",
-  "surname" : "Sanchez",
-  "dni" : "56789012",
-  "contactNumber" : "5552345678",
-  "email" : "rick.sanchez@rickandmorty.com",
-  "adress" : "The Citadel"
-}, {
-  "id" : 6,
-  "name" : "Jessica",
-  "surname" : "Day",
-  "dni" : "67890123",
-  "contactNumber" : "5558765432",
-  "email" : "jessica.day@newgirl.com",
-  "adress" : "Los Angeles, CA"
-}, {
-  "id" : 7,
-  "name" : "Sherlock",
-  "surname" : "Holmes",
-  "dni" : "78901234",
-  "contactNumber" : "5551122334",
-  "email" : "sherlock.holmes@sherlockbbc.com",
-  "adress" : "Baker Street 221B"
-}, {
-  "id" : 8,
-  "name" : "Alfredo",
-  "surname" : "Casero",
-  "dni" : "89012345",
-  "contactNumber" : "5553344556",
-  "email" : "eleven@strangerthings.com",
-  "adress" : "Hawkins, Indiana"
-}, {
-  "id" : 9,
-  "name" : "Michael",
-  "surname" : "Scott",
-  "dni" : "90123456",
-  "contactNumber" : "5557788990",
-  "email" : "michael.scott@dundermifflin.com",
-  "adress" : "Scranton, PA"
-}, {
-  "id" : 10,
-  "name" : "Phoebe",
-  "surname" : "Buffay",
-  "dni" : "01234567",
-  "contactNumber" : "5556667778",
-  "email" : "phoebe.buffay@friends.com",
-  "adress" : "New York, NY"
-}, {
-  "id" : 11,
-  "name" : "The",
-  "surname" : "Mandalorian",
-  "dni" : "12345678",
-  "contactNumber" : "5554433221",
-  "email" : "mandalorian@starwars.com",
-  "adress" : "Tatooine"
-}, {
-  "id" : 12,
-  "name" : "Jim",
-  "surname" : "Halpert",
-  "dni" : "23456789",
-  "contactNumber" : "5559871234",
-  "email" : "jim.halpert@dundermifflin.com",
-  "adress" : "Scranton, PA"
+  "contactNumber" : "123456",
+  "email" : "facu@lito",
+  "adress" : "chau 5432",
+  "clientState" : "AVAILABLE"
 } ]

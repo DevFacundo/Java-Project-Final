@@ -1,7 +1,5 @@
 package model.properties;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import model.clients.Owner;
 
@@ -76,13 +74,19 @@ public class Apartment extends Property{
 
     @Override
     public String toString() {
-        return super.toString()+" Apartment{" +
-                "rooms=" + rooms +
-                ", bathRooms=" + bathRooms +
-                ", bedRooms=" + bedRooms +
-                ", furnished=" + furnished +
-                ", orientation=" + orientation +
-                ", maintenanceFees=" + maintenanceFees +
-                '}';
+        return String.format(
+                "%s\n" +
+                        "Apartment Information:\n" +
+                        "─────────────────────────────────\n" +
+                        "Rooms              : %d\n" +
+                        "Bathrooms          : %d\n" +
+                        "Bedrooms           : %d\n" +
+                        "Furnished          : %b\n" +
+                        "Orientation        : %s\n" +
+                        "Maintenance Fees   : %.2f\n" +
+                        "─────────────────────────────────",
+                super.toString(), rooms, bathRooms, bedRooms, furnished, orientation, maintenanceFees
+        );
     }
+
 }

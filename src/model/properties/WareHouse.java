@@ -1,9 +1,7 @@
 package model.properties;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import model.clients.Owner;
 
-@JsonTypeName("warehouse")
 public class WareHouse extends Property{
     private TypeOfUse typeOfUse;
     private Integer bathRooms;
@@ -46,9 +44,15 @@ public class WareHouse extends Property{
 
     @Override
     public String toString() {
-        return super.toString()+
-                "\ntypeOfUse=" + typeOfUse +
-                "\nbathRooms=" + bathRooms +
-                "\nfloorsQuantity=" + floorsQuantity;
+        return String.format(
+                "%s\n" +
+                        "Property Usage Information:\n" +
+                        "─────────────────────────────────\n" +
+                        "Type of Use        : %s\n" +
+                        "Bathrooms          : %d\n" +
+                        "Floors Quantity    : %d\n" +
+                        "─────────────────────────────────",
+                super.toString(), typeOfUse, bathRooms, floorsQuantity
+        );
     }
 }

@@ -9,13 +9,12 @@ import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.properties.Property;
 import model.rents.Rent;
-import ui.menus.interfaces.DateValidations;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-public class RentService implements DateValidations {
+public class RentService {
 
     private GenericClass<Property> properties;
     private GenericClass<Rent> rents;
@@ -26,7 +25,7 @@ public class RentService implements DateValidations {
     public RentService() {
         rents = new GenericClass<>(JsonUtils.loadList("rents.json", Rent.class));
         tenants = new GenericClass<>(JsonUtils.loadList("tenants.json", Tenant.class));
-        properties =  new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+        properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
         owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
         scanner = new Scanner(System.in);
     }
@@ -37,7 +36,7 @@ public class RentService implements DateValidations {
             try {
                 rents = new GenericClass<>(JsonUtils.loadList("rents.json", Rent.class));
                 tenants = new GenericClass<>(JsonUtils.loadList("tenants.json", Tenant.class));
-                properties =  new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
                 owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
 
 
@@ -94,18 +93,17 @@ public class RentService implements DateValidations {
         System.out.print("Enter the rental end date (YYYY-MM-DD): ");
         String endDate = scanner.nextLine();
         LocalDate rentalEndDate = LocalDate.parse(endDate);
-
         dateValidation(rentalStartDate, rentalEndDate);
 
-                                 ///SETTING THE CLIENTS STATE
+        ///SETTING THE CLIENTS STATE
         //SETTING THE TENANT STATE
         tenant.setClientState(State.RENTED);
         tenants.modifyElement(tenant, tenant);
         JsonUtils.saveList(tenants.returnList(), "tenants.json", Tenant.class);
         //SETTING THE OWNER STATE
         property.getOwner().setClientState(State.RENTED);
-        owners.modifyElement(property.getOwner(),property.getOwner());
-        JsonUtils.saveList(owners.returnList(),"owners.json", Owner.class);
+        owners.modifyElement(property.getOwner(), property.getOwner());
+        JsonUtils.saveList(owners.returnList(), "owners.json", Owner.class);
 
         //SETTING THE PROPERTY STATE
         property.setState(State.RENTED);
@@ -140,28 +138,21 @@ public class RentService implements DateValidations {
     }
 
 
-    @Override
-    public Boolean dateValidation(LocalDate fechaInicio, LocalDate fechaFin)throws InvalidInputException {
-        Boolean isValid = true;
+    public void dateValidation(LocalDate fechaInicio, LocalDate fechaFin) throws InvalidInputException {
         if (fechaInicio == null || fechaFin == null) {
-            isValid = false;
             throw new InvalidInputException("Las fechas no pueden ser nulas");
         }
 
         if (fechaInicio.isBefore(LocalDate.now())) {
-            isValid = false;
             throw new InvalidInputException("La fecha de inicio no puede ser anterior a hoy");
         }
 
         if (fechaFin.isBefore(fechaInicio)) {
-            isValid = false;
             throw new InvalidInputException("La fecha de fin no puede ser anterior a la fecha de inicio");
         }
 
         if (fechaFin.isEqual(fechaInicio)) {
-            isValid = false;
             throw new InvalidInputException("Las fechas de inicio y fin no pueden ser iguales");
         }
-        return isValid;
     }
 }

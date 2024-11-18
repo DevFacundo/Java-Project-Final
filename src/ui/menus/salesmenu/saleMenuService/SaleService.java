@@ -20,14 +20,14 @@ import java.util.Scanner;
 public class SaleService {
     private GenericClass<Property> properties;
     private GenericClass<Sale> sales;
-    private GenericClass<Buyer>buyers;
+    private GenericClass<Buyer> buyers;
     private GenericClass<Owner> owners;
-    private Scanner scanner= new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     public SaleService() {
         sales = new GenericClass<>(JsonUtils.loadList("sales.json", Sale.class));
         buyers = new GenericClass<>(JsonUtils.loadList("buyers.json", Buyer.class));
-        properties =  new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+        properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
         owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
         scanner = new Scanner(System.in);
     }
@@ -38,7 +38,7 @@ public class SaleService {
             try {
                 sales = new GenericClass<>(JsonUtils.loadList("sales.json", Sale.class));
                 buyers = new GenericClass<>(JsonUtils.loadList("buyers.json", Buyer.class));
-                properties =  new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
                 owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
                 Sale newSale = createSale();
 
@@ -57,12 +57,10 @@ public class SaleService {
 
             } catch (InvalidInputException e) {
                 System.out.println("Error: " + e.getMessage());
-            } catch(DateTimeParseException e){
-                System.out.println(("Error: "+ e.getMessage()));
-            }
-            catch (DuplicateElementException e)
-            {
-                System.out.println("Error: "+ e.getMessage());
+            } catch (DateTimeParseException e) {
+                System.out.println(("Error: " + e.getMessage()));
+            } catch (DuplicateElementException e) {
+                System.out.println("Error: " + e.getMessage());
             }
 
             continueAdding = askToContinue();
@@ -71,7 +69,7 @@ public class SaleService {
     }
 
 
-    public Sale createSale() throws  InvalidInputException {
+    public Sale createSale() throws InvalidInputException {
 
         System.out.print("Enter the ID of the property to sell: ");
         Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
@@ -88,28 +86,29 @@ public class SaleService {
 
         System.out.print("Enter the sale date (YYYY-MM-DD): ");
         String date = scanner.nextLine();
-        LocalDate saleDate = LocalDate.parse(date);
+        LocalDate saleDate = dateValidation(LocalDate.parse(date));
 
-                                    //SETTING THE CLIENTS STATE
+
+        //SETTING THE CLIENTS STATE
         //SETTING THE BUYER STATE
         buyer.setClientState(State.BOUGHT);
         buyers.modifyElement(buyer, buyer);
         JsonUtils.saveList(buyers.returnList(), "buyers.json", Buyer.class);
         //SETTING THE OWNER STATE
         property.getOwner().setClientState(State.SOLD);
-        owners.modifyElement(property.getOwner(),property.getOwner());
-        JsonUtils.saveList(owners.returnList(),"owners.json",Owner.class);
+        owners.modifyElement(property.getOwner(), property.getOwner());
+        JsonUtils.saveList(owners.returnList(), "owners.json", Owner.class);
 
         //SETTING THE PROPERTY STATE
         property.setState(State.SOLD);
-        properties.modifyElement(property,property);
+        properties.modifyElement(property, property);
         JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
 
-        return new Sale(buyer,property, saleDate);
+        return new Sale(buyer, property, saleDate);
     }
 
 
-    private  Property findPropertyById(Integer propertyId) {
+    private Property findPropertyById(Integer propertyId) {
         for (Property p : properties.returnList()) {
             if (p.getId().equals(propertyId)) {
                 return p;
@@ -118,7 +117,7 @@ public class SaleService {
         return null;
     }
 
-    private Buyer validateBuyer(String buyerDni) throws InvalidInputException{
+    private Buyer validateBuyer(String buyerDni) throws InvalidInputException {
         for (Buyer b : buyers.returnList()) {
             if (b.getDni().equalsIgnoreCase(buyerDni)) {
                 return b;
@@ -126,9 +125,20 @@ public class SaleService {
         }
         throw new InvalidInputException("Buyer with DNI " + buyerDni + " not found.");
     }
+
     private Boolean askToContinue() {
         System.out.print("Do you want to add another sale? (yes/no): ");
         String response = scanner.nextLine().trim().toLowerCase();
         return response.equals("yes") || response.equals("y");
+    }
+
+    public LocalDate dateValidation(LocalDate fechaInicio) throws InvalidInputException {
+        if (fechaInicio == null) {
+            throw new InvalidInputException("Las fecha no puede ser nula");
+        }
+        if (fechaInicio.isBefore(LocalDate.now())) {
+            throw new InvalidInputException("La fecha de venta no puede ser anterior a hoy");
+        }
+        return fechaInicio;
     }
 }

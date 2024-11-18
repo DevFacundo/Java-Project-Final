@@ -131,7 +131,7 @@ public class OwnerService {
         boolean continueModifying = true;
         while (continueModifying) {
             System.out.println("\n----------------------------------------------------");
-            System.out.println("     Modify Tenant Attributes");
+            System.out.println("     Modify Owner Attributes");
             System.out.println("----------------------------------------------------");
             System.out.println("1. Name");
             System.out.println("2. Surname");

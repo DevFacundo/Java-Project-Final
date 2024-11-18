@@ -30,7 +30,7 @@ public class StoresMenu {
                         storesService.addStore();
                         break;
                     case 2:
-                        System.out.println("Modifying a store...");
+                        storesService.modifyStore();
                         break;
                     case 3:
                         System.out.println("Cancelling a store...");

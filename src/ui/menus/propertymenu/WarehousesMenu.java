@@ -29,7 +29,7 @@ public class WarehousesMenu {
                         wservice.addWarehouse();
                         break;
                     case 2:
-                        System.out.println("Modifying a warehouse...");
+                        wservice.modifyWarehouse();
                         break;
                     case 3:
                         System.out.println("Cancelling a warehouse...");

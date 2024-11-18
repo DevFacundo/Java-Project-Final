@@ -31,8 +31,8 @@
     "bathRooms" : 1,
     "park" : false,
     "state" : "RENTED",
-    "salesPrice" : 213132.0,
-    "rentalPrice" : 3232.0
+    "rentalPrice" : 3232.0,
+    "salesPrice" : 213132.0
   },
   "startRent" : [ 2024, 11, 18 ],
   "endRent" : [ 2025, 11, 18 ]
@@ -70,8 +70,8 @@
     "orientation" : "FRONT",
     "maintenanceFees" : 23.0,
     "state" : "RENTED",
-    "salesPrice" : 2500.0,
-    "rentalPrice" : 212.0
+    "rentalPrice" : 212.0,
+    "salesPrice" : 2500.0
   },
   "startRent" : [ 2024, 11, 19 ],
   "endRent" : [ 2024, 12, 11 ]

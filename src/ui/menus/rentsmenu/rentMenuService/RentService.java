@@ -219,19 +219,20 @@ public class RentService {
 
             switch (option) {
                 case 1:
-                    System.out.print("Actual Tenant Dni: (" +rent.getTenant().getDni() + ")\nNew Tenant Dni: ");
+                    System.out.print("Actual Tenant Dni: (" + rent.getTenant().getDni() + ")\nNew Tenant Dni: ");
                     String tenantDni = scanner.nextLine().trim();
                     rent.setTenant(validateTenant(tenantDni));
                     break;
 
                 case 2:
-                    System.out.print("Actual Property ID: (" +rent.getProperty().getId() + ")\nNew Property ID: ");
+                    System.out.print("Actual Property ID: (" + rent.getProperty().getId() + ")\nNew Property ID: ");
                     Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
                     Property property = (findPropertyById(propertyId));
                     if (property == null || property.getState() != State.AVAILABLE) {
                         throw new InvalidInputException("Property is not available for rent.");
+                    } else {
+                        rent.setProperty(property);
                     }
-                    else {rent.setProperty(property);}
                     break;
 
                 case 3:
@@ -283,53 +284,41 @@ public class RentService {
         System.out.println(rents.returnList());
     }
 
-   /* public void deleteOwner() {
+    public void deleteRent() {
         try {
 
-            owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
-            if (owners.isEmpty()) {
-                System.out.println("No Owners available to delete.");
+            rents = new GenericClass<>(JsonUtils.loadList("rents.json", Rent.class));
+            if (rents.isEmpty()) {
+                System.out.println("No rents available to delete.");
                 return;
             }
 
-            System.out.print("Enter the DNI of the owner you want to delete: ");
-            String dni = scanner.nextLine().trim();
+            System.out.print("Enter the ID of the rent you want to delete: ");
+            Integer rentID = Integer.parseInt(scanner.nextLine().trim());
 
-            Owner ownerToDelete = null;
-            for (Owner o : owners.returnList()) {
-                if (o.getDni().equals(dni)) {
-                    ownerToDelete = o;
+            Rent rentToDelete = null;
+            for (Rent o : rents.returnList()) {
+                if (o.getId().equals(rentID)) {
+                    rentToDelete = o;
                     break;
                 }
             }
 
-            if (ownerToDelete == null) {
-                throw new InvalidInputException("Owner with DNI " + dni + " not found.");
-            }
-            if (ownerToDelete.getClientState()==State.RENTED)
-            {
-                throw new RentedException("You can't delete "+ownerToDelete.getName()+" "+
-                        ownerToDelete.getSurname()+" because they have already rented a propierty");
+            if (rentToDelete == null) {
+                throw new InvalidInputException("rent with ID " + rentID + " not found.");
             }
 
-            if (ownerToDelete.getClientState()== State.SOLD)
-            {
-                throw new SoldException("You can't delete "+ownerToDelete.getName()+" "+
-                        ownerToDelete.getSurname()+" because they have already sold a propierty");
-            }
 
-            System.out.println("Selected Owner: " + ownerToDelete);
+            System.out.println("Selected rent: " + rentToDelete);
 
-            owners.deleteElement(ownerToDelete);
+            rents.deleteElement(rentToDelete);
 
-            JsonUtils.saveList(owners.returnList(), "owners.json", Owner.class);
-            System.out.println("Owner deleted successfully!");
-        } catch (InvalidInputException | SoldException e) {
+            JsonUtils.saveList(rents.returnList(), "rents.json", Rent.class);
+            System.out.println("Rent deleted successfully!");
+        } catch (InvalidInputException e) {
             System.out.println("Error: " + e.getMessage());
-        } catch (RentedException e) {
-            System.out.println("Error: "+ e.getMessage());;
         }
-    }
-*/
 
+
+    }
 }

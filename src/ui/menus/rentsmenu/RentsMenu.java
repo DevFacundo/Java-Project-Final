@@ -35,7 +35,7 @@ public class RentsMenu {
                         rs.modifyRent();
                         break;
                     case 3:
-                        System.out.println("Opcion 3");
+                        rs.deleteRent();
                         break;
                     case 4:
                         rs.seeAllRents();

@@ -18,9 +18,9 @@
   "bedRooms" : 1,
   "bathRooms" : 1,
   "park" : false,
-  "state" : "RENTED",
+  "salesPrice" : 213132.0,
   "rentalPrice" : 3232.0,
-  "salesPrice" : 213132.0
+  "state" : "RENTED"
 }, {
   "propertyType" : "apartment",
   "id" : 2,
@@ -42,9 +42,9 @@
   "furnished" : true,
   "orientation" : "FRONT",
   "maintenanceFees" : 23.0,
-  "state" : "RENTED",
+  "salesPrice" : 2500.0,
   "rentalPrice" : 212.0,
-  "salesPrice" : 2500.0
+  "state" : "RENTED"
 }, {
   "propertyType" : "house",
   "id" : 3,
@@ -56,7 +56,7 @@
     "contactNumber" : "2234567654",
     "email" : "franco@mail",
     "adress" : "calle 2343",
-    "clientState" : "AVAILABLE"
+    "clientState" : "RENTED"
   },
   "adress" : "calle 222",
   "area" : 200.0,
@@ -65,7 +65,7 @@
   "bedRooms" : 4,
   "bathRooms" : 2,
   "park" : true,
-  "state" : "AVAILABLE",
+  "salesPrice" : 30000.0,
   "rentalPrice" : 200000.0,
-  "salesPrice" : 30000.0
+  "state" : "RENTED"
 } ]

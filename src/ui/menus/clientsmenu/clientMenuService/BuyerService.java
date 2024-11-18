@@ -100,6 +100,13 @@ public class BuyerService {
                 throw new InvalidInputException("Buyer with DNI " + dni + " not found.");
             }
 
+            if (buyerToModify.getClientState()== State.BOUGHT)
+            {
+                throw new SoldException("You can't modify "+buyerToModify.getName()+" "+
+                        buyerToModify.getSurname()+" because they have already bought a propierty");
+            }
+
+
             System.out.println("Selected Buyer: " + buyerToModify);
 
             modifyBuyerAttributes(buyerToModify);
@@ -108,6 +115,8 @@ public class BuyerService {
             System.out.println("Buyer modified successfully!");
         } catch (InvalidInputException e) {
             System.out.println("Error: " + e.getMessage());
+        } catch (SoldException e) {
+            System.out.println("Error: "+ e.getMessage());
         }
     }
 
@@ -181,13 +190,6 @@ public class BuyerService {
             }
         }
     }
-    public void seeAllBuyers() throws ElementNotFoundException {
-
-        if (buyers.isEmpty()) {
-            throw new ElementNotFoundException("No buyers found.");
-        }
-        System.out.println(buyers.returnList());
-    }
 
     public void deleteBuyer() {
         try {
@@ -215,7 +217,7 @@ public class BuyerService {
 
             if (buyerToDelete.getClientState()== State.BOUGHT)
             {
-                throw new SoldException("You can't delete to"+buyerToDelete.getName()+" "+
+                throw new SoldException("You can't delete "+buyerToDelete.getName()+" "+
                         buyerToDelete.getSurname()+" because they have already bought a propierty");
             }
 
@@ -229,4 +231,12 @@ public class BuyerService {
             System.out.println("Error: " + e.getMessage());
         }
     }
+    public void seeAllBuyers() throws ElementNotFoundException {
+
+        if (buyers.isEmpty()) {
+            throw new ElementNotFoundException("No buyers found.");
+        }
+        System.out.println(buyers.returnList());
+    }
+
 }

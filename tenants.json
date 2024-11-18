@@ -1,28 +1,10 @@
 [ {
-  "id" : 1,
-  "name" : "Facundo",
-  "surname" : "Aguilera",
-  "dni" : "37867025",
-  "contactNumber" : "4564564",
-  "email" : "asdasd@asd",
-  "adress" : "loioiasd",
-  "clientState" : "AVAILABLE"
-}, {
-  "id" : 2,
-  "name" : "Yago",
-  "surname" : "Sosa",
-  "dni" : "18346330",
-  "contactNumber" : "45465456",
-  "email" : "facasd@asd",
-  "adress" : "adasdasd",
-  "clientState" : "AVAILABLE"
-}, {
   "id" : 3,
-  "name" : "Yago",
-  "surname" : "Sosa",
-  "dni" : "37867022",
-  "contactNumber" : "22355656",
-  "email" : "fadasd@asdasd",
-  "adress" : "asdasd",
+  "name" : "Carlos",
+  "surname" : "Monzonaro",
+  "dni" : "37867027",
+  "contactNumber" : "5656666",
+  "email" : "asdasd@asdasd",
+  "adress" : "asdaaaaa",
   "clientState" : "RENTED"
 } ]

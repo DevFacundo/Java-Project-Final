@@ -92,7 +92,7 @@ public class SaleService {
 
                                     //SETTING THE CLIENTS STATE
         //SETTING THE BUYER STATE
-        buyer.setClientState(State.SOLD);
+        buyer.setClientState(State.BOUGHT);
         buyers.modifyElement(buyer, buyer);
         JsonUtils.saveList(buyers.returnList(), "buyers.json", Buyer.class);
         //SETTING THE OWNER STATE

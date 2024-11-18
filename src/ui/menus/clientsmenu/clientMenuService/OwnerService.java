@@ -100,9 +100,19 @@ public class OwnerService {
                 }
             }
 
-
             if (ownerToModify == null) {
                 throw new InvalidInputException("Owner with DNI " + dni + " not found.");
+            }
+            if (ownerToModify.getClientState()==State.RENTED)
+            {
+                throw new RentedException("You can't modify "+ownerToModify.getName()+" "+
+                        ownerToModify.getSurname()+" because they have already rented a propierty");
+            }
+
+            if (ownerToModify.getClientState()== State.SOLD)
+            {
+                throw new SoldException("You can't modify "+ownerToModify.getName()+" "+
+                        ownerToModify.getSurname()+" because they have already sold a propierty");
             }
 
             System.out.println("Selected Owner: " + ownerToModify);
@@ -111,9 +121,10 @@ public class OwnerService {
 
             JsonUtils.saveList(owners.returnList(), "owners.json", Owner.class);
             System.out.println("Owner modified successfully!");
-        } catch (InvalidInputException e) {
+        } catch (InvalidInputException | RentedException | SoldException e) {
             System.out.println("Error: " + e.getMessage());
         }
+
     }
 
     private void modifyOwnerAttributes(Owner owner) throws InvalidInputException {

@@ -102,6 +102,11 @@ public class TenantService {
             if (tenantToModify == null) {
                 throw new InvalidInputException("Tenant with DNI " + dni + " not found.");
             }
+            if (tenantToModify.getClientState()== State.RENTED)
+            {
+                throw new RentedException("You can't delete "+tenantToModify.getName()+" "+
+                        tenantToModify.getSurname()+" because they have already rented a propierty");
+            }
 
             System.out.println("Selected Tenant: " + tenantToModify);
 
@@ -111,6 +116,8 @@ public class TenantService {
             System.out.println("Tenant modified successfully!");
         } catch (InvalidInputException e) {
             System.out.println("Error: " + e.getMessage());
+        } catch (RentedException e) {
+            System.out.println("Error: " +e.getMessage());
         }
     }
 

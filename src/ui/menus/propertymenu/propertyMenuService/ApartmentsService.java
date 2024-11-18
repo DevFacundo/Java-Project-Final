@@ -8,12 +8,13 @@ import model.genericManagement.JsonUtils;
 import model.properties.Apartment;
 import model.properties.Orientation;
 import model.properties.Property;
+import model.utils.Utils;
 
 import java.util.Scanner;
 
 public class ApartmentsService {
 
-    Scanner scanner ;
+    Scanner scanner;
     GenericClass<Property> properties;
     GenericClass<Owner> owners;
 
@@ -87,15 +88,14 @@ public class ApartmentsService {
         }
         while (furniture == null);
 
-        int flag=0;
+        int flag = 0;
         Orientation orientation = null;
         do {
             System.out.println("what is the orientation? (1.FRONT / 2. BACK)");
             flag = Integer.parseInt(scanner.nextLine().trim());
             if (flag == 1) {
                 orientation = Orientation.FRONT;
-            }
-            else if (flag == 2) {
+            } else if (flag == 2) {
                 orientation = Orientation.BACK;
             }
         }
@@ -105,9 +105,9 @@ public class ApartmentsService {
         Double maintenanceFees = Double.parseDouble(scanner.nextLine().trim());
 
 
-        validateApartmentInputs(address, area, sp, rp, roomsQuantity, bathroomsQuantity, bedroomsQuantity,maintenanceFees);
+        validateApartmentInputs(address, area, sp, rp, roomsQuantity, bathroomsQuantity, bedroomsQuantity, maintenanceFees);
 
-        return new Apartment(owner, address, area, sp, rp, roomsQuantity, bathroomsQuantity, bedroomsQuantity,furniture,orientation,maintenanceFees);
+        return new Apartment(owner, address, area, sp, rp, roomsQuantity, bathroomsQuantity, bedroomsQuantity, furniture, orientation, maintenanceFees);
     }
 
     public static Owner validateOwner(String ownerDni, GenericClass<Owner> ownerList) throws InvalidInputException {
@@ -125,7 +125,7 @@ public class ApartmentsService {
         }
     }
 
-    public static void validateApartmentInputs(String address, Double area, Double sp, Double rp, Integer roomsQuantity, Integer bathroomsQuantity, Integer bedroomsQuantity,Double maintenanceFees) throws InvalidInputException {
+    public static void validateApartmentInputs(String address, Double area, Double sp, Double rp, Integer roomsQuantity, Integer bathroomsQuantity, Integer bedroomsQuantity, Double maintenanceFees) throws InvalidInputException {
         if (address.isEmpty()) {
             throw new InvalidInputException("address cannot be empty.");
         }
@@ -158,5 +158,197 @@ public class ApartmentsService {
         return response.equals("yes") || response.equals("y");
     }
 
+    public void modifyApartment() {
+        Boolean continueModifying = true;
+        do {
+            try {
+                System.out.print("Enter the ID of the apartment to modify: ");
+                Integer apartmentId = Integer.parseInt(scanner.nextLine().trim());
 
+                Apartment apartmentToModify = findApartmentById(apartmentId);
+
+                if (apartmentToModify == null) {
+                    throw new InvalidInputException("Apartment with ID " + apartmentId + " not found.");
+                }
+
+                modifyApartmentDetails(apartmentToModify);
+
+                JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
+
+                System.out.println("Apartment modified successfully: " + apartmentToModify);
+
+            } catch (InvalidInputException | NumberFormatException e) {
+                System.out.println("Error modifying apartment: " + e.getMessage());
+            }
+
+            continueModifying = askToContinue();
+        } while (continueModifying);
+    }
+
+    public Apartment findApartmentById(Integer apartmentId) {
+        for (Property property : properties.returnList()) {
+            if (property instanceof Apartment) {
+                Apartment apartment = (Apartment) property;
+                if (apartment.getId().equals(apartmentId)) {
+                    return apartment;
+                }
+            }
+        }
+        return null;
+    }
+
+    public void modifyApartmentDetails(Apartment apartment) throws InvalidInputException {
+        Boolean continueModifying = true;
+        Integer option;
+
+        do {
+            System.out.println("Choose which detail to modify:");;
+            System.out.println("1. Address");
+            System.out.println("2. Area");
+            System.out.println("3. Sales Price");
+            System.out.println("4. Rental Price");
+            System.out.println("5. Rooms Quantity");
+            System.out.println("6. Bedrooms Quantity");
+            System.out.println("7. Bathrooms Quantity");
+            System.out.println("8. Furniture");
+            System.out.println("9. Orientation");
+            System.out.println("10. Maintenance Fees");
+            System.out.println("0. Go back");
+            System.out.println("Select an option: ");
+
+            option = Utils.getValidatedOption();
+
+            switch (option) {
+                case 1:
+                    System.out.print("Address (" + apartment.getAdress() + "): ");
+                    String newAddress = scanner.nextLine().trim();
+                    if (!newAddress.isEmpty()) {
+                        apartment.setAdress(newAddress);
+                    }
+                    break;
+
+                case 2:
+                    System.out.print("Area (" + apartment.getArea() + "): ");
+                    String newArea = scanner.nextLine().trim();
+                    if (!newArea.isEmpty()) {
+                        double area = Double.parseDouble(newArea);
+                        validateArea(area);
+                        apartment.setArea(area);
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Sales Price (" + apartment.getSalesPrice() + "): ");
+                    String newSalesPrice = scanner.nextLine().trim();
+                    if (!newSalesPrice.isEmpty()) {
+                        double sp = Double.parseDouble(newSalesPrice);
+                        validatePrice(sp);
+                        apartment.setSalesPrice(sp);
+                    }
+                    break;
+
+                case 4:
+                    System.out.print("Rental Price (" + apartment.getRentalPrice() + "): ");
+                    String newRentalPrice = scanner.nextLine().trim();
+                    if (!newRentalPrice.isEmpty()) {
+                        double rp = Double.parseDouble(newRentalPrice);
+                        validatePrice(rp);
+                        apartment.setRentalPrice(rp);
+                    }
+                    break;
+
+                case 5:
+                    System.out.print("Rooms Quantity (" + apartment.getRooms() + "): ");
+                    String newRoomsQuantity = scanner.nextLine().trim();
+                    if (!newRoomsQuantity.isEmpty()) {
+                        int roomsQuantity = Integer.parseInt(newRoomsQuantity);
+                        validateQuantity(roomsQuantity);
+                        apartment.setRooms(roomsQuantity);
+                    }
+                    break;
+
+                case 6:
+                    System.out.print("Bedrooms Quantity (" + apartment.getBedRooms() + "): ");
+                    String newBedroomsQuantity = scanner.nextLine().trim();
+                    if (!newBedroomsQuantity.isEmpty()) {
+                        Integer bedroomsQuantity = Integer.parseInt(newBedroomsQuantity);
+                        validateQuantity(bedroomsQuantity);
+                        apartment.setBedRooms(bedroomsQuantity);
+                    }
+                    break;
+
+                case 7:
+                    System.out.print("Bathrooms Quantity (" + apartment.getBathRooms() + "): ");
+                    String newBathroomsQuantity = scanner.nextLine().trim();
+                    if (!newBathroomsQuantity.isEmpty()) {
+                        int bathroomsQuantity = Integer.parseInt(newBathroomsQuantity);
+                        validateQuantity(bathroomsQuantity);
+                        apartment.setBathRooms(bathroomsQuantity);
+
+                    }
+                    break;
+
+                case 8:
+                    System.out.print("Furniture (" + (apartment.getFurnished() ? "Yes" : "No") + "): ");
+                    String newFurniture = scanner.nextLine().trim();
+                    if (!newFurniture.isEmpty()) {
+                        apartment.setFurnished(newFurniture.equalsIgnoreCase("Y"));
+                    }
+                    break;
+
+                case 9:
+                    System.out.print("Orientation (" + apartment.getOrientation() + "): ");
+                    String newOrientation = scanner.nextLine().trim();
+                    if (!newOrientation.isEmpty()) {
+                        apartment.setOrientation(Orientation.valueOf(newOrientation.toUpperCase()));
+                    }
+                    break;
+
+                case 10:
+                    System.out.print("Maintenance Fees (" + apartment.getMaintenanceFees() + "): ");
+                    String newMaintenanceFees = scanner.nextLine().trim();
+                    if (!newMaintenanceFees.isEmpty()) {
+                        double maintenanceFees = Double.parseDouble(newMaintenanceFees);
+                        validatePrice(maintenanceFees);
+                        apartment.setMaintenanceFees(maintenanceFees);
+                    }
+                    break;
+
+                case 0:
+                    System.out.println("Returning to the previous menu...");
+                    break;
+
+                default:
+                    System.out.println("Invalid option. Please choose a valid number.");
+                    break;
+            }
+
+            if (option != 0) {
+                System.out.print("Do you want to modify another detail? (Y/N): ");
+                String continueResponse = scanner.nextLine().trim();
+                continueModifying = continueResponse.equalsIgnoreCase("Y");
+            } else {
+                continueModifying = false;
+            }
+
+        } while (continueModifying);
+    }
+
+    public void validateArea(Double area) throws InvalidInputException {
+        if (area <= 0) {
+            throw new InvalidInputException("Area must be greater than zero.");
+        }
+    }
+
+    public void validatePrice(Double price) throws InvalidInputException {
+        if (price <= 0) {
+            throw new InvalidInputException("Price must be greater than zero.");
+        }
+    }
+
+    public void validateQuantity(Integer quantity) throws InvalidInputException {
+        if (quantity <= 0) {
+            throw new InvalidInputException("Quantity must be greater than zero.");
+        }
+    }
 }

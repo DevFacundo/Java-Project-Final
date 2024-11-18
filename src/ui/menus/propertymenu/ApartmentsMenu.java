@@ -29,7 +29,7 @@ public class ApartmentsMenu {
                         as.addApartament();
                         break;
                     case 2:
-                        System.out.println("Modifying an apartment...");
+                        as.modifyApartment();
                         break;
                     case 3:
                         System.out.println("Cancelling an apartment...");

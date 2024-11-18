@@ -10,7 +10,13 @@ public class WareHouse extends Property{
     public WareHouse() {
     }
 
-
+    public WareHouse(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice, TypeOfUse typeOfUse, Integer bathRooms, Integer floorsQuantity) {
+        super(owner, adress, area, salesPrice, rentalPrice);
+        this.typeOfUse = typeOfUse;
+        this.bathRooms = bathRooms;
+        this.floorsQuantity = floorsQuantity;
+    }
+/*
     public WareHouse(Owner owner, String adress, Double salesPrice, Double area, Double rentalPrice, StateOfProperty state, TypeOfUse typeOfUse, Integer bathRooms, Integer floorsQuantity) {
         super(owner, adress, salesPrice, area, rentalPrice, state);
         this.typeOfUse = typeOfUse;
@@ -18,6 +24,8 @@ public class WareHouse extends Property{
         this.floorsQuantity = floorsQuantity;
     }
 
+
+ */
     public TypeOfUse getTypeOfUse() {
         return typeOfUse;
     }

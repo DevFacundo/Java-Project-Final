@@ -80,39 +80,41 @@ public class Main {
         Tenant tenant4 = new Tenant("Lionel", "Messi", "89012345", "03417654321", "leo.messi@barcelona.com", "Rosario, Santa Fe");
         Tenant tenant5 = new Tenant("Mariana", "Fabbiani", "90123456", "01134567890", "mariana.fabbiani@eltrece.com.ar", "Calle Rodríguez Peña 200, Buenos Aires");
         Tenant tenant6 = new Tenant("Ángel", "De Brito", "21234567", "01165432109", "angel.debrito@eltrece.com.ar", "Av. de Mayo 700, Buenos Aires");
-        House house1 = new House(owner1, "Ayolas 4542", 25D, 145000D, 600D, StateOfProperty.AVAILABLE, 2, 5, 3, 3, true);
-        House house2 = new House(owner2, "Pueyrredón 1023", 30D, 200000D, 800D, StateOfProperty.AVAILABLE, 3, 4, 2, 2, false);
-        House house3 = new House(owner3, "Av. Santa Fe 870", 20D, 120000D, 550D, StateOfProperty.AVAILABLE, 2, 3, 1, 1, true);
-        House house4 = new House(owner4, "Callejón del Sol 123", 45D, 300000D, 1200D, StateOfProperty.AVAILABLE, 4, 6, 4, 5, true);
-        House house5 = new House(owner5, "Calle Viamonte 456", 35D, 250000D, 950D, StateOfProperty.AVAILABLE, 3, 4, 2, 3, false);
-        House house6 = new House(owner6, "Av. 9 de Julio 1750", 28D, 180000D, 700D, StateOfProperty.AVAILABLE, 3, 5, 2, 3, true);
-        House house7 = new House(owner1, "Calle de los Árboles 789", 25D, 140000D, 650D, StateOfProperty.AVAILABLE, 2, 4, 2, 2, true);
+        House house1 = new House(owner1, "Ayolas 4542", 25D, 145000D, 600D, 2, 5, 3, 3, true);
+        House house2 = new House(owner2, "Pueyrredón 1023", 30D, 200000D, 800D, 3, 4, 2, 2, false);
+        House house3 = new House(owner3, "Av. Santa Fe 870", 20D, 120000D, 550D, 2, 3, 1, 1, true);
+        House house4 = new House(owner4, "Callejón del Sol 123", 45D, 300000D, 1200D, 4, 6, 4, 5, true);
+        House house5 = new House(owner5, "Calle Viamonte 456", 35D, 250000D, 950D, 3, 4, 2, 3, false);
+        House house6 = new House(owner6, "Av. 9 de Julio 1750", 28D, 180000D, 700D, 3, 5, 2, 3, true);
+        House house7 = new House(owner1, "Calle de los Árboles 789", 25D, 140000D, 650D, 2, 4, 2, 2, true);
 
-        Apartment apartment1 = new Apartment(owner1, "Av. Libertador 1000", 70D, 150000D, 700D, StateOfProperty.AVAILABLE, 3, 2, 2, true, Orientation.FRONT, 30D);
-        Apartment apartment2 = new Apartment(owner2, "Calle Florida 700", 90D, 200000D, 650D, StateOfProperty.AVAILABLE, 4, 3, 3, false, Orientation.BACK, 40D);
-        Apartment apartment3 = new Apartment(owner3, "Av. Santa Fe 2000", 55D, 130000D, 350D, StateOfProperty.AVAILABLE, 2, 1, 1, true, Orientation.BACK, 25D);
-        Apartment apartment4 = new Apartment(owner4, "Calle Viamonte 500", 80D, 180000D, 900D, StateOfProperty.AVAILABLE, 3, 2, 2, true, Orientation.FRONT, 35D);
-        Apartment apartment5 = new Apartment(owner5, "Calle 9 de Julio 1200", 75D, 170000D, 720D, StateOfProperty.AVAILABLE, 3, 2, 2, false, Orientation.FRONT, 32D);
-        Apartment apartment6 = new Apartment(owner6, "Av. 9 de Julio 800", 65D, 150000D, 560D, StateOfProperty.AVAILABLE, 2, 2, 1, true, Orientation.FRONT, 27D);
+        Apartment apartment1 = new Apartment(owner1, "Av. Libertador 1000", 70D, 150000D, 700D, 3, 2, 2, true, Orientation.FRONT, 30D);
+        Apartment apartment2 = new Apartment(owner2, "Calle Florida 700", 90D, 200000D, 650D, 4, 3, 3, false, Orientation.BACK, 40D);
+        Apartment apartment3 = new Apartment(owner3, "Av. Santa Fe 2000", 55D, 130000D, 350D, 2, 1, 1, true, Orientation.BACK, 25D);
+        Apartment apartment4 = new Apartment(owner4, "Calle Viamonte 500", 80D, 180000D, 900D, 3, 2, 2, true, Orientation.FRONT, 35D);
+        Apartment apartment5 = new Apartment(owner5, "Calle 9 de Julio 1200", 75D, 170000D, 720D, 3, 2, 2, false, Orientation.FRONT, 32D);
+        Apartment apartment6 = new Apartment(owner6, "Av. 9 de Julio 800", 65D, 150000D, 560D, 2, 2, 1, true, Orientation.FRONT, 27D);
 
-        Lot lot1 = new Lot(owner7, "Ruta 8 Km 32", 1000D, 50000D, null, StateOfProperty.AVAILABLE, true, true, true, true, true);
-        Lot lot2 = new Lot(owner8, "Calle Falsa 123", 1500D, 75000D, null, StateOfProperty.AVAILABLE, true, true, false, true, true);
-        Lot lot3 = new Lot(owner9, "Av. Rivadavia 3000", 2000D, 100000D, null, StateOfProperty.AVAILABLE, true, false, true, false, true);
-        Lot lot4 = new Lot(owner10, "Calle Belgrano 750", 1200D, 60000D, null, StateOfProperty.AVAILABLE, false, true, true, true, false);
-        Lot lot5 = new Lot(owner11, "Calle de los Árboles 210", 1800D, 90000D, null, StateOfProperty.AVAILABLE, true, true, true, false, true);
-        Lot lot6 = new Lot(owner12, "Av. 9 de Julio 1800", 2500D, 125000D, null, StateOfProperty.AVAILABLE, true, true, true, true, true);
+        Lot lot1 = new Lot(owner7, "Ruta 8 Km 32", 1000D, 50000D, true, true, true, true, true);
+        Lot lot2 = new Lot(owner8, "Calle Falsa 123", 1500D, 75000D,  true, true, false, true, true);
+        Lot lot3 = new Lot(owner9, "Av. Rivadavia 3000", 2000D, 100000D,  true, false, true, false, true);
+        Lot lot4 = new Lot(owner10, "Calle Belgrano 750", 1200D, 60000D, false, true, true, true, false);
+        Lot lot5 = new Lot(owner11, "Calle de los Árboles 210", 1800D, 90000D,  true, true, true, false, true);
+        Lot lot6 = new Lot(owner12, "Av. 9 de Julio 1800", 2500D, 125000D,  true, true, true, true, true);
 
-        Store store1 = new Store(owner1, "Calle Florida 500", 120D, 250000D, 1050D, StateOfProperty.AVAILABLE, 2, Orientation.FRONT, 1);
-        Store store2 = new Store(owner2, "Av. Corrientes 1500", 150D, 300000D, 1250D, StateOfProperty.AVAILABLE, 3, Orientation.FRONT, 2);
-        Store store3 = new Store(owner3, "Calle Viamonte 800", 100D, 200000D, 1300D, StateOfProperty.AVAILABLE, 1, Orientation.FRONT, 1);
-        Store store4 = new Store(owner4, "Av. Santa Fe 1800", 180D, 400000D, 980D, StateOfProperty.AVAILABLE, 4, Orientation.BACK, 2);
-        Store store5 = new Store(owner5, "Calle 9 de Julio 1200", 110D, 220000D, 1020D, StateOfProperty.AVAILABLE, 2, Orientation.BACK, 1);
 
-        WareHouse warehouse1 = new WareHouse(owner1, "Calle Independencia 800", 300000D, 1500D, 3000D, StateOfProperty.AVAILABLE, TypeOfUse.COMMERCIAL, 3, 2);
-        WareHouse warehouse2 = new WareHouse(owner2, "Av. Belgrano 1500", 500000D, 2500D, 6000D, StateOfProperty.AVAILABLE, TypeOfUse.INDUSTRIAL, 5, 3);
-        WareHouse warehouse3 = new WareHouse(owner3, "Calle Lavalle 1200", 200000D, 1000D, 2000D, StateOfProperty.AVAILABLE, TypeOfUse.STORAGE, 2, 1);
-        WareHouse warehouse4 = new WareHouse(owner4, "Av. Corrientes 2000", 450000D, 1800D, 4500D, StateOfProperty.AVAILABLE, TypeOfUse.COMMERCIAL, 4, 2);
-        WareHouse warehouse5 = new WareHouse(owner5, "Calle de los Árboles 50", 600000D, 3000D, 7000D, StateOfProperty.AVAILABLE, TypeOfUse.INDUSTRIAL, 6, 4);
+
+        Store store1 = new Store(owner1, "Calle Florida 500", 120D, 250000D, 1050D, 2, Orientation.FRONT, 1);
+        Store store2 = new Store(owner2, "Av. Corrientes 1500", 150D, 300000D, 1250D, 3, Orientation.FRONT, 2);
+        Store store3 = new Store(owner3, "Calle Viamonte 800", 100D, 200000D, 1300D, 1, Orientation.FRONT, 1);
+        Store store4 = new Store(owner4, "Av. Santa Fe 1800", 180D, 400000D, 980D, 4, Orientation.BACK, 2);
+        Store store5 = new Store(owner5, "Calle 9 de Julio 1200", 110D, 220000D, 1020D, 2, Orientation.BACK, 1);
+
+        WareHouse warehouse1 = new WareHouse(owner1, "Calle Independencia 800", 300000D, 1500D, 3000D, TypeOfUse.COMMERCIAL, 3, 2);
+        WareHouse warehouse2 = new WareHouse(owner2, "Av. Belgrano 1500", 500000D, 2500D, 6000D, TypeOfUse.INDUSTRIAL, 5, 3);
+        WareHouse warehouse3 = new WareHouse(owner3, "Calle Lavalle 1200", 200000D, 1000D, 2000D, TypeOfUse.STORAGE, 2, 1);
+        WareHouse warehouse4 = new WareHouse(owner4, "Av. Corrientes 2000", 450000D, 1800D, 4500D, TypeOfUse.COMMERCIAL, 4, 2);
+        WareHouse warehouse5 = new WareHouse(owner5, "Calle de los Árboles 50", 600000D, 3000D, 7000D, TypeOfUse.INDUSTRIAL, 6, 4);
 
 
         Rent rent1 = new Rent(tenant1, house1, owner1, LocalDate.of(2023,1,15), LocalDate.of(2024,1,15));

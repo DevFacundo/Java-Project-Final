@@ -6,6 +6,8 @@ import model.clients.Owner;
 import model.exceptions.InvalidAreaException;
 import model.exceptions.InvalidPriceException;
 
+import java.util.Objects;
+
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -33,6 +35,16 @@ public abstract class Property {
     public Property() {
     }
 
+    public Property(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice) {
+        this.owner = owner;
+        this.adress = adress;
+        this.area = area;
+        SalesPrice = salesPrice;
+        RentalPrice = rentalPrice;
+        this.id=nextId++;
+        this.state = StateOfProperty.AVAILABLE;
+    }
+/*
     public Property(Owner owner, String adress, Double salesPrice, Double area, Double rentalPrice, StateOfProperty state) {
         this.owner = owner;
         this.adress = adress;
@@ -42,7 +54,7 @@ public abstract class Property {
         this.state = state;
         this.id=nextId++;
     }
-
+ */
     public Integer getId() {
         return id;
     }
@@ -102,6 +114,18 @@ public abstract class Property {
         this.state = state;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Property property = (Property) o;
+        return Objects.equals(id, property.id) && Objects.equals(adress, property.adress);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, adress);
+    }
     @Override
     public String toString() {
         return String.format(

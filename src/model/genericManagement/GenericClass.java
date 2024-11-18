@@ -23,7 +23,7 @@ public class GenericClass<T> {
         }
         elements.add(e);
     }
-
+///MANEJAR EXCPETION NUEVA DE NO PODER ELIMINAR SI ESTA EN PROCESO DE VENTA O RENTA
     public void deleteElement(T e) {
         elements.remove(e);
     }

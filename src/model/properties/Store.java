@@ -10,7 +10,13 @@ public class Store extends Property{
     public Store() {
     }
 
-
+    public Store(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice, Integer bathRooms, Orientation orientation, Integer floorsQuantity) {
+        super(owner, adress, area, salesPrice, rentalPrice);
+        this.bathRooms = bathRooms;
+        this.orientation = orientation;
+        this.floorsQuantity = floorsQuantity;
+    }
+/*
     public Store(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice, StateOfProperty state, Integer bathRooms, Orientation orientation, Integer floorsQuantity) {
         super(owner, adress, area, salesPrice, rentalPrice, state);
         this.bathRooms = bathRooms;
@@ -18,6 +24,7 @@ public class Store extends Property{
         this.floorsQuantity = floorsQuantity;
     }
 
+ */
     public Integer getBathRooms() {
         return bathRooms;
     }

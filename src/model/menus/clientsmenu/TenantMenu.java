@@ -2,7 +2,7 @@ package model.menus.clientsmenu;
 
 import model.clients.Tenant;
 import model.exceptions.InvalidInputException;
-import model.genericManagement.JsonClass;
+import model.genericManagement.JsonUtils;
 import model.menus.clientsmenu.clientMenuService.TenantService;
 
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ public class TenantMenu {
         do {
             try {
                 List<Tenant> tenants = new ArrayList<>();
-                tenants = JsonClass.loadList("tenants.json", Tenant.class);
+                tenants = JsonUtils.loadList("tenants.json", Tenant.class);
                 Tenant newTenant = TenantService.createTenant(scanner);
                 System.out.println("Tenant added successfully:");
                 System.out.println(newTenant);
@@ -77,7 +77,7 @@ public class TenantMenu {
                     newTenant.setId(lastId);
                 }
                 tenants.add(newTenant);
-                JsonClass.saveList(tenants, "tenants.json");
+                JsonUtils.saveList(tenants, "tenants.json", Tenant.class);
             } catch (InvalidInputException e) {
                 System.out.println("Error adding tenant: " + e.getMessage());
             }

@@ -2,7 +2,7 @@ package model.menus.clientsmenu;
 
 import model.clients.Buyer;
 import model.exceptions.InvalidInputException;
-import model.genericManagement.JsonClass;
+import model.genericManagement.JsonUtils;
 import model.menus.clientsmenu.clientMenuService.BuyerService;
 
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ public class BuyerMenu {
         do {
             try {
                 List<Buyer> buyers = new ArrayList<>();
-                buyers = JsonClass.loadList("buyers.json", Buyer.class);
+                buyers = JsonUtils.loadList("buyers.json", Buyer.class);
                 Buyer newBuyer = BuyerService.createBuyer(scanner);
                 System.out.println("Buyer added successfully:");
                 System.out.println(newBuyer);
@@ -77,7 +77,7 @@ public class BuyerMenu {
                     newBuyer.setId(lastId);
                 }
                 buyers.add(newBuyer);
-                JsonClass.saveList(buyers, "buyers.json");
+                JsonUtils.saveList(buyers, "buyers.json", Buyer.class);
             } catch (InvalidInputException e) {
                 System.out.println("Error adding buyer: " + e.getMessage());
             }

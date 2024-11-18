@@ -339,6 +339,4 @@ public class HousesService {
             throw new InvalidInputException("Quantity must be greater than zero.");
         }
     }
-
-
 }

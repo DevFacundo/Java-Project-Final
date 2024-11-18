@@ -1,7 +1,9 @@
 package ui.menus.clientsmenu.clientMenuService;
 
+import model.State;
+import model.clients.Buyer;
 import model.clients.Tenant;
-import model.exceptions.InvalidInputException;
+import model.exceptions.*;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.utils.Utils;
@@ -50,20 +52,22 @@ public class TenantService {
         Boolean continueAdding = true;
         do {
             try {
-                List<Tenant> tenants = new ArrayList<>();
-                tenants = JsonUtils.loadList("tenants.json", Tenant.class);
+
+                tenants = new GenericClass<>(JsonUtils.loadList("tenants.json", Tenant.class));
                 Tenant newTenant = TenantService.createTenant(scanner);
                 System.out.println("Tenant added successfully:");
                 System.out.println(newTenant);
                 if (!tenants.isEmpty()) {
-                    Tenant t = tenants.get(tenants.size() - 1);
+                    Tenant t = tenants.getLastObject();
                     Integer lastId = t.getId() + 1;
                     newTenant.setId(lastId);
                 }
-                tenants.add(newTenant);
-                JsonUtils.saveList(tenants, "tenants.json", Tenant.class);
+                tenants.addElement(newTenant);
+                JsonUtils.saveList(tenants.returnList(), "tenants.json", Tenant.class);
             } catch (InvalidInputException e) {
                 System.out.println("Error adding tenant: " + e.getMessage());
+            } catch (DuplicateElementException e) {
+                System.out.println("The tenant has already exists");
             }
 
             continueAdding = askToContinue();
@@ -78,7 +82,7 @@ public class TenantService {
 
     public void modifyTenant() {
         try {
-
+            tenants = new GenericClass<>(JsonUtils.loadList("tenants.json", Tenant.class));
             if (tenants.isEmpty()) {
                 System.out.println("No tenants available to modify.");
                 return;
@@ -180,6 +184,51 @@ public class TenantService {
             }
         }
     }
+    public void seeAllTenants() throws ElementNotFoundException {
+        if (tenants.isEmpty()) {
+            throw new ElementNotFoundException("No tenants found.");
+        }
+        System.out.println(tenants.returnList());
+    }
+    public void deleteTenant() {
+        try {
 
+            tenants = new GenericClass<>(JsonUtils.loadList("tenants.json", Tenant.class));
+            if (tenants.isEmpty()) {
+                System.out.println("No tenants available to delete.");
+                return;
+            }
+
+            System.out.print("Enter the DNI of the tenant you want to delete: ");
+            String dni = scanner.nextLine().trim();
+
+            Tenant tenantToDelete = null;
+            for (Tenant t : tenants.returnList()) {
+                if (t.getDni().equals(dni)) {
+                    tenantToDelete = t;
+                    break;
+                }
+            }
+
+            if (tenantToDelete == null) {
+                throw new InvalidInputException("Tenant with DNI " + dni + " not found.");
+            }
+
+            if (tenantToDelete.getClientState()== State.RENTED)
+            {
+                throw new RentedException("You can't delete "+tenantToDelete.getName()+" "+
+                        tenantToDelete.getSurname()+" because they have already rented a propierty");
+            }
+
+            System.out.println("Selected Tenant: " + tenantToDelete);
+
+            tenants.deleteElement(tenantToDelete);
+
+            JsonUtils.saveList(tenants.returnList(), "tenants.json", Tenant.class);
+            System.out.println("Tenant deleted successfully!");
+        } catch (InvalidInputException | RentedException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 
 }

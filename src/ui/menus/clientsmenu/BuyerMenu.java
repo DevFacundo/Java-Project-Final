@@ -2,6 +2,7 @@ package ui.menus.clientsmenu;
 
 import model.clients.Buyer;
 import model.exceptions.DuplicateElementException;
+import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
@@ -38,10 +39,10 @@ public class BuyerMenu {
                         buyerService.modifyBuyer();
                         break;
                     case 3:
-                        System.out.println("Opcion 3");
+                        buyerService.deleteBuyer();
                         break;
                     case 4:
-                        System.out.println("Opcion 4");
+                        buyerService.seeAllBuyers();
                         break;
                     case 0:
                         System.out.println("Returning to the previous menu...");
@@ -49,7 +50,7 @@ public class BuyerMenu {
                     default:
                         System.out.println("Invalid option. Please try again.");
                 }
-            } catch (InvalidInputException e) {
+            } catch (InvalidInputException | ElementNotFoundException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Press Enter to try again...");
                 scanner.nextLine();

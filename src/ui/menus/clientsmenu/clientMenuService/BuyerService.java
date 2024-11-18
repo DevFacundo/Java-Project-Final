@@ -1,8 +1,8 @@
 package ui.menus.clientsmenu.clientMenuService;
 
+import model.State;
 import model.clients.Buyer;
-import model.exceptions.DuplicateElementException;
-import model.exceptions.InvalidInputException;
+import model.exceptions.*;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.utils.Utils;
@@ -49,7 +49,7 @@ public class BuyerService {
         Boolean continueAdding = true;
         do {
             try {
-
+                buyers = new GenericClass<>(JsonUtils.loadList("buyers.json",Buyer.class));
                 Buyer newBuyer = BuyerService.createBuyer(scanner);
 
                 System.out.println("Buyer added successfully:");
@@ -79,6 +79,7 @@ public class BuyerService {
     public void modifyBuyer() {
         try {
 
+            buyers = new GenericClass<>(JsonUtils.loadList("buyers.json",Buyer.class));
             if (buyers.isEmpty()) {
                 System.out.println("No buyers available to modify.");
                 return;
@@ -180,6 +181,52 @@ public class BuyerService {
             }
         }
     }
+    public void seeAllBuyers() throws ElementNotFoundException {
 
+        if (buyers.isEmpty()) {
+            throw new ElementNotFoundException("No buyers found.");
+        }
+        System.out.println(buyers.returnList());
+    }
 
+    public void deleteBuyer() {
+        try {
+
+            buyers = new GenericClass<>(JsonUtils.loadList("buyers.json",Buyer.class));
+            if (buyers.isEmpty()) {
+                System.out.println("No buyers available to delete.");
+                return;
+            }
+
+            System.out.print("Enter the DNI of the buyer you want to delete: ");
+            String dni = scanner.nextLine().trim();
+
+            Buyer buyerToDelete = null;
+            for (Buyer buyer : buyers.returnList()) {
+                if (buyer.getDni().equals(dni)) {
+                    buyerToDelete = buyer;
+                    break;
+                }
+            }
+
+            if (buyerToDelete == null) {
+                throw new InvalidInputException("Buyer with DNI " + dni + " not found.");
+            }
+
+            if (buyerToDelete.getClientState()== State.BOUGHT)
+            {
+                throw new SoldException("You can't delete to"+buyerToDelete.getName()+" "+
+                        buyerToDelete.getSurname()+" because they have already bought a propierty");
+            }
+
+            System.out.println("Selected Buyer: " + buyerToDelete);
+
+            buyers.deleteElement(buyerToDelete);
+
+            JsonUtils.saveList(buyers.returnList(), "buyers.json", Buyer.class);
+            System.out.println("Buyer deleted successfully!");
+        } catch (InvalidInputException | SoldException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 }

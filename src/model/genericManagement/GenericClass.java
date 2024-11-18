@@ -1,6 +1,7 @@
 package model.genericManagement;
 
 import model.exceptions.DuplicateElementException;
+import model.exceptions.ElementNotFoundException;
 
 import java.util.LinkedList;
 import java.util.List;

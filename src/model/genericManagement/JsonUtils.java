@@ -63,7 +63,7 @@ public class JsonUtils {
     return list;
         } catch (IOException e) {
             System.out.println("Error to load the file: " + e.getMessage());
-            return null;
+            return new ArrayList<>();
         }
     }
 

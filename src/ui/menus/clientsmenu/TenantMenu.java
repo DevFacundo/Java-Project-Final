@@ -1,6 +1,7 @@
 package ui.menus.clientsmenu;
 
 import model.clients.Tenant;
+import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
 import model.genericManagement.JsonUtils;
 import ui.menus.clientsmenu.clientMenuService.TenantService;
@@ -36,10 +37,10 @@ public class TenantMenu {
                         tenantService.modifyTenant();
                         break;
                     case 3:
-                        System.out.println("Opcion 3");
+                        tenantService.deleteTenant();
                         break;
                     case 4:
-                        System.out.println("Opcion 4");
+                       tenantService.seeAllTenants();
                         break;
                     case 0:
                         System.out.println("Returning to the previous menu...");
@@ -47,7 +48,7 @@ public class TenantMenu {
                     default:
                         System.out.println("Invalid option. Please try again.");
                 }
-            } catch (InvalidInputException e) {
+            } catch (InvalidInputException | ElementNotFoundException e) {
                 System.out.println(e.getMessage());
                 System.out.println("Press Enter to try again...");
                 scanner.nextLine();

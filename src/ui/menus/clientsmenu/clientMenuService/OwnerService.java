@@ -1,7 +1,9 @@
 package ui.menus.clientsmenu.clientMenuService;
 
+import model.State;
 import model.clients.Owner;
-import model.exceptions.InvalidInputException;
+import model.clients.Tenant;
+import model.exceptions.*;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.utils.Utils;
@@ -50,20 +52,22 @@ public class OwnerService {
         Boolean continueAdding = true;
         do {
             try {
-                List<Owner> owners = new ArrayList<>();
-                owners = JsonUtils.loadList("owners.json", Owner.class);
+
+                owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
                 Owner newOwner = OwnerService.createOwner(scanner);
                 System.out.println("Owner added successfully:");
                 System.out.println(newOwner);
                 if (!owners.isEmpty()) {
-                    Owner o = owners.getLast();
+                    Owner o = owners.getLastObject();
                     Integer lastId = o.getId() + 1;
                     newOwner.setId(lastId);
                 }
-                owners.add(newOwner);
-                JsonUtils.saveList(owners,"owners.json", Owner.class);
+                owners.addElement(newOwner);
+                JsonUtils.saveList(owners.returnList(),"owners.json", Owner.class);
             } catch (InvalidInputException e) {
                 System.out.println("Error adding owner: " + e.getMessage());
+            } catch (DuplicateElementException e) {
+                System.out.println("The Owner has already exists");
             }
 
             continueAdding = askToContinue();
@@ -79,6 +83,7 @@ public class OwnerService {
     public void modifyOwner() {
         try {
 
+            owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
             if (owners.isEmpty()) {
                 System.out.println("No owners available to modify.");
                 return;
@@ -180,7 +185,53 @@ public class OwnerService {
             }
         }
     }
+    public void seeAllOwners() throws ElementNotFoundException {
+        if (owners.isEmpty()) {
+            throw new ElementNotFoundException("No owners found.");
+        }
+        System.out.println(owners.returnList());
+    }
 
+    public void deleteOwner() {
+        try {
+
+            owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
+            if (owners.isEmpty()) {
+                System.out.println("No Owners available to delete.");
+                return;
+            }
+
+            System.out.print("Enter the DNI of the owner you want to delete: ");
+            String dni = scanner.nextLine().trim();
+
+            Owner ownerToDelete = null;
+            for (Owner o : owners.returnList()) {
+                if (o.getDni().equals(dni)) {
+                    ownerToDelete = o;
+                    break;
+                }
+            }
+
+            if (ownerToDelete == null) {
+                throw new InvalidInputException("Owner with DNI " + dni + " not found.");
+            }
+
+            if (ownerToDelete.getClientState()== State.SOLD)
+            {
+                throw new SoldException("You can't delete "+ownerToDelete.getName()+" "+
+                        ownerToDelete.getSurname()+" because they have already sold a propierty");
+            }
+
+            System.out.println("Selected Owner: " + ownerToDelete);
+
+            owners.deleteElement(ownerToDelete);
+
+            JsonUtils.saveList(owners.returnList(), "owners.json", Owner.class);
+            System.out.println("Owner deleted successfully!");
+        } catch (InvalidInputException | SoldException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 
 
 }

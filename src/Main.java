@@ -7,6 +7,7 @@ import model.genericManagement.JsonUtils;
 import model.properties.*;
 import model.rents.Rent;
 import model.sales.Sale;
+import ui.menus.mainMenu.MainMenu;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +19,8 @@ import java.util.List;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws IOException {
+        MainMenu mm = new MainMenu();
+        mm.menu();
         //PROPERTIES FILES
         File houseFile = new File("houses.json");
         File lotFile = new File("lots.json");
@@ -126,7 +129,54 @@ public class Main {
         Sale sale5 = new Sale(buyer5, house2, LocalDate.of(2023, 1, 5));
         Sale sale6 = new Sale(buyer6, store1, LocalDate.of(2023, 9, 1));
 
+
+        System.out.println(JsonUtils.loadList("owners.json", Owner.class));
+        System.out.println(JsonUtils.loadList("buyers.json", Buyer.class));
+        System.out.println(JsonUtils.loadList("tenants.json", Tenant.class));
+        /*
+        GenericClass<Owner> owners = new GenericClass<>();
+        owners.addElement(owner1);
+        owners.addElement(owner2);
+        owners.addElement(owner3);
+        owners.addElement(owner4);
+        owners.addElement(owner5);
+        owners.addElement(owner6);
+        owners.addElement(owner7);
+        owners.addElement(owner8);
+        owners.addElement(owner9);
+        owners.addElement(owner10);
+        owners.addElement(owner11);
+        owners.addElement(owner12);
+        JsonUtils.saveList(owners.returnList(), "owners.json", Owner.class);
+
+        GenericClass<Buyer> buyers = new GenericClass<>();
+        buyers.addElement(buyer1);
+        buyers.addElement(buyer2);
+        buyers.addElement(buyer3);
+        buyers.addElement(buyer4);
+        buyers.addElement(buyer5);
+        buyers.addElement(buyer6);
+        buyers.addElement(buyer7);
+        buyers.addElement(buyer8);
+        buyers.addElement(buyer9);
+        buyers.addElement(buyer10);
+        buyers.addElement(buyer11);
+        buyers.addElement(buyer12);
+        JsonUtils.saveList(buyers.returnList(), "buyers.json", Buyer.class);
+
+        GenericClass<Tenant> tenants = new GenericClass<>();
+        tenants.addElement(tenant1);
+        tenants.addElement(tenant2);
+        tenants.addElement(tenant3);
+        tenants.addElement(tenant4);
+        tenants.addElement(tenant5);
+        tenants.addElement(tenant6);
+        JsonUtils.saveList(tenants.returnList(), "tenants.json", Tenant.class);
+
+
+         */
         //PRUEBA DE CARGA GENERICA PROPERTIES COMPLETA
+        /*
         GenericClass<Property> properties = new GenericClass<>();
 
         properties.addElement(house1);
@@ -164,6 +214,8 @@ public class Main {
         properties.addElement(warehouse5);
 
         JsonUtils.saveList(properties.returnList(),"properties.json", Property.class);
+
+         */
         // PRUEBAS 1
 /*
 
@@ -194,27 +246,7 @@ public class Main {
 
         /*
 
-        GenericClass<Owner> owners = new GenericClass<>();
-            owners.addElement(owner1);
-            owners.addElement(owner2);
-            owners.addElement(owner3);
-            owners.addElement(owner4);
-            owners.addElement(owner5);
-        JsonClass.saveList(owners.returnList(), "owners.json");
 
-        GenericClass<Buyer> buyers = new GenericClass<>();
-            buyers.addElement(buyer1);
-            buyers.addElement(buyer2);
-            buyers.addElement(buyer3);
-            buyers.addElement(buyer4);
-        JsonClass.saveList(buyers.returnList(), "buyers.json");
-
-        GenericClass<Tenant> tenants = new GenericClass<>();
-            tenants.addElement(tenant1);
-            tenants.addElement(tenant2);
-            tenants.addElement(tenant3);
-            tenants.addElement(tenant4);
-        JsonClass.saveList(tenants.returnList(), "tenants.json");
 
         GenericClass<House> houses= new GenericClass<>();
             houses.addElement(house1);

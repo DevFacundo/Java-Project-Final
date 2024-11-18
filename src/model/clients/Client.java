@@ -99,7 +99,7 @@ public abstract class Client  {
     @Override
     public String toString() {
         return String.format(
-                "Client Information:\n" +
+                "\nClient Information:\n" +
                         "─────────────────────────────────\n" +
                         "ID            : %d\n" +
                         "Name          : %s\n" +

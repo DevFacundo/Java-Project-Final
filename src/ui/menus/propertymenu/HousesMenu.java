@@ -33,7 +33,7 @@ public class HousesMenu {
                         housesService.addHouse();
                         break;
                     case 2:
-                        System.out.println("Modifying a house...");
+                        housesService.modifyHouse();
                         break;
                     case 3:
                         System.out.println("Cancelling a house...");

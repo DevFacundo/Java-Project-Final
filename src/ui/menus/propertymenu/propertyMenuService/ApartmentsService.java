@@ -175,6 +175,8 @@ public class ApartmentsService {
                     throw new InvalidInputException("Apartment with ID " + apartmentId + " not found.");
                 }
 
+                System.out.println(apartmentToModify);
+
                 modifyApartmentDetails(apartmentToModify);
 
                 JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
@@ -206,7 +208,9 @@ public class ApartmentsService {
         Integer option;
 
         do {
-            System.out.println("Choose which detail to modify:");;
+            System.out.println("\n----------------------------------------------------");
+            System.out.println("     Modify Apartment Details");
+            System.out.println("----------------------------------------------------");
             System.out.println("1. Address");
             System.out.println("2. Area");
             System.out.println("3. Sales Price");
@@ -218,7 +222,8 @@ public class ApartmentsService {
             System.out.println("9. Orientation");
             System.out.println("10. Maintenance Fees");
             System.out.println("0. Go back");
-            System.out.println("Select an option: ");
+            System.out.println("----------------------------------------------------");
+            System.out.println("Please select the detail you would like to modify: ");
 
             option = Utils.getValidatedOption();
 

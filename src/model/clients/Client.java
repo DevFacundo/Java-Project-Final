@@ -98,12 +98,18 @@ public abstract class Client  {
 
     @Override
     public String toString() {
-        return  "id client=" + id +
-                "\nname='" + name + '\'' +
-                "\nsurname="+ surname+
-                "\ndni="+dni+
-                "\ncontactNumber=" + contactNumber +
-                "\nemail='" + email + '\'' +
-                "\nadress='" + adress + '\'';
+        return String.format(
+                "Client Information:\n" +
+                        "─────────────────────────────────\n" +
+                        "ID            : %d\n" +
+                        "Name          : %s\n" +
+                        "Surname       : %s\n" +
+                        "DNI           : %s\n" +
+                        "Contact Number: %s\n" +
+                        "Email         : %s\n" +
+                        "Address       : %s\n" +
+                        "─────────────────────────────────",
+                id, name, surname, dni, contactNumber, email, adress
+        );
     }
 }

@@ -94,7 +94,7 @@ public class RentService {
         tenants.modifyElement(tenant, tenant);
         JsonUtils.saveList(tenants.returnList(), "tenants.json", Tenant.class);
         //SETTING THE OWNER STATE
-        property.getOwner().setClientState(State.SOLD);
+        property.getOwner().setClientState(State.RENTED);
         owners.modifyElement(property.getOwner(),property.getOwner());
         JsonUtils.saveList(owners.returnList(),"owners.json", Owner.class);
 
@@ -102,7 +102,6 @@ public class RentService {
         property.setState(State.RENTED);
         properties.modifyElement(property, property);
         JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
-
 
         return new Rent(tenant, property, rentalStartDate, rentalEndDate);
     }

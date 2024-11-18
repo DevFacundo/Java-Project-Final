@@ -13,17 +13,20 @@ import java.util.Scanner;
 
 public class WarehousesServices {
 
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner;
     GenericClass<Property> properties;
     GenericClass<Owner> owners;
 
+    public WarehousesServices() {
+        scanner = new Scanner(System.in);
+        properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+        owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
+    }
 
-    private void addWarehouse() {
+   public void addWarehouse() {
         Boolean continueAdding = true;
         do {
             try {
-                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
-                owners = new GenericClass<>(JsonUtils.loadList("owner.json", Owner.class));
                 WareHouse newWareHouse = createWareHouse(scanner, owners);
 
                 System.out.println("WareHouse added successfully:");
@@ -79,7 +82,7 @@ public class WarehousesServices {
                 typeOfUse = TypeOfUse.EVENTS;
             }
         }
-        while (flag != 1 || flag != 2 || flag != 3 || flag != 4 || flag != 5);
+        while (flag != 1 && flag != 2 && flag != 3 && flag != 4 && flag != 5);
 
         System.out.println("Enter bathrooms quantity: ");
         Integer bathroomsQuantity = Integer.parseInt(scanner.nextLine().trim());

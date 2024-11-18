@@ -15,13 +15,16 @@ public class HousesService {
     GenericClass<Property> properties;
     GenericClass<Owner> owners;
 
+    public HousesService() {
+        scanner = new Scanner(System.in);
+        properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+        owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
+    }
 
-    private void addHouse() {
+    public void addHouse() {
         Boolean continueAdding = true;
         do {
             try {
-                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
-                owners = new GenericClass<>(JsonUtils.loadList("owner.json", Owner.class));
                 House newHouse = createHouse(scanner, owners);
 
                 System.out.println("House added successfully:");

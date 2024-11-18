@@ -120,13 +120,14 @@ public abstract class Property {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Property property = (Property) o;
-        return Objects.equals(id, property.id) && Objects.equals(adress, property.adress);
+        return Objects.equals(adress, property.adress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, adress);
+        return Objects.hashCode(adress);
     }
+
     @Override
     public String toString() {
         return String.format(

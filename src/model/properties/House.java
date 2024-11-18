@@ -74,6 +74,7 @@ public class House extends Property{
         this.park = park;
     }
 
+
     @Override
     public String toString() {
         return String.format(

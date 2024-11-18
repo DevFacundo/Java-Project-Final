@@ -1,6 +1,7 @@
 package ui.menus.rentsmenu;
 
 import model.exceptions.InvalidInputException;
+import ui.menus.rentsmenu.rentMenuService.RentService;
 
 import java.util.Scanner;
 
@@ -21,7 +22,8 @@ public class RentsMenu {
 
                 switch (option) {
                     case 1:
-                        System.out.println("Opcion 1");
+                        RentService rs = new RentService();
+                        rs.addRent();
                         break;
                     case 2:
                         System.out.println("Opcion 2");

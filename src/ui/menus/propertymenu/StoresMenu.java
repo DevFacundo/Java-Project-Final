@@ -1,6 +1,7 @@
 package ui.menus.propertymenu;
 
 import model.exceptions.InvalidInputException;
+import ui.menus.propertymenu.propertyMenuService.StoresService;
 
 import java.util.Scanner;
 
@@ -19,7 +20,8 @@ public class StoresMenu {
 
                 switch (option) {
                     case 1:
-                        System.out.println("Adding a store...");
+                        StoresService ss = new StoresService();
+                        ss.addStore();
                         break;
                     case 2:
                         System.out.println("Modifying a store...");

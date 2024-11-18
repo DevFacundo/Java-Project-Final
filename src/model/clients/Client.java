@@ -115,12 +115,11 @@ public abstract class Client  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(id, client.id) && Objects.equals(dni, client.dni);
+        return Objects.equals(dni, client.dni);
     }
-
     @Override
     public int hashCode() {
-        return Objects.hash(id, dni);
+        return Objects.hashCode(dni);
     }
 
     @Override

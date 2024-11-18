@@ -12,17 +12,20 @@ import model.properties.Property;
 import java.util.Scanner;
 
 public class LotsService {
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner;
     GenericClass<Property> properties;
     GenericClass<Owner> owners;
 
+    public LotsService() {
+        scanner = new Scanner(System.in);
+        properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+        owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
+    }
 
-    private void addLot() {
+    public void addLot() {
         Boolean continueAdding = true;
         do {
             try {
-                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
-                owners = new GenericClass<>(JsonUtils.loadList("owner.json", Owner.class));
                 Lot newLot = createLot(scanner, owners);
 
                 System.out.println("Lot added successfully:");

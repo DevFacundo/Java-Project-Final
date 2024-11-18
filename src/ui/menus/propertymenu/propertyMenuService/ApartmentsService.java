@@ -13,17 +13,20 @@ import java.util.Scanner;
 
 public class ApartmentsService {
 
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner ;
     GenericClass<Property> properties;
     GenericClass<Owner> owners;
 
+    public ApartmentsService() {
+        scanner = new Scanner(System.in);
+        properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+        owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
+    }
 
-    private void addApartament() {
+    public void addApartament() {
         Boolean continueAdding = true;
         do {
             try {
-                properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
-                owners = new GenericClass<>(JsonUtils.loadList("owner.json", Owner.class));
                 Apartment newApartment = createApartment(scanner, owners);
 
                 System.out.println("Apartment added successfully:");
@@ -96,7 +99,7 @@ public class ApartmentsService {
                 orientation = Orientation.BACK;
             }
         }
-        while (flag != 1 || flag != 2);
+        while (flag != 1 && flag != 2);
 
         System.out.println("Enter the maintenance fees: ");
         Double maintenanceFees = Double.parseDouble(scanner.nextLine().trim());

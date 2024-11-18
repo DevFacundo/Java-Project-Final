@@ -15,14 +15,14 @@ public class PropertyMenu {
 
     Scanner scanner = new Scanner(System.in);
 
-    /// Método del menú
+
     public void menu() {
         int option = -1;
         do {
-            printMenu(); /// Imprime un menú modularizado
+            printMenu();
 
             try {
-                option = getValidatedOption(); /// Excepción que valida que sea un número
+                option = getValidatedOption();
 
                 switch (option) {
                     case 1:

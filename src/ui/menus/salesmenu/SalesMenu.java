@@ -4,6 +4,7 @@ import model.exceptions.InvalidInputException;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.sales.Sale;
+import ui.menus.salesmenu.saleMenuService.SaleService;
 
 import java.util.Scanner;
 
@@ -23,7 +24,8 @@ public class SalesMenu {
 
                 switch (option) {
                     case 1:
-                        System.out.println("Opcion 1");
+                        SaleService sl = new SaleService();
+                        sl.addSale();
                         break;
                     case 2:
                         System.out.println("Opcion 2");

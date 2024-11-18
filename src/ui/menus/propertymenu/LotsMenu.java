@@ -1,6 +1,7 @@
 package ui.menus.propertymenu;
 
 import model.exceptions.InvalidInputException;
+import ui.menus.propertymenu.propertyMenuService.LotsService;
 
 import java.util.Scanner;
 
@@ -20,7 +21,8 @@ public class LotsMenu {
 
                 switch (option) {
                     case 1:
-                        System.out.println("Adding a lot...");
+                        LotsService ls = new LotsService();
+                        ls.addLot();
                         break;
                     case 2:
                         System.out.println("Modifying a lot...");

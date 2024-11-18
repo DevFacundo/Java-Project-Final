@@ -1,6 +1,7 @@
 package ui.menus.propertymenu;
 
 import model.exceptions.InvalidInputException;
+import ui.menus.propertymenu.propertyMenuService.WarehousesServices;
 
 import java.util.Scanner;
 
@@ -12,14 +13,15 @@ public class WarehousesMenu {
     public void menu() {
         int option = -1;
         do {
-            printMenu(); /// Imprime un menú modularizado
+            printMenu();
 
             try {
-                option = getValidatedOption(); /// Excepción que valida que sea un número
+                option = getValidatedOption();
 
                 switch (option) {
                     case 1:
-                        System.out.println("Adding a warehouse...");
+                        WarehousesServices ws = new WarehousesServices();
+                        ws.addWarehouse();
                         break;
                     case 2:
                         System.out.println("Modifying a warehouse...");

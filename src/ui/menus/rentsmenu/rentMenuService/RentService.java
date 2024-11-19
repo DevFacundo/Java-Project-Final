@@ -86,7 +86,7 @@ public class RentService {
         String tenantDni = scanner.nextLine().trim();
         Tenant tenant = validateTenant(tenantDni);
 
-        //VALIDAR FECHASSSSSSSSSSSSSSSSS
+
         System.out.print("Enter the rental start date (YYYY-MM-DD): ");
         String startDate = scanner.nextLine();
         LocalDate rentalStartDate = LocalDate.parse(startDate);
@@ -286,7 +286,8 @@ public class RentService {
 
     public void deleteRent() {
         try {
-
+            tenants = new GenericClass<>(JsonUtils.loadList("tenants.json", Tenant.class));
+            properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
             rents = new GenericClass<>(JsonUtils.loadList("rents.json", Rent.class));
             if (rents.isEmpty()) {
                 System.out.println("No rents available to delete.");
@@ -296,10 +297,14 @@ public class RentService {
             System.out.print("Enter the ID of the rent you want to delete: ");
             Integer rentID = Integer.parseInt(scanner.nextLine().trim());
 
+            Tenant tenant = null;
+            Property property = null;
             Rent rentToDelete = null;
             for (Rent o : rents.returnList()) {
                 if (o.getId().equals(rentID)) {
                     rentToDelete = o;
+                    tenant = o.getTenant();
+                    property = o.getProperty();
                     break;
                 }
             }
@@ -312,8 +317,18 @@ public class RentService {
             System.out.println("Selected rent: " + rentToDelete);
 
             rents.deleteElement(rentToDelete);
+            //MODIFY STATE OF PROPIERTY AND STATE OF CLIENT
+            tenant.setClientState(State.AVAILABLE);
+            property.setState(State.AVAILABLE);
 
+            tenants.modifyElement(tenant,tenant);
+            properties.modifyElement(property,property);
+
+
+            JsonUtils.saveList(tenants.returnList(),"tenants.json", Tenant.class);
+            JsonUtils.saveList(properties.returnList(),"properties.json", Property.class);
             JsonUtils.saveList(rents.returnList(), "rents.json", Rent.class);
+
             System.out.println("Rent deleted successfully!");
         } catch (InvalidInputException e) {
             System.out.println("Error: " + e.getMessage());

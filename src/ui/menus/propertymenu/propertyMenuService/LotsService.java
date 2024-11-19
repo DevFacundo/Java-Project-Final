@@ -5,8 +5,6 @@ import model.clients.Owner;
 import model.exceptions.*;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
-import model.properties.Apartment;
-import model.properties.House;
 import model.properties.Lot;
 import model.properties.Property;
 import model.utils.Utils;
@@ -26,7 +24,7 @@ public class LotsService {
     }
 
     public void addLot() {
-        Boolean continueAdding = true;
+        Boolean continueAdding;
         do {
             try {
                 properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
@@ -52,7 +50,7 @@ public class LotsService {
     }
 
     public static Lot createLot(Scanner scanner, GenericClass<Owner> ownerList) throws InvalidInputException {
-        Owner owner = new Owner();
+        Owner owner;
         System.out.print("Enter the owner's DNI: ");
         String ownerDni = scanner.nextLine().trim();
         owner = validateOwner(ownerDni, ownerList);
@@ -180,7 +178,7 @@ public class LotsService {
     }
 
     public void modifyLot() {
-        Boolean continueModifying = true;
+        Boolean continueModifying;
         do {
             try {
                 properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
@@ -214,9 +212,9 @@ public class LotsService {
             } catch (InvalidInputException | NumberFormatException e) {
                 System.out.println("Error modifying lot: " + e.getMessage());
             } catch (SoldException e) {
-                throw new RuntimeException(e);
+                System.out.println("Error: "+e.getMessage());
             } catch (RentedException e) {
-                throw new RuntimeException(e);
+                System.out.println("Error:  "+e.getMessage());
             }
 
             continueModifying = askToContinue();
@@ -236,7 +234,7 @@ public class LotsService {
     }
 
     private void modifyLotDetails(Lot lot) throws InvalidInputException {
-        Boolean continueModifying = true;
+        Boolean continueModifying;
         Integer option;
 
         do {
@@ -338,17 +336,6 @@ public class LotsService {
         }
     }
 
-    private void validateArea(Double area) throws InvalidInputException {
-        if (area <= 0) {
-            throw new InvalidInputException("Area must be greater than zero.");
-        }
-    }
-
-    private void validatePrice(Double price) throws InvalidInputException {
-        if (price <= 0) {
-            throw new InvalidInputException("Price must be greater than zero.");
-        }
-    }
 
     public void deleteProperty() {
         try {
@@ -387,8 +374,7 @@ public class LotsService {
         } catch (InvalidInputException | SoldException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (RentedException e) {
-            System.out.println("Error: " + e.getMessage());
-            ;
+            System.out.println("Error:  " + e.getMessage());
         }
     }
 

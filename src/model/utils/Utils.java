@@ -1,11 +1,6 @@
 package model.utils;
 
-import model.clients.Client;
-import model.clients.Owner;
-import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
-
-import java.util.List;
 import java.util.Scanner;
 
 public class Utils {

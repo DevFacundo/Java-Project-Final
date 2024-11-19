@@ -25,7 +25,7 @@ public class WarehousesServices {
 
     public void addWarehouse() {
 
-        Boolean continueAdding = true;
+        Boolean continueAdding;
         do {
             try {
                 properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
@@ -51,7 +51,7 @@ public class WarehousesServices {
     }
 
     public static WareHouse createWareHouse(Scanner scanner, GenericClass<Owner> ownerList) throws InvalidInputException {
-        Owner owner = new Owner();
+        Owner owner;
         System.out.print("Enter the owner's DNI: ");
         String ownerDni = scanner.nextLine().trim();
         owner = validateOwner(ownerDni, ownerList);
@@ -83,7 +83,7 @@ public class WarehousesServices {
             throw new InvalidInputException("The Sales Price must be a valid number.");
         }
 
-        int flag = 0;
+        int flag;
         TypeOfUse typeOfUse = null;
         do {
             System.out.println("what is the use of the warehouse ? (1.STORAGE / 2. INDUSTRIAL / 3. COMMERCIAL / 4. WORKSHOP / 5. EVENTS)");
@@ -166,7 +166,7 @@ public class WarehousesServices {
     }
 
     public void modifyWarehouse() {
-        Boolean continueModifying = true;
+        Boolean continueModifying;
         do {
             try {
                 properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
@@ -201,10 +201,9 @@ public class WarehousesServices {
             } catch (InvalidInputException | NumberFormatException e) {
                 System.out.println("Error modifying warehouse: " + e.getMessage());
             } catch (SoldException e) {
-                throw new RuntimeException(e);
+                System.out.println("Error: "+e.getMessage());
             } catch (RentedException e) {
-                throw new RuntimeException(e);
-            }
+                System.out.println("Error:  "+e.getMessage());            }
 
             continueModifying = askToContinue();
         } while (continueModifying);
@@ -223,7 +222,7 @@ public class WarehousesServices {
     }
 
     private void modifyWarehouseDetails(WareHouse warehouse) throws InvalidInputException {
-        Boolean continueModifying = true;
+        Boolean continueModifying;
         Integer option;
 
         do {
@@ -329,30 +328,6 @@ public class WarehousesServices {
         } while (continueModifying);
     }
 
-    private void validateArea(double area) throws InvalidInputException {
-        if (area <= 0) {
-            throw new InvalidInputException("Area must be a positive number.");
-        }
-    }
-
-    private void validatePrice(double price) throws InvalidInputException {
-        if (price <= 0) {
-            throw new InvalidInputException("Price must be a positive number.");
-        }
-    }
-
-    private void validateBathrooms(int bathrooms) throws InvalidInputException {
-        if (bathrooms < 0) {
-            throw new InvalidInputException("Bathrooms quantity must be a positive number.");
-        }
-    }
-
-    private void validateFloors(int floors) throws InvalidInputException {
-        if (floors < 0) {
-            throw new InvalidInputException("Floors quantity must be a positive number.");
-        }
-    }
-
     public void deleteProperty() {
         try {
             properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
@@ -392,7 +367,7 @@ public class WarehousesServices {
         } catch (InvalidInputException | SoldException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (RentedException e) {
-            System.out.println("Error: "+ e.getMessage());;
+            System.out.println("Error:  "+ e.getMessage());
         }
     }
     public void seeAllWareHouses() throws ElementNotFoundException {

@@ -5,7 +5,6 @@ import model.clients.Owner;
 import model.exceptions.*;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
-import model.properties.Apartment;
 import model.properties.House;
 import model.properties.Property;
 import model.utils.Utils;
@@ -13,7 +12,7 @@ import model.utils.Utils;
 import java.util.Scanner;
 
 public class HousesService {
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner;
     GenericClass<Property> properties;
     GenericClass<Owner> owners;
 
@@ -24,40 +23,54 @@ public class HousesService {
     }
 
     public void addHouse() {
-        Boolean continueAdding = true;
+        // Flag to control the loop
+        Boolean continueAdding;
         do {
             try {
+                // Load properties and owners from JSON files
                 properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
                 owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
+
+                // Create a new house using user input and available owners
                 House newHouse = createHouse(scanner, owners);
 
+                // Print success message and new house details
                 System.out.println("House added successfully:");
-                System.out.println(newHouse);
 
+
+                // Assign an ID to the new house based on the last ID in the properties list
                 if (!properties.isEmpty()) {
                     Property p = properties.getLastObject();
                     Integer lastId = p.getId() + 1;
                     newHouse.setId(lastId);
                 }
+                System.out.println(newHouse);
 
+                // Add the new house to the properties list and save it to the JSON file
                 properties.addElement(newHouse);
                 JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
 
             } catch (InvalidInputException e) {
+                // Handle invalid user input
                 System.out.println("Error adding house: " + e.getMessage());
             } catch (DuplicateElementException e) {
+                // Handle duplicate element errors
                 System.out.println("Error: " + e.getMessage());
             }
+            // Ask the user if they want to continue adding houses
             continueAdding = askToContinue();
         } while (continueAdding);
     }
 
+
     public static House createHouse(Scanner scanner, GenericClass<Owner> ownerList) throws InvalidInputException {
-        Owner owner = new Owner();
+        // Get owner information
+        Owner owner;
         System.out.print("Enter the owner's DNI: ");
         String ownerDni = scanner.nextLine().trim();
         owner = validateOwner(ownerDni, ownerList);
 
+        // Get house details from user input
         System.out.print("Enter house address: ");
         String address = scanner.nextLine().trim();
 
@@ -131,6 +144,7 @@ public class HousesService {
         }
         while (park == null);
 
+        // Validate house details
         validateHouseInputs(address, area, sp, rp, floorsQuantity, roomsQuantity, bedroomsQuantity, bathroomsQuantity);
 
         return new House(owner, address, area, sp, rp, floorsQuantity, roomsQuantity, bedroomsQuantity, bathroomsQuantity, park);
@@ -185,7 +199,7 @@ public class HousesService {
     }
 
     public void modifyHouse() {
-        Boolean continueModifying = true;
+        Boolean continueModifying;
         do {
             try {
                 properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
@@ -220,9 +234,9 @@ public class HousesService {
             } catch (InvalidInputException | NumberFormatException e) {
                 System.out.println("Error modifying house: " + e.getMessage());
             } catch (SoldException e) {
-                throw new RuntimeException(e);
+                System.out.println("error: "+e.getMessage());
             } catch (RentedException e) {
-                throw new RuntimeException(e);
+                System.out.println("error:  "+e.getMessage());
             }
 
             continueModifying = askToContinue();
@@ -242,7 +256,7 @@ public class HousesService {
     }
 
     private void modifyHouseDetails(House house) throws InvalidInputException {
-        Boolean continueModifying = true;
+        Boolean continueModifying;
         Integer option;
 
         do {
@@ -425,8 +439,8 @@ public class HousesService {
         } catch (InvalidInputException | SoldException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (RentedException e) {
-            System.out.println("Error: " + e.getMessage());
-            ;
+            System.out.println("Error:  " + e.getMessage());
+
         }
     }
 

@@ -1,11 +1,9 @@
 package model.rents;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import model.clients.Owner;
 import model.clients.Tenant;
 import model.interfaces.EarningCalculator;
 import model.properties.Property;
-
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 

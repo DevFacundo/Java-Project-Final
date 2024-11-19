@@ -5,10 +5,7 @@ import model.clients.Buyer;
 import model.exceptions.*;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
-import model.utils.Utils;
-
 import java.util.Scanner;
-
 import static model.utils.Utils.*;
 
 public class BuyerService {
@@ -46,7 +43,7 @@ public class BuyerService {
     }
 
     public void addBuyer() {
-        Boolean continueAdding = true;
+        Boolean continueAdding;
         do {
             try {
                 buyers = new GenericClass<>(JsonUtils.loadList("buyers.json",Buyer.class));
@@ -116,7 +113,7 @@ public class BuyerService {
         } catch (InvalidInputException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (SoldException e) {
-            System.out.println("Error: "+ e.getMessage());
+            System.out.println("Error:  "+ e.getMessage());
         }
     }
 

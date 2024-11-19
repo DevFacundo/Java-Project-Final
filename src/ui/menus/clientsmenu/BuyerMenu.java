@@ -1,15 +1,8 @@
 package ui.menus.clientsmenu;
 
-import model.clients.Buyer;
-import model.exceptions.DuplicateElementException;
 import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
-import model.genericManagement.GenericClass;
-import model.genericManagement.JsonUtils;
 import ui.menus.clientsmenu.clientMenuService.BuyerService;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import static model.utils.Utils.getValidatedOption;

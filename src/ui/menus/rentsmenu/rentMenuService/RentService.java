@@ -6,8 +6,6 @@ import model.clients.Tenant;
 import model.exceptions.*;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
-import model.properties.Apartment;
-import model.properties.Orientation;
 import model.properties.Property;
 import model.rents.Rent;
 import model.utils.Utils;
@@ -33,7 +31,7 @@ public class RentService {
     }
 
     public void addRent() {
-        Boolean continueAdding = true;
+        Boolean continueAdding;
         do {
             try {
                 rents = new GenericClass<>(JsonUtils.loadList("rents.json", Rent.class));
@@ -60,9 +58,9 @@ public class RentService {
             } catch (InvalidInputException e) {
                 System.out.println("Error: " + e.getMessage());
             } catch (DateTimeParseException e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println("Error:  " + e.getMessage());
             } catch (DuplicateElementException e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println("Error:   "+ e.getMessage());
             }
 
             continueAdding = askToContinue();
@@ -163,7 +161,7 @@ public class RentService {
     }
 
     public void modifyRent() {
-        Boolean continueModifying = true;
+        Boolean continueModifying;
         do {
             try {
                 rents = new GenericClass<>(JsonUtils.loadList("rents.json", Rent.class));
@@ -205,7 +203,7 @@ public class RentService {
     }
 
     public void modifyRentDetails(Rent rent) throws InvalidInputException {
-        Boolean continueModifying = true;
+        Boolean continueModifying;
         Integer option;
 
         do {

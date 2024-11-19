@@ -3,7 +3,6 @@ package ui.menus.reportsMenu;
 import model.exceptions.InvalidInputException;
 import model.rents.Rent;
 import model.sales.Sale;
-import ui.menus.rentsmenu.rentMenuService.RentService;
 import ui.menus.reportsMenu.reportMenuService.ReportService;
 
 import java.util.Scanner;

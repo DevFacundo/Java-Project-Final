@@ -25,7 +25,7 @@ public class ApartmentsService {
     }
 
     public void addApartament() {
-        Boolean continueAdding = true;
+        Boolean continueAdding;
         do {
             try {
                 properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
@@ -51,7 +51,7 @@ public class ApartmentsService {
     }
 
     public static Apartment createApartment(Scanner scanner, GenericClass<Owner> ownerList) throws InvalidInputException {
-        Owner owner = new Owner();
+        Owner owner;
         System.out.print("Enter the owner's DNI: ");
         String ownerDni = scanner.nextLine().trim();
         owner = validateOwner(ownerDni, ownerList);
@@ -122,7 +122,7 @@ public class ApartmentsService {
         }
         while (furniture == null);
 
-        int flag = 0;
+        int flag;
         Orientation orientation = null;
         do {
             System.out.println("what is the orientation? (1.FRONT / 2. BACK)");
@@ -193,7 +193,7 @@ public class ApartmentsService {
     }
 
     public void modifyApartment() {
-        Boolean continueModifying = true;
+        Boolean continueModifying;
         do {
             try {
                 properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
@@ -227,9 +227,9 @@ public class ApartmentsService {
             } catch (InvalidInputException | NumberFormatException e) {
                 System.out.println("Error modifying apartment: " + e.getMessage());
             } catch (SoldException e) {
-                throw new RuntimeException(e);
+                System.out.println("Error: " + e.getMessage());
             } catch (RentedException e) {
-                throw new RuntimeException(e);
+                System.out.println("Error:  " + e.getMessage());
             }
 
             continueModifying = askToContinue();
@@ -249,7 +249,7 @@ public class ApartmentsService {
     }
 
     public void modifyApartmentDetails(Apartment apartment) throws InvalidInputException {
-        Boolean continueModifying = true;
+        Boolean continueModifying;
         Integer option;
 
         do {
@@ -445,8 +445,7 @@ public class ApartmentsService {
         } catch (InvalidInputException | SoldException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (RentedException e) {
-            System.out.println("Error: " + e.getMessage());
-            ;
+            System.out.println("Error:  " + e.getMessage());
         }
     }
 

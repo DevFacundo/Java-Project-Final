@@ -23,17 +23,7 @@ public class House extends Property{
         this.bathRooms = bathRooms;
         this.park = park;
     }
-/*
-    public House(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice, StateOfProperty state, Integer floorsQuantity, Integer rooms, Integer bedRooms, Integer bathRooms, Boolean park) {
-        super(owner, adress, area, salesPrice, rentalPrice,state);
-        this.floorsQuantity = floorsQuantity;
-        this.rooms = rooms;
-        this.bedRooms = bedRooms;
-        this.bathRooms = bathRooms;
-        this.park = park;
-    }
 
- */
     public Integer getFloorsQuantity() {
         return floorsQuantity;
     }

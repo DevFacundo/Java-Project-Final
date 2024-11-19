@@ -1,0 +1,38 @@
+[ {
+  "id" : 1,
+  "buyer" : {
+    "id" : 43,
+    "name" : "Claudio",
+    "surname" : "Aguilera",
+    "dni" : "16088247",
+    "contactNumber" : "2235829878",
+    "email" : "claudo@plantel",
+    "adress" : "Sagastizabal 2698",
+    "clientState" : "BOUGHT"
+  },
+  "property" : {
+    "propertyType" : "house",
+    "id" : 3,
+    "owner" : {
+      "id" : 2,
+      "name" : "Vilma",
+      "surname" : "Hammond",
+      "dni" : "15832482",
+      "contactNumber" : "2236957601",
+      "email" : "vilmahammond@frolix.com",
+      "adress" : "547 Coleridge Street",
+      "clientState" : "SOLD"
+    },
+    "adress" : "route 66 323",
+    "area" : 500.0,
+    "floorsQuantity" : 2,
+    "rooms" : 3,
+    "bedRooms" : 3,
+    "bathRooms" : 3,
+    "park" : true,
+    "state" : "SOLD",
+    "rentalPrice" : 2000.0,
+    "salesPrice" : 100000.0
+  },
+  "dateOfSale" : [ 2024, 12, 1 ]
+} ]

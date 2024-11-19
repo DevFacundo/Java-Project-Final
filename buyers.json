@@ -1,432 +1,397 @@
-[
-  {
-    "id": 0,
-    "name": "Kari",
-    "surname": "Knapp",
-    "dni": 10424369,
-    "contactNumber": 2234683684,
-    "email": "kariknapp@frolix.com",
-    "adress": "457 Herkimer Court",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 1,
-    "name": "Daugherty",
-    "surname": "Norris",
-    "dni": 15993626,
-    "contactNumber": 2235022586,
-    "email": "daughertynorris@frolix.com",
-    "adress": "182 Fleet Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 2,
-    "name": "Chandler",
-    "surname": "Austin",
-    "dni": 28622027,
-    "contactNumber": 2235957223,
-    "email": "chandleraustin@frolix.com",
-    "adress": "167 Seeley Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 3,
-    "name": "Figueroa",
-    "surname": "Fuller",
-    "dni": 20547560,
-    "contactNumber": 2236358720,
-    "email": "figueroafuller@frolix.com",
-    "adress": "163 Taylor Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 4,
-    "name": "Farley",
-    "surname": "Langley",
-    "dni": 57078848,
-    "contactNumber": 2234076068,
-    "email": "farleylangley@frolix.com",
-    "adress": "593 Channel Avenue",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 5,
-    "name": "Natalie",
-    "surname": "Kirkland",
-    "dni": 26155540,
-    "contactNumber": 2233339472,
-    "email": "nataliekirkland@frolix.com",
-    "adress": "722 Withers Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 6,
-    "name": "Travis",
-    "surname": "Jones",
-    "dni": 35573028,
-    "contactNumber": 2236088950,
-    "email": "travisjones@frolix.com",
-    "adress": "735 Garland Court",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 7,
-    "name": "Mcclain",
-    "surname": "Church",
-    "dni": 42402776,
-    "contactNumber": 2236425729,
-    "email": "mcclainchurch@frolix.com",
-    "adress": "192 High Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 8,
-    "name": "Sadie",
-    "surname": "Humphrey",
-    "dni": 17308143,
-    "contactNumber": 2234019383,
-    "email": "sadiehumphrey@frolix.com",
-    "adress": "598 Vine Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 9,
-    "name": "Helga",
-    "surname": "Riddle",
-    "dni": 52301160,
-    "contactNumber": 2236072356,
-    "email": "helgariddle@frolix.com",
-    "adress": "210 Louise Terrace",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 10,
-    "name": "Hopkins",
-    "surname": "Peck",
-    "dni": 30214440,
-    "contactNumber": 2234845707,
-    "email": "hopkinspeck@frolix.com",
-    "adress": "260 Krier Place",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 11,
-    "name": "Karyn",
-    "surname": "Powers",
-    "dni": 46304139,
-    "contactNumber": 2235380266,
-    "email": "karynpowers@frolix.com",
-    "adress": "667 Bridgewater Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 12,
-    "name": "Jimmie",
-    "surname": "Frazier",
-    "dni": 62500545,
-    "contactNumber": 2236771948,
-    "email": "jimmiefrazier@frolix.com",
-    "adress": "701 Allen Avenue",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 13,
-    "name": "Mcmahon",
-    "surname": "Huber",
-    "dni": 20648275,
-    "contactNumber": 2234498592,
-    "email": "mcmahonhuber@frolix.com",
-    "adress": "420 Strauss Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 14,
-    "name": "Marion",
-    "surname": "Barry",
-    "dni": 12817272,
-    "contactNumber": 2233434386,
-    "email": "marionbarry@frolix.com",
-    "adress": "824 Atlantic Avenue",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 15,
-    "name": "Barr",
-    "surname": "Adkins",
-    "dni": 45046954,
-    "contactNumber": 2236191116,
-    "email": "barradkins@frolix.com",
-    "adress": "675 Independence Avenue",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 16,
-    "name": "Merritt",
-    "surname": "Guthrie",
-    "dni": 40781205,
-    "contactNumber": 2235410529,
-    "email": "merrittguthrie@frolix.com",
-    "adress": "541 McClancy Place",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 17,
-    "name": "Buckner",
-    "surname": "Brennan",
-    "dni": 42336463,
-    "contactNumber": 2233128956,
-    "email": "bucknerbrennan@frolix.com",
-    "adress": "861 Livonia Avenue",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 18,
-    "name": "Shannon",
-    "surname": "Vaughn",
-    "dni": 59064782,
-    "contactNumber": 2234187057,
-    "email": "shannonvaughn@frolix.com",
-    "adress": "141 Noel Avenue",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 19,
-    "name": "Cabrera",
-    "surname": "Salas",
-    "dni": 37310220,
-    "contactNumber": 2234431961,
-    "email": "cabrerasalas@frolix.com",
-    "adress": "257 Jaffray Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 20,
-    "name": "Stacy",
-    "surname": "Carroll",
-    "dni": 42052304,
-    "contactNumber": 2234011514,
-    "email": "stacycarroll@frolix.com",
-    "adress": "596 Kent Avenue",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 21,
-    "name": "Luella",
-    "surname": "Gillespie",
-    "dni": 65549186,
-    "contactNumber": 2236840101,
-    "email": "luellagillespie@frolix.com",
-    "adress": "100 Garfield Place",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 22,
-    "name": "Rosario",
-    "surname": "Kemp",
-    "dni": 60485733,
-    "contactNumber": 2233349671,
-    "email": "rosariokemp@frolix.com",
-    "adress": "265 Bragg Court",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 23,
-    "name": "Randall",
-    "surname": "Davidson",
-    "dni": 45043128,
-    "contactNumber": 2234828002,
-    "email": "randalldavidson@frolix.com",
-    "adress": "538 Matthews Place",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 24,
-    "name": "Macdonald",
-    "surname": "Jarvis",
-    "dni": 44359040,
-    "contactNumber": 2233148581,
-    "email": "macdonaldjarvis@frolix.com",
-    "adress": "808 Union Avenue",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 25,
-    "name": "Francis",
-    "surname": "Colon",
-    "dni": 12932816,
-    "contactNumber": 2236019046,
-    "email": "franciscolon@frolix.com",
-    "adress": "938 Bushwick Avenue",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 26,
-    "name": "Aileen",
-    "surname": "Clay",
-    "dni": 53970925,
-    "contactNumber": 2233259766,
-    "email": "aileenclay@frolix.com",
-    "adress": "489 Flatbush Avenue",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 27,
-    "name": "Corine",
-    "surname": "Hanson",
-    "dni": 49293208,
-    "contactNumber": 2236518215,
-    "email": "corinehanson@frolix.com",
-    "adress": "320 Nolans Lane",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 28,
-    "name": "Roseann",
-    "surname": "Hayden",
-    "dni": 14926298,
-    "contactNumber": 2234719148,
-    "email": "roseannhayden@frolix.com",
-    "adress": "416 Williams Place",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 29,
-    "name": "Marina",
-    "surname": "Ewing",
-    "dni": 23349360,
-    "contactNumber": 2233404637,
-    "email": "marinaewing@frolix.com",
-    "adress": "751 Homecrest Court",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 30,
-    "name": "Mckay",
-    "surname": "Mills",
-    "dni": 12266428,
-    "contactNumber": 2235118023,
-    "email": "mckaymills@frolix.com",
-    "adress": "717 Sedgwick Place",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 31,
-    "name": "Lewis",
-    "surname": "Middleton",
-    "dni": 27984221,
-    "contactNumber": 2233964705,
-    "email": "lewismiddleton@frolix.com",
-    "adress": "838 Navy Walk",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 32,
-    "name": "Shields",
-    "surname": "Bowman",
-    "dni": 30634896,
-    "contactNumber": 2233937328,
-    "email": "shieldsbowman@frolix.com",
-    "adress": "455 Fleet Walk",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 33,
-    "name": "Strickland",
-    "surname": "Douglas",
-    "dni": 16754577,
-    "contactNumber": 2235451943,
-    "email": "stricklanddouglas@frolix.com",
-    "adress": "261 Haring Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 34,
-    "name": "Osborne",
-    "surname": "Schwartz",
-    "dni": 34600556,
-    "contactNumber": 2233915126,
-    "email": "osborneschwartz@frolix.com",
-    "adress": "198 Portal Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 35,
-    "name": "Gay",
-    "surname": "Price",
-    "dni": 30479152,
-    "contactNumber": 2236735347,
-    "email": "gayprice@frolix.com",
-    "adress": "542 Hanover Place",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 36,
-    "name": "Curry",
-    "surname": "Carrillo",
-    "dni": 55248699,
-    "contactNumber": 2235624822,
-    "email": "currycarrillo@frolix.com",
-    "adress": "350 Woodhull Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 37,
-    "name": "Mitzi",
-    "surname": "Powell",
-    "dni": 19309713,
-    "contactNumber": 2236527293,
-    "email": "mitzipowell@frolix.com",
-    "adress": "250 Bijou Avenue",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 38,
-    "name": "Cox",
-    "surname": "Head",
-    "dni": 11619295,
-    "contactNumber": 2234466678,
-    "email": "coxhead@frolix.com",
-    "adress": "196 Arion Place",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 39,
-    "name": "Graham",
-    "surname": "Christian",
-    "dni": 38625502,
-    "contactNumber": 2235474417,
-    "email": "grahamchristian@frolix.com",
-    "adress": "986 Newport Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 40,
-    "name": "Edna",
-    "surname": "Martin",
-    "dni": 66096900,
-    "contactNumber": 2235958357,
-    "email": "ednamartin@frolix.com",
-    "adress": "356 Emerald Street",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 41,
-    "name": "Andrea",
-    "surname": "Bailey",
-    "dni": 10188026,
-    "contactNumber": 2233824447,
-    "email": "andreabailey@frolix.com",
-    "adress": "315 Benson Avenue",
-    "clientState": "AVAILABLE"
-  },
-  {
-    "id": 42,
-    "name": "Taylor",
-    "surname": "Sullivan",
-    "dni": 13415201,
-    "contactNumber": 2233118507,
-    "email": "taylorsullivan@frolix.com",
-    "adress": "410 Georgia Avenue",
-    "clientState": "AVAILABLE"
-  }
-]
+[ {
+  "id" : 0,
+  "name" : "Kari",
+  "surname" : "Knapp",
+  "dni" : "10424369",
+  "contactNumber" : "2234683684",
+  "email" : "kariknapp@frolix.com",
+  "adress" : "457 Herkimer Court",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 1,
+  "name" : "Daugherty",
+  "surname" : "Norris",
+  "dni" : "15993626",
+  "contactNumber" : "2235022586",
+  "email" : "daughertynorris@frolix.com",
+  "adress" : "182 Fleet Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 2,
+  "name" : "Chandler",
+  "surname" : "Austin",
+  "dni" : "28622027",
+  "contactNumber" : "2235957223",
+  "email" : "chandleraustin@frolix.com",
+  "adress" : "167 Seeley Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 3,
+  "name" : "Figueroa",
+  "surname" : "Fuller",
+  "dni" : "20547560",
+  "contactNumber" : "2236358720",
+  "email" : "figueroafuller@frolix.com",
+  "adress" : "163 Taylor Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 4,
+  "name" : "Farley",
+  "surname" : "Langley",
+  "dni" : "57078848",
+  "contactNumber" : "2234076068",
+  "email" : "farleylangley@frolix.com",
+  "adress" : "593 Channel Avenue",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 5,
+  "name" : "Natalie",
+  "surname" : "Kirkland",
+  "dni" : "26155540",
+  "contactNumber" : "2233339472",
+  "email" : "nataliekirkland@frolix.com",
+  "adress" : "722 Withers Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 6,
+  "name" : "Travis",
+  "surname" : "Jones",
+  "dni" : "35573028",
+  "contactNumber" : "2236088950",
+  "email" : "travisjones@frolix.com",
+  "adress" : "735 Garland Court",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 7,
+  "name" : "Mcclain",
+  "surname" : "Church",
+  "dni" : "42402776",
+  "contactNumber" : "2236425729",
+  "email" : "mcclainchurch@frolix.com",
+  "adress" : "192 High Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 8,
+  "name" : "Sadie",
+  "surname" : "Humphrey",
+  "dni" : "17308143",
+  "contactNumber" : "2234019383",
+  "email" : "sadiehumphrey@frolix.com",
+  "adress" : "598 Vine Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 9,
+  "name" : "Helga",
+  "surname" : "Riddle",
+  "dni" : "52301160",
+  "contactNumber" : "2236072356",
+  "email" : "helgariddle@frolix.com",
+  "adress" : "210 Louise Terrace",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 10,
+  "name" : "Hopkins",
+  "surname" : "Peck",
+  "dni" : "30214440",
+  "contactNumber" : "2234845707",
+  "email" : "hopkinspeck@frolix.com",
+  "adress" : "260 Krier Place",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 11,
+  "name" : "Karyn",
+  "surname" : "Powers",
+  "dni" : "46304139",
+  "contactNumber" : "2235380266",
+  "email" : "karynpowers@frolix.com",
+  "adress" : "667 Bridgewater Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 12,
+  "name" : "Jimmie",
+  "surname" : "Frazier",
+  "dni" : "62500545",
+  "contactNumber" : "2236771948",
+  "email" : "jimmiefrazier@frolix.com",
+  "adress" : "701 Allen Avenue",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 13,
+  "name" : "Mcmahon",
+  "surname" : "Huber",
+  "dni" : "20648275",
+  "contactNumber" : "2234498592",
+  "email" : "mcmahonhuber@frolix.com",
+  "adress" : "420 Strauss Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 14,
+  "name" : "Marion",
+  "surname" : "Barry",
+  "dni" : "12817272",
+  "contactNumber" : "2233434386",
+  "email" : "marionbarry@frolix.com",
+  "adress" : "824 Atlantic Avenue",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 15,
+  "name" : "Barr",
+  "surname" : "Adkins",
+  "dni" : "45046954",
+  "contactNumber" : "2236191116",
+  "email" : "barradkins@frolix.com",
+  "adress" : "675 Independence Avenue",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 16,
+  "name" : "Merritt",
+  "surname" : "Guthrie",
+  "dni" : "40781205",
+  "contactNumber" : "2235410529",
+  "email" : "merrittguthrie@frolix.com",
+  "adress" : "541 McClancy Place",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 17,
+  "name" : "Buckner",
+  "surname" : "Brennan",
+  "dni" : "42336463",
+  "contactNumber" : "2233128956",
+  "email" : "bucknerbrennan@frolix.com",
+  "adress" : "861 Livonia Avenue",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 18,
+  "name" : "Shannon",
+  "surname" : "Vaughn",
+  "dni" : "59064782",
+  "contactNumber" : "2234187057",
+  "email" : "shannonvaughn@frolix.com",
+  "adress" : "141 Noel Avenue",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 19,
+  "name" : "Cabrera",
+  "surname" : "Salas",
+  "dni" : "37310220",
+  "contactNumber" : "2234431961",
+  "email" : "cabrerasalas@frolix.com",
+  "adress" : "257 Jaffray Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 20,
+  "name" : "Stacy",
+  "surname" : "Carroll",
+  "dni" : "42052304",
+  "contactNumber" : "2234011514",
+  "email" : "stacycarroll@frolix.com",
+  "adress" : "596 Kent Avenue",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 21,
+  "name" : "Luella",
+  "surname" : "Gillespie",
+  "dni" : "65549186",
+  "contactNumber" : "2236840101",
+  "email" : "luellagillespie@frolix.com",
+  "adress" : "100 Garfield Place",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 22,
+  "name" : "Rosario",
+  "surname" : "Kemp",
+  "dni" : "60485733",
+  "contactNumber" : "2233349671",
+  "email" : "rosariokemp@frolix.com",
+  "adress" : "265 Bragg Court",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 23,
+  "name" : "Randall",
+  "surname" : "Davidson",
+  "dni" : "45043128",
+  "contactNumber" : "2234828002",
+  "email" : "randalldavidson@frolix.com",
+  "adress" : "538 Matthews Place",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 24,
+  "name" : "Macdonald",
+  "surname" : "Jarvis",
+  "dni" : "44359040",
+  "contactNumber" : "2233148581",
+  "email" : "macdonaldjarvis@frolix.com",
+  "adress" : "808 Union Avenue",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 25,
+  "name" : "Francis",
+  "surname" : "Colon",
+  "dni" : "12932816",
+  "contactNumber" : "2236019046",
+  "email" : "franciscolon@frolix.com",
+  "adress" : "938 Bushwick Avenue",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 26,
+  "name" : "Aileen",
+  "surname" : "Clay",
+  "dni" : "53970925",
+  "contactNumber" : "2233259766",
+  "email" : "aileenclay@frolix.com",
+  "adress" : "489 Flatbush Avenue",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 27,
+  "name" : "Corine",
+  "surname" : "Hanson",
+  "dni" : "49293208",
+  "contactNumber" : "2236518215",
+  "email" : "corinehanson@frolix.com",
+  "adress" : "320 Nolans Lane",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 28,
+  "name" : "Roseann",
+  "surname" : "Hayden",
+  "dni" : "14926298",
+  "contactNumber" : "2234719148",
+  "email" : "roseannhayden@frolix.com",
+  "adress" : "416 Williams Place",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 29,
+  "name" : "Marina",
+  "surname" : "Ewing",
+  "dni" : "23349360",
+  "contactNumber" : "2233404637",
+  "email" : "marinaewing@frolix.com",
+  "adress" : "751 Homecrest Court",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 30,
+  "name" : "Mckay",
+  "surname" : "Mills",
+  "dni" : "12266428",
+  "contactNumber" : "2235118023",
+  "email" : "mckaymills@frolix.com",
+  "adress" : "717 Sedgwick Place",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 31,
+  "name" : "Lewis",
+  "surname" : "Middleton",
+  "dni" : "27984221",
+  "contactNumber" : "2233964705",
+  "email" : "lewismiddleton@frolix.com",
+  "adress" : "838 Navy Walk",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 32,
+  "name" : "Shields",
+  "surname" : "Bowman",
+  "dni" : "30634896",
+  "contactNumber" : "2233937328",
+  "email" : "shieldsbowman@frolix.com",
+  "adress" : "455 Fleet Walk",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 33,
+  "name" : "Strickland",
+  "surname" : "Douglas",
+  "dni" : "16754577",
+  "contactNumber" : "2235451943",
+  "email" : "stricklanddouglas@frolix.com",
+  "adress" : "261 Haring Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 34,
+  "name" : "Osborne",
+  "surname" : "Schwartz",
+  "dni" : "34600556",
+  "contactNumber" : "2233915126",
+  "email" : "osborneschwartz@frolix.com",
+  "adress" : "198 Portal Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 35,
+  "name" : "Gay",
+  "surname" : "Price",
+  "dni" : "30479152",
+  "contactNumber" : "2236735347",
+  "email" : "gayprice@frolix.com",
+  "adress" : "542 Hanover Place",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 36,
+  "name" : "Curry",
+  "surname" : "Carrillo",
+  "dni" : "55248699",
+  "contactNumber" : "2235624822",
+  "email" : "currycarrillo@frolix.com",
+  "adress" : "350 Woodhull Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 37,
+  "name" : "Mitzi",
+  "surname" : "Powell",
+  "dni" : "19309713",
+  "contactNumber" : "2236527293",
+  "email" : "mitzipowell@frolix.com",
+  "adress" : "250 Bijou Avenue",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 38,
+  "name" : "Cox",
+  "surname" : "Head",
+  "dni" : "11619295",
+  "contactNumber" : "2234466678",
+  "email" : "coxhead@frolix.com",
+  "adress" : "196 Arion Place",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 39,
+  "name" : "Graham",
+  "surname" : "Christian",
+  "dni" : "38625502",
+  "contactNumber" : "2235474417",
+  "email" : "grahamchristian@frolix.com",
+  "adress" : "986 Newport Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 40,
+  "name" : "Edna",
+  "surname" : "Martin",
+  "dni" : "66096900",
+  "contactNumber" : "2235958357",
+  "email" : "ednamartin@frolix.com",
+  "adress" : "356 Emerald Street",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 41,
+  "name" : "Andrea",
+  "surname" : "Bailey",
+  "dni" : "10188026",
+  "contactNumber" : "2233824447",
+  "email" : "andreabailey@frolix.com",
+  "adress" : "315 Benson Avenue",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 42,
+  "name" : "Taylor",
+  "surname" : "Sullivan",
+  "dni" : "13415201",
+  "contactNumber" : "2233118507",
+  "email" : "taylorsullivan@frolix.com",
+  "adress" : "410 Georgia Avenue",
+  "clientState" : "AVAILABLE"
+}, {
+  "id" : 43,
+  "name" : "Claudio",
+  "surname" : "Aguilera",
+  "dni" : "16088247",
+  "contactNumber" : "2235829878",
+  "email" : "claudo@plantel",
+  "adress" : "Sagastizabal 2698",
+  "clientState" : "BOUGHT"
+} ]

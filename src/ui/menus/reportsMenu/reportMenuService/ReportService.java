@@ -52,9 +52,9 @@ public class ReportService {
             String reports = String.format(
                     "\nEarning Reports:\n" +
                             "─────────────────────────────────\n" +
-                            "SALE EARNINGS : %.2f\n" +
-                            "RENT EARNINGS : %.2f\n" +
-                            "TOTAL EARNINGS: %.2f\n" +
+                            "SALES EARNINGS : %.2f\n" +
+                            "RENTS EARNINGS : %.2f\n" +
+                            "TOTAL EARNINGS : %.2f\n" +
                             "─────────────────────────────────",
                     totalSaleEarnings, totalRentEarnings, totalEarnings);
 

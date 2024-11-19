@@ -207,13 +207,11 @@ public class ApartmentsService {
                 if (apartmentToModify == null) {
                     throw new InvalidInputException("Apartment with ID " + apartmentId + " not found.");
                 }
-                if (apartmentToModify.getState()== State.RENTED)
-                {
+                if (apartmentToModify.getState() == State.RENTED) {
                     throw new RentedException("You can't modify it because it has already rented");
                 }
 
-                if (apartmentToModify.getState()== State.SOLD)
-                {
+                if (apartmentToModify.getState() == State.SOLD) {
                     throw new SoldException("You can't modify it because it has already sold");
                 }
 
@@ -407,6 +405,7 @@ public class ApartmentsService {
             throw new InvalidInputException("Quantity must be greater than zero.");
         }
     }
+
     public void deleteProperty() {
         try {
             properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
@@ -414,9 +413,14 @@ public class ApartmentsService {
                 System.out.println("No Properties available to delete.");
                 return;
             }
+            Integer propertyId;
+            try {
+                System.out.print("Enter the ID of the property you want to delete: ");
+                propertyId = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                throw new InvalidInputException("The Id must be a valid number.");
+            }
 
-            System.out.print("Enter the ID of the property you want to delete: ");
-            Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
 
             Apartment apartmentToDelete = findApartmentById(propertyId);
 
@@ -425,12 +429,10 @@ public class ApartmentsService {
             if (apartmentToDelete == null) {
                 throw new InvalidInputException("Apartment with ID " + propertyId + " not found.");
             }
-            if (apartmentToDelete.getState()== State.RENTED)
-            {
+            if (apartmentToDelete.getState() == State.RENTED) {
                 throw new RentedException("You can't delete it because it has already rented");
             }
-            if (apartmentToDelete.getState()== State.SOLD)
-            {
+            if (apartmentToDelete.getState() == State.SOLD) {
                 throw new SoldException("You can't delete it because it has already sold");
             }
             System.out.println("Selected Property: " + apartmentToDelete);
@@ -443,26 +445,24 @@ public class ApartmentsService {
         } catch (InvalidInputException | SoldException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (RentedException e) {
-            System.out.println("Error: "+ e.getMessage());;
+            System.out.println("Error: " + e.getMessage());
+            ;
         }
     }
 
 
     public void seeAllApartments() throws ElementNotFoundException {
-        Integer counter=0;
+        Integer counter = 0;
         if (properties.isEmpty()) {
             throw new ElementNotFoundException("No properties found.");
         }
-        for (Property p : properties.returnList())
-        {
-            if (p instanceof Apartment)
-            {
+        for (Property p : properties.returnList()) {
+            if (p instanceof Apartment) {
                 counter++;
                 System.out.println(p);
             }
         }
-        if (counter == 0)
-        {
+        if (counter == 0) {
             System.out.println("Not apartments found");
         }
     }

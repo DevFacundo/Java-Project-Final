@@ -71,11 +71,11 @@ public class Sale implements EarningCalculator {
                         "Sale Information:\n" +
                         "─────────────────────────────────\n" +
                         "ID Sale            : %d\n" +
-                        "Buyer              : %s\n" +
+                        "Buyer              : %s %s\n" +
                         "Property Address   : %s\n" +
                         "Date of Sale       : %s\n" +
                         "─────────────────────────────────\n",
-                id, buyer.getName(), property.getAdress(), dateOfSale
+                id, buyer.getName(), buyer.getSurname(), property.getAdress(), dateOfSale
         );
     }
 

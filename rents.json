@@ -1,0 +1,40 @@
+[ {
+  "id" : 1,
+  "tenant" : {
+    "id" : 43,
+    "name" : "Marcela",
+    "surname" : "Garcua",
+    "dni" : "18346330",
+    "contactNumber" : "2235987991",
+    "email" : "marcela@asdasd",
+    "adress" : "Lo de Marce 201",
+    "clientState" : "RENTED"
+  },
+  "property" : {
+    "propertyType" : "apartment",
+    "id" : 4,
+    "owner" : {
+      "id" : 43,
+      "name" : "Facundo",
+      "surname" : "Aguilera",
+      "dni" : "37867025",
+      "contactNumber" : "2235829879",
+      "email" : "facu@facu.com",
+      "adress" : "mascias 2069",
+      "clientState" : "RENTED"
+    },
+    "adress" : "Balcarce",
+    "area" : 20.0,
+    "rooms" : 1,
+    "bathRooms" : 1,
+    "bedRooms" : 1,
+    "furnished" : true,
+    "orientation" : "FRONT",
+    "maintenanceFees" : 25.0,
+    "state" : "RENTED",
+    "rentalPrice" : 590.0,
+    "salesPrice" : 250000.0
+  },
+  "startRent" : [ 2024, 11, 19 ],
+  "endRent" : [ 2025, 11, 19 ]
+} ]

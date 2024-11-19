@@ -73,8 +73,15 @@ public class SaleService {
 
     public Sale createSale() throws InvalidInputException {
 
-        System.out.print("Enter the ID of the property to sell: ");
-        Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
+        Integer propertyId;
+        try
+        {
+            System.out.print("Enter the ID of the property to sell: ");
+            propertyId = Integer.parseInt(scanner.nextLine().trim());
+        }catch (NumberFormatException e) {
+            throw new InvalidInputException("The Id must be a valid number.");
+        }
+
 
         Property property = findPropertyById(propertyId);
 

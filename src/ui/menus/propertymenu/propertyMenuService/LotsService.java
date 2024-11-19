@@ -195,13 +195,11 @@ public class LotsService {
                 if (lotToModify == null) {
                     throw new InvalidInputException("Lot with ID " + lotId + " not found.");
                 }
-                if (lotToModify.getState()== State.RENTED)
-                {
+                if (lotToModify.getState() == State.RENTED) {
                     throw new RentedException("You can't modify it because it has already rented");
                 }
 
-                if (lotToModify.getState()== State.SOLD)
-                {
+                if (lotToModify.getState() == State.SOLD) {
                     throw new SoldException("You can't modify it because it has already sold");
                 }
 
@@ -351,6 +349,7 @@ public class LotsService {
             throw new InvalidInputException("Price must be greater than zero.");
         }
     }
+
     public void deleteProperty() {
         try {
             properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
@@ -359,8 +358,13 @@ public class LotsService {
                 return;
             }
 
-            System.out.print("Enter the ID of the property you want to delete: ");
-            Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
+            Integer propertyId;
+            try {
+                System.out.print("Enter the ID of the property you want to delete: ");
+                propertyId = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                throw new InvalidInputException("The Id must be a valid number.");
+            }
 
             Lot lotToDelete = findLotById(propertyId);
 
@@ -368,12 +372,10 @@ public class LotsService {
             if (lotToDelete == null) {
                 throw new InvalidInputException("Property with ID " + propertyId + " not found.");
             }
-            if (lotToDelete.getState()== State.RENTED)
-            {
+            if (lotToDelete.getState() == State.RENTED) {
                 throw new RentedException("You can't delete it because it has already rented");
             }
-            if (lotToDelete.getState()== State.SOLD)
-            {
+            if (lotToDelete.getState() == State.SOLD) {
                 throw new SoldException("You can't delete it because it has already sold");
             }
             System.out.println("Selected Property: " + lotToDelete);
@@ -385,24 +387,23 @@ public class LotsService {
         } catch (InvalidInputException | SoldException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (RentedException e) {
-            System.out.println("Error: "+ e.getMessage());;
+            System.out.println("Error: " + e.getMessage());
+            ;
         }
     }
+
     public void seeAllLots() throws ElementNotFoundException {
-        Integer counter=0;
+        Integer counter = 0;
         if (properties.isEmpty()) {
             throw new ElementNotFoundException("No properties found.");
         }
-        for (Property p : properties.returnList())
-        {
-            if (p instanceof Lot)
-            {
+        for (Property p : properties.returnList()) {
+            if (p instanceof Lot) {
                 counter++;
                 System.out.println(p);
             }
         }
-        if (counter == 0)
-        {
+        if (counter == 0) {
             System.out.println("Not Lots found");
         }
     }

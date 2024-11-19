@@ -71,10 +71,15 @@ public class RentService {
     }
 
     public Rent createRent() throws InvalidInputException {
+        Integer propertyId;
+        try
+        {
+            System.out.print("Enter the ID of the property to rent: ");
+            propertyId = Integer.parseInt(scanner.nextLine().trim());
+        }catch (NumberFormatException e) {
+            throw new InvalidInputException("The Id must be a valid number.");
+        }
 
-
-        System.out.print("Enter the ID of the property to rent: ");
-        Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
 
         Property property = findPropertyById(propertyId);
 

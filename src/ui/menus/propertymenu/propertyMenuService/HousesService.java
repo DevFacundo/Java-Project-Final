@@ -90,7 +90,7 @@ public class HousesService {
         Integer floorsQuantity;
         try {
             floorsQuantity = Integer.parseInt(scanner.nextLine().trim());
-        }catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new InvalidInputException("The Floors quantity must be a valid number.");
         }
 
@@ -200,13 +200,11 @@ public class HousesService {
                 if (houseToModify == null) {
                     throw new InvalidInputException("House with ID " + houseId + " not found.");
                 }
-                if (houseToModify.getState()== State.RENTED)
-                {
+                if (houseToModify.getState() == State.RENTED) {
                     throw new RentedException("You can't modify it because it has already rented");
                 }
 
-                if (houseToModify.getState()== State.SOLD)
-                {
+                if (houseToModify.getState() == State.SOLD) {
                     throw new SoldException("You can't modify it because it has already sold");
                 }
 
@@ -398,9 +396,13 @@ public class HousesService {
                 System.out.println("No Properties available to delete.");
                 return;
             }
-
-            System.out.print("Enter the ID of the property you want to delete: ");
-            Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
+            Integer propertyId;
+            try {
+                System.out.print("Enter the ID of the property you want to delete: ");
+                propertyId = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                throw new InvalidInputException("The Id must be a valid number.");
+            }
 
             House houseToDelete = findHouseById(propertyId);
 
@@ -408,12 +410,10 @@ public class HousesService {
             if (houseToDelete == null) {
                 throw new InvalidInputException("Property with ID " + propertyId + " not found.");
             }
-            if (houseToDelete.getState()== State.RENTED)
-            {
+            if (houseToDelete.getState() == State.RENTED) {
                 throw new RentedException("You can't delete it because it has already rented");
             }
-            if (houseToDelete.getState()== State.SOLD)
-            {
+            if (houseToDelete.getState() == State.SOLD) {
                 throw new SoldException("You can't delete it because it has already sold");
             }
             System.out.println("Selected Property: " + houseToDelete);
@@ -425,25 +425,23 @@ public class HousesService {
         } catch (InvalidInputException | SoldException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (RentedException e) {
-            System.out.println("Error: "+ e.getMessage());;
+            System.out.println("Error: " + e.getMessage());
+            ;
         }
     }
 
     public void seeAllHouses() throws ElementNotFoundException {
-        Integer counter=0;
+        Integer counter = 0;
         if (properties.isEmpty()) {
             throw new ElementNotFoundException("No properties found.");
         }
-        for (Property p : properties.returnList())
-        {
-            if (p instanceof House)
-            {
+        for (Property p : properties.returnList()) {
+            if (p instanceof House) {
                 counter++;
                 System.out.println(p);
             }
         }
-        if (counter == 0)
-        {
+        if (counter == 0) {
             System.out.println("Not houses found");
         }
     }

@@ -361,8 +361,13 @@ public class WarehousesServices {
                 return;
             }
 
-            System.out.print("Enter the ID of the property you want to delete: ");
-            Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
+            Integer propertyId;
+            try {
+                System.out.print("Enter the ID of the property you want to delete: ");
+                propertyId = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                throw new InvalidInputException("The Id must be a valid number.");
+            }
 
             WareHouse warehouseToDelete = findWarehouseById(propertyId);
 

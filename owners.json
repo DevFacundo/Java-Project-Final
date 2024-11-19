@@ -24,7 +24,7 @@
   "contactNumber" : "2236957601",
   "email" : "vilmahammond@frolix.com",
   "adress" : "547 Coleridge Street",
-  "clientState" : "AVAILABLE"
+  "clientState" : "SOLD"
 }, {
   "id" : 3,
   "name" : "Vance",
@@ -393,5 +393,5 @@
   "contactNumber" : "2235829879",
   "email" : "facu@facu.com",
   "adress" : "mascias 2069",
-  "clientState" : "AVAILABLE"
+  "clientState" : "RENTED"
 } ]

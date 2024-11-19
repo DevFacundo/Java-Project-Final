@@ -360,7 +360,6 @@ public class ApartmentsService {
 
         } while (continueModifying);
     }
-<<<<<<< HEAD
 
     public void validateArea(Double area) throws InvalidInputException {
         if (area <= 0) {
@@ -419,7 +418,4 @@ public class ApartmentsService {
         }
     }
 
-
-=======
->>>>>>> b7b9e75ad76f6356f175662eb1ea39adcb2aa580
 }

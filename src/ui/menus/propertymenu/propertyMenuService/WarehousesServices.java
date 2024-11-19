@@ -311,7 +311,6 @@ public class WarehousesServices {
         } while (continueModifying);
     }
 
-<<<<<<< HEAD
     private void validateArea(double area) throws InvalidInputException {
         if (area <= 0) {
             throw new InvalidInputException("Area must be a positive number.");
@@ -374,6 +373,4 @@ public class WarehousesServices {
         }
     }
 
-=======
->>>>>>> b7b9e75ad76f6356f175662eb1ea39adcb2aa580
 }

@@ -228,7 +228,7 @@ public class HousesService {
                     String newArea = scanner.nextLine().trim();
                     if (!newArea.isEmpty()) {
                         Double area = Double.parseDouble(newArea);
-                        validateArea(area);
+                        Utils.validateArea(area);
                         house.setArea(area);
                     }
                     break;
@@ -238,7 +238,7 @@ public class HousesService {
                     String newSalesPrice = scanner.nextLine().trim();
                     if (!newSalesPrice.isEmpty()) {
                         Double sp = Double.parseDouble(newSalesPrice);
-                        validatePrice(sp);
+                        Utils.validatePrice(sp);
                         house.setSalesPrice(sp);
                     }
                     break;
@@ -248,7 +248,7 @@ public class HousesService {
                     String newRentalPrice = scanner.nextLine().trim();
                     if (!newRentalPrice.isEmpty()) {
                         Double rp = Double.parseDouble(newRentalPrice);
-                        validatePrice(rp);
+                        Utils.validatePrice(rp);
                         house.setRentalPrice(rp);
                     }
                     break;
@@ -258,7 +258,7 @@ public class HousesService {
                     String newFloorsQuantity = scanner.nextLine().trim();
                     if (!newFloorsQuantity.isEmpty()) {
                         Integer floorsQuantity = Integer.parseInt(newFloorsQuantity);
-                        validateQuantity(floorsQuantity);
+                        Utils.validateQuantity(floorsQuantity);
                         house.setFloorsQuantity(floorsQuantity);
                     }
                     break;
@@ -268,7 +268,7 @@ public class HousesService {
                     String newRoomsQuantity = scanner.nextLine().trim();
                     if (!newRoomsQuantity.isEmpty()) {
                         Integer roomsQuantity = Integer.parseInt(newRoomsQuantity);
-                        validateQuantity(roomsQuantity);
+                        Utils.validateQuantity(roomsQuantity);
                         house.setRooms(roomsQuantity);
                     }
                     break;
@@ -278,7 +278,7 @@ public class HousesService {
                     String newBedroomsQuantity = scanner.nextLine().trim();
                     if (!newBedroomsQuantity.isEmpty()) {
                         Integer bedroomsQuantity = Integer.parseInt(newBedroomsQuantity);
-                        validateQuantity(bedroomsQuantity);
+                        Utils.validateQuantity(bedroomsQuantity);
                         house.setBedRooms(bedroomsQuantity);
                     }
                     break;
@@ -288,7 +288,7 @@ public class HousesService {
                     String newBathroomsQuantity = scanner.nextLine().trim();
                     if (!newBathroomsQuantity.isEmpty()) {
                         Integer bathroomsQuantity = Integer.parseInt(newBathroomsQuantity);
-                        validateQuantity(bathroomsQuantity);
+                        Utils.validateQuantity(bathroomsQuantity);
                         house.setBathRooms(bathroomsQuantity);
                     }
                     break;
@@ -319,23 +319,5 @@ public class HousesService {
             }
 
         } while (continueModifying);
-    }
-
-    public void validateArea(Double area) throws InvalidInputException {
-        if (area <= 0) {
-            throw new InvalidInputException("Area must be greater than zero.");
-        }
-    }
-
-    public void validatePrice(Double price) throws InvalidInputException {
-        if (price <= 0) {
-            throw new InvalidInputException("Price must be greater than zero.");
-        }
-    }
-
-    public void validateQuantity(Integer quantity) throws InvalidInputException {
-        if (quantity <= 0) {
-            throw new InvalidInputException("Quantity must be greater than zero.");
-        }
     }
 }

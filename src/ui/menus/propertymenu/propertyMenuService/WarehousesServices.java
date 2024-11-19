@@ -222,7 +222,7 @@ public class WarehousesServices {
                     String newArea = scanner.nextLine().trim();
                     if (!newArea.isEmpty()) {
                         Double area = Double.parseDouble(newArea);
-                        validateArea(area);
+                        Utils.validateArea(area);
                         warehouse.setArea(area);
                     }
                     break;
@@ -232,7 +232,7 @@ public class WarehousesServices {
                     String newSalesPrice = scanner.nextLine().trim();
                     if (!newSalesPrice.isEmpty()) {
                         Double sp = Double.parseDouble(newSalesPrice);
-                        validatePrice(sp);
+                        Utils.validatePrice(sp);
                         warehouse.setSalesPrice(sp);
                     }
                     break;
@@ -242,7 +242,7 @@ public class WarehousesServices {
                     String newRentalPrice = scanner.nextLine().trim();
                     if (!newRentalPrice.isEmpty()) {
                         Double rp = Double.parseDouble(newRentalPrice);
-                        validatePrice(rp);
+                        Utils.validatePrice(rp);
                         warehouse.setRentalPrice(rp);
                     }
                     break;
@@ -252,7 +252,7 @@ public class WarehousesServices {
                     String newBathrooms = scanner.nextLine().trim();
                     if (!newBathrooms.isEmpty()) {
                         Integer bathrooms = Integer.parseInt(newBathrooms);
-                        validateBathrooms(bathrooms);
+                        Utils.validateBathrooms(bathrooms);
                         warehouse.setBathRooms(bathrooms);
                     }
                     break;
@@ -262,7 +262,7 @@ public class WarehousesServices {
                     String newFloors = scanner.nextLine().trim();
                     if (!newFloors.isEmpty()) {
                         Integer floors = Integer.parseInt(newFloors);
-                        validateFloors(floors);
+                        Utils.validateFloors(floors);
                         warehouse.setFloorsQuantity(floors);
                     }
                     break;
@@ -293,30 +293,5 @@ public class WarehousesServices {
 
         } while (continueModifying);
     }
-
-    private void validateArea(double area) throws InvalidInputException {
-        if (area <= 0) {
-            throw new InvalidInputException("Area must be a positive number.");
-        }
-    }
-
-    private void validatePrice(double price) throws InvalidInputException {
-        if (price <= 0) {
-            throw new InvalidInputException("Price must be a positive number.");
-        }
-    }
-
-    private void validateBathrooms(int bathrooms) throws InvalidInputException {
-        if (bathrooms < 0) {
-            throw new InvalidInputException("Bathrooms quantity must be a positive number.");
-        }
-    }
-
-    private void validateFloors(int floors) throws InvalidInputException {
-        if (floors < 0) {
-            throw new InvalidInputException("Floors quantity must be a positive number.");
-        }
-    }
-
 
 }

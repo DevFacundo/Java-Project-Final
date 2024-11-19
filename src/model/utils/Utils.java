@@ -57,6 +57,9 @@ public class Utils {
         if (address == null || address.trim().isEmpty()) {
             throw new InvalidInputException("Address cannot be empty.");
         }
+        if (!address.matches("^(?!\\s*$)[a-zA-Z0-9\\s]+$")) {
+            throw new InvalidInputException("Address can only contain letters, numbers, and spaces.");
+        }
     }
 
 
@@ -101,8 +104,43 @@ public class Utils {
     }
 
     public static void validateAddress(String address) throws InvalidInputException {
-        if (address.isEmpty()) {
+        if (address == null || address.trim().isEmpty()) {
             throw new InvalidInputException("Address cannot be empty.");
         }
+
+        if (!address.matches("^(?!\\s*$)[a-zA-Z0-9\\s]+$")) {
+            throw new InvalidInputException("Address can only contain letters, numbers, and spaces.");
+        }
     }
+
+    public static void validateArea(Double area) throws InvalidInputException {
+        if (area <= 0) {
+            throw new InvalidInputException("Area must be greater than zero.");
+        }
+    }
+
+    public static void validatePrice(Double price) throws InvalidInputException {
+        if (price <= 0) {
+            throw new InvalidInputException("Price must be greater than zero.");
+        }
+    }
+
+    public static void validateQuantity(Integer quantity) throws InvalidInputException {
+        if (quantity <= 0) {
+            throw new InvalidInputException("Quantity must be greater than zero.");
+        }
+    }
+
+    public static void validateBathrooms(int bathrooms) throws InvalidInputException {
+        if (bathrooms < 0) {
+            throw new InvalidInputException("Bathrooms quantity must be a positive number.");
+        }
+    }
+
+    public static void validateFloors(int floors) throws InvalidInputException {
+        if (floors < 0) {
+            throw new InvalidInputException("Floors quantity must be a positive number.");
+        }
+    }
+
 }

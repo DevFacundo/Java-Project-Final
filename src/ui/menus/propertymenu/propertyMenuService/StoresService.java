@@ -214,7 +214,7 @@ public class StoresService {
                     String newArea = scanner.nextLine().trim();
                     if (!newArea.isEmpty()) {
                         Double area = Double.parseDouble(newArea);
-                        validateArea(area);
+                        Utils.validateArea(area);
                         store.setArea(area);
                     }
                     break;
@@ -223,8 +223,8 @@ public class StoresService {
                     System.out.print("Sales Price (" + store.getSalesPrice() + "): ");
                     String newSalesPrice = scanner.nextLine().trim();
                     if (!newSalesPrice.isEmpty()) {
-                        double sp = Double.parseDouble(newSalesPrice);
-                        validatePrice(sp);
+                        Double sp = Double.parseDouble(newSalesPrice);
+                        Utils.validatePrice(sp);
                         store.setSalesPrice(sp);
                     }
                     break;
@@ -233,8 +233,8 @@ public class StoresService {
                     System.out.print("Rental Price (" + store.getRentalPrice() + "): ");
                     String newRentalPrice = scanner.nextLine().trim();
                     if (!newRentalPrice.isEmpty()) {
-                        double rp = Double.parseDouble(newRentalPrice);
-                        validatePrice(rp);
+                        Double rp = Double.parseDouble(newRentalPrice);
+                        Utils.validatePrice(rp);
                         store.setRentalPrice(rp);
                     }
                     break;
@@ -243,8 +243,8 @@ public class StoresService {
                     System.out.print("Bathrooms Quantity (" + store.getBathRooms() + "): ");
                     String newBathrooms = scanner.nextLine().trim();
                     if (!newBathrooms.isEmpty()) {
-                        int bathrooms = Integer.parseInt(newBathrooms);
-                        validateBathrooms(bathrooms);
+                        Integer bathrooms = Integer.parseInt(newBathrooms);
+                        Utils.validateBathrooms(bathrooms);
                         store.setBathRooms(bathrooms);
                     }
                     break;
@@ -264,7 +264,7 @@ public class StoresService {
                     String newFloors = scanner.nextLine().trim();
                     if (!newFloors.isEmpty()) {
                         int floors = Integer.parseInt(newFloors);
-                        validateFloors(floors);
+                        Utils.validateFloors(floors);
                         store.setFloorsQuantity(floors);
                     }
                     break;
@@ -287,29 +287,5 @@ public class StoresService {
             }
 
         } while (continueModifying);
-    }
-
-    private void validateArea(double area) throws InvalidInputException {
-        if (area <= 0) {
-            throw new InvalidInputException("Area must be a positive number.");
-        }
-    }
-
-    private void validatePrice(double price) throws InvalidInputException {
-        if (price <= 0) {
-            throw new InvalidInputException("Price must be a positive number.");
-        }
-    }
-
-    private void validateBathrooms(int bathrooms) throws InvalidInputException {
-        if (bathrooms < 0) {
-            throw new InvalidInputException("Bathrooms quantity must be a positive number.");
-        }
-    }
-
-    private void validateFloors(int floors) throws InvalidInputException {
-        if (floors < 0) {
-            throw new InvalidInputException("Floors quantity must be a positive number.");
-        }
     }
 }

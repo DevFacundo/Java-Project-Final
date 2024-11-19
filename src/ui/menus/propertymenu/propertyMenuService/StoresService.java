@@ -306,7 +306,6 @@ public class StoresService {
 
         } while (continueModifying);
     }
-<<<<<<< HEAD
 
     private void validateArea(double area) throws InvalidInputException {
         if (area <= 0) {
@@ -368,6 +367,4 @@ public class StoresService {
             System.out.println("Error: "+ e.getMessage());;
         }
     }
-=======
->>>>>>> b7b9e75ad76f6356f175662eb1ea39adcb2aa580
 }

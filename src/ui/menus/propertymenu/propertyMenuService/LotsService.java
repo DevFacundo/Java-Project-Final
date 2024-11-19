@@ -331,7 +331,6 @@ public class LotsService {
             System.out.println("Invalid input. " + propertyName + " remains unchanged.");
         }
     }
-<<<<<<< HEAD
 
     private void validateArea(Double area) throws InvalidInputException {
         if (area <= 0) {
@@ -381,6 +380,4 @@ public class LotsService {
             System.out.println("Error: "+ e.getMessage());;
         }
     }
-=======
->>>>>>> b7b9e75ad76f6356f175662eb1ea39adcb2aa580
 }

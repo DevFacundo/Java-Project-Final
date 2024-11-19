@@ -25,4 +25,13 @@
   "email" : "franco@mail",
   "adress" : "calle 2343",
   "clientState" : "RENTED"
+}, {
+  "id" : 4,
+  "name" : "fs",
+  "surname" : "sf",
+  "dni" : "11111111",
+  "contactNumber" : "1234",
+  "email" : "f@q",
+  "adress" : "call34",
+  "clientState" : "SOLD"
 } ]

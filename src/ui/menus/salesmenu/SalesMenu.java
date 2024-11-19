@@ -1,5 +1,6 @@
 package ui.menus.salesmenu;
 
+import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
@@ -39,7 +40,9 @@ public class SalesMenu {
                         System.out.println("Opcion 3");
                         break;
                     case 4:
-                        System.out.println("Opcion 4");
+                        sl.seeAllSales();
+                        System.out.println("Press Enter to continue...");
+                        scanner.nextLine();
                         break;
                     case 0:
                         System.out.println("Returning to the previous menu...");
@@ -51,6 +54,8 @@ public class SalesMenu {
                 System.out.println(e.getMessage());
                 System.out.println("Press Enter to try again...");
                 scanner.nextLine();
+            } catch (ElementNotFoundException e) {
+                System.out.println(e.getMessage());
             }
         } while (option != 0);
     }

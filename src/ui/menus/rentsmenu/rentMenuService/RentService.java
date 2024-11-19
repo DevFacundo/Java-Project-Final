@@ -139,21 +139,21 @@ public class RentService {
     }
 
 
-    public void dateValidation(LocalDate fechaInicio, LocalDate fechaFin) throws InvalidInputException {
-        if (fechaInicio == null || fechaFin == null) {
-            throw new InvalidInputException("Las fechas no pueden ser nulas");
+    public void dateValidation(LocalDate startDate, LocalDate endDate) throws InvalidInputException {
+        if (startDate == null || endDate == null) {
+            throw new InvalidInputException("Dates cannot be null");
         }
 
-        if (fechaInicio.isBefore(LocalDate.now())) {
-            throw new InvalidInputException("La fecha de inicio no puede ser anterior a hoy");
+        if (startDate.isBefore(LocalDate.now())) {
+            throw new InvalidInputException("The start date cannot be earlier than today");
         }
 
-        if (fechaFin.isBefore(fechaInicio)) {
-            throw new InvalidInputException("La fecha de fin no puede ser anterior a la fecha de inicio");
+        if (endDate.isBefore(startDate)) {
+            throw new InvalidInputException("The end date cannot be earlier than the start date");
         }
 
-        if (fechaFin.isEqual(fechaInicio)) {
-            throw new InvalidInputException("Las fechas de inicio y fin no pueden ser iguales");
+        if (endDate.isEqual(startDate)) {
+            throw new InvalidInputException("Start and end dates cannot be the same");
         }
     }
 

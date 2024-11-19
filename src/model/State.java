@@ -4,5 +4,5 @@ public enum State {
         SOLD,
         BOUGHT,
         RENTED,
-        AVAILABLE;
+        AVAILABLE
 }

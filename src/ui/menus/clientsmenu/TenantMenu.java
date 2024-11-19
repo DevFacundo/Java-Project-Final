@@ -1,13 +1,8 @@
 package ui.menus.clientsmenu;
 
-import model.clients.Tenant;
 import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
-import model.genericManagement.JsonUtils;
 import ui.menus.clientsmenu.clientMenuService.TenantService;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import static model.utils.Utils.getValidatedOption;

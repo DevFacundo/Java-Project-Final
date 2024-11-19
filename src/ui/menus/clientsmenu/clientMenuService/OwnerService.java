@@ -2,14 +2,10 @@ package ui.menus.clientsmenu.clientMenuService;
 
 import model.State;
 import model.clients.Owner;
-import model.clients.Tenant;
 import model.exceptions.*;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.utils.Utils;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import static model.utils.Utils.*;
@@ -49,7 +45,7 @@ public class OwnerService {
     }
 
     public void addOwner() {
-        Boolean continueAdding = true;
+        Boolean continueAdding;
         do {
             try {
 
@@ -244,7 +240,7 @@ public class OwnerService {
         } catch (InvalidInputException | SoldException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (RentedException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error:  " + e.getMessage());
         }
     }
 

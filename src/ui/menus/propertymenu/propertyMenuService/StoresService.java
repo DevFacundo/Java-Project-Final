@@ -23,7 +23,7 @@ public class StoresService {
     }
 
     public void addStore() {
-        Boolean continueAdding = true;
+        Boolean continueAdding;
         do {
             try {
                 properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
@@ -49,7 +49,7 @@ public class StoresService {
     }
 
     public static Store createStore(Scanner scanner, GenericClass<Owner> ownerList) throws InvalidInputException {
-        Owner owner = new Owner();
+        Owner owner;
         System.out.print("Enter the owner's DNI: ");
         String ownerDni = scanner.nextLine().trim();
         owner = validateOwner(ownerDni, ownerList);
@@ -90,7 +90,7 @@ public class StoresService {
             throw new InvalidInputException("The bathrooms quantity must be a valid number.");
         }
 
-        int flag = 0;
+        int flag;
         Orientation orientation = null;
         do {
             System.out.println("what is the orientation? (1.FRONT / 2. BACK)");
@@ -160,7 +160,7 @@ public class StoresService {
     }
 
     public void modifyStore() {
-        Boolean continueModifying = true;
+        Boolean continueModifying;
         do {
             try {
                 properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
@@ -196,9 +196,9 @@ public class StoresService {
             } catch (InvalidInputException | NumberFormatException e) {
                 System.out.println("Error modifying store: " + e.getMessage());
             } catch (SoldException e) {
-                throw new RuntimeException(e);
+                System.out.println("Error: "+e.getMessage());
             } catch (RentedException e) {
-                throw new RuntimeException(e);
+                System.out.println("Error:  "+e.getMessage());
             }
 
             continueModifying = askToContinue();
@@ -218,7 +218,7 @@ public class StoresService {
     }
 
     private void modifyStoreDetails(Store store) throws InvalidInputException {
-        Boolean continueModifying = true;
+        Boolean continueModifying;
         Integer option;
 
         do {
@@ -327,29 +327,6 @@ public class StoresService {
         } while (continueModifying);
     }
 
-    private void validateArea(double area) throws InvalidInputException {
-        if (area <= 0) {
-            throw new InvalidInputException("Area must be a positive number.");
-        }
-    }
-
-    private void validatePrice(double price) throws InvalidInputException {
-        if (price <= 0) {
-            throw new InvalidInputException("Price must be a positive number.");
-        }
-    }
-
-    private void validateBathrooms(int bathrooms) throws InvalidInputException {
-        if (bathrooms < 0) {
-            throw new InvalidInputException("Bathrooms quantity must be a positive number.");
-        }
-    }
-
-    private void validateFloors(int floors) throws InvalidInputException {
-        if (floors < 0) {
-            throw new InvalidInputException("Floors quantity must be a positive number.");
-        }
-    }
     public void deleteProperty() {
         try {
             properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
@@ -389,7 +366,7 @@ public class StoresService {
         } catch (InvalidInputException | SoldException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (RentedException e) {
-            System.out.println("Error: "+ e.getMessage());;
+            System.out.println("Error:  "+ e.getMessage());
         }
     }
     public void seeAllStores() throws ElementNotFoundException {

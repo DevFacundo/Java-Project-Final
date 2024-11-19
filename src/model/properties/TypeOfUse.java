@@ -5,5 +5,5 @@ public enum TypeOfUse {
     INDUSTRIAL,
     COMMERCIAL,
     WORKSHOP,
-    EVENTS;
+    EVENTS
 }

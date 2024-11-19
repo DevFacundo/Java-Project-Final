@@ -23,19 +23,7 @@ public class Apartment extends Property{
         this.orientation = orientation;
         this.maintenanceFees = maintenanceFees;
     }
-/*
-    public Apartment(Owner owner, String adress, Double area, Double salesPrice, Double rentalPrice, StateOfProperty state, Integer rooms, Integer bathRooms, Integer bedRooms, Boolean furnished, Orientation orientation, Double maintenanceFees) {
-        super(owner, adress, area, salesPrice, rentalPrice, state);
-        this.rooms = rooms;
-        this.bathRooms = bathRooms;
-        this.bedRooms = bedRooms;
-        this.furnished = furnished;
-        this.orientation = orientation;
-        this.maintenanceFees = maintenanceFees;
-    }
 
-
- */
     public Integer getRooms() {
         return rooms;
     }

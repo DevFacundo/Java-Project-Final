@@ -1,14 +1,11 @@
 package model.genericManagement;
 
 import model.exceptions.DuplicateElementException;
-import model.exceptions.ElementNotFoundException;
-
 import java.util.LinkedList;
 import java.util.List;
 
 public class GenericClass<T> {
     private List<T> elements;
-    private ClassValue<T> value;
     public GenericClass() {
         this.elements = new LinkedList<>();
     }

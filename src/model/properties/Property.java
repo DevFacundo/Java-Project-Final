@@ -45,17 +45,7 @@ public abstract class Property {
         this.id=nextId++;
         this.propertyState = State.AVAILABLE;
     }
-/*
-    public Property(Owner owner, String adress, Double salesPrice, Double area, Double rentalPrice, StateOfProperty state) {
-        this.owner = owner;
-        this.adress = adress;
-        SalesPrice = salesPrice;
-        this.area = area;
-        RentalPrice = rentalPrice;
-        this.state = state;
-        this.id=nextId++;
-    }
- */
+
     public Integer getId() {
         return id;
     }

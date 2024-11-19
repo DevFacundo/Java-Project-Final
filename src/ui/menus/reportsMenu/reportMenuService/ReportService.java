@@ -6,19 +6,15 @@ import model.properties.Property;
 import model.rents.Rent;
 import model.sales.Sale;
 
-import java.util.Scanner;
-
 public class ReportService {
     private GenericClass<Rent> rents;
     private GenericClass<Sale> sales;
     private GenericClass<Property> properties;
-    private Scanner scanner;
 
     public ReportService() {
         rents = new GenericClass<>(JsonUtils.loadList("rents.json", Rent.class));
         sales = new GenericClass<>(JsonUtils.loadList("sales.json", Sale.class));
         properties = new GenericClass<Property>(JsonUtils.loadList("properties.json", Property.class));
-        scanner = new Scanner(System.in);
     }
 
     public void calculateEarnings() {
@@ -34,8 +30,7 @@ public class ReportService {
 
             for (Rent r : rents.returnList()) {
                 Property p = findPropertyById(r.getProperty().getId());
-                if (p != null)
-                {
+                if (p != null) {
                     totalRentEarnings += r.calculateEarnings(p);
                 }
 
@@ -129,6 +124,7 @@ public class ReportService {
             return null;
         }
     }
+
     private Property findPropertyById(Integer propertyId) {
         for (Property property : properties.returnList()) {
             if (property.getId().equals(propertyId)) {

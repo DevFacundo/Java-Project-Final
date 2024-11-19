@@ -206,7 +206,6 @@ public class OwnerService {
 
     public void deleteOwner() {
         try {
-
             owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
             if (owners.isEmpty()) {
                 System.out.println("No Owners available to delete.");

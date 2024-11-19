@@ -32,7 +32,7 @@ public class WarehousesMenu {
                         wservice.modifyWarehouse();
                         break;
                     case 3:
-                        System.out.println("Cancelling a warehouse...");
+                        wservice.deleteProperty();
                         break;
                     case 4:
                         System.out.println("Viewing all warehouses...");

@@ -1,8 +1,11 @@
 package ui.menus.propertymenu.propertyMenuService;
 
+import model.State;
 import model.clients.Owner;
 import model.exceptions.DuplicateElementException;
 import model.exceptions.InvalidInputException;
+import model.exceptions.RentedException;
+import model.exceptions.SoldException;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.properties.Apartment;
@@ -171,9 +174,20 @@ public class ApartmentsService {
 
                 Apartment apartmentToModify = findApartmentById(apartmentId);
 
+                ///VALIDATIONS FOR MODIFY WITH EXCEPTIONS
                 if (apartmentToModify == null) {
                     throw new InvalidInputException("Apartment with ID " + apartmentId + " not found.");
                 }
+                if (apartmentToModify.getState()== State.RENTED)
+                {
+                    throw new RentedException("You can't modify it because it has already rented");
+                }
+
+                if (apartmentToModify.getState()== State.SOLD)
+                {
+                    throw new SoldException("You can't modify it because it has already sold");
+                }
+
 
                 System.out.println(apartmentToModify);
 
@@ -185,6 +199,10 @@ public class ApartmentsService {
 
             } catch (InvalidInputException | NumberFormatException e) {
                 System.out.println("Error modifying apartment: " + e.getMessage());
+            } catch (SoldException e) {
+                throw new RuntimeException(e);
+            } catch (RentedException e) {
+                throw new RuntimeException(e);
             }
 
             continueModifying = askToContinue();
@@ -359,4 +377,45 @@ public class ApartmentsService {
             throw new InvalidInputException("Quantity must be greater than zero.");
         }
     }
+    public void deleteProperty() {
+        try {
+            properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+            if (properties.isEmpty()) {
+                System.out.println("No Properties available to delete.");
+                return;
+            }
+
+            System.out.print("Enter the ID of the property you want to delete: ");
+            Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
+
+            Apartment apartmentToDelete = findApartmentById(propertyId);
+
+
+            ///VALIDATIONS FOR MODIFY WITH EXCEPTIONS
+            if (apartmentToDelete == null) {
+                throw new InvalidInputException("Apartment with ID " + propertyId + " not found.");
+            }
+            if (apartmentToDelete.getState()== State.RENTED)
+            {
+                throw new RentedException("You can't delete it because it has already rented");
+            }
+            if (apartmentToDelete.getState()== State.SOLD)
+            {
+                throw new SoldException("You can't delete it because it has already sold");
+            }
+            System.out.println("Selected Property: " + apartmentToDelete);
+
+
+            properties.deleteElement(apartmentToDelete);
+
+            JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
+            System.out.println("Property deleted successfully!");
+        } catch (InvalidInputException | SoldException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (RentedException e) {
+            System.out.println("Error: "+ e.getMessage());;
+        }
+    }
+
+
 }

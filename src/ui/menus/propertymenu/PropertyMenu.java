@@ -27,7 +27,6 @@ public class PropertyMenu {
                 switch (option) {
                     case 1:
                         System.out.println("You selected: Houses");
-
                         housesMenu.menu();
                         break;
                     case 2:

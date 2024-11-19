@@ -33,7 +33,7 @@ public class StoresMenu {
                         storesService.modifyStore();
                         break;
                     case 3:
-                        System.out.println("Cancelling a store...");
+                        storesService.deleteProperty();
                         break;
                     case 4:
                         System.out.println("Viewing all stores...");

@@ -32,7 +32,7 @@ public class LotsMenu {
                         lotsService.modifyLot();
                         break;
                     case 3:
-                        System.out.println("Cancelling a lot...");
+                        lotsService.deleteProperty();
                         break;
                     case 4:
                         System.out.println("Viewing all lots...");

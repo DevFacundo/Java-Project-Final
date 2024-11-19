@@ -36,7 +36,7 @@ public class HousesMenu {
                         housesService.modifyHouse();
                         break;
                     case 3:
-                        System.out.println("Cancelling a house...");
+                        housesService.deleteProperty();
                         break;
                     case 4:
                         System.out.println("Viewing all houses...");

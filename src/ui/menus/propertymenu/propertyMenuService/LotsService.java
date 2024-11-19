@@ -1,10 +1,14 @@
 package ui.menus.propertymenu.propertyMenuService;
 
+import model.State;
 import model.clients.Owner;
 import model.exceptions.DuplicateElementException;
 import model.exceptions.InvalidInputException;
+import model.exceptions.RentedException;
+import model.exceptions.SoldException;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
+import model.properties.House;
 import model.properties.Lot;
 import model.properties.Property;
 import model.utils.Utils;
@@ -171,7 +175,6 @@ public class LotsService {
         Boolean continueModifying = true;
         do {
             try {
-
                 properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
                 owners = new GenericClass<>(JsonUtils.loadList("owners.json", Owner.class));
 
@@ -180,8 +183,18 @@ public class LotsService {
 
                 Lot lotToModify = findLotById(lotId);
 
+                ///VALIDATIONS TO MODIFY
                 if (lotToModify == null) {
                     throw new InvalidInputException("Lot with ID " + lotId + " not found.");
+                }
+                if (lotToModify.getState()== State.RENTED)
+                {
+                    throw new RentedException("You can't modify it because it has already rented");
+                }
+
+                if (lotToModify.getState()== State.SOLD)
+                {
+                    throw new SoldException("You can't modify it because it has already sold");
                 }
 
                 System.out.println(lotToModify);
@@ -194,6 +207,10 @@ public class LotsService {
 
             } catch (InvalidInputException | NumberFormatException e) {
                 System.out.println("Error modifying lot: " + e.getMessage());
+            } catch (SoldException e) {
+                throw new RuntimeException(e);
+            } catch (RentedException e) {
+                throw new RuntimeException(e);
             }
 
             continueModifying = askToContinue();
@@ -326,6 +343,41 @@ public class LotsService {
             throw new InvalidInputException("Price must be greater than zero.");
         }
     }
+    public void deleteProperty() {
+        try {
+            properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+            if (properties.isEmpty()) {
+                System.out.println("No Properties available to delete.");
+                return;
+            }
 
+            System.out.print("Enter the ID of the property you want to delete: ");
+            Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
 
+            Lot lotToDelete = findLotById(propertyId);
+
+            ///VALIDATIONS FOR DELETE WITH EXCEPTIONS
+            if (lotToDelete == null) {
+                throw new InvalidInputException("Property with ID " + propertyId + " not found.");
+            }
+            if (lotToDelete.getState()== State.RENTED)
+            {
+                throw new RentedException("You can't delete it because it has already rented");
+            }
+            if (lotToDelete.getState()== State.SOLD)
+            {
+                throw new SoldException("You can't delete it because it has already sold");
+            }
+            System.out.println("Selected Property: " + lotToDelete);
+
+            properties.deleteElement(lotToDelete);
+
+            JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
+            System.out.println("Property deleted successfully!");
+        } catch (InvalidInputException | SoldException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (RentedException e) {
+            System.out.println("Error: "+ e.getMessage());;
+        }
+    }
 }

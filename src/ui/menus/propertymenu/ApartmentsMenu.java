@@ -32,7 +32,7 @@ public class ApartmentsMenu {
                         as.modifyApartment();
                         break;
                     case 3:
-                        System.out.println("Cancelling an apartment...");
+                        as.deleteProperty();
                         break;
                     case 4:
                         System.out.println("Viewing all apartments...");

@@ -67,14 +67,15 @@ public class Sale implements EarningCalculator {
     public String toString() {
         return String.format(
                 "\n" +
-                        "Rent Information:\n" +
+
+                        "Sale Information:\n" +
                         "─────────────────────────────────\n" +
-                        "ID Rent            : %d\n" +
-                        "Buyer             : %s " + "%s\n" +
-                        "Sale Date  : %s\n" +
-                        "─────────────────────────────────\n" +
-                        "%s\n",
-                id, buyer.getName(), buyer.getSurname(), dateOfSale, property
+                        "ID Sale            : %d\n" +
+                        "Buyer              : %s\n" +
+                        "Property Address   : %s\n" +
+                        "Date of Sale       : %s\n" +
+                        "─────────────────────────────────\n",
+                id, buyer.getName(), property.getAdress(), dateOfSale
         );
     }
 

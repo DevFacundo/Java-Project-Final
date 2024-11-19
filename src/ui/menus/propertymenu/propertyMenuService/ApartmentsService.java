@@ -2,10 +2,7 @@ package ui.menus.propertymenu.propertyMenuService;
 
 import model.State;
 import model.clients.Owner;
-import model.exceptions.DuplicateElementException;
-import model.exceptions.InvalidInputException;
-import model.exceptions.RentedException;
-import model.exceptions.SoldException;
+import model.exceptions.*;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
 import model.properties.Apartment;
@@ -63,22 +60,54 @@ public class ApartmentsService {
         String address = scanner.nextLine().trim();
 
         System.out.print("Enter area: ");
-        Double area = Double.parseDouble(scanner.nextLine().trim());
+        Double area;
+        try {
+            area = Double.parseDouble(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("The area must be a valid number.");
+        }
 
         System.out.print("Enter sales Price: ");
-        Double sp = Double.parseDouble(scanner.nextLine().trim());
+        Double sp;
+        try {
+            sp = Double.parseDouble(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("The Sales Price must be a valid number.");
+        }
+
 
         System.out.print("Enter Rental Price: ");
-        Double rp = Double.parseDouble(scanner.nextLine().trim());
+        Double rp;
+        try {
+            rp = Double.parseDouble(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("The Sales Price must be a valid number.");
+        }
 
         System.out.println("Enter rooms quantity: ");
-        Integer roomsQuantity = Integer.parseInt(scanner.nextLine().trim());
+        Integer roomsQuantity;
+        try {
+            roomsQuantity = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("The rooms quantity must be a valid number.");
+        }
 
         System.out.println("Enter bedrooms quantity: ");
-        Integer bedroomsQuantity = Integer.parseInt(scanner.nextLine().trim());
+        Integer bedroomsQuantity;
+        try {
+            bedroomsQuantity = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("The bedrooms quantity must be a valid number.");
+        }
 
         System.out.println("Enter bathrooms quantity: ");
-        Integer bathroomsQuantity = Integer.parseInt(scanner.nextLine().trim());
+        Integer bathroomsQuantity;
+        try {
+            bathroomsQuantity = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("The bathrooms quantity must be a valid number.");
+        }
+
 
         Boolean furniture = null;
         do {
@@ -418,4 +447,23 @@ public class ApartmentsService {
         }
     }
 
+
+    public void seeAllApartments() throws ElementNotFoundException {
+        Integer counter=0;
+        if (properties.isEmpty()) {
+            throw new ElementNotFoundException("No properties found.");
+        }
+        for (Property p : properties.returnList())
+        {
+            if (p instanceof Apartment)
+            {
+                counter++;
+                System.out.println(p);
+            }
+        }
+        if (counter == 0)
+        {
+            System.out.println("Not apartments found");
+        }
+    }
 }

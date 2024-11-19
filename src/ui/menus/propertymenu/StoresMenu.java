@@ -1,5 +1,6 @@
 package ui.menus.propertymenu;
 
+import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
 import ui.menus.propertymenu.propertyMenuService.StoresService;
 
@@ -36,7 +37,7 @@ public class StoresMenu {
                         storesService.deleteProperty();
                         break;
                     case 4:
-                        System.out.println("Viewing all stores...");
+                        storesService.seeAllStores();
                         break;
                     case 0:
                         System.out.println("Returning to the previous menu...");
@@ -48,6 +49,8 @@ public class StoresMenu {
                 System.out.println(e.getMessage());
                 System.out.println("Press Enter to try again...");
                 scanner.nextLine();
+            } catch (ElementNotFoundException e) {
+                System.out.println("Error: "+e.getMessage());
             }
         } while (option != 0);
     }

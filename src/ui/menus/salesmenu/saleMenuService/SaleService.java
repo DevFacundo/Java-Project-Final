@@ -163,102 +163,102 @@ public class SaleService {
         return null;
     }
 
-/*
-    public void modifySale() {
-        Boolean continueModifying = true;
-        do {
-            try {
-                sales = new GenericClass<>(JsonUtils.loadList("sales.json", Sale.class));
-                System.out.print("Enter the ID of the sale to modify: ");
-                Integer saleID = Integer.parseInt(scanner.nextLine().trim());
+    /*
+        public void modifySale() {
+            Boolean continueModifying = true;
+            do {
+                try {
+                    sales = new GenericClass<>(JsonUtils.loadList("sales.json", Sale.class));
+                    System.out.print("Enter the ID of the sale to modify: ");
+                    Integer saleID = Integer.parseInt(scanner.nextLine().trim());
 
-                Sale saleToModify = findSaleById(saleID);
+                    Sale saleToModify = findSaleById(saleID);
 
-                if (saleToModify == null) {
-                    throw new InvalidInputException("Sale with ID " + saleID + " not found.");
+                    if (saleToModify == null) {
+                        throw new InvalidInputException("Sale with ID " + saleID + " not found.");
+                    }
+
+                    System.out.println(saleToModify);
+
+                    modifySaleDetails(saleToModify);
+
+                    JsonUtils.saveList(sales.returnList(), "sales.json", Sale.class);
+
+                    System.out.println("Sale modified successfully: " + saleToModify);
+
+                } catch (InvalidInputException | NumberFormatException e) {
+                    System.out.println("Error modifying sale: " + e.getMessage());
                 }
 
-                System.out.println(saleToModify);
+                continueModifying = askToContinue();
+            } while (continueModifying);
+        }
 
-                modifySaleDetails(saleToModify);
+        public void modifySaleDetails(Sale sale) throws InvalidInputException {
+            Boolean continueModifying = true;
+            Integer option;
 
-                JsonUtils.saveList(sales.returnList(), "sales.json", Sale.class);
+            do {
+                System.out.println("\n----------------------------------------------------");
+                System.out.println("     Modify Sale Details");
+                System.out.println("----------------------------------------------------");
+                System.out.println("1. Buyer");
+                System.out.println("2. Property");
+                System.out.println("3. Date of Sale ");
+                System.out.println("0. Go back");
+                System.out.println("----------------------------------------------------");
+                System.out.println("Please select the detail you would like to modify: ");
 
-                System.out.println("Sale modified successfully: " + saleToModify);
+                option = Utils.getValidatedOption();
 
-            } catch (InvalidInputException | NumberFormatException e) {
-                System.out.println("Error modifying sale: " + e.getMessage());
-            }
-
-            continueModifying = askToContinue();
-        } while (continueModifying);
-    }
-
-    public void modifySaleDetails(Sale sale) throws InvalidInputException {
-        Boolean continueModifying = true;
-        Integer option;
-
-        do {
-            System.out.println("\n----------------------------------------------------");
-            System.out.println("     Modify Sale Details");
-            System.out.println("----------------------------------------------------");
-            System.out.println("1. Buyer");
-            System.out.println("2. Property");
-            System.out.println("3. Date of Sale ");
-            System.out.println("0. Go back");
-            System.out.println("----------------------------------------------------");
-            System.out.println("Please select the detail you would like to modify: ");
-
-            option = Utils.getValidatedOption();
-
-            switch (option) {
-                case 1:
-                    System.out.print("Actual Buyer Dni: (" + sale.getBuyer().getDni() + ")\nNew Buyer Dni: ");
-                    String buyerDni = scanner.nextLine().trim();
-                    sale.setBuyer(validateBuyer(buyerDni));
-                    break;
+                switch (option) {
+                    case 1:
+                        System.out.print("Actual Buyer Dni: (" + sale.getBuyer().getDni() + ")\nNew Buyer Dni: ");
+                        String buyerDni = scanner.nextLine().trim();
+                        sale.setBuyer(validateBuyer(buyerDni));
+                        break;
 
 
-                case 2:
-                    System.out.print("Actual Property ID: (" + sale.getProperty().getId() + ")\nNew Property ID: ");
-                    Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
-                    Property property = (findPropertyById(propertyId));
-                    if (property == null || property.getState() != State.AVAILABLE) {
-                        throw new InvalidInputException("Property is not available for sale.");
-                    } else {
-                        sale.setProperty(property);
-                    }
-                    break;
+                    case 2:
+                        System.out.print("Actual Property ID: (" + sale.getProperty().getId() + ")\nNew Property ID: ");
+                        Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
+                        Property property = (findPropertyById(propertyId));
+                        if (property == null || property.getState() != State.AVAILABLE) {
+                            throw new InvalidInputException("Property is not available for sale.");
+                        } else {
+                            sale.setProperty(property);
+                        }
+                        break;
 
-                case 3:
-                    System.out.print("Enter the sale date (YYYY-MM-DD): ");
-                    String startDate = scanner.nextLine();
-                    LocalDate dateofSale = LocalDate.parse(startDate);
-                    dateValidation(dateofSale);
-                    sale.setDateOfSale(dateofSale);
-                    break;
+                    case 3:
+                        System.out.print("Enter the sale date (YYYY-MM-DD): ");
+                        String startDate = scanner.nextLine();
+                        LocalDate dateofSale = LocalDate.parse(startDate);
+                        dateValidation(dateofSale);
+                        sale.setDateOfSale(dateofSale);
+                        break;
 
 
-                case 0:
-                    System.out.println("Returning to the previous menu...");
-                    break;
+                    case 0:
+                        System.out.println("Returning to the previous menu...");
+                        break;
 
-                default:
-                    System.out.println("Invalid option. Please choose a valid number.");
-                    break;
-            }
+                    default:
+                        System.out.println("Invalid option. Please choose a valid number.");
+                        break;
+                }
 
-            if (option != 0) {
-                System.out.print("Do you want to modify another detail? (Y/N): ");
-                String continueResponse = scanner.nextLine().trim();
-                continueModifying = continueResponse.equalsIgnoreCase("Y");
-            } else {
-                continueModifying = false;
-            }
+                if (option != 0) {
+                    System.out.print("Do you want to modify another detail? (Y/N): ");
+                    String continueResponse = scanner.nextLine().trim();
+                    continueModifying = continueResponse.equalsIgnoreCase("Y");
+                } else {
+                    continueModifying = false;
+                }
 
-        } while (continueModifying);
-    }
-*/
+            } while (continueModifying);
+        }
+    */
     public void validateArea(Double area) throws InvalidInputException {
         if (area <= 0) {
             throw new InvalidInputException("Area must be greater than zero.");
@@ -317,4 +317,9 @@ public class SaleService {
         }
 
     }
+
+
+
+
+
 }

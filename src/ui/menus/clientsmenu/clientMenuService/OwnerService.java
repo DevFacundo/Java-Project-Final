@@ -63,7 +63,7 @@ public class OwnerService {
                     newOwner.setId(lastId);
                 }
                 owners.addElement(newOwner);
-                JsonUtils.saveList(owners.returnList(),"owners.json", Owner.class);
+                JsonUtils.saveList(owners.returnList(), "owners.json", Owner.class);
             } catch (InvalidInputException e) {
                 System.out.println("Error adding owner: " + e.getMessage());
             } catch (DuplicateElementException e) {
@@ -103,16 +103,14 @@ public class OwnerService {
             if (ownerToModify == null) {
                 throw new InvalidInputException("Owner with DNI " + dni + " not found.");
             }
-            if (ownerToModify.getClientState()==State.RENTED)
-            {
-                throw new RentedException("You can't modify "+ownerToModify.getName()+" "+
-                        ownerToModify.getSurname()+" because they have already rented a propierty");
+            if (ownerToModify.getClientState() == State.RENTED) {
+                throw new RentedException("You can't modify " + ownerToModify.getName() + " " +
+                        ownerToModify.getSurname() + " because they have already rented a propierty");
             }
 
-            if (ownerToModify.getClientState()== State.SOLD)
-            {
-                throw new SoldException("You can't modify "+ownerToModify.getName()+" "+
-                        ownerToModify.getSurname()+" because they have already sold a propierty");
+            if (ownerToModify.getClientState() == State.SOLD) {
+                throw new SoldException("You can't modify " + ownerToModify.getName() + " " +
+                        ownerToModify.getSurname() + " because they have already sold a propierty");
             }
 
             System.out.println("Selected Owner: " + ownerToModify);
@@ -197,6 +195,7 @@ public class OwnerService {
             }
         }
     }
+
     public void seeAllOwners() throws ElementNotFoundException {
         if (owners.isEmpty()) {
             throw new ElementNotFoundException("No owners found.");
@@ -226,16 +225,14 @@ public class OwnerService {
             if (ownerToDelete == null) {
                 throw new InvalidInputException("Owner with DNI " + dni + " not found.");
             }
-            if (ownerToDelete.getClientState()==State.RENTED)
-            {
-                throw new RentedException("You can't delete "+ownerToDelete.getName()+" "+
-                        ownerToDelete.getSurname()+" because they have already rented a propierty");
+            if (ownerToDelete.getClientState() == State.RENTED) {
+                throw new RentedException("You can't delete " + ownerToDelete.getName() + " " +
+                        ownerToDelete.getSurname() + " because they have already rented a propierty");
             }
 
-            if (ownerToDelete.getClientState()== State.SOLD)
-            {
-                throw new SoldException("You can't delete "+ownerToDelete.getName()+" "+
-                        ownerToDelete.getSurname()+" because they have already sold a propierty");
+            if (ownerToDelete.getClientState() == State.SOLD) {
+                throw new SoldException("You can't delete " + ownerToDelete.getName() + " " +
+                        ownerToDelete.getSurname() + " because they have already sold a propierty");
             }
 
             System.out.println("Selected Owner: " + ownerToDelete);
@@ -247,9 +244,8 @@ public class OwnerService {
         } catch (InvalidInputException | SoldException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (RentedException e) {
-            System.out.println("Error: "+ e.getMessage());;
+            System.out.println("Error: " + e.getMessage());
         }
     }
-
 
 }

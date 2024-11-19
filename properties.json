@@ -66,4 +66,28 @@
   "state" : "AVAILABLE",
   "rentalPrice" : 2000.0,
   "salesPrice" : 100000.0
+}, {
+  "propertyType" : "apartment",
+  "id" : 4,
+  "owner" : {
+    "id" : 43,
+    "name" : "Facundo",
+    "surname" : "Aguilera",
+    "dni" : "37867025",
+    "contactNumber" : "2235829879",
+    "email" : "facu@facu.com",
+    "adress" : "mascias 2069",
+    "clientState" : "AVAILABLE"
+  },
+  "adress" : "Balcarce",
+  "area" : 20.0,
+  "rooms" : 1,
+  "bathRooms" : 1,
+  "bedRooms" : 1,
+  "furnished" : true,
+  "orientation" : "FRONT",
+  "maintenanceFees" : 25.0,
+  "state" : "AVAILABLE",
+  "rentalPrice" : 590.0,
+  "salesPrice" : 250000.0
 } ]

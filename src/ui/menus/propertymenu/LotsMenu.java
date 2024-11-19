@@ -1,5 +1,6 @@
 package ui.menus.propertymenu;
 
+import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
 import ui.menus.propertymenu.propertyMenuService.LotsService;
 
@@ -35,7 +36,7 @@ public class LotsMenu {
                         lotsService.deleteProperty();
                         break;
                     case 4:
-                        System.out.println("Viewing all lots...");
+                        lotsService.seeAllLots();
                         break;
                     case 0:
                         System.out.println("Returning to the previous menu...");
@@ -47,6 +48,8 @@ public class LotsMenu {
                 System.out.println(e.getMessage());
                 System.out.println("Press Enter to try again...");
                 scanner.nextLine();
+            } catch (ElementNotFoundException e) {
+                System.out.println("Error: "+e.getMessage());
             }
         } while (option != 0);
     }

@@ -238,5 +238,4 @@ public class BuyerService {
         }
         System.out.println(buyers.returnList());
     }
-
 }

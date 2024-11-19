@@ -17,7 +17,6 @@ public class Utils {
         }catch(NumberFormatException e){
             throw new InvalidInputException("Input must be a number. Please try again.");
         }
-
     }
 
     public static void clearConsole() {

@@ -2,12 +2,10 @@ package ui.menus.propertymenu.propertyMenuService;
 
 import model.State;
 import model.clients.Owner;
-import model.exceptions.DuplicateElementException;
-import model.exceptions.InvalidInputException;
-import model.exceptions.RentedException;
-import model.exceptions.SoldException;
+import model.exceptions.*;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
+import model.properties.Apartment;
 import model.properties.House;
 import model.properties.Lot;
 import model.properties.Property;
@@ -63,10 +61,20 @@ public class LotsService {
         String address = scanner.nextLine().trim();
 
         System.out.print("Enter area: ");
-        Double area = Double.parseDouble(scanner.nextLine().trim());
+        Double area;
+        try {
+            area = Double.parseDouble(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("The area must be a valid number.");
+        }
 
         System.out.print("Enter sales Price: ");
-        Double sp = Double.parseDouble(scanner.nextLine().trim());
+        Double sp;
+        try {
+            sp = Double.parseDouble(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("The Sales Price must be a valid number.");
+        }
 
         Boolean electricity = null;
         do {
@@ -378,6 +386,24 @@ public class LotsService {
             System.out.println("Error: " + e.getMessage());
         } catch (RentedException e) {
             System.out.println("Error: "+ e.getMessage());;
+        }
+    }
+    public void seeAllLots() throws ElementNotFoundException {
+        Integer counter=0;
+        if (properties.isEmpty()) {
+            throw new ElementNotFoundException("No properties found.");
+        }
+        for (Property p : properties.returnList())
+        {
+            if (p instanceof Lot)
+            {
+                counter++;
+                System.out.println(p);
+            }
+        }
+        if (counter == 0)
+        {
+            System.out.println("Not Lots found");
         }
     }
 }

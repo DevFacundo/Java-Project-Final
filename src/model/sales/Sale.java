@@ -67,6 +67,7 @@ public class Sale implements EarningCalculator {
     public String toString() {
         return String.format(
                 "\n" +
+
                         "Sale Information:\n" +
                         "─────────────────────────────────\n" +
                         "ID Sale            : %d\n" +

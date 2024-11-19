@@ -90,12 +90,6 @@ public class ReportService {
                     }
                 }
             }
-            if (topRent != null) {
-                System.out.println("Top Rent: " + topRent);
-            } else {
-                System.out.println("No se encontró la renta más cara.");
-            }
-
             return topRent;
 
         } catch (Exception e) {

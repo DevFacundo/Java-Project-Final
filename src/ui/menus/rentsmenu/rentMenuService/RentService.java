@@ -86,7 +86,7 @@ public class RentService {
         String tenantDni = scanner.nextLine().trim();
         Tenant tenant = validateTenant(tenantDni);
 
-        //VALIDAR FECHASSSSSSSSSSSSSSSSS
+
         System.out.print("Enter the rental start date (YYYY-MM-DD): ");
         String startDate = scanner.nextLine();
         LocalDate rentalStartDate = LocalDate.parse(startDate);
@@ -207,10 +207,8 @@ public class RentService {
             System.out.println("\n----------------------------------------------------");
             System.out.println("     Modify Rent Details");
             System.out.println("----------------------------------------------------");
-            System.out.println("1. Tenants");
-            System.out.println("2. Property");
-            System.out.println("3. Start Rental Date ");
-            System.out.println("4. End Rental Date");
+            System.out.println("1. Start Rental Date ");
+            System.out.println("2. End Rental Date");
             System.out.println("0. Go back");
             System.out.println("----------------------------------------------------");
             System.out.println("Please select the detail you would like to modify: ");
@@ -219,23 +217,6 @@ public class RentService {
 
             switch (option) {
                 case 1:
-                    System.out.print("Actual Tenant Dni: (" + rent.getTenant().getDni() + ")\nNew Tenant Dni: ");
-                    String tenantDni = scanner.nextLine().trim();
-                    rent.setTenant(validateTenant(tenantDni));
-                    break;
-
-                case 2:
-                    System.out.print("Actual Property ID: (" + rent.getProperty().getId() + ")\nNew Property ID: ");
-                    Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
-                    Property property = (findPropertyById(propertyId));
-                    if (property == null || property.getState() != State.AVAILABLE) {
-                        throw new InvalidInputException("Property is not available for rent.");
-                    } else {
-                        rent.setProperty(property);
-                    }
-                    break;
-
-                case 3:
                     System.out.print("Enter the rental start date (YYYY-MM-DD): ");
                     String startDate = scanner.nextLine();
                     LocalDate rentalStartDate = LocalDate.parse(startDate);
@@ -243,7 +224,7 @@ public class RentService {
                     rent.setStartRent(rentalStartDate);
                     break;
 
-                case 4:
+                case 2:
                     System.out.print("Enter the rental end date (YYYY-MM-DD): ");
                     String endDate = scanner.nextLine();
                     LocalDate rentalEndDate = LocalDate.parse(endDate);
@@ -286,7 +267,8 @@ public class RentService {
 
     public void deleteRent() {
         try {
-
+            tenants = new GenericClass<>(JsonUtils.loadList("tenants.json", Tenant.class));
+            properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
             rents = new GenericClass<>(JsonUtils.loadList("rents.json", Rent.class));
             if (rents.isEmpty()) {
                 System.out.println("No rents available to delete.");
@@ -296,10 +278,14 @@ public class RentService {
             System.out.print("Enter the ID of the rent you want to delete: ");
             Integer rentID = Integer.parseInt(scanner.nextLine().trim());
 
+            Tenant tenant = null;
+            Property property = null;
             Rent rentToDelete = null;
             for (Rent o : rents.returnList()) {
                 if (o.getId().equals(rentID)) {
                     rentToDelete = o;
+                    tenant = o.getTenant();
+                    property = o.getProperty();
                     break;
                 }
             }
@@ -312,8 +298,18 @@ public class RentService {
             System.out.println("Selected rent: " + rentToDelete);
 
             rents.deleteElement(rentToDelete);
+            //MODIFY STATE OF PROPIERTY AND STATE OF CLIENT
+            tenant.setClientState(State.AVAILABLE);
+            property.setState(State.AVAILABLE);
 
+            tenants.modifyElement(tenant, tenant);
+            properties.modifyElement(property, property);
+
+
+            JsonUtils.saveList(tenants.returnList(), "tenants.json", Tenant.class);
+            JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
             JsonUtils.saveList(rents.returnList(), "rents.json", Rent.class);
+
             System.out.println("Rent deleted successfully!");
         } catch (InvalidInputException e) {
             System.out.println("Error: " + e.getMessage());

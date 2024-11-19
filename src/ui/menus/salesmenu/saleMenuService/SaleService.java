@@ -151,6 +151,19 @@ public class SaleService {
         System.out.println(sales.returnList());
     }
 
+    public Sale findSaleById(Integer rentId) {
+        for (Sale sale : sales.returnList()) {
+            if (sale instanceof Sale) {
+                Sale sale1 = (Sale) sale;
+                if (sale1.getId().equals(rentId)) {
+                    return sale1;
+                }
+            }
+        }
+        return null;
+    }
+
+/*
     public void modifySale() {
         Boolean continueModifying = true;
         do {
@@ -179,18 +192,6 @@ public class SaleService {
 
             continueModifying = askToContinue();
         } while (continueModifying);
-    }
-
-    public Sale findSaleById(Integer rentId) {
-        for (Sale sale : sales.returnList()) {
-            if (sale instanceof Sale) {
-                Sale sale1 = (Sale) sale;
-                if (sale1.getId().equals(rentId)) {
-                    return sale1;
-                }
-            }
-        }
-        return null;
     }
 
     public void modifySaleDetails(Sale sale) throws InvalidInputException {
@@ -257,10 +258,63 @@ public class SaleService {
 
         } while (continueModifying);
     }
-
+*/
     public void validateArea(Double area) throws InvalidInputException {
         if (area <= 0) {
             throw new InvalidInputException("Area must be greater than zero.");
         }
+    }
+
+    public void deleteSale() {
+        try {
+
+            buyers = new GenericClass<>(JsonUtils.loadList("buyers.json", Buyer.class));
+            properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
+            sales = new GenericClass<>(JsonUtils.loadList("sales.json", Sale.class));
+            if (sales.isEmpty()) {
+                System.out.println("No sales available to delete.");
+                return;
+            }
+
+            System.out.print("Enter the ID of the sale you want to delete: ");
+            Integer saleID = Integer.parseInt(scanner.nextLine().trim());
+
+            Buyer buyer = null;
+            Property property = null;
+            Sale saleToDelete = null;
+            for (Sale s : sales.returnList()) {
+                if (s.getId().equals(saleID)) {
+                    saleToDelete = s;
+                    buyer = s.getBuyer();
+                    property = s.getProperty();
+                    break;
+                }
+            }
+
+            if (saleToDelete == null) {
+                throw new InvalidInputException("Sale with ID " + saleID + " not found.");
+            }
+
+
+            System.out.println("Selected sale: " + saleToDelete);
+
+            sales.deleteElement(saleToDelete);
+            //MODIFY STATE OF PROPIERTY AND STATE OF CLIENT
+            buyer.setClientState(State.AVAILABLE);
+            property.setState(State.AVAILABLE);
+
+            buyers.modifyElement(buyer, buyer);
+            properties.modifyElement(property, property);
+
+
+            JsonUtils.saveList(buyers.returnList(), "buyers.json", Buyer.class);
+            JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
+            JsonUtils.saveList(sales.returnList(), "sales.json", Sale.class);
+
+            System.out.println("Sale deleted successfully!");
+        } catch (InvalidInputException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
     }
 }

@@ -65,10 +65,17 @@ public class Sale implements EarningCalculator {
 
     @Override
     public String toString() {
-        return  "\nid=" + id +
-                "\nbuyer=" + buyer.getName() +
-                "\nproperty adress=" + property.getAdress()+
-                "\ndateOfSale=" + dateOfSale;
+        return String.format(
+                "\n" +
+                        "Sale Information:\n" +
+                        "─────────────────────────────────\n" +
+                        "ID Sale            : %d\n" +
+                        "Buyer              : %s\n" +
+                        "Property Address   : %s\n" +
+                        "Date of Sale       : %s\n" +
+                        "─────────────────────────────────\n",
+                id, buyer.getName(), property.getAdress(), dateOfSale
+        );
     }
 
     @Override

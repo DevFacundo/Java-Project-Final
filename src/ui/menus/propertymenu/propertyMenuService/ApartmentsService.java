@@ -250,6 +250,7 @@ public class ApartmentsService {
                     System.out.print("Address (" + apartment.getAdress() + "): ");
                     String newAddress = scanner.nextLine().trim();
                     if (!newAddress.isEmpty()) {
+                        Utils.validateAddress(newAddress);
                         apartment.setAdress(newAddress);
                     }
                     break;
@@ -259,7 +260,7 @@ public class ApartmentsService {
                     String newArea = scanner.nextLine().trim();
                     if (!newArea.isEmpty()) {
                         double area = Double.parseDouble(newArea);
-                        validateArea(area);
+                        Utils.validateArea(area);
                         apartment.setArea(area);
                     }
                     break;
@@ -269,7 +270,7 @@ public class ApartmentsService {
                     String newSalesPrice = scanner.nextLine().trim();
                     if (!newSalesPrice.isEmpty()) {
                         double sp = Double.parseDouble(newSalesPrice);
-                        validatePrice(sp);
+                        Utils.validatePrice(sp);
                         apartment.setSalesPrice(sp);
                     }
                     break;
@@ -279,7 +280,7 @@ public class ApartmentsService {
                     String newRentalPrice = scanner.nextLine().trim();
                     if (!newRentalPrice.isEmpty()) {
                         double rp = Double.parseDouble(newRentalPrice);
-                        validatePrice(rp);
+                        Utils.validatePrice(rp);
                         apartment.setRentalPrice(rp);
                     }
                     break;
@@ -289,7 +290,7 @@ public class ApartmentsService {
                     String newRoomsQuantity = scanner.nextLine().trim();
                     if (!newRoomsQuantity.isEmpty()) {
                         int roomsQuantity = Integer.parseInt(newRoomsQuantity);
-                        validateQuantity(roomsQuantity);
+                        Utils.validateQuantity(roomsQuantity);
                         apartment.setRooms(roomsQuantity);
                     }
                     break;
@@ -299,7 +300,7 @@ public class ApartmentsService {
                     String newBedroomsQuantity = scanner.nextLine().trim();
                     if (!newBedroomsQuantity.isEmpty()) {
                         Integer bedroomsQuantity = Integer.parseInt(newBedroomsQuantity);
-                        validateQuantity(bedroomsQuantity);
+                        Utils.validateQuantity(bedroomsQuantity);
                         apartment.setBedRooms(bedroomsQuantity);
                     }
                     break;
@@ -309,7 +310,7 @@ public class ApartmentsService {
                     String newBathroomsQuantity = scanner.nextLine().trim();
                     if (!newBathroomsQuantity.isEmpty()) {
                         int bathroomsQuantity = Integer.parseInt(newBathroomsQuantity);
-                        validateQuantity(bathroomsQuantity);
+                        Utils.validateQuantity(bathroomsQuantity);
                         apartment.setBathRooms(bathroomsQuantity);
                     }
                     break;
@@ -335,7 +336,7 @@ public class ApartmentsService {
                     String newMaintenanceFees = scanner.nextLine().trim();
                     if (!newMaintenanceFees.isEmpty()) {
                         double maintenanceFees = Double.parseDouble(newMaintenanceFees);
-                        validatePrice(maintenanceFees);
+                        Utils.validatePrice(maintenanceFees);
                         apartment.setMaintenanceFees(maintenanceFees);
                     }
                     break;
@@ -359,6 +360,7 @@ public class ApartmentsService {
 
         } while (continueModifying);
     }
+<<<<<<< HEAD
 
     public void validateArea(Double area) throws InvalidInputException {
         if (area <= 0) {
@@ -418,4 +420,6 @@ public class ApartmentsService {
     }
 
 
+=======
+>>>>>>> b7b9e75ad76f6356f175662eb1ea39adcb2aa580
 }

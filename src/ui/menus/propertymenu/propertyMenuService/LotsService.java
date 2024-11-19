@@ -264,8 +264,8 @@ public class LotsService {
                     System.out.print("Area (" + lot.getArea() + "): ");
                     String newArea = scanner.nextLine().trim();
                     if (!newArea.isEmpty()) {
-                        double area = Double.parseDouble(newArea);
-                        validateArea(area);
+                        Double area = Double.parseDouble(newArea);
+                        Utils.validateArea(area);
                         lot.setArea(area);
                     }
                     break;
@@ -274,8 +274,8 @@ public class LotsService {
                     System.out.print("Sales Price (" + lot.getSalesPrice() + "): ");
                     String newSalesPrice = scanner.nextLine().trim();
                     if (!newSalesPrice.isEmpty()) {
-                        double sp = Double.parseDouble(newSalesPrice);
-                        validatePrice(sp);
+                        Double sp = Double.parseDouble(newSalesPrice);
+                        Utils.validatePrice(sp);
                         lot.setSalesPrice(sp);
                     }
                     break;
@@ -331,6 +331,7 @@ public class LotsService {
             System.out.println("Invalid input. " + propertyName + " remains unchanged.");
         }
     }
+<<<<<<< HEAD
 
     private void validateArea(Double area) throws InvalidInputException {
         if (area <= 0) {
@@ -380,4 +381,6 @@ public class LotsService {
             System.out.println("Error: "+ e.getMessage());;
         }
     }
+=======
+>>>>>>> b7b9e75ad76f6356f175662eb1ea39adcb2aa580
 }

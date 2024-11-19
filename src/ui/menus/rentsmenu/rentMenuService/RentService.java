@@ -207,10 +207,8 @@ public class RentService {
             System.out.println("\n----------------------------------------------------");
             System.out.println("     Modify Rent Details");
             System.out.println("----------------------------------------------------");
-            System.out.println("1. Tenants");
-            System.out.println("2. Property");
-            System.out.println("3. Start Rental Date ");
-            System.out.println("4. End Rental Date");
+            System.out.println("1. Start Rental Date ");
+            System.out.println("2. End Rental Date");
             System.out.println("0. Go back");
             System.out.println("----------------------------------------------------");
             System.out.println("Please select the detail you would like to modify: ");
@@ -219,23 +217,6 @@ public class RentService {
 
             switch (option) {
                 case 1:
-                    System.out.print("Actual Tenant Dni: (" + rent.getTenant().getDni() + ")\nNew Tenant Dni: ");
-                    String tenantDni = scanner.nextLine().trim();
-                    rent.setTenant(validateTenant(tenantDni));
-                    break;
-
-                case 2:
-                    System.out.print("Actual Property ID: (" + rent.getProperty().getId() + ")\nNew Property ID: ");
-                    Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
-                    Property property = (findPropertyById(propertyId));
-                    if (property == null || property.getState() != State.AVAILABLE) {
-                        throw new InvalidInputException("Property is not available for rent.");
-                    } else {
-                        rent.setProperty(property);
-                    }
-                    break;
-
-                case 3:
                     System.out.print("Enter the rental start date (YYYY-MM-DD): ");
                     String startDate = scanner.nextLine();
                     LocalDate rentalStartDate = LocalDate.parse(startDate);
@@ -243,7 +224,7 @@ public class RentService {
                     rent.setStartRent(rentalStartDate);
                     break;
 
-                case 4:
+                case 2:
                     System.out.print("Enter the rental end date (YYYY-MM-DD): ");
                     String endDate = scanner.nextLine();
                     LocalDate rentalEndDate = LocalDate.parse(endDate);

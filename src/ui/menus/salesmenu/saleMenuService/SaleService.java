@@ -151,6 +151,19 @@ public class SaleService {
         System.out.println(sales.returnList());
     }
 
+    public Sale findSaleById(Integer rentId) {
+        for (Sale sale : sales.returnList()) {
+            if (sale instanceof Sale) {
+                Sale sale1 = (Sale) sale;
+                if (sale1.getId().equals(rentId)) {
+                    return sale1;
+                }
+            }
+        }
+        return null;
+    }
+
+/*
     public void modifySale() {
         Boolean continueModifying = true;
         do {
@@ -179,18 +192,6 @@ public class SaleService {
 
             continueModifying = askToContinue();
         } while (continueModifying);
-    }
-
-    public Sale findSaleById(Integer rentId) {
-        for (Sale sale : sales.returnList()) {
-            if (sale instanceof Sale) {
-                Sale sale1 = (Sale) sale;
-                if (sale1.getId().equals(rentId)) {
-                    return sale1;
-                }
-            }
-        }
-        return null;
     }
 
     public void modifySaleDetails(Sale sale) throws InvalidInputException {
@@ -257,63 +258,63 @@ public class SaleService {
 
         } while (continueModifying);
     }
-
+*/
     public void validateArea(Double area) throws InvalidInputException {
         if (area <= 0) {
             throw new InvalidInputException("Area must be greater than zero.");
         }
     }
 
-    public void deleteRent() {
+    public void deleteSale() {
         try {
-            tenants = new GenericClass<>(JsonUtils.loadList("tenants.json", Tenant.class));
+
+            buyers = new GenericClass<>(JsonUtils.loadList("buyers.json", Buyer.class));
             properties = new GenericClass<>(JsonUtils.loadList("properties.json", Property.class));
-            rents = new GenericClass<>(JsonUtils.loadList("rents.json", Rent.class));
-            if (rents.isEmpty()) {
-                System.out.println("No rents available to delete.");
+            sales = new GenericClass<>(JsonUtils.loadList("sales.json", Sale.class));
+            if (sales.isEmpty()) {
+                System.out.println("No sales available to delete.");
                 return;
             }
 
-            System.out.print("Enter the ID of the rent you want to delete: ");
-            Integer rentID = Integer.parseInt(scanner.nextLine().trim());
+            System.out.print("Enter the ID of the sale you want to delete: ");
+            Integer saleID = Integer.parseInt(scanner.nextLine().trim());
 
-            Tenant tenant = null;
+            Buyer buyer = null;
             Property property = null;
-            Rent rentToDelete = null;
-            for (Rent o : rents.returnList()) {
-                if (o.getId().equals(rentID)) {
-                    rentToDelete = o;
-                    tenant = o.getTenant();
-                    property = o.getProperty();
+            Sale saleToDelete = null;
+            for (Sale s : sales.returnList()) {
+                if (s.getId().equals(saleID)) {
+                    saleToDelete = s;
+                    buyer = s.getBuyer();
+                    property = s.getProperty();
                     break;
                 }
             }
 
-            if (rentToDelete == null) {
-                throw new InvalidInputException("rent with ID " + rentID + " not found.");
+            if (saleToDelete == null) {
+                throw new InvalidInputException("Sale with ID " + saleID + " not found.");
             }
 
 
-            System.out.println("Selected rent: " + rentToDelete);
+            System.out.println("Selected sale: " + saleToDelete);
 
-            rents.deleteElement(rentToDelete);
+            sales.deleteElement(saleToDelete);
             //MODIFY STATE OF PROPIERTY AND STATE OF CLIENT
-            tenant.setClientState(State.AVAILABLE);
+            buyer.setClientState(State.AVAILABLE);
             property.setState(State.AVAILABLE);
 
-            tenants.modifyElement(tenant,tenant);
-            properties.modifyElement(property,property);
+            buyers.modifyElement(buyer, buyer);
+            properties.modifyElement(property, property);
 
 
-            JsonUtils.saveList(tenants.returnList(),"tenants.json", Tenant.class);
-            JsonUtils.saveList(properties.returnList(),"properties.json", Property.class);
-            JsonUtils.saveList(rents.returnList(), "rents.json", Rent.class);
+            JsonUtils.saveList(buyers.returnList(), "buyers.json", Buyer.class);
+            JsonUtils.saveList(properties.returnList(), "properties.json", Property.class);
+            JsonUtils.saveList(sales.returnList(), "sales.json", Sale.class);
 
-            System.out.println("Rent deleted successfully!");
+            System.out.println("Sale deleted successfully!");
         } catch (InvalidInputException e) {
             System.out.println("Error: " + e.getMessage());
         }
 
-
-
+    }
 }

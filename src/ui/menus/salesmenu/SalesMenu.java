@@ -34,12 +34,9 @@ public class SalesMenu {
                         sl.addSale();
                         break;
                     case 2:
-                        System.out.println("Opcion 2");
+                        sl.deleteSale();
                         break;
                     case 3:
-                        System.out.println("Opcion 3");
-                        break;
-                    case 4:
                         sl.seeAllSales();
                         System.out.println("Press Enter to continue...");
                         scanner.nextLine();
@@ -65,9 +62,8 @@ public class SalesMenu {
         System.out.println("│          SALES MENU           │");
         System.out.println("├───────────────────────────────┤");
         System.out.println("│ 1. ADD SALE                   │");
-        System.out.println("│ 2. MODIFY A SALE              │");
-        System.out.println("│ 3. CANCEL A SALE              │");
-        System.out.println("│ 4. VIEW ALL SALES             │");
+        System.out.println("│ 2. CANCEL A SALE              │");
+        System.out.println("│ 3. VIEW ALL SALES             │");
         System.out.println("│ 0. GO BACK                    │");
         System.out.println("│                               │");
         System.out.println("└───────────────────────────────┘");

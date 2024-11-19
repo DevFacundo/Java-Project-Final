@@ -18,9 +18,9 @@
   "bedRooms" : 1,
   "bathRooms" : 1,
   "park" : false,
+  "state" : "RENTED",
   "salesPrice" : 213132.0,
-  "rentalPrice" : 3232.0,
-  "state" : "RENTED"
+  "rentalPrice" : 3232.0
 }, {
   "propertyType" : "apartment",
   "id" : 2,
@@ -42,9 +42,9 @@
   "furnished" : true,
   "orientation" : "FRONT",
   "maintenanceFees" : 23.0,
+  "state" : "RENTED",
   "salesPrice" : 2500.0,
-  "rentalPrice" : 212.0,
-  "state" : "RENTED"
+  "rentalPrice" : 212.0
 }, {
   "propertyType" : "house",
   "id" : 3,
@@ -65,7 +65,29 @@
   "bedRooms" : 4,
   "bathRooms" : 2,
   "park" : true,
+  "state" : "RENTED",
   "salesPrice" : 30000.0,
-  "rentalPrice" : 200000.0,
-  "state" : "RENTED"
+  "rentalPrice" : 200000.0
+}, {
+  "propertyType" : "lot",
+  "id" : 4,
+  "owner" : {
+    "id" : 4,
+    "name" : "fs",
+    "surname" : "sf",
+    "dni" : "11111111",
+    "contactNumber" : "1234",
+    "email" : "f@q",
+    "adress" : "call34",
+    "clientState" : "SOLD"
+  },
+  "adress" : "lll203",
+  "area" : 200.0,
+  "electricity" : true,
+  "water" : true,
+  "sewer" : true,
+  "asphalt" : true,
+  "gas" : true,
+  "state" : "SOLD",
+  "salesPrice" : 340.0
 } ]

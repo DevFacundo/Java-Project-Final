@@ -5,6 +5,7 @@ import model.clients.Buyer;
 import model.clients.Owner;
 import model.clients.Tenant;
 import model.exceptions.DuplicateElementException;
+import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
 import model.genericManagement.GenericClass;
 import model.genericManagement.JsonUtils;
@@ -12,6 +13,7 @@ import model.properties.House;
 import model.properties.Property;
 import model.rents.Rent;
 import model.sales.Sale;
+import model.utils.Utils;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -132,13 +134,137 @@ public class SaleService {
         return response.equals("yes") || response.equals("y");
     }
 
-    public LocalDate dateValidation(LocalDate fechaInicio) throws InvalidInputException {
-        if (fechaInicio == null) {
-            throw new InvalidInputException("Las fecha no puede ser nula");
+    public LocalDate dateValidation(LocalDate startDate) throws InvalidInputException {
+        if (startDate == null) {
+            throw new InvalidInputException("The date cannot be null");
         }
-        if (fechaInicio.isBefore(LocalDate.now())) {
-            throw new InvalidInputException("La fecha de venta no puede ser anterior a hoy");
+        if (startDate.isBefore(LocalDate.now())) {
+            throw new InvalidInputException("The sale date cannot be earlier than today");
         }
-        return fechaInicio;
+        return startDate;
     }
+
+    public void seeAllSales() throws ElementNotFoundException {
+        if (sales.isEmpty()) {
+            throw new ElementNotFoundException("No sales found.");
+        }
+        System.out.println(sales.returnList());
+    }
+
+    public void modifySale() {
+        Boolean continueModifying = true;
+        do {
+            try {
+                sales = new GenericClass<>(JsonUtils.loadList("sales.json", Sale.class));
+                System.out.print("Enter the ID of the sale to modify: ");
+                Integer saleID = Integer.parseInt(scanner.nextLine().trim());
+
+                Sale saleToModify = findSaleById(saleID);
+
+                if (saleToModify == null) {
+                    throw new InvalidInputException("Sale with ID " + saleID + " not found.");
+                }
+
+                System.out.println(saleToModify);
+
+                modifySaleDetails(saleToModify);
+
+                JsonUtils.saveList(sales.returnList(), "sales.json", Sale.class);
+
+                System.out.println("Sale modified successfully: " + saleToModify);
+
+            } catch (InvalidInputException | NumberFormatException e) {
+                System.out.println("Error modifying sale: " + e.getMessage());
+            }
+
+            continueModifying = askToContinue();
+        } while (continueModifying);
+    }
+
+    public Sale findSaleById(Integer rentId) {
+        for (Sale sale : sales.returnList()) {
+            if (sale instanceof Sale) {
+                Sale sale1 = (Sale) sale;
+                if (sale1.getId().equals(rentId)) {
+                    return sale1;
+                }
+            }
+        }
+        return null;
+    }
+
+    public void modifySaleDetails(Sale sale) throws InvalidInputException {
+        Boolean continueModifying = true;
+        Integer option;
+
+        do {
+            System.out.println("\n----------------------------------------------------");
+            System.out.println("     Modify Sale Details");
+            System.out.println("----------------------------------------------------");
+            System.out.println("1. Buyer");
+            System.out.println("2. Property");
+            System.out.println("3. Date of Sale ");
+            System.out.println("0. Go back");
+            System.out.println("----------------------------------------------------");
+            System.out.println("Please select the detail you would like to modify: ");
+
+            option = Utils.getValidatedOption();
+
+            switch (option) {
+                case 1:
+                    System.out.print("Actual Buyer Dni: (" + sale.getBuyer().getDni() + ")\nNew Buyer Dni: ");
+                    String buyerDni = scanner.nextLine().trim();
+                    sale.setBuyer(validateBuyer(buyerDni));
+                    break;
+
+
+                case 2:
+                    System.out.print("Actual Property ID: (" + sale.getProperty().getId() + ")\nNew Property ID: ");
+                    Integer propertyId = Integer.parseInt(scanner.nextLine().trim());
+                    Property property = (findPropertyById(propertyId));
+                    if (property == null || property.getState() != State.AVAILABLE) {
+                        throw new InvalidInputException("Property is not available for sale.");
+                    } else {
+                        sale.setProperty(property);
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Enter the sale date (YYYY-MM-DD): ");
+                    String startDate = scanner.nextLine();
+                    LocalDate dateofSale = LocalDate.parse(startDate);
+                    dateValidation(dateofSale);
+                    sale.setDateOfSale(dateofSale);
+                    break;
+
+
+                case 0:
+                    System.out.println("Returning to the previous menu...");
+                    break;
+
+                default:
+                    System.out.println("Invalid option. Please choose a valid number.");
+                    break;
+            }
+
+            if (option != 0) {
+                System.out.print("Do you want to modify another detail? (Y/N): ");
+                String continueResponse = scanner.nextLine().trim();
+                continueModifying = continueResponse.equalsIgnoreCase("Y");
+            } else {
+                continueModifying = false;
+            }
+
+        } while (continueModifying);
+    }
+
+    public void validateArea(Double area) throws InvalidInputException {
+        if (area <= 0) {
+            throw new InvalidInputException("Area must be greater than zero.");
+        }
+    }
+
+
+
+
 }

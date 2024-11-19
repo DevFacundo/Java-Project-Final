@@ -1,6 +1,6 @@
 package model.clients;
 
-import model.State;
+import model.enums.State;
 
 import java.util.Objects;
 

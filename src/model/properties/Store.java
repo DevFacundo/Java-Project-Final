@@ -1,6 +1,7 @@
 package model.properties;
 
 import model.clients.Owner;
+import model.enums.Orientation;
 
 public class Store extends Property{
     private Integer bathRooms;

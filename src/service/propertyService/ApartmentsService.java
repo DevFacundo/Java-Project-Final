@@ -1,14 +1,14 @@
-package ui.menus.propertymenu.propertyMenuService;
+package service.propertyService;
 
-import model.State;
+import model.enums.State;
 import model.clients.Owner;
 import model.exceptions.*;
-import model.genericManagement.GenericClass;
-import model.genericManagement.JsonUtils;
+import utils.genericManagement.GenericClass;
+import utils.genericManagement.JsonUtils;
 import model.properties.Apartment;
-import model.properties.Orientation;
+import model.enums.Orientation;
 import model.properties.Property;
-import model.utils.Utils;
+import utils.Utils;
 
 import java.util.Scanner;
 

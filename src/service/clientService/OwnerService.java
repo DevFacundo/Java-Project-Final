@@ -1,14 +1,14 @@
-package ui.menus.clientsmenu.clientMenuService;
+package service.clientService;
 
-import model.State;
+import model.enums.State;
 import model.clients.Owner;
 import model.exceptions.*;
-import model.genericManagement.GenericClass;
-import model.genericManagement.JsonUtils;
-import model.utils.Utils;
+import utils.genericManagement.GenericClass;
+import utils.genericManagement.JsonUtils;
+import utils.Utils;
 import java.util.Scanner;
 
-import static model.utils.Utils.*;
+import static utils.Utils.*;
 
 public class OwnerService {
 

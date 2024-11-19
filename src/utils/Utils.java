@@ -1,4 +1,4 @@
-package model.utils;
+package utils;
 
 import model.exceptions.InvalidInputException;
 import java.util.Scanner;

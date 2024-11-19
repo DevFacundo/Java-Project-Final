@@ -1,7 +1,7 @@
 package ui.menus.mainMenu;
 
 import model.exceptions.InvalidInputException;
-import model.login.Login;
+import ui.menus.login.Login;
 import ui.menus.clientsmenu.TypeOfClientMenu;
 import ui.menus.propertymenu.PropertyMenu;
 import ui.menus.rentsmenu.RentsMenu;
@@ -10,7 +10,7 @@ import ui.menus.salesmenu.SalesMenu;
 
 import java.util.Scanner;
 
-import static model.utils.Utils.getValidatedOption;
+import static utils.Utils.getValidatedOption;
 public class MainMenu {
     RentsMenu rentsMenu = new RentsMenu();
     SalesMenu salesMenu = new SalesMenu();

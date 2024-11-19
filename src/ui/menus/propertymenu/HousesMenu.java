@@ -2,9 +2,9 @@ package ui.menus.propertymenu;
 
 import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
-import ui.menus.propertymenu.propertyMenuService.HousesService;
+import service.propertyService.HousesService;
 import java.util.Scanner;
-import static model.utils.Utils.getValidatedOption;
+import static utils.Utils.getValidatedOption;
 
 public class HousesMenu {
     HousesService housesService ;

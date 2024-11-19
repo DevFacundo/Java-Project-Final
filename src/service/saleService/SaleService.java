@@ -1,13 +1,13 @@
-package ui.menus.salesmenu.saleMenuService;
+package service.saleService;
 
-import model.State;
+import model.enums.State;
 import model.clients.Buyer;
 import model.clients.Owner;
 import model.exceptions.DuplicateElementException;
 import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
-import model.genericManagement.GenericClass;
-import model.genericManagement.JsonUtils;
+import utils.genericManagement.GenericClass;
+import utils.genericManagement.JsonUtils;
 import model.properties.Property;
 import model.sales.Sale;
 
@@ -41,13 +41,15 @@ public class SaleService {
                 Sale newSale = createSale();
 
                 System.out.println("Sale created successfully!");
-                System.out.println(newSale);
+
 
                 if (!sales.isEmpty()) {
                     Sale s = sales.getLastObject();
                     Integer lastId = s.getId() + 1;
                     newSale.setId(lastId);
                 }
+
+                System.out.println(newSale);
 
                 sales.addElement(newSale);
 
@@ -70,11 +72,10 @@ public class SaleService {
     public Sale createSale() throws InvalidInputException {
 
         Integer propertyId;
-        try
-        {
+        try {
             System.out.print("Enter the ID of the property to sell: ");
             propertyId = Integer.parseInt(scanner.nextLine().trim());
-        }catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new InvalidInputException("The Id must be a valid number.");
         }
 
@@ -225,9 +226,6 @@ public class SaleService {
         }
 
     }
-
-
-
 
 
 }

@@ -4,7 +4,7 @@ import model.exceptions.InvalidInputException;
 
 import java.util.Scanner;
 
-import static model.utils.Utils.getValidatedOption;
+import static utils.Utils.getValidatedOption;
 
 public class PropertyMenu {
     HousesMenu housesMenu = new HousesMenu();

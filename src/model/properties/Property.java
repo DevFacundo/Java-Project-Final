@@ -2,7 +2,7 @@ package model.properties;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import model.State;
+import model.enums.State;
 import model.clients.Owner;
 import model.exceptions.InvalidAreaException;
 import model.exceptions.InvalidPriceException;

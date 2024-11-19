@@ -6,6 +6,7 @@ import model.interfaces.EarningCalculator;
 import model.properties.Property;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 public class Rent implements EarningCalculator {
     private Integer id;
@@ -71,6 +72,19 @@ public class Rent implements EarningCalculator {
 
     public void setEndRent(LocalDate endRent) {
         this.endRent = endRent;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rent rent = (Rent) o;
+        return Objects.equals(tenant, rent.tenant) && Objects.equals(property, rent.property) && Objects.equals(startRent, rent.startRent) && Objects.equals(endRent, rent.endRent);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tenant, property, startRent, endRent);
     }
 
     @Override

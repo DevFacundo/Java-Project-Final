@@ -1,7 +1,7 @@
-package ui.menus.reportsMenu.reportMenuService;
+package service.reportService;
 
-import model.genericManagement.GenericClass;
-import model.genericManagement.JsonUtils;
+import utils.genericManagement.GenericClass;
+import utils.genericManagement.JsonUtils;
 import model.properties.Property;
 import model.rents.Rent;
 import model.sales.Sale;

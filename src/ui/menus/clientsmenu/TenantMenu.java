@@ -2,10 +2,10 @@ package ui.menus.clientsmenu;
 
 import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
-import ui.menus.clientsmenu.clientMenuService.TenantService;
+import service.clientService.TenantService;
 import java.util.Scanner;
 
-import static model.utils.Utils.getValidatedOption;
+import static utils.Utils.getValidatedOption;
 
 public class TenantMenu {
     TenantService tenantService;

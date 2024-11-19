@@ -2,11 +2,11 @@ package ui.menus.propertymenu;
 
 import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
-import ui.menus.propertymenu.propertyMenuService.ApartmentsService;
+import service.propertyService.ApartmentsService;
 
 import java.util.Scanner;
 
-import static model.utils.Utils.getValidatedOption;
+import static utils.Utils.getValidatedOption;
 
 public class ApartmentsMenu {
     Scanner scanner ;
@@ -20,10 +20,10 @@ public class ApartmentsMenu {
     public void menu() {
         int option = -1;
         do {
-            printMenu(); /// Imprime un menú modularizado
+            printMenu();
 
             try {
-                option = getValidatedOption(); /// Excepción que valida que sea un número
+                option = getValidatedOption();
 
                 switch (option) {
                     case 1:

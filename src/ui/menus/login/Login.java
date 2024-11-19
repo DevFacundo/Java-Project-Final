@@ -1,4 +1,4 @@
-package model.login;
+package ui.menus.login;
 
 import java.util.Scanner;
 

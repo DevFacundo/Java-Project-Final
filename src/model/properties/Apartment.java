@@ -2,6 +2,7 @@ package model.properties;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import model.clients.Owner;
+import model.enums.Orientation;
 
 @JsonTypeName("apartment")
 public class Apartment extends Property{

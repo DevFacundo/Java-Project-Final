@@ -1,10 +1,8 @@
 
 import ui.menus.mainMenu.MainMenu;
 
-
 public class Main {
     public static void main(String[] args) {
-        MainMenu mm = new MainMenu();
-        mm.menu();
+        new MainMenu().menu();
     }
 }

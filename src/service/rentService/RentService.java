@@ -1,14 +1,14 @@
-package ui.menus.rentsmenu.rentMenuService;
+package service.rentService;
 
-import model.State;
+import model.enums.State;
 import model.clients.Owner;
 import model.clients.Tenant;
 import model.exceptions.*;
-import model.genericManagement.GenericClass;
-import model.genericManagement.JsonUtils;
+import utils.genericManagement.GenericClass;
+import utils.genericManagement.JsonUtils;
 import model.properties.Property;
 import model.rents.Rent;
-import model.utils.Utils;
+import utils.Utils;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;

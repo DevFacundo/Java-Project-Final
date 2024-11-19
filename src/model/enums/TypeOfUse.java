@@ -1,4 +1,4 @@
-package model.properties;
+package model.enums;
 
 public enum TypeOfUse {
     STORAGE,

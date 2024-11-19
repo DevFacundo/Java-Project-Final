@@ -2,11 +2,11 @@ package ui.menus.rentsmenu;
 
 import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
-import ui.menus.rentsmenu.rentMenuService.RentService;
+import service.rentService.RentService;
 
 import java.util.Scanner;
 
-import static model.utils.Utils.getValidatedOption;
+import static utils.Utils.getValidatedOption;
 
 public class RentsMenu {
 

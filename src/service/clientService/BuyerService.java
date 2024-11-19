@@ -1,12 +1,12 @@
-package ui.menus.clientsmenu.clientMenuService;
+package service.clientService;
 
-import model.State;
+import model.enums.State;
 import model.clients.Buyer;
 import model.exceptions.*;
-import model.genericManagement.GenericClass;
-import model.genericManagement.JsonUtils;
+import utils.genericManagement.GenericClass;
+import utils.genericManagement.JsonUtils;
 import java.util.Scanner;
-import static model.utils.Utils.*;
+import static utils.Utils.*;
 
 public class BuyerService {
 

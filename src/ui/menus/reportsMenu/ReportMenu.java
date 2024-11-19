@@ -3,11 +3,11 @@ package ui.menus.reportsMenu;
 import model.exceptions.InvalidInputException;
 import model.rents.Rent;
 import model.sales.Sale;
-import ui.menus.reportsMenu.reportMenuService.ReportService;
+import service.reportService.ReportService;
 
 import java.util.Scanner;
 
-import static model.utils.Utils.getValidatedOption;
+import static utils.Utils.getValidatedOption;
 
 public class ReportMenu {
     Scanner scanner;

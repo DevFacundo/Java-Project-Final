@@ -6,6 +6,7 @@ import model.interfaces.EarningCalculator;
 import model.properties.Property;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Sale implements EarningCalculator {
     private Integer id;
@@ -61,6 +62,19 @@ public class Sale implements EarningCalculator {
 
     public void setDateOfSale(LocalDate dateOfSale) {
         this.dateOfSale = dateOfSale;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sale sale = (Sale) o;
+        return Objects.equals(buyer, sale.buyer) && Objects.equals(property, sale.property);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(buyer, property);
     }
 
     @Override

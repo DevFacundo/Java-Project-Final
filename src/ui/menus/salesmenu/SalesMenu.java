@@ -2,11 +2,11 @@ package ui.menus.salesmenu;
 
 import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
-import ui.menus.salesmenu.saleMenuService.SaleService;
+import service.saleService.SaleService;
 
 import java.util.Scanner;
 
-import static model.utils.Utils.getValidatedOption;
+import static utils.Utils.getValidatedOption;
 
 public class SalesMenu {
 

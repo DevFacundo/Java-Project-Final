@@ -1,4 +1,4 @@
-package model.genericManagement;
+package utils.genericManagement;
 
 import model.exceptions.DuplicateElementException;
 import java.util.LinkedList;

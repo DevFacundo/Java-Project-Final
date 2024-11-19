@@ -30,9 +30,46 @@
     "bedRooms" : 3,
     "bathRooms" : 3,
     "park" : true,
-    "state" : "SOLD",
     "rentalPrice" : 2000.0,
+    "state" : "SOLD",
     "salesPrice" : 100000.0
   },
   "dateOfSale" : [ 2024, 12, 1 ]
+}, {
+  "id" : 2,
+  "buyer" : {
+    "id" : 42,
+    "name" : "Taylor",
+    "surname" : "Sullivan",
+    "dni" : "13415201",
+    "contactNumber" : "2233118507",
+    "email" : "taylorsullivan@frolix.com",
+    "adress" : "410 Georgia Avenue",
+    "clientState" : "BOUGHT"
+  },
+  "property" : {
+    "propertyType" : "house",
+    "id" : 1,
+    "owner" : {
+      "id" : 0,
+      "name" : "Francine",
+      "surname" : "Moss",
+      "dni" : "27739620",
+      "contactNumber" : "2234469617",
+      "email" : "francinemoss@frolix.com",
+      "adress" : "108 Ashland Place",
+      "clientState" : "SOLD"
+    },
+    "adress" : "calle 234",
+    "area" : 200.0,
+    "floorsQuantity" : 1,
+    "rooms" : 2,
+    "bedRooms" : 1,
+    "bathRooms" : 1,
+    "park" : true,
+    "rentalPrice" : 400.0,
+    "state" : "SOLD",
+    "salesPrice" : 20000.0
+  },
+  "dateOfSale" : [ 2024, 11, 19 ]
 } ]

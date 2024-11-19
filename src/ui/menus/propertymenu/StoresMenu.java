@@ -2,11 +2,11 @@ package ui.menus.propertymenu;
 
 import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
-import ui.menus.propertymenu.propertyMenuService.StoresService;
+import service.propertyService.StoresService;
 
 import java.util.Scanner;
 
-import static model.utils.Utils.getValidatedOption;
+import static utils.Utils.getValidatedOption;
 
 public class StoresMenu {
     StoresService storesService;

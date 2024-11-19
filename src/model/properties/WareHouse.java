@@ -1,6 +1,7 @@
 package model.properties;
 
 import model.clients.Owner;
+import model.enums.TypeOfUse;
 
 public class WareHouse extends Property{
     private TypeOfUse typeOfUse;

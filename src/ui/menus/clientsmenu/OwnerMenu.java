@@ -2,10 +2,10 @@ package ui.menus.clientsmenu;
 
 import model.exceptions.ElementNotFoundException;
 import model.exceptions.InvalidInputException;
-import ui.menus.clientsmenu.clientMenuService.OwnerService;
+import service.clientService.OwnerService;
 import java.util.Scanner;
 
-import static model.utils.Utils.getValidatedOption;
+import static utils.Utils.getValidatedOption;
 
 public class OwnerMenu {
     OwnerService ownerService ;

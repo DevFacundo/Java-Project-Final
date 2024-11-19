@@ -27,40 +27,58 @@ public class Utils {
     }
 
     public static void validateInputs(String name, String surname, String contactNumber, String email, String address, String dni) throws InvalidInputException {
-        if (name.isEmpty()) {
+
+        if (name == null || name.trim().isEmpty()) {
             throw new InvalidInputException("Name cannot be empty.");
         }
-
-        if (surname.isEmpty()) {
-            throw new InvalidInputException("Surname cannot be empty.");
+        if (!name.matches("^[a-zA-Z\\s]+$")) {
+            throw new InvalidInputException("Name can only contain letters and spaces.");
         }
 
-        if (dni.isEmpty() || !dni.matches("\\d{7,8}")) {
+        if (surname == null || surname.trim().isEmpty()) {
+            throw new InvalidInputException("Surname cannot be empty.");
+        }
+        if (!surname.matches("^[a-zA-Z\\s]+$")) {
+            throw new InvalidInputException("Surname can only contain letters and spaces.");
+        }
+
+        if (dni == null || dni.trim().isEmpty() || !dni.matches("\\d{7,8}")) {
             throw new InvalidInputException("DNI must be between 7 and 8 digits.");
         }
 
-        if (!contactNumber.matches("\\d+")) {
-            throw new InvalidInputException("Contact number must contain only digits.");
+        if (contactNumber == null || !contactNumber.matches("\\d{10}")) {
+            throw new InvalidInputException("Contact number must contain exactly 10 digits.");
         }
 
-        if (!email.contains("@")) {
+        if (email == null || !email.contains("@")) {
             throw new InvalidInputException("Invalid email format.");
         }
 
-        if (address.isEmpty()) {
+        if (address == null || address.trim().isEmpty()) {
             throw new InvalidInputException("Address cannot be empty.");
         }
     }
 
+
     public static void validateName(String name) throws InvalidInputException {
-        if (name.isEmpty()) {
+
+        if (name == null || name.trim().isEmpty()) {
             throw new InvalidInputException("Name cannot be empty.");
+        }
+
+        if (!name.matches("^[a-zA-Z\\s]+$")) {
+            throw new InvalidInputException("Name can only contain letters and spaces.");
         }
     }
 
     public static void validateSurname(String surname) throws InvalidInputException {
-        if (surname.isEmpty()) {
+
+        if (surname == null || surname.trim().isEmpty()) {
             throw new InvalidInputException("Surname cannot be empty.");
+        }
+
+        if (!surname.matches("^[a-zA-Z\\s]+$")) {
+            throw new InvalidInputException("Surname can only contain letters and spaces.");
         }
     }
 
@@ -71,8 +89,8 @@ public class Utils {
     }
 
     public static void validateContactNumber(String contactNumber) throws InvalidInputException {
-        if (!contactNumber.matches("\\d+")) {
-            throw new InvalidInputException("Contact number must contain only digits.");
+        if (!contactNumber.matches("\\d{10}")) {
+            throw new InvalidInputException("Contact number must contain only digits and 10 numbers.");
         }
     }
 
